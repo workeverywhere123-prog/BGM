@@ -1,0 +1,173 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-04-21T00:00:00.000Z",
+  "activeFeatures": ["boardgame-league"],
+  "primaryFeature": "boardgame-league",
+  "features": {
+    "boardgame-league": {
+      "phase": "do",
+      "level": "Dynamic",
+      "startedAt": "2026-04-20T09:15:42.634Z",
+      "lastPhaseAt": "2026-04-21T00:00:00.000Z",
+      "documents": {
+        "plan": "docs/01-plan/features/boardgame-league.plan.md",
+        "glossary": "docs/01-plan/glossary.md",
+        "schema": "docs/01-plan/schema.md",
+        "design": "docs/02-design/features/boardgame-league.design.md"
+      },
+      "stack": {
+        "frontend": "Next.js 15 + React 19 + TS + Tailwind",
+        "backend": "Supabase (Postgres + GoTrue + RLS)",
+        "testing": "Vitest (domain layer)",
+        "pivotedFrom": "bkend.ai",
+        "pivotedAt": "2026-04-20"
+      },
+      "matchRate": null,
+      "iterationCount": 0,
+      "milestones": {
+        "M1": {
+          "name": "Auth + Infrastructure",
+          "status": "implemented",
+          "scope": "Steps 1-6 of 7 (Google OAuth pending dashboard config)",
+          "completedAt": "2026-04-21T00:00:00.000Z"
+        }
+      }
+    }
+  },
+  "pipeline": {
+    "currentPhase": 4,
+    "level": "Dynamic",
+    "phaseHistory": [
+      {
+        "phase": 1,
+        "name": "Schema",
+        "completedAt": "2026-04-20T09:45:00.000Z",
+        "outputs": [
+          "docs/01-plan/glossary.md",
+          "docs/01-plan/schema.md"
+        ]
+      },
+      {
+        "phase": 2,
+        "name": "Convention",
+        "completedAt": "2026-04-20T21:30:00.000Z",
+        "outputs": [
+          "docs/02-design/features/boardgame-league.design.md#11-2"
+        ]
+      },
+      {
+        "phase": 4,
+        "name": "API (Server Actions + Supabase)",
+        "completedAt": "2026-04-21T00:00:00.000Z",
+        "outputs": [
+          "src/app/(auth)/actions.ts",
+          "src/lib/supabase/server.ts",
+          "src/lib/supabase/client.ts",
+          "src/lib/supabase/service.ts",
+          "src/lib/supabase/middleware.ts",
+          "src/middleware.ts",
+          "src/lib/session.ts",
+          "supabase/schema.sql",
+          "supabase/SETUP.md"
+        ]
+      }
+    ]
+  },
+  "session": {
+    "startedAt": "2026-04-20T09:15:42.634Z",
+    "onboardingCompleted": true,
+    "lastActivity": "2026-04-21T00:00:00.000Z"
+  },
+  "history": [
+    {
+      "feature": "boardgame-league",
+      "phase": "plan",
+      "action": "document_created",
+      "timestamp": "2026-04-20T09:25:00.000Z",
+      "path": "docs/01-plan/features/boardgame-league.plan.md"
+    },
+    {
+      "feature": "boardgame-league",
+      "phase": "plan",
+      "action": "phase-1-schema_completed",
+      "timestamp": "2026-04-20T09:45:00.000Z",
+      "paths": [
+        "docs/01-plan/glossary.md",
+        "docs/01-plan/schema.md"
+      ]
+    },
+    {
+      "feature": "boardgame-league",
+      "phase": "design",
+      "action": "document_created",
+      "timestamp": "2026-04-20T21:48:00.000Z",
+      "path": "docs/02-design/features/boardgame-league.design.md"
+    },
+    {
+      "feature": "boardgame-league",
+      "phase": "design",
+      "action": "stack_pivot",
+      "timestamp": "2026-04-20T23:00:00.000Z",
+      "note": "bkend.ai -> Supabase (Postgres + GoTrue + RLS); Domain layer unchanged.",
+      "updatedPaths": [
+        "docs/01-plan/features/boardgame-league.plan.md",
+        "docs/01-plan/schema.md",
+        "docs/02-design/features/boardgame-league.design.md"
+      ]
+    },
+    {
+      "feature": "boardgame-league",
+      "phase": "do",
+      "action": "domain_layer_implemented",
+      "timestamp": "2026-04-20T23:30:00.000Z",
+      "paths": [
+        "src/domain/rating.ts",
+        "src/domain/elo.ts",
+        "src/domain/elo.test.ts",
+        "src/domain/auth-rules.ts",
+        "src/domain/auth-rules.test.ts",
+        "src/types/domain.ts",
+        "vitest.config.ts"
+      ]
+    },
+    {
+      "feature": "boardgame-league",
+      "phase": "do",
+      "action": "supabase_infrastructure_implemented",
+      "timestamp": "2026-04-21T00:00:00.000Z",
+      "paths": [
+        "src/lib/env.ts",
+        "src/lib/supabase/client.ts",
+        "src/lib/supabase/server.ts",
+        "src/lib/supabase/service.ts",
+        "src/lib/supabase/middleware.ts",
+        "src/middleware.ts",
+        "src/lib/session.ts",
+        "supabase/schema.sql",
+        "supabase/SETUP.md",
+        ".env.example"
+      ]
+    },
+    {
+      "feature": "boardgame-league",
+      "phase": "do",
+      "action": "auth_ui_implemented",
+      "timestamp": "2026-04-21T00:00:00.000Z",
+      "paths": [
+        "src/app/(auth)/actions.ts",
+        "src/app/(auth)/AuthCard.tsx",
+        "src/app/(auth)/login/page.tsx",
+        "src/app/(auth)/signup/page.tsx",
+        "src/app/page.tsx"
+      ]
+    },
+    {
+      "feature": "boardgame-league",
+      "phase": "do",
+      "action": "milestone_M1_implemented",
+      "timestamp": "2026-04-21T00:00:00.000Z",
+      "note": "Auth + Infrastructure (Steps 1-6 of 7). Step 7 (Google OAuth) requires dashboard config.",
+      "pendingUserAction": "npm install, configure supabase/.env.local, run supabase/schema.sql"
+    }
+  ]
+}
