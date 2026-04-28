@@ -2,6 +2,8 @@ import Nav from '../../nav';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import Footer from '../../footer';
+import LapisIcon from '@/components/LapisIcon';
 
 const GAME_TYPE_LABEL: Record<string, string> = {
   team: '팀전', mafia: '마피아', deathmatch: '데스매치',
@@ -117,8 +119,8 @@ export default async function MeetingDetailPage({ params }: { params: Promise<{ 
                       {p.team && ` (${p.team}팀)`}
                       {p.role && ` [${p.role}]`}
                       {p.is_mvp && ' ⭐'}
-                      <span style={{ marginLeft: '0.4rem', fontSize: '0.75rem', color: p.chip_change > 0 ? 'var(--gold)' : p.chip_change < 0 ? '#ff8888' : 'var(--white-dim)' }}>
-                        {p.chip_change > 0 ? `+${p.chip_change}` : p.chip_change}pt
+                      <span style={{ marginLeft: '0.4rem', fontSize: '0.75rem', color: p.chip_change > 0 ? 'var(--gold)' : p.chip_change < 0 ? '#ff8888' : 'var(--white-dim)', display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
+                        {p.chip_change > 0 ? `+${p.chip_change}` : p.chip_change} <LapisIcon size={11} /> LAPIS
                       </span>
                     </Link>
                   ))}
@@ -129,11 +131,7 @@ export default async function MeetingDetailPage({ params }: { params: Promise<{ 
         )}
       </div>
 
-      <footer className="bgm-footer">
-        <div className="footer-logo">BGM</div>
-        <div className="footer-copy">© 2026 Boardgame in Melbourne.</div>
-        <div className="footer-links"><a href="#">인스타그램</a><a href="#">디스코드</a></div>
-      </footer>
+      <Footer />
     </>
   );
 }

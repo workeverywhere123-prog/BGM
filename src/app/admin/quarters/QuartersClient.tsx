@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useTransition } from 'react';
+import LapisIcon from '@/components/LapisIcon';
 
 interface Quarter {
   id: string;
@@ -62,7 +63,7 @@ export default function QuartersClient({ initialQuarters }: { initialQuarters: Q
   });
 
   const deleteQ = (id: string) => startTransition(async () => {
-    if (!confirm('이 분기를 삭제하시겠습니까? 연결된 포인트 기록의 분기 정보가 초기화됩니다.')) return;
+    if (!confirm('이 분기를 삭제하시겠습니까? 연결된 LAPIS 기록의 분기 정보가 초기화됩니다.')) return;
     const res = await fetch('/api/admin/quarters', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -104,7 +105,7 @@ export default function QuartersClient({ initialQuarters }: { initialQuarters: Q
         <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.62rem', letterSpacing: '0.1em', color: 'var(--gold)', marginBottom: '0.3rem' }}>분기 시스템 안내</p>
         <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: 'var(--white-dim)', lineHeight: 1.6 }}>
           활성 분기가 하나만 존재할 수 있습니다. 새 분기를 활성화하면 이전 분기는 자동으로 비활성화됩니다.
-          분기별 랭킹은 해당 분기 내 포인트만 집계되며, 누적 보유량은 모든 분기를 포함합니다.
+          분기별 랭킹은 해당 분기 내 <LapisIcon size={12} /> LAPIS만 집계되며, 누적 보유량은 모든 분기를 포함합니다.
         </p>
       </div>
 

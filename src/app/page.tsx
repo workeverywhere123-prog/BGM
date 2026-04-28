@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import Footer from './footer';
 import Nav from './nav';
+import { FEATURES } from '@/lib/features';
 
 export default function Home() {
   return (
@@ -40,69 +42,41 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-title">멜버른 한인 보드게임 모임</div>
+        <div className="hero-title">생존은 전략이다</div>
         <p className="hero-desc">
-          함께 앉아, 전략을 겨루고, 우정을 쌓아가는<br/>
-          멜버른 최고의 한인 보드게임 커뮤니티
+          멜버른 최고의 보드게이머들이 모이는 곳.<br/>
+          리그에서 실력을 증명하고, 역사에 이름을 새기세요.
         </p>
         <div className="hero-divider" />
 
-        {/* Quick links */}
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <Link href="/meeting" className="hero-cta">모임 일정 보기</Link>
+          <Link href="/rooms" className="hero-cta">모임 일정 보기</Link>
           <Link href="/league" style={{
-            display: 'inline-block',
-            fontFamily: "'Cinzel', serif",
-            fontSize: '0.75rem',
-            letterSpacing: '0.22em',
-            color: 'var(--gold)',
-            border: '1px solid var(--gold)',
-            padding: '1rem 2.2rem',
-            textDecoration: 'none',
-            transition: 'all 0.35s ease',
+            display: 'inline-block', fontFamily: "'Cinzel', serif", fontSize: '0.75rem',
+            letterSpacing: '0.22em', color: 'var(--gold)', border: '1px solid var(--gold)',
+            padding: '1rem 2.2rem', textDecoration: 'none', transition: 'all 0.35s ease',
             animation: 'fadeUp 2.1s ease both',
           }}>리그 현황</Link>
         </div>
       </section>
 
-      {/* QUICK FEATURE CARDS */}
+      {/* FEATURE CARDS — src/lib/features.ts 에서 자동 생성 */}
       <section className="bgm-section about-section">
         <p className="section-label">무엇을 할 수 있나요?</p>
         <h2 className="section-title">BGM에서 즐기세요</h2>
         <div className="section-divider" />
         <div className="about-grid">
-          <Link href="/league" className="about-card" style={{ textDecoration: 'none' }}>
-            <span className="about-icon">🏆</span>
-            <h3>리그 &amp; 랭킹</h3>
-            <p>칩 기반 리그 시스템으로 실력을 겨루고 시즌 랭킹을 확인하세요.</p>
-          </Link>
-          <Link href="/meeting" className="about-card" style={{ textDecoration: 'none' }}>
-            <span className="about-icon">📅</span>
-            <h3>모임 일정</h3>
-            <p>정기 모임 일정과 경기 결과, 출석 현황을 한 눈에 확인하세요.</p>
-          </Link>
-          <Link href="/notice" className="about-card" style={{ textDecoration: 'none' }}>
-            <span className="about-icon">📢</span>
-            <h3>공지사항</h3>
-            <p>모임 규칙, 이벤트 안내, 중요 공지를 놓치지 마세요.</p>
-          </Link>
-          <Link href="/games" className="about-card" style={{ textDecoration: 'none' }}>
-            <span className="about-icon">🎲</span>
-            <h3>보드게임 목록</h3>
-            <p>멤버들이 보유한 보드게임을 확인하고 모임에서 즐겨보세요.</p>
-          </Link>
+          {FEATURES.map(f => (
+            <Link key={f.href} href={f.href} className="about-card" style={{ textDecoration: 'none' }}>
+              <span className="about-icon">{f.icon}</span>
+              <h3>{f.title}</h3>
+              <p>{f.desc}</p>
+            </Link>
+          ))}
         </div>
       </section>
 
-      <footer className="bgm-footer">
-        <div className="footer-logo">BGM</div>
-        <div className="footer-copy">© 2026 Boardgame in Melbourne. All rights reserved.</div>
-        <div className="footer-links">
-          <a href="#">인스타그램</a>
-          <a href="#">디스코드</a>
-          <a href="#">카카오톡</a>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

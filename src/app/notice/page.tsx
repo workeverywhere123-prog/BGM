@@ -2,6 +2,7 @@ import Nav from '../nav';
 import Link from 'next/link';
 import { isSupabaseConfigured } from '@/lib/env';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import Footer from '../footer';
 
 async function getNotices() {
   try {
@@ -75,11 +76,7 @@ export default async function NoticePage() {
         </div>
       </div>
 
-      <footer className="bgm-footer">
-        <div className="footer-logo">BGM</div>
-        <div className="footer-copy">© 2026 Boardgame in Melbourne.</div>
-        <div className="footer-links"><a href="#">인스타그램</a><a href="#">디스코드</a></div>
-      </footer>
+      <Footer />
     </>
   );
 }

@@ -2,15 +2,11 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { isSupabaseConfigured } from '@/lib/env';
 import { requireSessionUser } from '@/lib/session';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   if (!isSupabaseConfigured()) redirect('/');
   const user = await requireSessionUser().catch(() => redirect('/login'));
-
-  const supabase = await createSupabaseServerClient();
-  const { data } = await supabase.from('players').select('is_admin').eq('id', user.id).maybeSingle();
-  if (!data?.is_admin) redirect('/');
+  if (!user.is_admin) redirect('/');
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--background)', color: 'var(--foreground)' }}>
@@ -22,11 +18,12 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           <nav>
             {[
               { href: '/admin', label: '대시보드', icon: '📊' },
-              { href: '/admin/quarters', label: '분기 관리', icon: '🏆' },
-              { href: '/admin/meeting', label: '모임 관리', icon: '📅' },
-              { href: '/admin/record', label: '경기 기록', icon: '🎲' },
+              { href: '/admin/players', label: '플레이어', icon: '👥' },
+              { href: '/admin/leagues', label: '리그 관리', icon: '🥇' },
+              { href: '/admin/quarters', label: '분기 관리', icon: '📆' },
+              { href: '/admin/rooms', label: '방 모니터링', icon: '🏠' },
+              { href: '/admin/meeting', label: '모임/기록', icon: '🎲' },
               { href: '/admin/notice', label: '공지사항', icon: '📢' },
-              { href: '/admin/players', label: '플레이어 관리', icon: '👥' },
             ].map(item => (
               <Link key={item.href} href={item.href} style={{
                 display: 'flex', alignItems: 'center', gap: '0.7rem',

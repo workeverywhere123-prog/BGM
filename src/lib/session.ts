@@ -7,8 +7,9 @@ import { createSupabaseServerClient } from './supabase/server';
 
 export interface SessionUser {
   id: string;
-  username: string;   // human-readable ID (e.g. "player1")
-  nickname: string;   // display name (defaults to username)
+  username: string;
+  nickname: string;
+  is_admin: boolean;
 }
 
 /**
@@ -22,20 +23,19 @@ export async function getSessionUser(): Promise<SessionUser | null> {
   } = await supabase.auth.getUser();
   if (!user || !user.email) return null;
 
-  // Enrich from players table. Falls back gracefully before DB is seeded.
   const { data: profile } = await supabase
     .from('players')
-    .select('username, nickname')
+    .select('username, nickname, is_admin')
     .eq('id', user.id)
     .maybeSingle();
 
-  // username = players.username → fallback: extract from fake email (before @)
   const username = profile?.username ?? user.email.split('@')[0];
 
   return {
     id: user.id,
     username,
     nickname: profile?.nickname ?? username,
+    is_admin: profile?.is_admin ?? false,
   };
 }
 
