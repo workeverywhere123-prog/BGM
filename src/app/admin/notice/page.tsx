@@ -27,9 +27,10 @@ export default async function AdminNoticePage() {
               <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', color: 'var(--white-dim)', border: '1px solid rgba(244,239,230,0.15)', padding: '0.1rem 0.4rem' }}>{CATEGORY_LABEL[n.category]}</span>
               <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', color: 'var(--foreground)' }}>{n.title}</span>
             </div>
-            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
               <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: 'var(--white-dim)' }}>{new Date(n.created_at).toLocaleDateString('ko-KR')}</span>
-              <Link href={`/notice/${n.id}`} style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: 'var(--gold-dim)', textDecoration: 'none' }}>보기 →</Link>
+              <Link href={`/notice/${n.id}`} style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: 'rgba(244,239,230,0.4)', textDecoration: 'none' }}>보기</Link>
+              <Link href={`/admin/notice/${n.id}`} style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: 'var(--gold-dim)', textDecoration: 'none', padding: '0.2rem 0.7rem', border: '1px solid rgba(201,168,76,0.3)' }}>수정 →</Link>
             </div>
           </div>
         ))}

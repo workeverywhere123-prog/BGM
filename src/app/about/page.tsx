@@ -1,4 +1,5 @@
 import Nav from '../nav';
+import Footer from '../footer';
 
 export default function AboutPage() {
   return (
@@ -26,15 +27,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <footer className="bgm-footer">
-        <div className="footer-logo">BGM</div>
-        <div className="footer-copy">© 2026 Boardgame in Melbourne. All rights reserved.</div>
-        <div className="footer-links">
-          <a href="#">Instagram</a>
-          <a href="#">Discord</a>
-          <a href="#">Meetup</a>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

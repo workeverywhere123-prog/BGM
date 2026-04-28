@@ -1,6 +1,8 @@
 import Nav from '../nav';
 import Link from 'next/link';
 import { isSupabaseConfigured } from '@/lib/env';
+import Footer from '../footer';
+import LapisIcon from '@/components/LapisIcon';
 
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
@@ -41,7 +43,7 @@ export default async function MeetingPage() {
             border: '1px solid rgba(201,168,76,0.2)', padding: '0.5rem 1.2rem',
             marginTop: '0.5rem',
           }}>
-            ◆ HOW TO PLAY — 포인트 규칙 보기
+            ◆ HOW TO PLAY — <LapisIcon size={11} /> LAPIS 규칙 보기
           </Link>
         </div>
 
@@ -74,11 +76,7 @@ export default async function MeetingPage() {
         </div>
       </div>
 
-      <footer className="bgm-footer">
-        <div className="footer-logo">BGM</div>
-        <div className="footer-copy">© 2026 Boardgame in Melbourne.</div>
-        <div className="footer-links"><a href="#">인스타그램</a><a href="#">디스코드</a></div>
-      </footer>
+      <Footer />
     </>
   );
 }

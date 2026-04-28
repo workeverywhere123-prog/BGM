@@ -4,9 +4,8 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 async function requireAdmin() {
   const user = await requireSessionUser();
+  if (!user.is_admin) throw new Error('Forbidden');
   const supabase = await createSupabaseServerClient();
-  const { data } = await supabase.from('players').select('is_admin').eq('id', user.id).maybeSingle();
-  if (!data?.is_admin) throw new Error('Forbidden');
   return { user, supabase };
 }
 

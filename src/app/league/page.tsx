@@ -2,59 +2,10 @@ import Nav from '../nav';
 import Link from 'next/link';
 import { isSupabaseConfigured } from '@/lib/env';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import Footer from '../footer';
+import LapisIcon from '@/components/LapisIcon';
 
-async function getActiveQuarter() {
-  try {
-    const supabase = await createSupabaseServerClient();
-    const { data } = await supabase
-      .from('quarters')
-      .select('id, name, started_at')
-      .eq('is_active', true)
-      .maybeSingle();
-    return data;
-  } catch { return null; }
-}
-
-async function getQuarterRanking(quarterId: string) {
-  try {
-    const supabase = await createSupabaseServerClient();
-    const { data } = await supabase
-      .from('player_active_quarter_totals')
-      .select('player_id, quarter_points, gains, losses');
-    if (!data?.length) return [];
-
-    const ids = data.map((r: { player_id: string }) => r.player_id);
-    const { data: players } = await supabase.from('players').select('id, nickname, username').in('id', ids);
-    const map = Object.fromEntries((players ?? []).map((p: { id: string; nickname: string; username: string }) => [p.id, p]));
-
-    return data
-      .map((r: { player_id: string; quarter_points: number; gains: number; losses: number }) => ({
-        ...map[r.player_id], quarter_points: r.quarter_points, gains: r.gains, losses: r.losses,
-      }))
-      .sort((a: { quarter_points: number }, b: { quarter_points: number }) => b.quarter_points - a.quarter_points)
-      .map((r: object, i: number) => ({ ...r, rank: i + 1 }));
-  } catch { return []; }
-}
-
-async function getTotalHoldings() {
-  try {
-    const supabase = await createSupabaseServerClient();
-    const { data } = await supabase
-      .from('player_chip_totals')
-      .select('player_id, total_chips, total_gains, total_losses')
-      .order('total_chips', { ascending: false })
-      .limit(20);
-    if (!data?.length) return [];
-
-    const ids = data.map((r: { player_id: string }) => r.player_id);
-    const { data: players } = await supabase.from('players').select('id, nickname, username').in('id', ids);
-    const map = Object.fromEntries((players ?? []).map((p: { id: string; nickname: string; username: string }) => [p.id, p]));
-
-    return data.map((r: { player_id: string; total_chips: number; total_gains: number; total_losses: number }, i: number) => ({
-      rank: i + 1, ...map[r.player_id], total_chips: r.total_chips,
-    }));
-  } catch { return []; }
-}
+export const dynamic = 'force-dynamic';
 
 async function getAllQuarters() {
   try {
@@ -64,30 +15,45 @@ async function getAllQuarters() {
   } catch { return []; }
 }
 
-const RANK_SYMBOL = ['✦', '②', '③'];
-const RANK_COLOR = ['var(--gold)', '#c8c8c8', '#a0732a'];
+async function getLeagues() {
+  try {
+    const supabase = await createSupabaseServerClient();
+    const { data: leagues } = await supabase
+      .from('leagues')
+      .select('id, name, description, start_date, end_date, is_active, prizes, league_participants(player_id, score)')
+      .order('created_at', { ascending: false })
+      .limit(20);
+    if (!leagues?.length) return [];
 
-function RankBadge({ rank }: { rank: number }) {
-  return (
-    <span style={{
-      fontFamily: "'Cinzel', serif",
-      fontSize: rank <= 3 ? '1.2rem' : '1rem',
-      width: 28, textAlign: 'center' as const, display: 'inline-block',
-      color: rank <= 3 ? RANK_COLOR[rank - 1] : 'rgba(244,239,230,0.3)',
-    }}>
-      {rank <= 3 ? RANK_SYMBOL[rank - 1] : rank}
-    </span>
-  );
+    const allPlayerIds = [...new Set(leagues.flatMap(l => (l.league_participants as { player_id: string }[]).map(p => p.player_id)))];
+    const supabase2 = await createSupabaseServerClient();
+    const { data: players } = allPlayerIds.length
+      ? await supabase2.from('players').select('id, nickname, username').in('id', allPlayerIds)
+      : { data: [] };
+    const pmap = Object.fromEntries((players ?? []).map(p => [p.id, p]));
+
+    return leagues.map(l => ({
+      ...l,
+      participants: (l.league_participants as { player_id: string; score: number }[])
+        .map(p => ({ ...p, player: pmap[p.player_id] ?? { nickname: '?', username: '' } }))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 5),
+    }));
+  } catch { return []; }
+}
+
+function fmtDateShort(s: string | null) {
+  if (!s) return '—';
+  const d = new Date(s);
+  return `${d.getMonth() + 1}/${d.getDate()}`;
 }
 
 export default async function LeaguePage() {
   const configured = isSupabaseConfigured();
-  const [activeQuarter, quarters, holdings] = await Promise.all([
-    configured ? getActiveQuarter() : Promise.resolve(null),
+  const [quarters, leagues] = await Promise.all([
     configured ? getAllQuarters() : Promise.resolve([]),
-    configured ? getTotalHoldings() : Promise.resolve([]),
+    configured ? getLeagues() : Promise.resolve([]),
   ]);
-  const quarterRanking = activeQuarter ? await getQuarterRanking(activeQuarter.id) : [];
 
   return (
     <>
@@ -121,91 +87,80 @@ export default async function LeaguePage() {
           </div>
         </div>
 
-        {/* 2단 랭킹 */}
-        <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 2rem 6rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem' }}>
-
-          {/* 이번 분기 랭킹 */}
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '1.2rem' }}>
-              <p className="section-label" style={{ textAlign: 'left', marginBottom: 0 }}>
-                {activeQuarter ? `${activeQuarter.name} 랭킹` : '이번 분기 랭킹'}
-              </p>
-              <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.58rem', letterSpacing: '0.1em', color: 'var(--white-dim)', opacity: 0.6 }}>
-                분기 초기화 반영
-              </span>
-            </div>
-
-            {!activeQuarter ? (
-              <div className="board-empty">
-                <p>활성 분기가 없습니다</p>
-                <Link href="/admin">관리자에서 분기 설정 →</Link>
-              </div>
-            ) : quarterRanking.length === 0 ? (
-              <div className="board-empty"><p>이번 분기 기록이 없습니다</p></div>
-            ) : (
-              <div style={{ border: '1px solid rgba(201,168,76,0.12)' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '36px 1fr 60px 60px', gap: '0.8rem', padding: '0.6rem 1.2rem', fontFamily: "'Cinzel', serif", fontSize: '0.55rem', letterSpacing: '0.18em', color: 'var(--gold-dim)' }}>
-                  <span>#</span><span>플레이어</span><span style={{ textAlign: 'center' }}>게임수</span><span style={{ textAlign: 'center' }}>포인트</span>
-                </div>
-                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                {(quarterRanking as any[]).map((e, i) => (
-                  <Link href={`/profile/${e.username}`} key={e.id ?? i} style={{
-                    display: 'grid', gridTemplateColumns: '36px 1fr 60px 60px', gap: '0.8rem',
-                    alignItems: 'center', padding: '0.9rem 1.2rem', textDecoration: 'none',
-                    borderTop: '1px solid rgba(201,168,76,0.07)',
-                    borderLeft: i < 3 ? `2px solid ${RANK_COLOR[i]}` : '2px solid transparent',
-                    background: i === 0 ? 'rgba(201,168,76,0.08)' : 'transparent',
-                    transition: 'background 0.2s',
-                  }}>
-                    <RankBadge rank={e.rank} />
-                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.05rem', color: 'var(--foreground)' }}>{e.nickname}</span>
-                    <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.8rem', textAlign: 'center', color: 'var(--white-dim)' }}>{(e.gains ?? 0) + (e.losses ?? 0)}</span>
-                    <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.95rem', textAlign: 'center', color: e.quarter_points >= 0 ? 'var(--gold)' : '#ff8888', fontWeight: 600 }}>
-                      {e.quarter_points > 0 ? '+' : ''}{e.quarter_points}
-                    </span>
+        {/* 리그 카드 */}
+        {leagues.length > 0 && (
+          <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 2rem 4rem' }}>
+            <p className="section-label" style={{ textAlign: 'left', marginBottom: '1.2rem' }}>ACTIVE LEAGUES</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem' }}>
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+              {(leagues as any[]).map(league => {
+                const rankColors = ['#c9a84c', '#c8c8c8', '#a0732a'];
+                return (
+                  <Link key={league.id} href={`/league/${league.id}`} style={{ textDecoration: 'none' }}>
+                    <div style={{
+                      border: `1px solid ${league.is_active ? 'rgba(201,168,76,0.35)' : 'rgba(201,168,76,0.12)'}`,
+                      background: league.is_active ? 'rgba(30,74,52,0.25)' : 'rgba(22,53,36,0.15)',
+                      padding: '1.6rem', cursor: 'pointer', transition: 'border-color 0.2s',
+                      position: 'relative', overflow: 'hidden',
+                    }}>
+                      {league.is_active && (
+                        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(to right, var(--gold), transparent)' }} />
+                      )}
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.8rem' }}>
+                        <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', letterSpacing: '0.15em', color: league.is_active ? '#4ade80' : 'var(--white-dim)', opacity: league.is_active ? 1 : 0.5 }}>
+                          {league.is_active ? '● 진행중' : '종료'}
+                        </span>
+                        {league.start_date && (
+                          <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.52rem', color: 'var(--gold-dim)' }}>
+                            {fmtDateShort(league.start_date)} — {fmtDateShort(league.end_date)}
+                          </span>
+                        )}
+                      </div>
+                      <h3 style={{ fontFamily: "'Great Vibes', cursive", fontSize: '2rem', color: 'var(--foreground)', lineHeight: 1.1, marginBottom: '0.3rem' }}>{league.name}</h3>
+                      {league.description && (
+                        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.88rem', fontStyle: 'italic', color: 'var(--white-dim)', opacity: 0.6, marginBottom: '1rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          {league.description}
+                        </p>
+                      )}
+                      {/* Mini standings */}
+                      {league.participants.length > 0 && (
+                        <div style={{ marginTop: '0.8rem', display: 'flex', flexDirection: 'column', gap: 2 }}>
+                          {league.participants.slice(0, 3).map((p: { player_id: string; score: number; player: { nickname: string; username: string } }, i: number) => (
+                            <div key={p.player_id} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.4rem 0.6rem', background: i === 0 ? 'rgba(201,168,76,0.06)' : 'transparent', borderLeft: `2px solid ${i < 3 ? rankColors[i] : 'transparent'}` }}>
+                              <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.7rem', color: rankColors[i] ?? 'var(--white-dim)', minWidth: 16, fontWeight: 700 }}>{i + 1}</span>
+                              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: 'var(--foreground)', flex: 1 }}>{p.player.nickname}</span>
+                              <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.75rem', color: rankColors[i] ?? 'var(--white-dim)' }}>{p.score}승점</span>
+                            </div>
+                          ))}
+                          {league.participants.length > 3 && (
+                            <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.52rem', color: 'var(--white-dim)', opacity: 0.4, textAlign: 'right', marginTop: '0.2rem' }}>
+                              +{league.participants.length - 3}명 더보기 →
+                            </p>
+                          )}
+                        </div>
+                      )}
+                      {league.participants.length === 0 && (
+                        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.88rem', fontStyle: 'italic', color: 'var(--white-dim)', opacity: 0.4, marginTop: '0.8rem' }}>참가자 없음</p>
+                      )}
+                    </div>
                   </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* 누적 보유량 */}
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '1.2rem' }}>
-              <p className="section-label" style={{ textAlign: 'left', marginBottom: 0 }}>누적 보유량</p>
-              <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.58rem', letterSpacing: '0.1em', color: 'var(--white-dim)', opacity: 0.6 }}>
-                전체 누적 포인트
-              </span>
+                );
+              })}
             </div>
-
-            {holdings.length === 0 ? (
-              <div className="board-empty"><p>보유 기록이 없습니다</p></div>
-            ) : (
-              <div style={{ border: '1px solid rgba(201,168,76,0.12)' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '36px 1fr 80px', gap: '0.8rem', padding: '0.6rem 1.2rem', fontFamily: "'Cinzel', serif", fontSize: '0.55rem', letterSpacing: '0.18em', color: 'var(--gold-dim)' }}>
-                  <span>#</span><span>플레이어</span><span style={{ textAlign: 'center' }}>보유 포인트</span>
-                </div>
-                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                {(holdings as any[]).map((e, i) => (
-                  <Link href={`/profile/${e.username}`} key={e.id ?? i} style={{
-                    display: 'grid', gridTemplateColumns: '36px 1fr 80px', gap: '0.8rem',
-                    alignItems: 'center', padding: '0.9rem 1.2rem', textDecoration: 'none',
-                    borderTop: '1px solid rgba(201,168,76,0.07)',
-                    borderLeft: i < 3 ? `2px solid ${RANK_COLOR[i]}` : '2px solid transparent',
-                    background: i === 0 ? 'rgba(201,168,76,0.06)' : 'transparent',
-                    transition: 'background 0.2s',
-                  }}>
-                    <RankBadge rank={e.rank} />
-                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.05rem', color: 'var(--foreground)' }}>{e.nickname}</span>
-                    <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.95rem', textAlign: 'center', color: e.total_chips >= 0 ? 'var(--gold)' : '#ff8888' }}>
-                      {e.total_chips > 0 ? '+' : ''}{e.total_chips}
-                      <span style={{ fontSize: '0.6rem', marginLeft: '0.2rem', opacity: 0.5 }}>pt</span>
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            )}
           </div>
+        )}
+
+        {/* 기록실 바로가기 */}
+        <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 2rem 2rem', textAlign: 'center' }}>
+          <Link href="/records" style={{
+            display: 'inline-flex', alignItems: 'center', gap: '0.6rem',
+            fontFamily: "'Cinzel', serif", fontSize: '0.62rem', letterSpacing: '0.15em',
+            color: 'var(--gold-dim)', textDecoration: 'none',
+            border: '1px solid rgba(201,168,76,0.2)', padding: '0.6rem 1.6rem',
+            transition: 'all 0.2s',
+          }}>
+            <LapisIcon size={12} /> 분기 랭킹 · 누적 보유량은 기록실에서 →
+          </Link>
         </div>
 
         {/* 규칙 바로가기 */}
@@ -217,16 +172,12 @@ export default async function LeaguePage() {
             border: '1px solid rgba(201,168,76,0.2)', padding: '0.7rem 1.8rem',
             transition: 'all 0.2s',
           }}>
-            ◆ BGM HOW TO PLAY — 포인트 규칙 보기 →
+            ◆ BGM HOW TO PLAY — <LapisIcon size={12} /> LAPIS 규칙 보기 →
           </Link>
         </div>
       </div>
 
-      <footer className="bgm-footer">
-        <div className="footer-logo">BGM</div>
-        <div className="footer-copy">© 2026 Boardgame in Melbourne.</div>
-        <div className="footer-links"><a href="#">인스타그램</a><a href="#">디스코드</a></div>
-      </footer>
+      <Footer />
     </>
   );
 }

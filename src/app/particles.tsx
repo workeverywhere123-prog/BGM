@@ -40,8 +40,10 @@ export default function Particles() {
       raf = requestAnimationFrame(tick);
     }
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     resize();
-    for (let i = 0; i < 90; i++) particles.push(mkP());
+    for (let i = 0; i < 50; i++) particles.push(mkP());
     tick();
 
     window.addEventListener('resize', resize);

@@ -1,4 +1,5 @@
 import Nav from '../nav';
+import Footer from '../footer';
 
 const EVENTS = [
   { day: '26', month: 'APR', title: 'Spring League — Round 4', sub: 'Twilight Imperium · Box Hill Community Hall', badge: 'OPEN' },
@@ -31,15 +32,7 @@ export default function EventsPage() {
           ))}
         </div>
       </section>
-      <footer className="bgm-footer">
-        <div className="footer-logo">BGM</div>
-        <div className="footer-copy">© 2026 Boardgame in Melbourne. All rights reserved.</div>
-        <div className="footer-links">
-          <a href="#">Instagram</a>
-          <a href="#">Discord</a>
-          <a href="#">Meetup</a>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

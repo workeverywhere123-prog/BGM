@@ -1,4 +1,8 @@
+import React from 'react';
 import Nav from '../nav';
+import Link from 'next/link';
+import Footer from '../footer';
+import LapisIcon from '@/components/LapisIcon';
 
 export default function RulesPage() {
   return (
@@ -23,7 +27,7 @@ export default function RulesPage() {
           {/* 상단 장식 */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '3rem' }}>
             <div style={{ flex: 1, height: 1, background: 'linear-gradient(to right, transparent, var(--gold-dim))' }} />
-            <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.7rem', letterSpacing: '0.3em', color: 'var(--gold-dim)' }}>✦ 포인트 획득 방법 ✦</span>
+            <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.7rem', letterSpacing: '0.3em', color: 'var(--gold-dim)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>✦ <LapisIcon size={13} /> LAPIS 획득 방법 ✦</span>
             <div style={{ flex: 1, height: 1, background: 'linear-gradient(to left, transparent, var(--gold-dim))' }} />
           </div>
 
@@ -32,13 +36,15 @@ export default function RulesPage() {
 
             {/* 순위전 */}
             <RuleCard title="순위전" subtitle="RANKING" accent="var(--gold)">
-              <p style={noteStyle}>인원수에 비례하여 등수에 따라 포인트 분배</p>
+              <p style={noteStyle}>양끝 합계가 항상 0 — 등수에 따라 대칭 분배</p>
               <RankTable rows={[
+                { label: '2인', cols: ['1등 +1', '2등 −1'] },
                 { label: '3인', cols: ['1등 +1', '2등 0', '3등 −1'] },
                 { label: '4인', cols: ['1등 +2', '2등 +1', '3등 −1', '4등 −2'] },
-                { label: '5인+', cols: ['1등 +2', '2등 +2', '3등 +1', '4등 0', '5등 −1', '6등+ −2'] },
+                { label: '5인', cols: ['1등 +2', '2등 +1', '3등 0', '4등 −1', '5등 −2'] },
+                { label: '6인', cols: ['1등 +3', '2등 +2', '3등 +1', '4등 −1', '5등 −2', '6등 −3'] },
               ]} />
-              <p style={{ ...noteStyle, marginTop: '0.8rem', opacity: 0.5 }}>랜덤 배치 가능</p>
+              <p style={{ ...noteStyle, marginTop: '0.8rem', opacity: 0.5 }}>랜덤 배치 가능 · 인원이 늘수록 범위 확장</p>
             </RuleCard>
 
             {/* 마피아 */}
@@ -55,7 +61,7 @@ export default function RulesPage() {
               <RuleRow plus>MVP 득표자 +1</RuleRow>
               <div style={{ marginTop: '0.8rem', padding: '0.7rem', background: 'rgba(201,168,76,0.05)', border: '1px solid rgba(201,168,76,0.1)' }}>
                 <p style={noteStyle}>자신을 제외한 팀원 한 명에게 MVP 투표</p>
-                <p style={{ ...noteStyle, marginTop: '0.3rem', opacity: 0.5 }}>최다 득표자가 +1 포인트 획득</p>
+                <p style={{ ...noteStyle, marginTop: '0.3rem', opacity: 0.5, display: 'flex', alignItems: 'center', gap: '0.25rem' }}>최다 득표자가 +1 <LapisIcon size={11} /> LAPIS 획득</p>
               </div>
             </RuleCard>
 
@@ -80,8 +86,8 @@ export default function RulesPage() {
             <RuleCard title="데스매치" subtitle="DEATHMATCH" accent="var(--gold)">
               <p style={noteStyle}>베팅 기반 승자독식 방식</p>
               <div style={{ marginTop: '0.8rem', padding: '0.7rem', background: 'rgba(201,168,76,0.05)', border: '1px solid rgba(201,168,76,0.1)' }}>
-                <p style={{ ...noteStyle, opacity: 0.7 }}>인당 베팅 포인트를 설정하고 승자가 전부 획득</p>
-                <p style={{ ...noteStyle, marginTop: '0.3rem', opacity: 0.5 }}>기본 베팅: 3pt</p>
+                <p style={{ ...noteStyle, opacity: 0.7, display: 'flex', alignItems: 'center', gap: '0.25rem' }}>인당 베팅 <LapisIcon size={12} /> LAPIS를 설정하고 승자가 전부 획득</p>
+                <p style={{ ...noteStyle, marginTop: '0.3rem', opacity: 0.5, display: 'flex', alignItems: 'center', gap: '0.25rem' }}>인당 최대 베팅: 3 <LapisIcon size={11} /> LAPIS</p>
               </div>
             </RuleCard>
 
@@ -90,23 +96,104 @@ export default function RulesPage() {
           {/* 출석 */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '3rem' }}>
             <div style={{ flex: 1, height: 1, background: 'linear-gradient(to right, transparent, var(--gold-dim))' }} />
-            <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.7rem', letterSpacing: '0.3em', color: 'var(--gold-dim)' }}>✦ 출석 포인트 ✦</span>
+            <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.7rem', letterSpacing: '0.3em', color: 'var(--gold-dim)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>✦ 출석 <LapisIcon size={13} /> LAPIS ✦</span>
             <div style={{ flex: 1, height: 1, background: 'linear-gradient(to left, transparent, var(--gold-dim))' }} />
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '4rem' }}>
             {[
-              { icon: '✓', label: '정시 참석', pt: '+1pt', color: 'var(--gold)', bg: 'rgba(201,168,76,0.06)' },
-              { icon: '▲', label: '지각 또는 불참', pt: '−1pt', color: '#ff8888', bg: 'rgba(255,100,100,0.04)' },
-              { icon: '○', label: '모임 여부 투표 미참여', pt: '−1pt', color: '#ff8888', bg: 'rgba(255,100,100,0.04)' },
+              { icon: '✓', label: '정시 참석', pt: '+1', color: 'var(--gold)', bg: 'rgba(201,168,76,0.06)' },
+              { icon: '▲', label: '지각 또는 불참', pt: '−1', color: '#ff8888', bg: 'rgba(255,100,100,0.04)' },
+              { icon: '○', label: '모임 여부 투표 미참여', pt: '−1', color: '#ff8888', bg: 'rgba(255,100,100,0.04)' },
             ].map(a => (
               <div key={a.label} style={{ border: `1px solid ${a.color}30`, background: a.bg, padding: '1.5rem', textAlign: 'center' }}>
                 <span style={{ fontSize: '1.5rem', display: 'block', marginBottom: '0.6rem', color: a.color }}>{a.icon}</span>
                 <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', color: 'var(--foreground)', marginBottom: '0.4rem' }}>{a.label}</p>
-                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '1.1rem', color: a.color, fontWeight: 600 }}>{a.pt}</p>
+                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '1.1rem', color: a.color, fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.3rem' }}>{a.pt} <LapisIcon size={14} /> LAPIS</p>
               </div>
             ))}
           </div>
+
+          {/* LAPIS 활용법 — 추첨 */}
+          <div id="raffle" style={{ scrollMarginTop: '6rem' }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '3rem' }}>
+            <div style={{ flex: 1, height: 1, background: 'linear-gradient(to right, transparent, rgba(201,168,76,0.5))' }} />
+            <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.7rem', letterSpacing: '0.3em', color: 'var(--gold)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>✦ <LapisIcon size={13} /> LAPIS 활용법 ✦</span>
+            <div style={{ flex: 1, height: 1, background: 'linear-gradient(to left, transparent, rgba(201,168,76,0.5))' }} />
+          </div>
+
+          <div style={{ border: '1px solid rgba(201,168,76,0.25)', background: 'rgba(201,168,76,0.04)', padding: '2.5rem', marginBottom: '2rem', position: 'relative', overflow: 'hidden' }}>
+            {/* 배경 장식 */}
+            <div style={{ position: 'absolute', top: '-1rem', right: '-1rem', fontSize: '6rem', opacity: 0.04, lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>🎲</div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.5rem' }}>
+              <span style={{ fontSize: '1.4rem' }}>🎲</span>
+              <div>
+                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', letterSpacing: '0.25em', color: 'var(--gold-dim)', marginBottom: '0.2rem' }}>RAFFLE SYSTEM</p>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.5rem', fontWeight: 600, color: 'var(--foreground)', lineHeight: 1 }}>상품 추첨 제도</h3>
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
+              {[
+                { icon: '🎫', title: '티켓 전환', desc: '보유 1 LAPIS = 추첨권 1장\nLAPIS로 추첨에 참가합니다' },
+                { icon: '⚖️', title: '가중 추첨', desc: '티켓이 많을수록 당첨 확률 상승\nLAPIS가 많을수록 유리합니다' },
+                { icon: '🔄', title: '이월 혜택', desc: '미사용 LAPIS는 다음 분기로 이월\n꾸준한 참여가 장기적으로 유리합니다' },
+                { icon: '📅', title: '분기 운영', desc: '추첨은 분기별로 관리자가 개설\n기간 내에만 티켓 구매 가능합니다' },
+              ].map(item => (
+                <div key={item.title} style={{ padding: '1.2rem', background: 'rgba(30,74,52,0.2)', border: '1px solid rgba(201,168,76,0.12)' }}>
+                  <span style={{ fontSize: '1.2rem', display: 'block', marginBottom: '0.6rem' }}>{item.icon}</span>
+                  <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', letterSpacing: '0.15em', color: 'var(--gold-dim)', marginBottom: '0.5rem' }}>{item.title}</p>
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: 'var(--white-dim)', lineHeight: 1.65, whiteSpace: 'pre-line' }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* 예시 */}
+            <div style={{ padding: '1.2rem 1.5rem', background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.18)', marginBottom: '2rem' }}>
+              <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', letterSpacing: '0.2em', color: 'var(--gold-dim)', marginBottom: '0.8rem' }}>EXAMPLE — 당첨 확률 예시</p>
+              <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', alignItems: 'flex-end' }}>
+                {[
+                  { name: '플레이어 A', pt: 10, total: 25 },
+                  { name: '플레이어 B', pt: 8, total: 25 },
+                  { name: '플레이어 C', pt: 7, total: 25 },
+                ].map(p => {
+                  const pct = Math.round((p.pt / p.total) * 100);
+                  return (
+                    <div key={p.name} style={{ flex: 1, minWidth: 100 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.3rem' }}>
+                        <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.9rem', color: 'var(--white-dim)' }}>{p.name}</span>
+                        <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: 'var(--gold)' }}>{p.pt}pt → {pct}%</span>
+                      </div>
+                      <div style={{ height: 4, background: 'rgba(201,168,76,0.1)', borderRadius: 2 }}>
+                        <div style={{ height: '100%', width: `${pct}%`, background: 'var(--gold)', borderRadius: 2, opacity: 0.7 }} />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.46rem', color: 'rgba(244,239,230,0.3)', marginTop: '0.8rem' }}>
+                총 25티켓 기준 — 각자 투입한 티켓 수에 비례하여 당첨 확률 결정
+              </p>
+            </div>
+
+            {/* 추첨 페이지 이동 */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', color: 'var(--white-dim)', fontStyle: 'italic' }}>
+                현재 진행 중인 추첨과 당첨 확률을 직접 확인해보세요
+              </p>
+              <Link href="/raffle" style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                fontFamily: "'Cinzel', serif", fontSize: '0.6rem', letterSpacing: '0.15em',
+                padding: '0.7rem 1.6rem', background: 'var(--gold)', color: '#0b2218',
+                textDecoration: 'none', fontWeight: 700, transition: 'opacity 0.2s',
+              }}>
+                🎲 추첨 참가하기 →
+              </Link>
+            </div>
+          </div>
+
+          <div style={{ marginBottom: '4rem' }} />
 
           {/* 주의 사항 */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '3rem' }}>
@@ -117,19 +204,19 @@ export default function RulesPage() {
 
           <div style={{ border: '1px solid rgba(255,100,100,0.2)', background: 'rgba(255,50,50,0.04)', padding: '2rem', marginBottom: '4rem' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
-              {[
-                '개인 간의 포인트 거래 금지',
-                '욕설·비방·비매너 행위 금지',
-                '몰아주기 또는 져주기식 부당 거래 금지',
-              ].map((rule, i) => (
+              {([
+                <span key="r1" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>개인 간의 <LapisIcon size={13} /> LAPIS 거래 금지</span>,
+                <span key="r2">욕설·비방·비매너 행위 금지</span>,
+                <span key="r3">몰아주기 또는 져주기식 부당 거래 금지</span>,
+              ] as React.ReactNode[]).map((rule, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
                   <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: '#ff8888', flexShrink: 0 }}>◆</span>
                   <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.05rem', color: 'var(--foreground)' }}>{rule}</span>
                 </div>
               ))}
               <div style={{ marginTop: '0.4rem', padding: '0.8rem 1rem', background: 'rgba(255,100,100,0.08)', border: '1px solid rgba(255,100,100,0.2)' }}>
-                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.7rem', letterSpacing: '0.15em', color: '#ff8888' }}>
-                  적발 시 취득한 모든 포인트 몰수
+                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.7rem', letterSpacing: '0.15em', color: '#ff8888', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                  적발 시 취득한 모든 <LapisIcon size={13} /> LAPIS 몰수
                 </p>
               </div>
             </div>
@@ -151,11 +238,7 @@ export default function RulesPage() {
         </div>
       </div>
 
-      <footer className="bgm-footer">
-        <div className="footer-logo">BGM</div>
-        <div className="footer-copy">© 2026 Boardgame in Melbourne.</div>
-        <div className="footer-links"><a href="#">인스타그램</a><a href="#">디스코드</a></div>
-      </footer>
+      <Footer />
     </>
   );
 }
