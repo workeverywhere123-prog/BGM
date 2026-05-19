@@ -3,6 +3,8 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { createSupabaseServiceClient } from '@/lib/supabase/service';
+import { validateInviteCode } from '@/domain/invite-code';
 import type { ActionResult } from '@/types/domain';
 
 /** 아이디: 영문/숫자/밑줄/하이픈, 2~20자 */
@@ -43,8 +45,32 @@ export async function signupAction(
     };
   }
 
+  // 초대코드 검증
+  const rawCode = String(formData.get('invite_code') ?? '').trim().toUpperCase();
+  if (!/^[A-Z0-9]{8}$/.test(rawCode)) {
+    return { ok: false, error: { code: 'VALIDATION_ERROR', message: '초대코드 형식이 올바르지 않습니다 (8자리 영숫자)' } };
+  }
+
+  const serviceClient = createSupabaseServiceClient();
+  const { data: codeRow } = await serviceClient
+    .from('invite_codes')
+    .select('id, is_active, used_by, expires_at')
+    .eq('code', rawCode)
+    .maybeSingle();
+
+  const codeStatus = validateInviteCode(codeRow);
+  if (codeStatus === 'used') {
+    return { ok: false, error: { code: 'CONFLICT', message: '이미 사용된 초대코드입니다' } };
+  }
+  if (codeStatus === 'expired') {
+    return { ok: false, error: { code: 'VALIDATION_ERROR', message: '만료된 초대코드입니다' } };
+  }
+  if (codeStatus !== 'ok') {
+    return { ok: false, error: { code: 'VALIDATION_ERROR', message: '유효하지 않은 초대코드입니다' } };
+  }
+
   const supabase = await createSupabaseServerClient();
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email: toFakeEmail(username),
     password,
     options: {
@@ -58,6 +84,14 @@ export async function signupAction(
       return { ok: false, error: { code: 'CONFLICT', message: '이미 사용 중인 아이디입니다' } };
     }
     return { ok: false, error: { code: 'UNKNOWN', message: error.message } };
+  }
+
+  // 코드 사용 처리
+  if (data?.user?.id && codeRow?.id) {
+    await serviceClient
+      .from('invite_codes')
+      .update({ used_by: data.user.id, used_at: new Date().toISOString() })
+      .eq('id', codeRow.id);
   }
 
   revalidatePath('/', 'layout');
