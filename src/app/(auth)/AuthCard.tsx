@@ -65,6 +65,23 @@ export function AuthCard({ mode, action, redirectTo = '/' }: AuthCardProps) {
           />
         </label>
 
+        {/* 초대코드 — signup 모드에서만 표시 */}
+        {isSignup && (
+          <label className="block">
+            <span className="mb-1 block text-sm opacity-80">초대코드</span>
+            <input
+              required
+              name="invite_code"
+              type="text"
+              minLength={8}
+              maxLength={8}
+              autoComplete="off"
+              className="w-full rounded-md border border-white/10 bg-black/30 px-3 py-2 text-sm outline-none focus:border-white/30 uppercase tracking-widest"
+              placeholder="8자리 초대코드"
+            />
+          </label>
+        )}
+
         {state && !state.ok && (
           <p className="rounded-md border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">
             {state.error.message}
