@@ -28,6 +28,7 @@ export async function signupAction(
 ): Promise<ActionResult<null>> {
   const username = String(formData.get('username') ?? '').trim();
   const password = String(formData.get('password') ?? '');
+  const nickname = String(formData.get('nickname') ?? '').trim();
 
   if (!validateUsername(username)) {
     return {
@@ -42,6 +43,12 @@ export async function signupAction(
     return {
       ok: false,
       error: { code: 'VALIDATION_ERROR', message: '비밀번호는 6자 이상이어야 합니다' },
+    };
+  }
+  if (nickname.length < 2 || nickname.length > 20) {
+    return {
+      ok: false,
+      error: { code: 'VALIDATION_ERROR', message: '실명은 2~20자로 입력해 주세요' },
     };
   }
 
@@ -86,12 +93,21 @@ export async function signupAction(
     return { ok: false, error: { code: 'UNKNOWN', message: error.message } };
   }
 
-  // 코드 사용 처리
-  if (data?.user?.id && codeRow?.id) {
-    await serviceClient
-      .from('invite_codes')
-      .update({ used_by: data.user.id, used_at: new Date().toISOString() })
-      .eq('id', codeRow.id);
+  if (data?.user?.id) {
+    await Promise.all([
+      // 초대코드 사용 처리
+      codeRow?.id
+        ? serviceClient
+            .from('invite_codes')
+            .update({ used_by: data.user.id, used_at: new Date().toISOString() })
+            .eq('id', codeRow.id)
+        : Promise.resolve(),
+      // 실명(nickname) 저장 — trigger가 먼저 players 행을 만든 뒤 업데이트
+      serviceClient
+        .from('players')
+        .update({ nickname })
+        .eq('id', data.user.id),
+    ]);
   }
 
   revalidatePath('/', 'layout');

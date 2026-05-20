@@ -51,6 +51,23 @@ export function AuthCard({ mode, action, redirectTo = '/' }: AuthCardProps) {
           />
         </label>
 
+        {/* 실명 — signup 모드에서만 표시 */}
+        {isSignup && (
+          <label className="block">
+            <span className="mb-1 block text-sm opacity-80">실명</span>
+            <input
+              required
+              name="nickname"
+              type="text"
+              minLength={2}
+              maxLength={20}
+              autoComplete="name"
+              className="w-full rounded-md border border-white/10 bg-black/30 px-3 py-2 text-sm outline-none focus:border-white/30"
+              placeholder="실명을 입력하세요"
+            />
+          </label>
+        )}
+
         {/* 비밀번호 */}
         <label className="block">
           <span className="mb-1 block text-sm opacity-80">비밀번호</span>
