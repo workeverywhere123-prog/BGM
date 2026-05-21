@@ -39,16 +39,29 @@ export async function POST(req: NextRequest) {
   try {
     const user = await requireSessionUser();
     const supabase = await createSupabaseServerClient();
-    const { title, location, scheduled_at, game_types, max_players, note, boardlife_game_id, boardlife_game_name, boardlife_game_thumb, is_online } = await req.json();
+    const { title, location, scheduled_at, game_types, max_players, note, boardlife_game_id, boardlife_game_name, boardlife_game_thumb, is_online, is_ranked } = await req.json();
 
     if (!location || !scheduled_at) {
       return NextResponse.json({ error: '장소와 일시를 입력해주세요' }, { status: 400 });
     }
 
+    if (is_ranked === true) {
+      const { count } = await supabase
+        .from('meetings')
+        .select('id', { count: 'exact', head: true })
+        .eq('status', 'active');
+      if (!count) {
+        return NextResponse.json(
+          { error: '정기 모임 중에만 랭크 경기를 만들 수 있습니다' },
+          { status: 403 }
+        );
+      }
+    }
+
     const { data: room, error } = await supabase
       .from('rooms')
-      .insert({ host_id: user.id, title: title || null, location, scheduled_at, game_types: game_types ?? [], max_players: max_players ?? 6, note: note || null, boardlife_game_id: boardlife_game_id || null, boardlife_game_name: boardlife_game_name || null, boardlife_game_thumb: boardlife_game_thumb || null, is_online: is_online ?? false })
-      .select('id, title, location, scheduled_at, game_types, max_players, status, note, host_id, boardlife_game_id, boardlife_game_name, boardlife_game_thumb, is_online')
+      .insert({ host_id: user.id, title: title || null, location, scheduled_at, game_types: game_types ?? [], max_players: max_players ?? 6, note: note || null, boardlife_game_id: boardlife_game_id || null, boardlife_game_name: boardlife_game_name || null, boardlife_game_thumb: boardlife_game_thumb || null, is_online: is_online ?? false, is_ranked: is_ranked ?? true })
+      .select('id, title, location, scheduled_at, game_types, max_players, status, note, host_id, boardlife_game_id, boardlife_game_name, boardlife_game_thumb, is_online, is_ranked')
       .single();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
