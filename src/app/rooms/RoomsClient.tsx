@@ -4,6 +4,7 @@ import { useState, useTransition } from 'react';
 import Link from 'next/link';
 import BoardlifeGamePicker, { type PickedGame } from '@/components/BoardlifeGamePicker';
 import LapisIcon from '@/components/LapisIcon';
+import GameNameLink from '@/components/GameNameLink';
 
 /* ── Types ── */
 interface Player { id: string; nickname: string; username: string; avatar_url?: string | null; }
@@ -16,6 +17,7 @@ interface Room {
   boardlife_game_id?: string | null; boardlife_game_name?: string | null; boardlife_game_thumb?: string | null;
   games_json?: RoomGame[];
   is_online: boolean;
+  is_ranked?: boolean;
 }
 
 /* ── Constants ── */
@@ -39,12 +41,13 @@ function fmtDate(iso: string) {
 
 /* ─────────────────────────────────── */
 export default function RoomsClient({
-  initialRooms, currentUserId, currentUserNickname, userGames,
+  initialRooms, currentUserId, currentUserNickname, userGames, hasActiveMeeting,
 }: {
   initialRooms: Room[];
   currentUserId: string | null;
   currentUserNickname: string | null;
   userGames: UserGame[];
+  hasActiveMeeting: boolean;
 }) {
   const [rooms, setRooms] = useState<Room[]>(initialRooms);
   const [showCreate, setShowCreate] = useState(false);
@@ -152,18 +155,18 @@ export default function RoomsClient({
   const emptySlots = totalSlots - rooms.length;
 
   return (
-    <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 2rem 8rem' }}>
+    <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 1.5rem 8rem' }}>
 
       <div style={{ textAlign: 'center', padding: '2rem 0 3rem' }}>
-        <p className="section-label">OPEN GAME ROOM</p>
-        <h1 className="section-title">모임일정</h1>
+        <p className="section-label">BGM GAME ROOM</p>
+        <h1 className="section-title">보드게임방</h1>
         <div className="section-divider" />
         <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.05rem', color: 'var(--white-dim)', fontStyle: 'italic', marginTop: '-0.5rem' }}>
           방을 개설하고 함께 플레이할 멤버를 모집하세요
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.2rem' }}>
+      <div className="rooms-grid">
         {rooms.map(room => (
           <RoomCard key={room.id} room={room}
             isMember={isMember(room)} isHost={isHost(room)}
@@ -191,6 +194,7 @@ export default function RoomsClient({
           isPending={isPending}
           currentUserNickname={currentUserNickname ?? ''}
           userGames={userGames}
+          hasActiveMeeting={hasActiveMeeting}
         />
       )}
 
@@ -282,10 +286,15 @@ function RoomCard({ room, isMember, isHost, loading, currentUserId, onJoin, onLe
           <span style={{ fontFamily: "'Cinzel', serif", fontSize: '1.1rem', letterSpacing: '0.3em', color: 'rgba(251,146,60,0.15)', fontWeight: 700, textTransform: 'uppercase' }}>PLAYING</span>
         </div>
       )}
-      {/* 온라인/오프라인 뱃지 */}
-      <span style={{ position: 'absolute', top: '1rem', left: '1rem', fontFamily: "'Cinzel', serif", fontSize: '0.48rem', letterSpacing: '0.08em', padding: '0.12rem 0.4rem', border: `1px solid ${room.is_online ? 'rgba(96,165,250,0.4)' : 'rgba(74,222,128,0.4)'}`, color: room.is_online ? '#60a5fa' : '#4ade80', background: room.is_online ? 'rgba(96,165,250,0.07)' : 'rgba(74,222,128,0.07)' }}>
-        {room.is_online ? '🌐 온라인' : '📍 오프라인'}
-      </span>
+      {/* 온라인/오프라인 + 랭크/친선 뱃지 */}
+      <div style={{ position: 'absolute', top: '1rem', left: '1rem', display: 'flex', gap: '0.35rem' }}>
+        <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.48rem', letterSpacing: '0.08em', padding: '0.12rem 0.4rem', border: `1px solid ${room.is_online ? 'rgba(96,165,250,0.4)' : 'rgba(74,222,128,0.4)'}`, color: room.is_online ? '#60a5fa' : '#4ade80', background: room.is_online ? 'rgba(96,165,250,0.07)' : 'rgba(74,222,128,0.07)' }}>
+          {room.is_online ? '🌐 온라인' : '📍 오프라인'}
+        </span>
+        <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.48rem', letterSpacing: '0.08em', padding: '0.12rem 0.4rem', border: `1px solid ${room.is_ranked !== false ? 'rgba(201,168,76,0.35)' : 'rgba(148,163,184,0.2)'}`, color: room.is_ranked !== false ? 'var(--gold)' : 'rgba(244,239,230,0.35)', background: room.is_ranked !== false ? 'rgba(201,168,76,0.07)' : 'transparent' }}>
+          {room.is_ranked !== false ? '🏆 랭크' : '🎮 친선'}
+        </span>
+      </div>
       {isHost ? (
         <span style={{ position: 'absolute', top: '1rem', right: '1rem', fontFamily: "'Cinzel', serif", fontSize: '0.52rem', letterSpacing: '0.1em', color: 'var(--gold)', border: '1px solid var(--gold)', padding: '0.15rem 0.45rem' }}>방장</span>
       ) : isPlaying ? (
@@ -295,13 +304,13 @@ function RoomCard({ room, isMember, isHost, loading, currentUserId, onJoin, onLe
       {(room.games_json?.length ?? 0) > 0 ? (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
           {room.games_json!.map(g => (
-            <a key={g.boardlife_id} href={`https://boardlife.co.kr/game/${g.boardlife_id}`} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', textDecoration: 'none' }}>
+            <div key={g.boardlife_id} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
               {g.thumbnail_url && (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={g.thumbnail_url} alt="" style={{ width: 20, height: 20, objectFit: 'contain', opacity: 0.85 }} />
               )}
-              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.85rem', color: 'var(--gold)', fontStyle: 'italic', textDecoration: 'underline', textUnderlineOffset: '2px' }}>{g.name}</span>
-            </a>
+              <GameNameLink name={g.name} gameInfo={{ boardlife_id: g.boardlife_id, thumbnail_url: g.thumbnail_url }} style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.85rem', color: 'var(--gold)', fontStyle: 'italic' }} />
+            </div>
           ))}
         </div>
       ) : room.boardlife_game_name ? (
@@ -310,7 +319,7 @@ function RoomCard({ room, isMember, isHost, loading, currentUserId, onJoin, onLe
             // eslint-disable-next-line @next/next/no-img-element
             <img src={room.boardlife_game_thumb} alt="" style={{ width: 20, height: 20, objectFit: 'contain', opacity: 0.85 }} />
           )}
-          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.85rem', color: 'var(--gold)', fontStyle: 'italic' }}>{room.boardlife_game_name}</span>
+          <GameNameLink name={room.boardlife_game_name} gameInfo={room.boardlife_game_id ? { boardlife_id: room.boardlife_game_id, thumbnail_url: room.boardlife_game_thumb ?? null } : undefined} style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.85rem', color: 'var(--gold)', fontStyle: 'italic' }} />
         </div>
       ) : null}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>
@@ -518,12 +527,13 @@ interface CreateData {
   title?: string; location: string; scheduled_at: string;
   game_types: string[]; max_players: number; note?: string; bring_game_ids?: string[];
   boardlife_game_id?: string; boardlife_game_name?: string; boardlife_game_thumb?: string;
-  is_online: boolean;
+  is_online: boolean; is_ranked: boolean;
 }
 
-function CreateModal({ onClose, onCreate, isPending, currentUserNickname, userGames }: {
+function CreateModal({ onClose, onCreate, isPending, currentUserNickname, userGames, hasActiveMeeting }: {
   onClose: () => void; onCreate: (d: CreateData) => void;
   isPending: boolean; currentUserNickname: string; userGames: UserGame[];
+  hasActiveMeeting: boolean;
 }) {
   const today = new Date();
   const [title, setTitle]         = useState('');
@@ -536,7 +546,9 @@ function CreateModal({ onClose, onCreate, isPending, currentUserNickname, userGa
   const [customType, setCustomType] = useState('');
   const [bringGames, setBringGames] = useState<string[]>([]);
   const [boardlifeGame, setBoardlifeGame] = useState<PickedGame | null>(null);
+  const [saveGameToCollection, setSaveGameToCollection] = useState(false);
   const [isOnline, setIsOnline] = useState(false);
+  const [isRanked, setIsRanked] = useState(hasActiveMeeting);
 
   const toggleType = (t: string) => setGameTypes(prev => prev.includes(t) ? prev.filter(x => x !== t) : [...prev, t]);
   const addCustom = () => { const v = customType.trim(); if (v && !gameTypes.includes(v)) setGameTypes(prev => [...prev, v]); setCustomType(''); };
@@ -544,7 +556,13 @@ function CreateModal({ onClose, onCreate, isPending, currentUserNickname, userGa
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!location || !date || !time) return;
-    onCreate({ title: title || undefined, location, scheduled_at: new Date(`${date}T${time}:00`).toISOString(), game_types: gameTypes, max_players: maxPlayers, note: note || undefined, bring_game_ids: bringGames, boardlife_game_id: boardlifeGame?.boardlife_id, boardlife_game_name: boardlifeGame?.name, boardlife_game_thumb: boardlifeGame?.thumbnail_url ?? undefined, is_online: isOnline });
+    if (saveGameToCollection && boardlifeGame) {
+      fetch('/api/player-games', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: boardlifeGame.name, boardlife_id: boardlifeGame.boardlife_id, boardlife_url: boardlifeGame.boardlife_url, thumbnail_url: boardlifeGame.thumbnail_url, name_en: null, min_players: null, max_players: null, note: null, genre: null }),
+      }).catch(() => {});
+    }
+    onCreate({ title: title || undefined, location, scheduled_at: new Date(`${date}T${time}:00`).toISOString(), game_types: gameTypes, max_players: maxPlayers, note: note || undefined, bring_game_ids: bringGames, boardlife_game_id: boardlifeGame?.boardlife_id, boardlife_game_name: boardlifeGame?.name, boardlife_game_thumb: boardlifeGame?.thumbnail_url ?? undefined, is_online: isOnline, is_ranked: isRanked });
   };
 
   return (
@@ -611,7 +629,15 @@ function CreateModal({ onClose, onCreate, isPending, currentUserNickname, userGa
             {/* 오른쪽 열 */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <Field label="이번 모임 게임 (선택)">
-                <BoardlifeGamePicker value={boardlifeGame} onChange={setBoardlifeGame} placeholder="플레이할 보드게임 검색..." />
+                <BoardlifeGamePicker value={boardlifeGame} onChange={g => { setBoardlifeGame(g); if (!g) setSaveGameToCollection(false); }} placeholder="플레이할 보드게임 검색..." />
+                {boardlifeGame && (
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginTop: '0.55rem', cursor: 'pointer' }}>
+                    <input type="checkbox" checked={saveGameToCollection} onChange={e => setSaveGameToCollection(e.target.checked)} style={{ accentColor: 'var(--gold)', flexShrink: 0 }} />
+                    <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', letterSpacing: '0.08em', color: saveGameToCollection ? 'var(--gold)' : 'var(--white-dim)', opacity: saveGameToCollection ? 1 : 0.6 }}>
+                      내 보드게임 책장에도 추가
+                    </span>
+                  </label>
+                )}
               </Field>
 
               <Field label="게임 종류">
@@ -653,8 +679,37 @@ function CreateModal({ onClose, onCreate, isPending, currentUserNickname, userGa
             </div>
           </div>
 
+          {/* 라피스 반영 여부 */}
+          <div
+            style={{
+              marginTop: '1.2rem', padding: '0.9rem 1.1rem',
+              border: `1px solid ${!hasActiveMeeting ? 'rgba(148,163,184,0.15)' : isRanked ? 'rgba(201,168,76,0.3)' : 'rgba(148,163,184,0.2)'}`,
+              background: !hasActiveMeeting ? 'rgba(148,163,184,0.02)' : isRanked ? 'rgba(201,168,76,0.05)' : 'rgba(148,163,184,0.04)',
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem',
+              cursor: hasActiveMeeting ? 'pointer' : 'not-allowed',
+              opacity: hasActiveMeeting ? 1 : 0.5,
+            }}
+            onClick={() => { if (hasActiveMeeting) setIsRanked(p => !p); }}
+          >
+            <div>
+              <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.58rem', letterSpacing: '0.15em', color: isRanked && hasActiveMeeting ? 'var(--gold)' : 'var(--white-dim)', marginBottom: '0.2rem' }}>
+                {!hasActiveMeeting
+                  ? '🔒 랭크 경기 잠금 — 정기 모임 중에만 가능'
+                  : isRanked ? '🏆 랭크 경기 — 라피스 반영' : '🎮 친선 경기 — 라피스 미반영'}
+              </p>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.85rem', color: 'var(--white-dim)', opacity: 0.6 }}>
+                {!hasActiveMeeting
+                  ? '현재 진행 중인 정기 모임이 없습니다'
+                  : isRanked ? '게임 결과에 따라 라피스가 지급/차감됩니다' : '경기는 기록되지만 라피스에 영향을 주지 않습니다'}
+              </p>
+            </div>
+            <div style={{ width: 40, height: 22, borderRadius: 11, background: isRanked && hasActiveMeeting ? 'var(--gold)' : 'rgba(148,163,184,0.3)', position: 'relative', flexShrink: 0, transition: 'background 0.2s' }}>
+              <div style={{ position: 'absolute', top: 3, left: isRanked && hasActiveMeeting ? 20 : 3, width: 16, height: 16, borderRadius: '50%', background: 'white', transition: 'left 0.2s' }} />
+            </div>
+          </div>
+
           {/* 하단 버튼 */}
-          <div style={{ display: 'flex', gap: '0.8rem', marginTop: '1.4rem', borderTop: '1px solid rgba(201,168,76,0.1)', paddingTop: '1.2rem' }}>
+          <div style={{ display: 'flex', gap: '0.8rem', marginTop: '1.2rem', borderTop: '1px solid rgba(201,168,76,0.1)', paddingTop: '1.2rem' }}>
             <button type="button" onClick={onClose} style={{ flex: 1, fontFamily: "'Cinzel', serif", fontSize: '0.62rem', letterSpacing: '0.15em', padding: '0.75rem', border: '1px solid rgba(201,168,76,0.2)', background: 'transparent', color: 'var(--white-dim)', cursor: 'pointer' }}>취소</button>
             <button type="submit" disabled={isPending || !location} style={{ flex: 3, fontFamily: "'Cinzel', serif", fontSize: '0.65rem', letterSpacing: '0.18em', padding: '0.75rem', border: 'none', background: (!location || isPending) ? 'rgba(201,168,76,0.3)' : 'var(--gold)', color: '#0b2218', cursor: (!location || isPending) ? 'not-allowed' : 'pointer', fontWeight: 700 }}>
               {isPending ? '개설 중...' : '방 개설'}
@@ -695,7 +750,7 @@ function EditModal({ room, onClose, onSave, isPending }: {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!location || !date || !time) return;
-    onSave({ title: title || undefined, location, scheduled_at: new Date(`${date}T${time}:00`).toISOString(), game_types: gameTypes, max_players: maxPlayers, note: note || undefined, is_online: isOnline });
+    onSave({ title: title || undefined, location, scheduled_at: new Date(`${date}T${time}:00`).toISOString(), game_types: gameTypes, max_players: maxPlayers, note: note || undefined, is_online: isOnline, is_ranked: room.is_ranked ?? true });
   };
 
   return (
