@@ -7,6 +7,17 @@ import Footer from '../footer';
 
 export const dynamic = 'force-dynamic';
 
+async function getHasActiveMeeting(): Promise<boolean> {
+  try {
+    const supabase = await createSupabaseServerClient();
+    const { count } = await supabase
+      .from('meetings')
+      .select('id', { count: 'exact', head: true })
+      .eq('status', 'active');
+    return (count ?? 0) > 0;
+  } catch { return false; }
+}
+
 async function getRooms() {
   try {
     const supabase = await createSupabaseServerClient();
@@ -43,29 +54,33 @@ export default async function RoomsPage() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let user: any = null;
   let userGames: { id: string; name: string; thumbnail_url: string | null }[] = [];
-  if (configured) {
+
+  const [resolvedUser, rooms, hasActiveMeeting] = await Promise.all([
+    configured ? getSessionUser().catch(() => null) : Promise.resolve(null),
+    configured ? getRooms() : Promise.resolve([]),
+    configured ? getHasActiveMeeting() : Promise.resolve(false),
+  ]);
+  user = resolvedUser;
+
+  if (user) {
     try {
-      user = await getSessionUser();
-      if (user) {
-        const supabase = await createSupabaseServerClient();
-        const { data } = await supabase
-          .from('player_games')
-          .select('id, name, thumbnail_url')
-          .eq('player_id', user.id)
-          .eq('is_available', true)
-          .order('name');
-        userGames = data ?? [];
-      }
+      const supabase = await createSupabaseServerClient();
+      const { data } = await supabase
+        .from('player_games')
+        .select('id, name, thumbnail_url')
+        .eq('player_id', user.id)
+        .eq('is_available', true)
+        .order('name');
+      userGames = data ?? [];
     } catch {}
   }
-  const rooms = configured ? await getRooms() : [];
 
   return (
     <>
       <Nav />
       <div style={{ paddingTop: '6rem', minHeight: '100vh', position: 'relative', zIndex: 1 }}>
         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-        <RoomsClient initialRooms={rooms as any[]} currentUserId={user?.id ?? null} currentUserNickname={user?.nickname ?? null} userGames={userGames} />
+        <RoomsClient initialRooms={rooms as any[]} currentUserId={user?.id ?? null} currentUserNickname={user?.nickname ?? null} userGames={userGames} hasActiveMeeting={hasActiveMeeting} />
       </div>
       <Footer />
     </>
