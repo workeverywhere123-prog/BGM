@@ -3,6 +3,8 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { createSupabaseServiceClient } from '@/lib/supabase/service';
+import { validateInviteCode } from '@/domain/invite-code';
 import type { ActionResult } from '@/types/domain';
 
 /** 아이디: 영문/숫자/밑줄/하이픈, 2~20자 */
@@ -26,6 +28,7 @@ export async function signupAction(
 ): Promise<ActionResult<null>> {
   const username = String(formData.get('username') ?? '').trim();
   const password = String(formData.get('password') ?? '');
+  const nickname = String(formData.get('nickname') ?? '').trim();
 
   if (!validateUsername(username)) {
     return {
@@ -42,9 +45,39 @@ export async function signupAction(
       error: { code: 'VALIDATION_ERROR', message: '비밀번호는 6자 이상이어야 합니다' },
     };
   }
+  if (nickname.length < 2 || nickname.length > 20) {
+    return {
+      ok: false,
+      error: { code: 'VALIDATION_ERROR', message: '실명은 2~20자로 입력해 주세요' },
+    };
+  }
+
+  // 초대코드 검증
+  const rawCode = String(formData.get('invite_code') ?? '').trim().toUpperCase();
+  if (!/^[A-Z0-9]{8}$/.test(rawCode)) {
+    return { ok: false, error: { code: 'VALIDATION_ERROR', message: '초대코드 형식이 올바르지 않습니다 (8자리 영숫자)' } };
+  }
+
+  const serviceClient = createSupabaseServiceClient();
+  const { data: codeRow } = await serviceClient
+    .from('invite_codes')
+    .select('id, is_active, used_by, expires_at')
+    .eq('code', rawCode)
+    .maybeSingle();
+
+  const codeStatus = validateInviteCode(codeRow);
+  if (codeStatus === 'used') {
+    return { ok: false, error: { code: 'CONFLICT', message: '이미 사용된 초대코드입니다' } };
+  }
+  if (codeStatus === 'expired') {
+    return { ok: false, error: { code: 'VALIDATION_ERROR', message: '만료된 초대코드입니다' } };
+  }
+  if (codeStatus !== 'ok') {
+    return { ok: false, error: { code: 'VALIDATION_ERROR', message: '유효하지 않은 초대코드입니다' } };
+  }
 
   const supabase = await createSupabaseServerClient();
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email: toFakeEmail(username),
     password,
     options: {
@@ -58,6 +91,23 @@ export async function signupAction(
       return { ok: false, error: { code: 'CONFLICT', message: '이미 사용 중인 아이디입니다' } };
     }
     return { ok: false, error: { code: 'UNKNOWN', message: error.message } };
+  }
+
+  if (data?.user?.id) {
+    await Promise.all([
+      // 초대코드 사용 처리
+      codeRow?.id
+        ? serviceClient
+            .from('invite_codes')
+            .update({ used_by: data.user.id, used_at: new Date().toISOString() })
+            .eq('id', codeRow.id)
+        : Promise.resolve(),
+      // 실명(nickname) 저장 — trigger가 먼저 players 행을 만든 뒤 업데이트
+      serviceClient
+        .from('players')
+        .update({ nickname })
+        .eq('id', data.user.id),
+    ]);
   }
 
   revalidatePath('/', 'layout');

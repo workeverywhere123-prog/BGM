@@ -46,6 +46,13 @@ export async function recordMatchAction(
 
   const supabase = await createSupabaseServerClient();
 
+  // 활성 분기 조회
+  const { data: activeQuarter } = await supabase
+    .from('quarters')
+    .select('id')
+    .eq('is_active', true)
+    .maybeSingle();
+
   // 1) matches 삽입
   const { data: match, error: matchError } = await supabase
     .from('matches')
@@ -54,6 +61,7 @@ export async function recordMatchAction(
       game_id: input.game_id ?? null,
       game_type: input.game_type,
       note: input.note ?? null,
+      played_at: new Date().toISOString(),
       created_by: user.id,
     })
     .select('id')
@@ -92,6 +100,7 @@ export async function recordMatchAction(
     match_id: matchId,
     tx_type: 'game' as const,
     amount: r.chip_change,
+    quarter_id: activeQuarter?.id ?? null,
     note: `${input.game_type} 경기`,
     created_by: user.id,
   }));

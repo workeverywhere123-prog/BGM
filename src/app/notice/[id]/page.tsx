@@ -2,6 +2,7 @@ import Nav from '../../nav';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import Footer from '../../footer';
 
 const CATEGORY_LABEL: Record<string, string> = {
   important: '중요', rule: '규칙', event: '이벤트', general: '일반',
@@ -38,7 +39,7 @@ export default async function NoticeDetailPage({ params }: { params: Promise<{ i
           </div>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 300, color: 'var(--foreground)', lineHeight: 1.3 }}>{notice.title}</h1>
           <div style={{ display: 'flex', gap: '1.5rem', marginTop: '0.8rem' }}>
-            <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.62rem', color: 'var(--white-dim)' }}>{(notice.players as any)?.nickname}</span>
+            <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.62rem', color: 'var(--white-dim)' }}>{(notice.players as { nickname?: string } | null)?.nickname}</span>
             <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.62rem', color: 'var(--white-dim)', opacity: 0.6 }}>{new Date(notice.created_at).toLocaleDateString('ko-KR')}</span>
           </div>
         </div>
@@ -50,11 +51,7 @@ export default async function NoticeDetailPage({ params }: { params: Promise<{ i
         </div>
       </div>
 
-      <footer className="bgm-footer">
-        <div className="footer-logo">BGM</div>
-        <div className="footer-copy">© 2026 Boardgame in Melbourne.</div>
-        <div className="footer-links"><a href="#">인스타그램</a><a href="#">디스코드</a></div>
-      </footer>
+      <Footer />
     </>
   );
 }

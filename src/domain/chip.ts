@@ -192,9 +192,9 @@ export function calcRankingChips(participants: ParticipantInput[]): ChipResult[]
  * 출석 관련 칩 계산
  */
 export const ATTENDANCE_CHIPS = {
-  attended: 1,    // 참석 +1
+  attended: 5,    // 정시 참석 +5
   late: -1,       // 지각 -1
-  absent: -1,     // 불참 -1
+  absent: -3,     // 불참 -3
   vote_skip: -1,  // 투표 미참여 -1
 } as const;
 
