@@ -224,7 +224,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
     }
 
     if (action === 'finalize_mvp') {
-      const { data: room } = await supabase.from('rooms').select('host_id, last_match_id').eq('id', id).single();
+      const { data: room } = await supabase.from('rooms').select('host_id, last_match_id, is_ranked').eq('id', id).single();
       if (room?.host_id !== user.id) return NextResponse.json({ error: '권한이 없습니다' }, { status: 403 });
 
       const { data: votes } = await supabase.from('room_mvp_votes').select('nominee_id').eq('room_id', id);
@@ -233,11 +233,13 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
         for (const v of votes) tally[v.nominee_id] = (tally[v.nominee_id] ?? 0) + 1;
         const mvpId = Object.entries(tally).sort((a, b) => b[1] - a[1])[0]?.[0];
         if (mvpId) {
-          const { data: quarter } = await supabase.from('quarters').select('id').eq('is_active', true).maybeSingle();
-          await supabase.from('chip_transactions').insert({
-            player_id: mvpId, tx_type: 'game', amount: 1,
-            quarter_id: quarter?.id ?? null, note: 'MVP 투표 보너스', created_by: user.id,
-          });
+          if (room?.is_ranked ?? true) {
+            const { data: quarter } = await supabase.from('quarters').select('id').eq('is_active', true).maybeSingle();
+            await supabase.from('chip_transactions').insert({
+              player_id: mvpId, tx_type: 'game', amount: 1,
+              quarter_id: quarter?.id ?? null, note: 'MVP 투표 보너스', created_by: user.id,
+            });
+          }
           if (room?.last_match_id) {
             await supabase.from('match_participants').update({ is_mvp: true })
               .eq('match_id', room.last_match_id).eq('player_id', mvpId);
