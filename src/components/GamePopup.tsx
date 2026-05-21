@@ -165,7 +165,7 @@ export default function GamePopup({ game, onClose }: { game: GameInfo; onClose: 
                   transition: 'all 0.2s',
                 }}
               >
-                {owning ? '처리 중...' : stats.is_owned ? '보유 취소' : '+ 내 컬렉션에 추가'}
+                {owning ? '처리 중...' : stats.is_owned ? '컬렉션에서 제거' : '+ 내 컬렉션에 추가'}
               </button>
             </>
           ) : null}

@@ -21,6 +21,292 @@ interface League {
   schedule: ScheduleMatch[];
 }
 
+/* ─────────────────────────────── */
+/* LeagueDetail                    */
+/* ─────────────────────────────── */
+function LeagueDetail({ league, allPlayers, isPending, startT, updateLeague, setLeagues, setSelected }: {
+  league: League;
+  allPlayers: Player[];
+  isPending: boolean;
+  startT: (fn: () => Promise<void> | void) => void;
+  updateLeague: (id: string, patch: Partial<League>) => void;
+  setLeagues: React.Dispatch<React.SetStateAction<League[]>>;
+  setSelected: React.Dispatch<React.SetStateAction<string | null>>;
+}) {
+  const [tab, setTab] = useState<'participants' | 'schedule'>('participants');
+  const [addPlayerId, setAddPlayerId] = useState('');
+  const [editing, setEditing] = useState(false);
+  const [editName, setEditName] = useState(league.name);
+  const [editDesc, setEditDesc] = useState(league.description ?? '');
+  const [editStart, setEditStart] = useState(league.start_date ?? '');
+  const [editEnd, setEditEnd] = useState(league.end_date ?? '');
+  const [editPpg, setEditPpg] = useState(league.players_per_game);
+  const [editPrizes, setEditPrizes] = useState<Prize[]>(
+    (league.prizes ?? []).length > 0 ? league.prizes : [
+      { rank: 1, label: '1위', description: '' },
+      { rank: 2, label: '2위', description: '' },
+      { rank: 3, label: '3위', description: '' },
+    ]
+  );
+
+  const hasSchedule = league.schedule.length > 0;
+  const totalRounds = hasSchedule ? Math.max(...league.schedule.map(m => m.round)) : 0;
+  const completedCount = league.schedule.filter(m => m.status === 'completed').length;
+
+  const addParticipant = () => startT(async () => {
+    if (!addPlayerId) return;
+    const res = await fetch('/api/admin/leagues', {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: league.id, action: 'add_participant', player_id: addPlayerId }),
+    });
+    if (!res.ok) { alert((await res.json()).error); return; }
+    const player = allPlayers.find(p => p.id === addPlayerId)!;
+    const newP: Participant = { id: Math.random().toString(), player_id: addPlayerId, score: 0, rank: null, note: null, player };
+    updateLeague(league.id, { participants: [...league.participants, newP] });
+    setAddPlayerId('');
+  });
+
+  const removeParticipant = (pid: string) => startT(async () => {
+    if (!confirm('참가자를 제거하시겠습니까?')) return;
+    await fetch('/api/admin/leagues', {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: league.id, action: 'remove_participant', participant_id: pid }),
+    });
+    updateLeague(league.id, { participants: league.participants.filter(p => p.id !== pid) });
+  });
+
+  const toggleActive = () => startT(async () => {
+    const action = league.is_active ? 'deactivate' : 'activate';
+    await fetch('/api/admin/leagues', {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: league.id, action }),
+    });
+    setLeagues(prev => prev.map(l =>
+      l.id === league.id ? { ...l, is_active: !l.is_active }
+      : action === 'activate' ? { ...l, is_active: false } : l
+    ));
+  });
+
+  const deleteLeague = () => startT(async () => {
+    if (!confirm(`"${league.name}" 리그를 삭제하시겠습니까?\n모든 경기 기록과 참가자 데이터가 함께 삭제됩니다.`)) return;
+    const res = await fetch('/api/admin/leagues', {
+      method: 'DELETE', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: league.id }),
+    });
+    if (!res.ok) { alert('삭제 중 오류가 발생했습니다'); return; }
+    setLeagues(prev => prev.filter(l => l.id !== league.id));
+    setSelected(null);
+  });
+
+  const submitEdit = () => startT(async () => {
+    if (!editName.trim()) { alert('리그 이름을 입력해주세요'); return; }
+    const res = await fetch('/api/admin/leagues', {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: league.id, action: 'update',
+        name: editName, description: editDesc || null,
+        start_date: editStart || null, end_date: editEnd || null,
+        prizes: editPrizes, players_per_game: editPpg,
+      }),
+    });
+    if (!res.ok) { alert('수정 중 오류가 발생했습니다'); return; }
+    updateLeague(league.id, {
+      name: editName, description: editDesc || null,
+      start_date: editStart || null, end_date: editEnd || null,
+      prizes: editPrizes, players_per_game: editPpg,
+    });
+    setEditing(false);
+  });
+
+  const generateSchedule = () => startT(async () => {
+    const N = league.participants.length;
+    const K = league.players_per_game;
+    if (!confirm(`참가자 ${N}명, ${K}인 게임으로 Zero-Bias 대진표를 생성합니다.\n기존 일정과 모든 점수가 초기화됩니다.`)) return;
+    const res = await fetch('/api/admin/leagues', {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: league.id, action: 'generate_schedule' }),
+    });
+    if (!res.ok) { alert((await res.json()).error); return; }
+    const data = await res.json();
+    if (data.qc) {
+      const { totalRounds, gamesPerRound, sitOutPerRound, maxEncounters, minEncounters, sitOutVariance, playCountVariance } = data.qc;
+      alert(
+        `✅ 대진표 생성 완료 — QC 리포트\n\n` +
+        `총 라운드: ${totalRounds}R  |  라운드당 테이블: ${gamesPerRound}개\n` +
+        `라운드당 대기: ${sitOutPerRound}명\n\n` +
+        `📊 공정성 지표\n` +
+        `만남 횟수 편차: ${minEncounters}~${maxEncounters}회 (낮을수록 좋음)\n` +
+        `대기 횟수 편차: ±${sitOutVariance}회\n` +
+        `게임 참여 편차: ±${playCountVariance}회`
+      );
+    }
+    window.location.reload();
+  });
+
+  const resetSchedule = () => startT(async () => {
+    if (!confirm('일정과 모든 점수를 초기화하시겠습니까?')) return;
+    await fetch('/api/admin/leagues', {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: league.id, action: 'reset_schedule' }),
+    });
+    updateLeague(league.id, { schedule: [], participants: league.participants.map(p => ({ ...p, score: 0 })) });
+  });
+
+  const availablePlayers = allPlayers.filter(p => !new Set(league.participants.map(x => x.player_id)).has(p.id));
+
+  return (
+    <div style={{ border: '1px solid rgba(201,168,76,0.2)', padding: '1.5rem', background: 'rgba(30,74,52,0.1)' }}>
+      {/* Header */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
+        <div>
+          <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.5rem', color: 'var(--foreground)' }}>{league.name}</h3>
+          {league.description && <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.9rem', color: 'var(--white-dim)', fontStyle: 'italic' }}>{league.description}</p>}
+          <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', color: 'var(--gold-dim)', marginTop: '0.3rem' }}>
+            {league.players_per_game}인 게임 · {league.start_date ?? '—'} ~ {league.end_date ?? '진행중'}
+          </p>
+        </div>
+        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexShrink: 0 }}>
+          <button onClick={() => setEditing(v => !v)} disabled={isPending} style={{
+            fontFamily: "'Cinzel', serif", fontSize: '0.55rem', padding: '0.3rem 0.7rem',
+            border: '1px solid rgba(201,168,76,0.3)', color: 'var(--gold-dim)',
+            background: editing ? 'rgba(201,168,76,0.08)' : 'transparent', cursor: 'pointer',
+          }}>{editing ? '취소' : '수정'}</button>
+          <button onClick={toggleActive} disabled={isPending} style={{
+            fontFamily: "'Cinzel', serif", fontSize: '0.6rem', padding: '0.35rem 0.8rem',
+            border: `1px solid ${league.is_active ? 'var(--gold)' : 'rgba(201,168,76,0.25)'}`,
+            color: league.is_active ? 'var(--gold)' : 'var(--white-dim)',
+            background: league.is_active ? 'rgba(201,168,76,0.1)' : 'transparent', cursor: 'pointer',
+          }}>{league.is_active ? '● 활성' : '비활성'}</button>
+          <button onClick={deleteLeague} disabled={isPending} style={{
+            fontFamily: "'Cinzel', serif", fontSize: '0.55rem', padding: '0.3rem 0.7rem',
+            border: '1px solid rgba(255,100,100,0.3)', color: '#ff8888',
+            background: 'transparent', cursor: 'pointer',
+          }}>삭제</button>
+        </div>
+      </div>
+
+      {/* Edit Form */}
+      {editing && (
+        <div style={{ border: '1px solid rgba(201,168,76,0.25)', padding: '1.2rem', background: 'rgba(0,0,0,0.2)', marginBottom: '1.2rem' }}>
+          <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.58rem', letterSpacing: '0.15em', color: 'var(--gold)', marginBottom: '1rem' }}>리그 정보 수정</p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.8rem', marginBottom: '0.8rem' }}>
+            <F label="리그 이름 *"><input value={editName} onChange={e => setEditName(e.target.value)} style={inp} /></F>
+            <F label="설명"><input value={editDesc} onChange={e => setEditDesc(e.target.value)} style={inp} /></F>
+            <F label="시작일"><input type="date" value={editStart} onChange={e => setEditStart(e.target.value)} style={inp} /></F>
+            <F label="종료일"><input type="date" value={editEnd} onChange={e => setEditEnd(e.target.value)} style={inp} /></F>
+            <F label="게임 인원 (명)">
+              <select value={editPpg} onChange={e => setEditPpg(Number(e.target.value))} style={inp}>
+                {[2,3,4,5,6,7,8].map(n => <option key={n} value={n}>{n}인</option>)}
+              </select>
+            </F>
+          </div>
+          <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', color: 'var(--gold-dim)', marginBottom: '0.5rem' }}>상품</p>
+          {editPrizes.map((p, i) => (
+            <div key={i} style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.4rem', alignItems: 'center' }}>
+              <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: 'var(--gold)', minWidth: 28 }}>{p.rank}위</span>
+              <input value={p.description} onChange={e => setEditPrizes(prev => prev.map((x, j) => j === i ? { ...x, description: e.target.value } : x))}
+                placeholder="상품 내용" style={{ ...inp, flex: 1 }} />
+            </div>
+          ))}
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.6rem', marginTop: '1rem' }}>
+            <button onClick={() => setEditing(false)} style={btn}>취소</button>
+            <button onClick={submitEdit} disabled={!editName.trim() || isPending} style={btnGold}>
+              {isPending ? '저장 중...' : '저장'}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Tabs */}
+      <div style={{ display: 'flex', gap: 2, borderBottom: '1px solid rgba(201,168,76,0.12)', marginBottom: '1.2rem' }}>
+        {(['participants', 'schedule'] as const).map(t => (
+          <button key={t} onClick={() => setTab(t)} style={{
+            fontFamily: "'Cinzel', serif", fontSize: '0.58rem', letterSpacing: '0.1em',
+            padding: '0.5rem 1rem', border: 'none', background: 'transparent', cursor: 'pointer',
+            color: tab === t ? 'var(--gold)' : 'var(--white-dim)',
+            borderBottom: `2px solid ${tab === t ? 'var(--gold)' : 'transparent'}`,
+          }}>
+            {t === 'participants'
+              ? `참가자 (${league.participants.length})`
+              : `경기 일정${hasSchedule ? ` (${completedCount}/${league.schedule.length})` : ''}`}
+          </button>
+        ))}
+      </div>
+
+      {/* Participants Tab */}
+      {tab === 'participants' && (
+        <>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 1, marginBottom: '1rem' }}>
+            {league.participants.sort((a, b) => b.score - a.score).map((p, i) => (
+              <div key={p.id} style={{ display: 'grid', gridTemplateColumns: '24px 1fr 80px 80px', gap: '0.6rem', alignItems: 'center', padding: '0.6rem 0.8rem', background: 'rgba(0,0,0,0.15)' }}>
+                <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.65rem', color: i < 3 ? 'var(--gold)' : 'var(--white-dim)', opacity: i < 3 ? 1 : 0.5 }}>{i + 1}</span>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', color: 'var(--foreground)' }}>{p.player.nickname}</span>
+                <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.8rem', color: 'var(--gold)', textAlign: 'center' }}>{p.score}승점</span>
+                <button onClick={() => removeParticipant(p.id)} style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', padding: '0.2rem 0.5rem', border: '1px solid rgba(255,100,100,0.3)', color: '#ff8888', background: 'transparent', cursor: 'pointer' }}>✕</button>
+              </div>
+            ))}
+            {league.participants.length === 0 && (
+              <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.65rem', color: 'var(--white-dim)', opacity: 0.4, padding: '1rem', textAlign: 'center' }}>참가자 없음</p>
+            )}
+          </div>
+          <div style={{ display: 'flex', gap: '0.6rem' }}>
+            <select value={addPlayerId} onChange={e => setAddPlayerId(e.target.value)} style={{ ...inp, flex: 1 }}>
+              <option value="">플레이어 추가...</option>
+              {availablePlayers.map(p => <option key={p.id} value={p.id}>{p.nickname} @{p.username}</option>)}
+            </select>
+            <button onClick={addParticipant} disabled={!addPlayerId || isPending} style={btnGold}>추가</button>
+          </div>
+          {league.participants.length >= league.players_per_game && (
+            <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', color: 'var(--gold-dim)', marginTop: '0.8rem', opacity: 0.7 }}>
+              참가자 등록 완료 후 &apos;경기 일정&apos; 탭에서 일정을 생성하세요
+            </p>
+          )}
+        </>
+      )}
+
+      {/* Schedule Tab */}
+      {tab === 'schedule' && (
+        <ScheduleManager
+          league={league}
+          hasSchedule={hasSchedule}
+          totalRounds={totalRounds}
+          isPending={isPending}
+          onGenerate={generateSchedule}
+          onReset={resetSchedule}
+          onResultSaved={(matchId, results) => {
+            const K = results.length;
+            updateLeague(league.id, {
+              schedule: league.schedule.map(m => {
+                if (m.id !== matchId) return m;
+                return {
+                  ...m,
+                  status: 'completed',
+                  matchPlayers: m.matchPlayers.map(mp => {
+                    const r = results.find(x => x.player_id === mp.player_id);
+                    if (!r) return mp;
+                    return { ...mp, rank: r.rank, score: r.score ?? null, points_earned: K - r.rank + 1 };
+                  }),
+                };
+              }),
+              participants: (() => {
+                const delta: Record<string, number> = {};
+                results.forEach(r => { delta[r.player_id] = K - r.rank + 1; });
+                return league.participants.map(p => ({
+                  ...p,
+                  score: p.score + (delta[p.player_id] ?? 0),
+                }));
+              })(),
+            });
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
+/* ─────────────────────────────── */
+/* LeaguesClient (main)            */
+/* ─────────────────────────────── */
 export default function LeaguesClient({ initialLeagues, allPlayers }: {
   initialLeagues: League[]; allPlayers: Player[];
 }) {
@@ -35,235 +321,6 @@ export default function LeaguesClient({ initialLeagues, allPlayers }: {
     setLeagues(prev => prev.map(l => l.id === id ? { ...l, ...patch } : l));
   }
 
-  function CreateForm() {
-    const [name, setName]     = useState('');
-    const [desc, setDesc]     = useState('');
-    const [start, setStart]   = useState('');
-    const [end, setEnd]       = useState('');
-    const [ppg, setPpg]       = useState(4);
-    const [prizes, setPrizes] = useState<Prize[]>([
-      { rank: 1, label: '1위', description: '' },
-      { rank: 2, label: '2위', description: '' },
-      { rank: 3, label: '3위', description: '' },
-    ]);
-    const [active, setActive] = useState(false);
-
-    const submit = () => startT(async () => {
-      const res = await fetch('/api/admin/leagues', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, description: desc, start_date: start || null, end_date: end || null, prizes, is_active: active, players_per_game: ppg }),
-      });
-      if (!res.ok) { alert((await res.json()).error); return; }
-      const data = await res.json();
-      setLeagues(prev => [{ ...data, participants: [], schedule: [] }, ...prev]);
-      setShowNew(false);
-    });
-
-    return (
-      <div style={{ border: '1px solid rgba(201,168,76,0.3)', padding: '1.5rem', background: 'rgba(30,74,52,0.15)', marginBottom: '2rem' }}>
-        <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.65rem', letterSpacing: '0.2em', color: 'var(--gold)', marginBottom: '1.2rem' }}>새 리그 생성</p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.8rem', marginBottom: '0.8rem' }}>
-          <F label="리그 이름 *"><input value={name} onChange={e => setName(e.target.value)} placeholder="예: 2026 S1 리그" style={inp} /></F>
-          <F label="설명"><input value={desc} onChange={e => setDesc(e.target.value)} style={inp} /></F>
-          <F label="시작일"><input type="date" value={start} onChange={e => setStart(e.target.value)} style={inp} /></F>
-          <F label="종료일"><input type="date" value={end} onChange={e => setEnd(e.target.value)} style={inp} /></F>
-          <F label="게임 인원 (명)">
-            <select value={ppg} onChange={e => setPpg(Number(e.target.value))} style={inp}>
-              {[2,3,4,5,6,7,8].map(n => <option key={n} value={n}>{n}인</option>)}
-            </select>
-          </F>
-        </div>
-        <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.58rem', letterSpacing: '0.1em', color: 'var(--gold-dim)', marginBottom: '0.5rem' }}>상품</p>
-        {prizes.map((p, i) => (
-          <div key={i} style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.4rem', alignItems: 'center' }}>
-            <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: 'var(--gold)', minWidth: 28 }}>{p.rank}위</span>
-            <input value={p.description} onChange={e => setPrizes(prev => prev.map((x, j) => j === i ? { ...x, description: e.target.value } : x))}
-              placeholder="상품 내용" style={{ ...inp, flex: 1 }} />
-          </div>
-        ))}
-        <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.8rem', cursor: 'pointer' }}>
-          <input type="checkbox" checked={active} onChange={e => setActive(e.target.checked)} style={{ accentColor: 'var(--gold)' }} />
-          <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: 'var(--white-dim)' }}>즉시 활성화</span>
-        </label>
-        <div style={{ display: 'flex', gap: '0.6rem', marginTop: '1rem' }}>
-          <button onClick={() => setShowNew(false)} style={{ ...btn, flex: 1 }}>취소</button>
-          <button onClick={submit} disabled={!name || isPending} style={{ ...btnGold, flex: 2 }}>{isPending ? '...' : '생성'}</button>
-        </div>
-      </div>
-    );
-  }
-
-  function LeagueDetail({ league }: { league: League }) {
-    const [tab, setTab] = useState<'participants' | 'schedule'>('participants');
-    const [addPlayerId, setAddPlayerId] = useState('');
-
-    const hasSchedule = league.schedule.length > 0;
-    const totalRounds = hasSchedule ? Math.max(...league.schedule.map(m => m.round)) : 0;
-    const completedCount = league.schedule.filter(m => m.status === 'completed').length;
-
-    const addParticipant = () => startT(async () => {
-      if (!addPlayerId) return;
-      const res = await fetch('/api/admin/leagues', {
-        method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: league.id, action: 'add_participant', player_id: addPlayerId }),
-      });
-      if (!res.ok) { alert((await res.json()).error); return; }
-      const player = allPlayers.find(p => p.id === addPlayerId)!;
-      const newP: Participant = { id: Math.random().toString(), player_id: addPlayerId, score: 0, rank: null, note: null, player };
-      updateLeague(league.id, { participants: [...league.participants, newP] });
-      setAddPlayerId('');
-    });
-
-    const removeParticipant = (pid: string) => startT(async () => {
-      if (!confirm('참가자를 제거하시겠습니까?')) return;
-      await fetch('/api/admin/leagues', {
-        method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: league.id, action: 'remove_participant', participant_id: pid }),
-      });
-      updateLeague(league.id, { participants: league.participants.filter(p => p.id !== pid) });
-    });
-
-    const toggleActive = () => startT(async () => {
-      const action = league.is_active ? 'deactivate' : 'activate';
-      await fetch('/api/admin/leagues', {
-        method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: league.id, action }),
-      });
-      setLeagues(prev => prev.map(l =>
-        l.id === league.id ? { ...l, is_active: !l.is_active }
-        : action === 'activate' ? { ...l, is_active: false } : l
-      ));
-    });
-
-    const generateSchedule = () => startT(async () => {
-      if (!confirm(`참가자 ${league.participants.length}명, ${league.players_per_game}인 게임으로 균등 일정을 생성합니다.\n기존 일정과 모든 점수가 초기화됩니다.`)) return;
-      const res = await fetch('/api/admin/leagues', {
-        method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: league.id, action: 'generate_schedule' }),
-      });
-      if (!res.ok) { alert((await res.json()).error); return; }
-      // Reload page to get fresh schedule data
-      window.location.reload();
-    });
-
-    const resetSchedule = () => startT(async () => {
-      if (!confirm('일정과 모든 점수를 초기화하시겠습니까?')) return;
-      await fetch('/api/admin/leagues', {
-        method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: league.id, action: 'reset_schedule' }),
-      });
-      updateLeague(league.id, { schedule: [], participants: league.participants.map(p => ({ ...p, score: 0 })) });
-    });
-
-    const availablePlayers = allPlayers.filter(p => !new Set(league.participants.map(x => x.player_id)).has(p.id));
-
-    return (
-      <div style={{ border: '1px solid rgba(201,168,76,0.2)', padding: '1.5rem', background: 'rgba(30,74,52,0.1)' }}>
-        {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-          <div>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.5rem', color: 'var(--foreground)' }}>{league.name}</h3>
-            {league.description && <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.9rem', color: 'var(--white-dim)', fontStyle: 'italic' }}>{league.description}</p>}
-            <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', color: 'var(--gold-dim)', marginTop: '0.3rem' }}>
-              {league.players_per_game}인 게임 · {league.start_date ?? '—'} ~ {league.end_date ?? '진행중'}
-            </p>
-          </div>
-          <button onClick={toggleActive} disabled={isPending} style={{
-            fontFamily: "'Cinzel', serif", fontSize: '0.6rem', padding: '0.35rem 0.8rem',
-            border: `1px solid ${league.is_active ? 'var(--gold)' : 'rgba(201,168,76,0.25)'}`,
-            color: league.is_active ? 'var(--gold)' : 'var(--white-dim)',
-            background: league.is_active ? 'rgba(201,168,76,0.1)' : 'transparent', cursor: 'pointer',
-          }}>{league.is_active ? '● 활성' : '비활성'}</button>
-        </div>
-
-        {/* Tabs */}
-        <div style={{ display: 'flex', gap: 2, borderBottom: '1px solid rgba(201,168,76,0.12)', marginBottom: '1.2rem' }}>
-          {(['participants', 'schedule'] as const).map(t => (
-            <button key={t} onClick={() => setTab(t)} style={{
-              fontFamily: "'Cinzel', serif", fontSize: '0.58rem', letterSpacing: '0.1em',
-              padding: '0.5rem 1rem', border: 'none', background: 'transparent', cursor: 'pointer',
-              color: tab === t ? 'var(--gold)' : 'var(--white-dim)',
-              borderBottom: `2px solid ${tab === t ? 'var(--gold)' : 'transparent'}`,
-            }}>
-              {t === 'participants'
-                ? `참가자 (${league.participants.length})`
-                : `경기 일정${hasSchedule ? ` (${completedCount}/${league.schedule.length})` : ''}`}
-            </button>
-          ))}
-        </div>
-
-        {/* Participants Tab */}
-        {tab === 'participants' && (
-          <>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 1, marginBottom: '1rem' }}>
-              {league.participants.sort((a, b) => b.score - a.score).map((p, i) => (
-                <div key={p.id} style={{ display: 'grid', gridTemplateColumns: '24px 1fr 80px 80px', gap: '0.6rem', alignItems: 'center', padding: '0.6rem 0.8rem', background: 'rgba(0,0,0,0.15)' }}>
-                  <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.65rem', color: i < 3 ? 'var(--gold)' : 'var(--white-dim)', opacity: i < 3 ? 1 : 0.5 }}>{i + 1}</span>
-                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', color: 'var(--foreground)' }}>{p.player.nickname}</span>
-                  <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.8rem', color: 'var(--gold)', textAlign: 'center' }}>{p.score}승점</span>
-                  <button onClick={() => removeParticipant(p.id)} style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', padding: '0.2rem 0.5rem', border: '1px solid rgba(255,100,100,0.3)', color: '#ff8888', background: 'transparent', cursor: 'pointer' }}>✕</button>
-                </div>
-              ))}
-              {league.participants.length === 0 && (
-                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.65rem', color: 'var(--white-dim)', opacity: 0.4, padding: '1rem', textAlign: 'center' }}>참가자 없음</p>
-              )}
-            </div>
-            <div style={{ display: 'flex', gap: '0.6rem' }}>
-              <select value={addPlayerId} onChange={e => setAddPlayerId(e.target.value)} style={{ ...inp, flex: 1 }}>
-                <option value="">플레이어 추가...</option>
-                {availablePlayers.map(p => <option key={p.id} value={p.id}>{p.nickname} @{p.username}</option>)}
-              </select>
-              <button onClick={addParticipant} disabled={!addPlayerId || isPending} style={btnGold}>추가</button>
-            </div>
-            {league.participants.length >= league.players_per_game && (
-              <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', color: 'var(--gold-dim)', marginTop: '0.8rem', opacity: 0.7 }}>
-                참가자 등록 완료 후 &apos;경기 일정&apos; 탭에서 일정을 생성하세요
-              </p>
-            )}
-          </>
-        )}
-
-        {/* Schedule Tab */}
-        {tab === 'schedule' && (
-          <ScheduleManager
-            league={league}
-            hasSchedule={hasSchedule}
-            totalRounds={totalRounds}
-            isPending={isPending}
-            onGenerate={generateSchedule}
-            onReset={resetSchedule}
-            onResultSaved={(matchId, results) => {
-              const K = results.length;
-              updateLeague(league.id, {
-                schedule: league.schedule.map(m => {
-                  if (m.id !== matchId) return m;
-                  return {
-                    ...m,
-                    status: 'completed',
-                    matchPlayers: m.matchPlayers.map(mp => {
-                      const r = results.find(x => x.player_id === mp.player_id);
-                      if (!r) return mp;
-                      return { ...mp, rank: r.rank, score: r.score ?? null, points_earned: K - r.rank + 1 };
-                    }),
-                  };
-                }),
-                // Update participant scores (will be refreshed from DB on reload, this is optimistic)
-                participants: (() => {
-                  const delta: Record<string, number> = {};
-                  results.forEach(r => { delta[r.player_id] = K - r.rank + 1; });
-                  return league.participants.map(p => ({
-                    ...p,
-                    score: p.score + (delta[p.player_id] ?? 0),
-                  }));
-                })(),
-              });
-            }}
-          />
-        )}
-      </div>
-    );
-  }
-
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '2rem' }}>
@@ -274,7 +331,7 @@ export default function LeaguesClient({ initialLeagues, allPlayers }: {
         <button onClick={() => setShowNew(v => !v)} style={btnGold}>{showNew ? '취소' : '+ 새 리그'}</button>
       </div>
 
-      {showNew && <CreateForm />}
+      {showNew && <CreateForm setLeagues={setLeagues} setShowNew={setShowNew} isPending={isPending} startT={startT} />}
 
       <div style={{ display: 'grid', gridTemplateColumns: '220px 1fr', gap: '1.5rem' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -298,12 +355,89 @@ export default function LeaguesClient({ initialLeagues, allPlayers }: {
           ))}
         </div>
         <div>
-          {selectedLeague ? <LeagueDetail league={selectedLeague} /> : (
+          {selectedLeague ? (
+            <LeagueDetail
+              key={selectedLeague.id}
+              league={selectedLeague}
+              allPlayers={allPlayers}
+              isPending={isPending}
+              startT={startT}
+              updateLeague={updateLeague}
+              setLeagues={setLeagues}
+              setSelected={setSelected}
+            />
+          ) : (
             <div style={{ padding: '3rem', textAlign: 'center', color: 'var(--white-dim)', fontFamily: "'Cinzel', serif", fontSize: '0.7rem', opacity: 0.4, border: '1px dashed rgba(201,168,76,0.15)' }}>
               왼쪽에서 리그를 선택하세요
             </div>
           )}
         </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────── */
+/* CreateForm                      */
+/* ─────────────────────────────── */
+function CreateForm({ setLeagues, setShowNew, isPending, startT }: {
+  setLeagues: React.Dispatch<React.SetStateAction<League[]>>;
+  setShowNew: React.Dispatch<React.SetStateAction<boolean>>;
+  isPending: boolean;
+  startT: (fn: () => Promise<void> | void) => void;
+}) {
+  const [name, setName]     = useState('');
+  const [desc, setDesc]     = useState('');
+  const [start, setStart]   = useState('');
+  const [end, setEnd]       = useState('');
+  const [ppg, setPpg]       = useState(4);
+  const [prizes, setPrizes] = useState<Prize[]>([
+    { rank: 1, label: '1위', description: '' },
+    { rank: 2, label: '2위', description: '' },
+    { rank: 3, label: '3위', description: '' },
+  ]);
+  const [active, setActive] = useState(false);
+
+  const submit = () => startT(async () => {
+    const res = await fetch('/api/admin/leagues', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, description: desc, start_date: start || null, end_date: end || null, prizes, is_active: active, players_per_game: ppg }),
+    });
+    if (!res.ok) { alert((await res.json()).error); return; }
+    const data = await res.json();
+    setLeagues(prev => [{ ...data, participants: [], schedule: [] }, ...prev]);
+    setShowNew(false);
+  });
+
+  return (
+    <div style={{ border: '1px solid rgba(201,168,76,0.3)', padding: '1.5rem', background: 'rgba(30,74,52,0.15)', marginBottom: '2rem' }}>
+      <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.65rem', letterSpacing: '0.2em', color: 'var(--gold)', marginBottom: '1.2rem' }}>새 리그 생성</p>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.8rem', marginBottom: '0.8rem' }}>
+        <F label="리그 이름 *"><input value={name} onChange={e => setName(e.target.value)} placeholder="예: 2026 S1 리그" style={inp} /></F>
+        <F label="설명"><input value={desc} onChange={e => setDesc(e.target.value)} style={inp} /></F>
+        <F label="시작일"><input type="date" value={start} onChange={e => setStart(e.target.value)} style={inp} /></F>
+        <F label="종료일"><input type="date" value={end} onChange={e => setEnd(e.target.value)} style={inp} /></F>
+        <F label="게임 인원 (명)">
+          <select value={ppg} onChange={e => setPpg(Number(e.target.value))} style={inp}>
+            {[2,3,4,5,6,7,8].map(n => <option key={n} value={n}>{n}인</option>)}
+          </select>
+        </F>
+      </div>
+      <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.58rem', letterSpacing: '0.1em', color: 'var(--gold-dim)', marginBottom: '0.5rem' }}>상품</p>
+      {prizes.map((p, i) => (
+        <div key={i} style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.4rem', alignItems: 'center' }}>
+          <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: 'var(--gold)', minWidth: 28 }}>{p.rank}위</span>
+          <input value={p.description} onChange={e => setPrizes(prev => prev.map((x, j) => j === i ? { ...x, description: e.target.value } : x))}
+            placeholder="상품 내용" style={{ ...inp, flex: 1 }} />
+        </div>
+      ))}
+      <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.8rem', cursor: 'pointer' }}>
+        <input type="checkbox" checked={active} onChange={e => setActive(e.target.checked)} style={{ accentColor: 'var(--gold)' }} />
+        <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: 'var(--white-dim)' }}>즉시 활성화</span>
+      </label>
+      <div style={{ display: 'flex', gap: '0.6rem', marginTop: '1rem' }}>
+        <button onClick={() => setShowNew(false)} style={{ ...btn, flex: 1 }}>취소</button>
+        <button onClick={submit} disabled={!name || isPending} style={{ ...btnGold, flex: 2 }}>{isPending ? '...' : '생성'}</button>
       </div>
     </div>
   );
@@ -387,7 +521,6 @@ function ScheduleManager({ league, hasSchedule, totalRounds, isPending, onGenera
     );
   }
 
-  // Group matches by round
   const rounds = Array.from({ length: totalRounds }, (_, i) => i + 1);
 
   return (
@@ -414,7 +547,6 @@ function ScheduleManager({ league, hasSchedule, totalRounds, isPending, onGenera
 
           return (
             <div key={round}>
-              {/* Round header */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '0.6rem' }}>
                 <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', letterSpacing: '0.2em', color: 'var(--gold)', minWidth: 64 }}>
                   R{round}
@@ -438,7 +570,6 @@ function ScheduleManager({ league, hasSchedule, totalRounds, isPending, onGenera
                       background: isDone ? 'rgba(201,168,76,0.05)' : 'rgba(30,74,52,0.2)',
                       minWidth: 160, flex: '0 0 auto',
                     }}>
-                      {/* Match header */}
                       <div style={{ padding: '0.3rem 0.7rem', borderBottom: '1px solid rgba(201,168,76,0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.48rem', letterSpacing: '0.1em', color: 'var(--gold-dim)' }}>
                           경기 {mi + 1}
@@ -446,7 +577,6 @@ function ScheduleManager({ league, hasSchedule, totalRounds, isPending, onGenera
                         {isDone && <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.45rem', color: '#4ade80' }}>완료</span>}
                       </div>
 
-                      {/* Players */}
                       {isRecording ? (
                         <div style={{ padding: '0.5rem' }}>
                           {match.matchPlayers.map(mp => (

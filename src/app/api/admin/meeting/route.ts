@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
   try {
     const { supabase } = await requireAdmin();
     const body = await req.json();
-    const { number, held_at, note, status } = body;
+    const { number, held_at, note, status, rsvp_deadline } = body;
     if (!number || !held_at) return NextResponse.json({ error: '필수 값 누락' }, { status: 400 });
 
     const { data, error } = await supabase.from('meetings').insert({
@@ -33,6 +33,7 @@ export async function POST(req: NextRequest) {
       held_at,
       note: note || null,
       status,
+      rsvp_deadline: rsvp_deadline ? new Date(rsvp_deadline).toISOString() : null,
     }).select().single();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
@@ -76,7 +77,7 @@ export async function PATCH(req: NextRequest) {
           .in('tx_type', ['attendance', 'late', 'absence', 'vote_skip']);
 
         const txType = att.status === 'attended' ? 'attendance' : att.status === 'late' ? 'late' : 'absence';
-        const amount = att.status === 'attended' ? 1 : -1;
+        const amount = att.status === 'attended' ? 5 : att.status === 'late' ? -1 : -3;
 
         await supabase.from('chip_transactions').insert({
           player_id: att.player_id,
@@ -100,6 +101,97 @@ export async function PATCH(req: NextRequest) {
           });
         }
       }
+      return NextResponse.json({ ok: true });
+    }
+
+    // ── 모임 정보 수정 ────────────────────────────────
+    if (action === 'update_info') {
+      const { number, held_at, note, status } = body as { number?: number; held_at?: string; note?: string; status?: string };
+      const updates: Record<string, unknown> = {};
+      if (number !== undefined) updates.number = number;
+      if (held_at !== undefined) updates.held_at = held_at;
+      if (note !== undefined) updates.note = note || null;
+      if (status !== undefined) updates.status = status;
+      const { error } = await supabase.from('meetings').update(updates).eq('id', meeting_id);
+      if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+      return NextResponse.json({ ok: true });
+    }
+
+    // ── 모임 취소 ────────────────────────────────────
+    if (action === 'cancel_meeting') {
+      await supabase.from('meetings').update({ status: 'cancelled' }).eq('id', meeting_id);
+      // RSVP 투표자 + 전체 활성 회원에게 알림
+      const { data: mtg } = await supabase.from('meetings').select('number').eq('id', meeting_id).single();
+      const { data: players } = await supabase.from('players').select('id').eq('is_active', true);
+      if (players?.length && mtg) {
+        await supabase.from('notifications').insert(
+          players.map(p => ({
+            player_id: p.id,
+            title: `❌ 제${mtg.number}회 모임이 취소되었습니다`,
+            message: '예정된 정기 모임이 취소되었습니다. 문의는 운영진에게 연락해주세요.',
+            type: 'meeting_cancelled',
+            created_by: user.id,
+          })),
+        );
+      }
+      return NextResponse.json({ ok: true });
+    }
+
+    // ── RSVP 알림 수동 재발송 ─────────────────────────
+    if (action === 'resend_rsvp_notify') {
+      const { data: mtg } = await supabase.from('meetings').select('number, rsvp_deadline').eq('id', meeting_id).single();
+      const { data: rsvps } = await supabase.from('meeting_rsvps').select('player_id').eq('meeting_id', meeting_id);
+      const voted = new Set((rsvps ?? []).map(r => r.player_id));
+      const { data: players } = await supabase.from('players').select('id').eq('is_active', true);
+      const unvoted = (players ?? []).filter(p => !voted.has(p.id));
+      if (!unvoted.length) return NextResponse.json({ sent: 0 });
+      const deadlineStr = mtg?.rsvp_deadline
+        ? new Date(mtg.rsvp_deadline).toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+        : '미정';
+      await supabase.from('notifications').insert(
+        unvoted.map(p => ({
+          player_id: p.id,
+          title: `⏰ 제${mtg?.number}회 모임 참석 투표를 해주세요`,
+          message: `아직 참석 여부를 등록하지 않으셨습니다. 마감: ${deadlineStr}. 미투표 시 LAPIS -1이 차감됩니다.`,
+          type: 'meeting_rsvp',
+          created_by: user.id,
+        })),
+      );
+      return NextResponse.json({ sent: unvoted.length });
+    }
+
+    // ── RSVP → 출석 자동 채우기 ──────────────────────
+    if (action === 'auto_fill_attendance') {
+      const { quarter_id } = body as { quarter_id: string | null };
+      const { data: rsvps } = await supabase.from('meeting_rsvps').select('player_id, status').eq('meeting_id', meeting_id);
+      for (const r of rsvps ?? []) {
+        const attStatus = r.status === 'attending' ? 'attended' : 'absent';
+        await supabase.from('meeting_attendances').upsert(
+          { meeting_id, player_id: r.player_id, status: attStatus, voted: true },
+          { onConflict: 'meeting_id,player_id' },
+        );
+        await supabase.from('chip_transactions').delete()
+          .eq('meeting_id', meeting_id).eq('player_id', r.player_id)
+          .in('tx_type', ['attendance', 'late', 'absence', 'vote_skip']);
+        await supabase.from('chip_transactions').insert({
+          player_id: r.player_id, meeting_id,
+          tx_type: attStatus === 'attended' ? 'attendance' : 'absence',
+          amount: attStatus === 'attended' ? 5 : -3,
+          quarter_id: quarter_id ?? null,
+          note: `RSVP 기반 자동 출석 처리`,
+          created_by: user.id,
+        });
+      }
+      return NextResponse.json({ ok: true, filled: rsvps?.length ?? 0 });
+    }
+
+    // ── RSVP 마감 시간 설정 ───────────────────────────
+    if (action === 'update_rsvp_deadline') {
+      const { rsvp_deadline } = body as { rsvp_deadline: string | null };
+      const { error } = await supabase.from('meetings')
+        .update({ rsvp_deadline: rsvp_deadline || null })
+        .eq('id', meeting_id);
+      if (error) return NextResponse.json({ error: error.message }, { status: 500 });
       return NextResponse.json({ ok: true });
     }
 

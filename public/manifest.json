@@ -1,0 +1,25 @@
+{
+  "name": "BGM — Boardgame in Melbourne",
+  "short_name": "BGM",
+  "description": "멜버른 한인 보드게임 모임",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b2218",
+  "theme_color": "#0b2218",
+  "orientation": "portrait",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

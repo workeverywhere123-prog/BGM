@@ -53,5 +53,7 @@ export async function GET(req: NextRequest) {
     recent_plays: recentPlays ?? [],
     is_owned,
     owned_game_id,
+  }, {
+    headers: { 'Cache-Control': 'private, max-age=60, stale-while-revalidate=120' },
   });
 }

@@ -7,6 +7,7 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { createClient } from '@supabase/supabase-js';
 import { cookies } from 'next/headers';
+import { cache } from 'react';
 import { env } from '../env';
 
 /** Service role client — bypasses RLS. Use only in server-side API routes. */
@@ -14,7 +15,7 @@ export function createSupabaseAdminClient() {
   return createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
 }
 
-export async function createSupabaseServerClient() {
+export const createSupabaseServerClient = cache(async function createSupabaseServerClient() {
   const cookieStore = await cookies();
 
   return createServerClient(env.SUPABASE_URL, env.SUPABASE_ANON_KEY, {
@@ -34,4 +35,4 @@ export async function createSupabaseServerClient() {
       },
     },
   });
-}
+});

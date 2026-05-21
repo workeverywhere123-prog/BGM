@@ -172,6 +172,8 @@ export default function NotificationBell({ initialUnread, profileUsername }: { i
     return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 
+  // unread count는 /api/auth/me 에서 함께 받아오므로 별도 fetch 불필요
+
   async function handleOpen() {
     const next = !open;
     setOpen(next);

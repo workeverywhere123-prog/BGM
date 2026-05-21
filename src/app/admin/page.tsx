@@ -106,7 +106,8 @@ export default async function AdminDashboard() {
           {[
             { href: '/admin/leagues', label: '🥇 새 리그 개설' },
             { href: '/admin/meeting/new', label: '📅 새 모임 만들기' },
-            { href: '/admin/record', label: '🎲 경기 기록' },
+            { href: '/admin/meeting', label: '📋 모임 관리' },
+            { href: '/record', label: '🎲 경기 기록' },
             { href: '/admin/notice/new', label: '📢 공지 작성' },
             { href: '/admin/quarters', label: '📆 분기 관리' },
             { href: '/admin/rooms', label: '🏠 방 모니터링' },

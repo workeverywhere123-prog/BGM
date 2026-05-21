@@ -189,6 +189,7 @@ export interface RecordMatchInput {
   game_id?: string;
   game_type: GameType;
   note?: string;
+  boardlife_game_name?: string;
   participants: ParticipantInput[];
   /** 데스매치 전용: 인당 베팅 칩 수 (기본 3) */
   deathmatch_bet?: number;

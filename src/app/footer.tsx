@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="bgm-footer">
       <div className="footer-logo">BGM</div>
-      <div className="footer-copy">© 2026 BGM · Melbourne Board Game League · All Rights Reserved</div>
+      <div className="footer-copy">© 2026 Boardgame in Melbourne — All Rights Reserved</div>
       <div className="footer-links">
         <a href="https://www.instagram.com/bgm_boardgame_in_melbourne?igsh=cXIzY283aWtjZDk2" target="_blank" rel="noopener noreferrer" title="인스타그램">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

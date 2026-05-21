@@ -1,0 +1,7 @@
+{
+  "crons": [
+    { "path": "/api/cron/meeting-poll-notify", "schedule": "*/5 * * * *" },
+    { "path": "/api/cron/rsvp-reminder",       "schedule": "*/5 * * * *" },
+    { "path": "/api/cron/rsvp-deadline",        "schedule": "*/5 * * * *" }
+  ]
+}

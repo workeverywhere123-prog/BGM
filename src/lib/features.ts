@@ -19,10 +19,10 @@ export const FEATURES: Feature[] = [
     desc: 'BGM 모임 일정 변경, 이벤트 안내 등 중요한 소식을 확인하세요.',
   },
   {
-    href: '/rooms',
-    icon: '🚪',
-    title: '모임일정',
-    desc: '방을 열어 동료를 모으세요. 당신이 판을 짜는 순간, 게임은 이미 시작된 것입니다.',
+    href: '/meeting',
+    icon: '📅',
+    title: '모임 일정',
+    desc: '모임 일정 확인, 참석 투표, 그리고 지난 모임의 기록을 열람합니다.',
   },
   {
     href: '/games',
@@ -37,16 +37,16 @@ export const FEATURES: Feature[] = [
     desc: '함께한 모든 게임의 기록이 이곳에 남습니다. 지난 모임을 돌아보고 추억을 공유하세요.',
   },
   {
-    href: '/stats',
+    href: '/records?tab=stats',
     icon: '📊',
     title: '분석실',
     desc: '감이 아니라 숫자로 증명하세요. 데이터는 당신이 숨기고 싶은 진실까지 보여줍니다.',
   },
   {
-    href: '/leaderboard',
-    icon: '🥇',
-    title: '명예의전당',
-    desc: '지금 이 순간에도 순위는 바뀌고 있습니다. 당신은 몇 위입니까?',
+    href: '/rooms',
+    icon: '🎮',
+    title: '보드게임방',
+    desc: '방을 열어 동료를 모으세요. 당신이 판을 짜는 순간, 게임은 이미 시작된 것입니다.',
   },
   {
     href: '/rules',

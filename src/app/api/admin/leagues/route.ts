@@ -13,64 +13,143 @@ function gcd(a: number, b: number): number {
   return b === 0 ? a : gcd(b, a % b);
 }
 
-function generateSchedule(playerIds: string[], playersPerGame: number) {
-  const N = playerIds.length;
-  const gamesPerRound = Math.floor(N / playersPerGame);
-  const sitOut = N % playersPerGame;
+// ─── Zero-Bias Scheduling ───────────────────────────────────────────────────
 
-  // Calculate balanced number of rounds so everyone plays equal times
+/** Sum of encounter counts for all pairs within a set of groups */
+function groupScore(groups: number[][], enc: number[][]): number {
+  let score = 0;
+  for (const g of groups)
+    for (let i = 0; i < g.length; i++)
+      for (let j = i + 1; j < g.length; j++)
+        score += enc[g[i]][g[j]];
+  return score;
+}
+
+/** Local swap optimization: swap players between groups to minimise repeat meetings */
+function swapOptimize(groups: number[][], enc: number[][]): number[][] {
+  const G = groups.length;
+  const gs = groups.map(g => [...g]);
+  let improved = true;
+  let iter = 0;
+  while (improved && iter++ < 200) {
+    improved = false;
+    for (let g1 = 0; g1 < G; g1++) {
+      for (let g2 = g1 + 1; g2 < G; g2++) {
+        for (let p1 = 0; p1 < gs[g1].length; p1++) {
+          for (let p2 = 0; p2 < gs[g2].length; p2++) {
+            const before = groupScore([gs[g1], gs[g2]], enc);
+            [gs[g1][p1], gs[g2][p2]] = [gs[g2][p2], gs[g1][p1]];
+            if (groupScore([gs[g1], gs[g2]], enc) < before) {
+              improved = true;
+            } else {
+              [gs[g1][p1], gs[g2][p2]] = [gs[g2][p2], gs[g1][p1]];
+            }
+          }
+        }
+      }
+    }
+  }
+  return gs;
+}
+
+/** Generate groups of K from active player indices, minimising encounter repetition */
+function optimalGroup(active: number[], K: number, enc: number[][]): number[][] {
+  const G = Math.floor(active.length / K);
+  let bestGroups: number[][] | null = null;
+  let bestScore = Infinity;
+  for (let attempt = 0; attempt < 8; attempt++) {
+    const shuffled = [...active].sort(() => Math.random() - 0.5);
+    const groups = swapOptimize(
+      Array.from({ length: G }, (_, g) => shuffled.slice(g * K, (g + 1) * K)),
+      enc,
+    );
+    const s = groupScore(groups, enc);
+    if (s < bestScore) { bestScore = s; bestGroups = groups; }
+  }
+  return bestGroups!;
+}
+
+interface ScheduleResult {
+  rounds: { roundNumber: number; matches: string[][] }[];
+  qc: {
+    totalRounds: number;
+    gamesPerRound: number;
+    sitOutPerRound: number;
+    maxEncounters: number;   // worst-case pair meeting count
+    minEncounters: number;   // best-case pair meeting count
+    sitOutVariance: number;  // max - min sit-outs across players
+    playCountVariance: number;
+  };
+}
+
+function generateSchedule(playerIds: string[], playersPerGame: number): ScheduleResult {
+  const N = playerIds.length;
+  const K = playersPerGame;
+  const G = Math.floor(N / K);  // games per round
+  const S = N % K;               // sit-outs per round
+
+  // Rounds needed so every player sits out equally often
   let numRounds: number;
-  if (sitOut === 0) {
-    numRounds = Math.max(gamesPerRound * 2, 4);
+  if (S === 0) {
+    numRounds = Math.max(G * 2, 4);
   } else {
-    const g = gcd(N, sitOut);
+    const g = gcd(N, S);
     numRounds = N / g;
     if (numRounds < 4) numRounds *= Math.ceil(4 / numRounds);
   }
 
-  // Initial random shuffle
-  const shuffled = [...playerIds].sort(() => Math.random() - 0.5);
-  const playCount: Record<string, number> = Object.fromEntries(shuffled.map(id => [id, 0]));
+  // Encounter matrix: enc[i][j] = times player i and j shared a table
+  const enc: number[][] = Array.from({ length: N }, () => new Array(N).fill(0));
+  const sitCount = new Array(N).fill(0);
+  const playCount = new Array(N).fill(0);
 
   const rounds: { roundNumber: number; matches: string[][] }[] = [];
 
   for (let r = 0; r < numRounds; r++) {
-    // Sort by play count asc, randomize ties for variety
-    const sorted = [...shuffled].sort((a, b) => {
-      const diff = playCount[a] - playCount[b];
-      return diff !== 0 ? diff : Math.random() - 0.5;
-    });
-
-    const active = sorted.slice(0, gamesPerRound * playersPerGame);
-
-    // Shuffle within same-count tiers for varied matchups
-    const byCount = new Map<number, string[]>();
-    active.forEach(p => {
-      const c = playCount[p];
-      if (!byCount.has(c)) byCount.set(c, []);
-      byCount.get(c)!.push(p);
-    });
-
-    const shuffledActive: string[] = [];
-    [...byCount.entries()].sort(([a], [b]) => a - b).forEach(([, group]) => {
-      for (let i = group.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [group[i], group[j]] = [group[j], group[i]];
-      }
-      shuffledActive.push(...group);
-    });
-
-    const matches: string[][] = [];
-    for (let g = 0; g < gamesPerRound; g++) {
-      const gamePlayers = shuffledActive.slice(g * playersPerGame, (g + 1) * playersPerGame);
-      matches.push(gamePlayers);
-      gamePlayers.forEach(p => playCount[p]++);
+    // Select sit-outs: prefer players who sat out least (tie-break randomly)
+    const sitouts: number[] = [];
+    if (S > 0) {
+      const byCount = [...Array(N).keys()].sort((a, b) =>
+        sitCount[a] !== sitCount[b] ? sitCount[a] - sitCount[b] : Math.random() - 0.5,
+      );
+      sitouts.push(...byCount.slice(0, S));
     }
 
-    rounds.push({ roundNumber: r + 1, matches });
+    const active = [...Array(N).keys()].filter(i => !sitouts.includes(i));
+    const groups = optimalGroup(active, K, enc);
+
+    // Update encounter matrix & play counts
+    for (const group of groups) {
+      for (let i = 0; i < group.length; i++)
+        for (let j = i + 1; j < group.length; j++) {
+          enc[group[i]][group[j]]++;
+          enc[group[j]][group[i]]++;
+        }
+      for (const p of group) playCount[p]++;
+    }
+    for (const s of sitouts) sitCount[s]++;
+
+    rounds.push({ roundNumber: r + 1, matches: groups.map(g => g.map(i => playerIds[i])) });
   }
 
-  return rounds;
+  // QC metrics
+  const pairEncs: number[] = [];
+  for (let i = 0; i < N; i++)
+    for (let j = i + 1; j < N; j++)
+      pairEncs.push(enc[i][j]);
+
+  return {
+    rounds,
+    qc: {
+      totalRounds: numRounds,
+      gamesPerRound: G,
+      sitOutPerRound: S,
+      maxEncounters: Math.max(...pairEncs),
+      minEncounters: Math.min(...pairEncs),
+      sitOutVariance: Math.max(...sitCount) - Math.min(...sitCount),
+      playCountVariance: Math.max(...playCount) - Math.min(...playCount),
+    },
+  };
 }
 
 export async function POST(req: NextRequest) {
@@ -144,10 +223,10 @@ export async function PATCH(req: NextRequest) {
         return NextResponse.json({ error: `${K}인 게임을 위해 최소 ${K}명의 참가자가 필요합니다` }, { status: 400 });
       }
 
-      const schedule = generateSchedule(playerIds, K);
+      const { rounds, qc } = generateSchedule(playerIds, K);
 
       // Insert matches
-      const matchInserts = schedule.flatMap(({ roundNumber, matches }) =>
+      const matchInserts = rounds.flatMap(({ roundNumber, matches }) =>
         matches.map((_, idx) => ({
           league_id: id,
           round: roundNumber,
@@ -166,7 +245,7 @@ export async function PATCH(req: NextRequest) {
       insertedMatches?.forEach(m => matchMap.set(`${m.round}-${m.match_index}`, m.id));
 
       // Insert league_match_players
-      const playerInserts = schedule.flatMap(({ roundNumber, matches }) =>
+      const playerInserts = rounds.flatMap(({ roundNumber, matches }) =>
         matches.flatMap((players, idx) => {
           const matchId = matchMap.get(`${roundNumber}-${idx}`);
           if (!matchId) return [];
@@ -177,7 +256,7 @@ export async function PATCH(req: NextRequest) {
       const { error: pErr } = await supabase.from('league_match_players').insert(playerInserts);
       if (pErr) return NextResponse.json({ error: pErr.message }, { status: 500 });
 
-      return NextResponse.json({ ok: true, rounds: schedule.length, matches: matchInserts.length });
+      return NextResponse.json({ ok: true, rounds: rounds.length, matches: matchInserts.length, qc });
     }
 
     if (action === 'record_match_result') {

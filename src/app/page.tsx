@@ -50,7 +50,7 @@ export default function Home() {
         <div className="hero-divider" />
 
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <Link href="/rooms" className="hero-cta">모임 일정 보기</Link>
+          <Link href="/meeting" className="hero-cta">모임 일정 보기</Link>
           <Link href="/league" style={{
             display: 'inline-block', fontFamily: "'Cinzel', serif", fontSize: '0.75rem',
             letterSpacing: '0.22em', color: 'var(--gold)', border: '1px solid var(--gold)',
@@ -67,7 +67,7 @@ export default function Home() {
         <div className="section-divider" />
         <div className="about-grid">
           {FEATURES.map(f => (
-            <Link key={f.href} href={f.href} className="about-card" style={{ textDecoration: 'none' }}>
+            <Link key={f.title} href={f.href} className="about-card" style={{ textDecoration: 'none' }}>
               <span className="about-icon">{f.icon}</span>
               <h3>{f.title}</h3>
               <p>{f.desc}</p>

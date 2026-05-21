@@ -64,6 +64,7 @@ export function RecordForm({ players, meetings, leagueId }: RecordFormProps) {
   const [rows, setRows] = useState<RowState[]>([emptyRow(), emptyRow()]);
   const [bet, setBet] = useState(3);
   const [note, setNote] = useState('');
+  const [boardGameName, setBoardGameName] = useState('');
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [isPending, startTransition] = useTransition();
@@ -151,12 +152,14 @@ export function RecordForm({ players, meetings, leagueId }: RecordFormProps) {
         note: note || undefined,
         participants,
         deathmatch_bet: bet,
+        boardlife_game_name: boardGameName.trim() || undefined,
       });
 
       if (res.ok) {
         setStatus('success');
         setRows([emptyRow(), emptyRow()]);
         setNote('');
+        setBoardGameName('');
       } else {
         setErrorMsg(res.error.message);
         setStatus('error');
@@ -348,6 +351,18 @@ export function RecordForm({ players, meetings, leagueId }: RecordFormProps) {
           </div>
         </section>
       )}
+
+      {/* 보드게임 이름 */}
+      <section className="space-y-1">
+        <h2 className="text-sm font-semibold uppercase tracking-wider opacity-50">보드게임 이름 <span className="text-xs normal-case font-normal opacity-70">(선택)</span></h2>
+        <input
+          type="text"
+          placeholder="예: 아발론, 브라스: 버밍엄, 루트"
+          value={boardGameName}
+          onChange={(e) => setBoardGameName(e.target.value)}
+          className="w-full rounded-md border border-white/10 bg-black/30 px-3 py-2 text-sm opacity-70 focus:opacity-100"
+        />
+      </section>
 
       {/* 메모 */}
       <section>

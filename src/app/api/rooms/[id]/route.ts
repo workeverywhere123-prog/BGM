@@ -150,9 +150,11 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
     }
 
     if (action === 'record_results') {
-      const { data: room } = await supabase.from('rooms').select('host_id, status, started_at').eq('id', id).single();
+      const { data: room } = await supabase.from('rooms').select('host_id, status, started_at, is_ranked, boardlife_game_id, boardlife_game_name').eq('id', id).single();
       if (room?.host_id !== user.id) return NextResponse.json({ error: '권한이 없습니다' }, { status: 403 });
 
+      const isRanked = room?.is_ranked ?? true;
+      const boardGameName: string | null = room?.boardlife_game_name ?? null;
       const durationMinutes = room?.started_at
         ? Math.round((Date.now() - new Date(room.started_at).getTime()) / 60000)
         : null;
@@ -164,12 +166,18 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
 
       const { data: match, error: matchErr } = await supabase
         .from('matches')
-        .insert({ meeting_id: null, game_type, played_at: new Date().toISOString(), created_by: user.id, duration_minutes: durationMinutes })
+        .insert({ meeting_id: null, game_type, boardlife_game_id: room?.boardlife_game_id ?? null, boardlife_game_name: boardGameName, played_at: new Date().toISOString(), created_by: user.id, duration_minutes: durationMinutes, is_ranked: isRanked })
         .select('id')
         .single();
       if (matchErr || !match) return NextResponse.json({ error: matchErr?.message ?? 'match 생성 실패' }, { status: 500 });
 
+      const total = participants.length;
       for (const p of participants) {
+        let chip_change = 0;
+        if (isRanked) {
+          if (game_type === 'ranking') chip_change = rankingPoints(p.rank ?? total, total);
+          else chip_change = p.is_winner ? 2 : -1;
+        }
         await supabase.from('match_participants').insert({
           match_id: match.id,
           player_id: p.player_id,
@@ -179,29 +187,26 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
           is_winner: p.is_winner ?? false,
           score: p.score ?? null,
           is_mvp: false,
+          chip_change,
         });
       }
 
-      const { data: quarter } = await supabase.from('quarters').select('id').eq('is_active', true).maybeSingle();
-      const total = participants.length;
-
-      for (const p of participants) {
-        let amount = 0;
-        if (game_type === 'ranking') {
-          amount = rankingPoints(p.rank ?? total, total);
-        } else {
-          amount = p.is_winner ? 2 : -1;
-          // MVP bonus is applied separately after voting
-        }
-        if (amount !== 0) {
-          await supabase.from('chip_transactions').insert({
-            player_id: p.player_id,
-            tx_type: 'game',
-            amount,
-            quarter_id: quarter?.id ?? null,
-            note: `보드게임방 ${game_type} 결과`,
-            created_by: user.id,
-          });
+      if (isRanked) {
+        const { data: quarter } = await supabase.from('quarters').select('id').eq('is_active', true).maybeSingle();
+        for (const p of participants) {
+          let amount = 0;
+          if (game_type === 'ranking') amount = rankingPoints(p.rank ?? total, total);
+          else amount = p.is_winner ? 2 : -1;
+          if (amount !== 0) {
+            await supabase.from('chip_transactions').insert({
+              player_id: p.player_id,
+              tx_type: 'game',
+              amount,
+              quarter_id: quarter?.id ?? null,
+              note: `보드게임방 ${game_type} 결과`,
+              created_by: user.id,
+            });
+          }
         }
       }
 

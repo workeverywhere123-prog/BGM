@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import BoardlifeGamePicker, { type PickedGame } from '@/components/BoardlifeGamePicker';
 import { createSupabaseBrowserClient } from '@/lib/supabase/client';
 import LapisIcon from '@/components/LapisIcon';
+import FloatingChatBox from '@/components/FloatingChatBox';
+import GameNameLink from '@/components/GameNameLink';
 
 interface Member { id: string; nickname: string; username: string; bring_game_ids: string[]; avatar_url?: string | null; }
 interface Spectator { id: string; nickname: string; username: string; avatar_url?: string | null; }
@@ -463,10 +465,10 @@ export default function RoomDetail({ room, currentUserId, initialMvpVotes, initi
             <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.52rem', letterSpacing: '0.15em', color: 'var(--gold-dim)' }}>오늘의 게임</span>
             {selectedGames.map(g => (
               <div key={g.boardlife_id} style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', padding: '0.25rem 0.6rem', border: '1px solid rgba(201,168,76,0.25)', background: 'rgba(201,168,76,0.06)' }}>
-                <a href={`https://boardlife.co.kr/game/${g.boardlife_id}`} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', textDecoration: 'none' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                   {g.thumbnail_url && <img src={g.thumbnail_url} alt="" style={{ width: 18, height: 18, objectFit: 'contain', opacity: 0.85 }} />}
-                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.9rem', color: 'var(--foreground)', textDecoration: 'underline', textUnderlineOffset: '2px', textDecorationColor: 'rgba(201,168,76,0.4)' }}>{g.name}</span>
-                </a>
+                  <GameNameLink name={g.name} gameInfo={{ boardlife_id: g.boardlife_id, thumbnail_url: g.thumbnail_url }} style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.9rem', color: 'var(--foreground)' }} />
+                </div>
                 {isHost && (
                   <button onClick={() => removeGame(g.boardlife_id)} style={{ background: 'none', border: 'none', color: 'rgba(244,239,230,0.25)', cursor: 'pointer', fontSize: '0.7rem', padding: '0 0.1rem', lineHeight: 1 }}>✕</button>
                 )}
@@ -636,6 +638,14 @@ export default function RoomDetail({ room, currentUserId, initialMvpVotes, initi
       )}
       {tab === 'youtube' && <YoutubeSearch gameTypes={room.game_types} selectedGames={selectedGames} initialUrl={room.youtube_url} roomId={room.id} isHost={isHost} />}
       {tab === 'bgm' && <BgmSearch gameTypes={room.game_types} selectedGames={selectedGames} />}
+      <FloatingChatBox
+        roomId={room.id}
+        currentUserId={currentUserId}
+        currentUserNickname={
+          members.find(m => m.id === currentUserId)?.nickname ??
+          (room.host_id === currentUserId ? room.host.nickname : null)
+        }
+      />
     </div>
   );
 }

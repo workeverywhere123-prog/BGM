@@ -24,6 +24,7 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ id:
   const allIds = [...new Set([room.host_id, ...memberIds])];
 
   const { data: players } = await supabase.from('players').select('id, nickname, username, avatar_url').in('id', allIds);
+
   const pmap = Object.fromEntries((players ?? []).map(p => [p.id, p]));
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

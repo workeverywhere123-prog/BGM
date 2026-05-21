@@ -1,9 +1,10 @@
+import { Suspense } from 'react';
 import Nav from '../nav';
 import Link from 'next/link';
 import { isSupabaseConfigured } from '@/lib/env';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import Footer from '../footer';
-import LapisIcon from '@/components/LapisIcon';
+import LeaderboardContent from '../records/LeaderboardContent';
 
 export const dynamic = 'force-dynamic';
 
@@ -61,7 +62,7 @@ export default async function LeaguePage() {
       <div style={{ paddingTop: '6rem', minHeight: '100vh', position: 'relative', zIndex: 1 }}>
 
         {/* 헤더 */}
-        <div style={{ textAlign: 'center', padding: '4rem 2rem 2rem' }}>
+        <div style={{ textAlign: 'center', padding: 'clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem) 2rem' }}>
           <p className="section-label">BGM LEAGUE</p>
           <h1 className="section-title">리그 현황</h1>
           <div className="section-divider" />
@@ -89,7 +90,7 @@ export default async function LeaguePage() {
 
         {/* 리그 카드 */}
         {leagues.length > 0 && (
-          <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 2rem 4rem' }}>
+          <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 clamp(1rem, 4vw, 2rem) 4rem' }}>
             <p className="section-label" style={{ textAlign: 'left', marginBottom: '1.2rem' }}>ACTIVE LEAGUES</p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem' }}>
               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
@@ -150,31 +151,18 @@ export default async function LeaguePage() {
           </div>
         )}
 
-        {/* 기록실 바로가기 */}
-        <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 2rem 2rem', textAlign: 'center' }}>
-          <Link href="/records" style={{
-            display: 'inline-flex', alignItems: 'center', gap: '0.6rem',
-            fontFamily: "'Cinzel', serif", fontSize: '0.62rem', letterSpacing: '0.15em',
-            color: 'var(--gold-dim)', textDecoration: 'none',
-            border: '1px solid rgba(201,168,76,0.2)', padding: '0.6rem 1.6rem',
-            transition: 'all 0.2s',
-          }}>
-            <LapisIcon size={12} /> 분기 랭킹 · 누적 보유량은 기록실에서 →
-          </Link>
+        {/* LEAGUE CHAMPIONS */}
+        <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 clamp(1rem, 4vw, 2rem) 1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', margin: '2rem 0 2.5rem' }}>
+            <div style={{ flex: 1, height: 1, background: 'rgba(201,168,76,0.15)' }} />
+            <p className="section-label" style={{ margin: 0, whiteSpace: 'nowrap' }}>역대 리그 챔피언</p>
+            <div style={{ flex: 1, height: 1, background: 'rgba(201,168,76,0.15)' }} />
+          </div>
         </div>
+        <Suspense fallback={null}>
+          <LeaderboardContent hideLapis />
+        </Suspense>
 
-        {/* 규칙 바로가기 */}
-        <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 2rem 6rem', textAlign: 'center' }}>
-          <Link href="/rules" style={{
-            display: 'inline-flex', alignItems: 'center', gap: '0.6rem',
-            fontFamily: "'Cinzel', serif", fontSize: '0.65rem', letterSpacing: '0.2em',
-            color: 'var(--gold-dim)', textDecoration: 'none',
-            border: '1px solid rgba(201,168,76,0.2)', padding: '0.7rem 1.8rem',
-            transition: 'all 0.2s',
-          }}>
-            ◆ BGM HOW TO PLAY — <LapisIcon size={12} /> LAPIS 규칙 보기 →
-          </Link>
-        </div>
       </div>
 
       <Footer />

@@ -49,7 +49,12 @@ export default function AdminInquiriesClient({ inquiries: initial }: { inquiries
     setReply('');
   }
 
-  const fmtDate = (iso: string) => new Date(iso).toLocaleString('ko-KR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  const fmtDate = (iso: string) => {
+    const d = new Date(iso);
+    const month = d.getMonth() + 1, day = d.getDate();
+    const h = d.getHours(), m = d.getMinutes().toString().padStart(2, '0');
+    return `${month}월 ${day}일 ${h < 12 ? '오전' : '오후'} ${h % 12 === 0 ? 12 : h % 12}:${m}`;
+  };
 
   return (
     <>
@@ -90,7 +95,7 @@ export default function AdminInquiriesClient({ inquiries: initial }: { inquiries
                   <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.62rem', color: 'var(--foreground)', marginBottom: '0.2rem' }}>{q.title}</p>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.85rem', color: 'rgba(244,239,230,0.45)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{q.message}</p>
                 </div>
-                <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.44rem', color: 'rgba(244,239,230,0.25)', flexShrink: 0 }}>{fmtDate(q.created_at)}</span>
+                <span suppressHydrationWarning style={{ fontFamily: "'Cinzel', serif", fontSize: '0.44rem', color: 'rgba(244,239,230,0.25)', flexShrink: 0 }}>{fmtDate(q.created_at)}</span>
               </div>
             </div>
           );
@@ -108,14 +113,14 @@ export default function AdminInquiriesClient({ inquiries: initial }: { inquiries
           </div>
           <div style={{ padding: '1.5rem' }}>
             <h3 style={{ fontFamily: "'Cinzel', serif", fontSize: '0.82rem', color: 'var(--gold)', marginBottom: '0.4rem' }}>{selected.title}</h3>
-            <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.44rem', color: 'rgba(244,239,230,0.25)', marginBottom: '1rem' }}>{fmtDate(selected.created_at)}</p>
+            <p suppressHydrationWarning style={{ fontFamily: "'Cinzel', serif", fontSize: '0.44rem', color: 'rgba(244,239,230,0.25)', marginBottom: '1rem' }}>{fmtDate(selected.created_at)}</p>
             <div style={{ padding: '1rem', background: 'rgba(30,74,52,0.2)', borderLeft: '2px solid rgba(201,168,76,0.2)', marginBottom: '1.5rem' }}>
               <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', color: 'rgba(244,239,230,0.85)', lineHeight: 1.7, whiteSpace: 'pre-wrap' }}>{selected.message}</p>
             </div>
 
             {selected.admin_reply && (
               <div style={{ padding: '1rem', background: 'rgba(74,222,128,0.06)', border: '1px solid rgba(74,222,128,0.2)', marginBottom: '1.2rem' }}>
-                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.5rem', color: '#4ade80', marginBottom: '0.5rem' }}>기존 답변 · {selected.replied_at ? fmtDate(selected.replied_at) : ''}</p>
+                <p suppressHydrationWarning style={{ fontFamily: "'Cinzel', serif", fontSize: '0.5rem', color: '#4ade80', marginBottom: '0.5rem' }}>기존 답변 · {selected.replied_at ? fmtDate(selected.replied_at) : ''}</p>
                 <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: 'rgba(244,239,230,0.8)', lineHeight: 1.6, whiteSpace: 'pre-wrap' }}>{selected.admin_reply}</p>
               </div>
             )}

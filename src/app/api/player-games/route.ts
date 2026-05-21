@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
     const supabase = await createSupabaseServerClient();
     const body = await req.json();
 
-    const { name, name_en, boardlife_id, boardlife_url, thumbnail_url, min_players, max_players, is_available, note } = body;
+    const { name, name_en, boardlife_id, boardlife_url, thumbnail_url, min_players, max_players, is_available, note, genre } = body;
     if (!name) return NextResponse.json({ error: '게임 이름을 입력해주세요' }, { status: 400 });
 
     const { data, error } = await supabase.from('player_games').insert({
@@ -22,6 +22,7 @@ export async function POST(req: NextRequest) {
       max_players: max_players || null,
       is_available: is_available ?? true,
       note: note || null,
+      genre: genre || null,
     }).select().single();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
@@ -53,10 +54,10 @@ export async function PATCH(req: NextRequest) {
   try {
     const user = await requireSessionUser();
     const supabase = await createSupabaseServerClient();
-    const { id, is_available, note } = await req.json();
+    const { id, is_available, note, genre } = await req.json();
 
     const { error } = await supabase.from('player_games')
-      .update({ is_available, note: note || null })
+      .update({ is_available, note: note || null, genre: genre ?? undefined })
       .eq('id', id)
       .eq('player_id', user.id);
 

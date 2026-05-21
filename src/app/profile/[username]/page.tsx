@@ -28,7 +28,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ userna
 
   const { data: games } = await supabase
     .from('player_games')
-    .select('id, name, name_en, bgg_id, boardlife_id, boardlife_url, thumbnail_url, min_players, max_players, note')
+    .select('id, name, name_en, bgg_id, boardlife_id, boardlife_url, thumbnail_url, min_players, max_players, note, genre')
     .eq('player_id', player.id)
     .order('name');
 

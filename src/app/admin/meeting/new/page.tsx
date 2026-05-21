@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 export default function NewMeetingPage() {
   const router = useRouter();
-  const [form, setForm] = useState({ number: '', held_at: '', note: '', status: 'upcoming' });
+  const [form, setForm] = useState({ number: '', held_at: '', note: '', status: 'upcoming', rsvp_deadline: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -58,6 +58,14 @@ export default function NewMeetingPage() {
             <option value="active">진행중</option>
             <option value="closed">종료</option>
           </select>
+        </div>
+        <div>
+          <label style={labelStyle}>참석 투표 마감 시간 (선택)</label>
+          <input type="datetime-local" value={form.rsvp_deadline}
+            onChange={e => setForm(f => ({ ...f, rsvp_deadline: e.target.value }))} style={inputStyle} />
+          <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.5rem', color: 'rgba(244,239,230,0.3)', marginTop: '0.3rem', letterSpacing: '0.08em' }}>
+            마감 30분 전 미투표자 알림 발송 · 마감 후 LAPIS -1 차감
+          </p>
         </div>
         <div>
           <label style={labelStyle}>메모 (선택)</label>

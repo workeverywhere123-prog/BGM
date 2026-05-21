@@ -7,6 +7,7 @@ import { isSupabaseConfigured } from '@/lib/env';
 import Footer from '../../footer';
 import LeagueAvailability from './LeagueAvailability';
 import MatchRoomButton from './MatchRoomButton';
+import FloatingChatBox from '@/components/FloatingChatBox';
 
 export const dynamic = 'force-dynamic';
 
@@ -439,6 +440,11 @@ export default async function LeagueDetailPage({ params }: { params: Promise<{ i
         </div>
       </div>
 
+      <FloatingChatBox
+        leagueId={id}
+        currentUserId={sessionUser?.id ?? null}
+        currentUserNickname={sessionUser ? (pmap[sessionUser.id]?.nickname ?? null) : null}
+      />
       <Footer />
     </>
   );

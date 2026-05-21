@@ -32,15 +32,23 @@ export async function GET(req: NextRequest) {
         'X-Requested-With': 'XMLHttpRequest',
       },
       body,
-      signal: AbortSignal.timeout(8000),
+      cache: 'no-store',
+      signal: AbortSignal.timeout(12000),
     });
 
     if (!res.ok) {
-      console.error('[boardlife] status:', res.status);
-      return NextResponse.json([]);
+      console.error('[boardlife] HTTP', res.status);
+      return NextResponse.json([], { status: 502 });
     }
 
-    const json = await res.json() as { success: boolean; games?: Array<{ number: number | string; title: string; thumb: string }> };
+    const text = await res.text();
+    let json: { success: boolean; games?: Array<{ number: number | string; title: string; thumb: string }> };
+    try {
+      json = JSON.parse(text);
+    } catch {
+      console.error('[boardlife] non-JSON response:', text.slice(0, 200));
+      return NextResponse.json([], { status: 502 });
+    }
 
     if (!json.success || !json.games?.length) return NextResponse.json([]);
 
@@ -54,9 +62,11 @@ export async function GET(req: NextRequest) {
       max_players: null,
     }));
 
-    return NextResponse.json(games);
+    return NextResponse.json(games, {
+      headers: { 'Cache-Control': 'public, max-age=3600, stale-while-revalidate=86400' },
+    });
   } catch (err) {
-    console.error('[boardlife search]', err);
-    return NextResponse.json([]);
+    console.error('[boardlife search error]', err);
+    return NextResponse.json([], { status: 503 });
   }
 }

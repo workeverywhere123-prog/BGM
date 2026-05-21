@@ -2,6 +2,13 @@
 
 import { useState, useEffect, useRef } from 'react';
 
+const GENRES = ['전략', '파티', '가족', '추상', '테마', '전쟁', '아동', '커스터마이즈'];
+const GENRE_COLOR: Record<string, string> = {
+  '전략': '#4ade80', '파티': '#fb923c', '가족': '#60a5fa',
+  '추상': '#94a3b8', '테마': '#c084fc', '전쟁': '#f87171',
+  '아동': '#fcd34d', '커스터마이즈': '#2dd4bf',
+};
+
 interface PlayerGame {
   id: string;
   name: string;
@@ -12,6 +19,7 @@ interface PlayerGame {
   min_players: number | null;
   max_players: number | null;
   note: string | null;
+  genre: string | null;
 }
 
 interface BoardlifeResult {
@@ -42,28 +50,41 @@ export default function GameManager({ initialGames }: { initialGames: PlayerGame
   const [note, setNote] = useState('');
   const [saving, setSaving] = useState(false);
   const [noResults, setNoResults] = useState(false);
+  const [searchError, setSearchError] = useState(false);
+  const [genre, setGenre] = useState('');
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    if (!searchQuery.trim()) { setSearchResults([]); setNoResults(false); return; }
+    if (!searchQuery.trim()) { setSearchResults([]); setNoResults(false); setSearchError(false); return; }
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(async () => {
       setSearching(true);
       setNoResults(false);
+      setSearchError(false);
       try {
         const res = await fetch(`/api/boardlife/search?q=${encodeURIComponent(searchQuery)}`);
+        if (!res.ok) { setSearchError(true); setSearching(false); return; }
         const data = await res.json();
         setSearchResults(data);
         setNoResults(data.length === 0);
-      } catch { setNoResults(true); }
+      } catch { setSearchError(true); }
       setSearching(false);
     }, 600);
   }, [searchQuery]);
 
-  const selectGame = (g: BoardlifeResult) => {
+  const selectGame = async (g: BoardlifeResult) => {
     setSelected(g);
     setNameOverride(g.name);
     setSearchResults([]);
+    setGenre('');
+    // 보드라이프에서 카테고리 자동 가져오기
+    try {
+      const res = await fetch(`/api/boardlife/categories?id=${g.boardlife_id}`);
+      const data = await res.json();
+      if (data.categories?.length) {
+        setGenre(data.categories.map((c: { label: string }) => c.label).join(','));
+      }
+    } catch { /* 실패 시 빈값 유지 */ }
   };
 
   const addGame = async () => {
@@ -82,6 +103,7 @@ export default function GameManager({ initialGames }: { initialGames: PlayerGame
         min_players: selected?.min_players ?? null,
         max_players: selected?.max_players ?? null,
         note: note || null,
+        genre: genre || null,
       }),
     });
     if (res.ok) {
@@ -116,7 +138,9 @@ export default function GameManager({ initialGames }: { initialGames: PlayerGame
     setSelected(null);
     setNameOverride('');
     setNote('');
+    setGenre('');
     setNoResults(false);
+    setSearchError(false);
   };
 
   return (
@@ -188,8 +212,15 @@ export default function GameManager({ initialGames }: { initialGames: PlayerGame
             </div>
           )}
 
+          {/* 연결 오류 */}
+          {searchError && !selected && (
+            <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', color: '#ff6b6b', marginBottom: '0.6rem' }}>
+              ⚠ 보드라이프 연결 실패 — 잠시 후 다시 시도하거나 이름을 직접 입력하세요
+            </p>
+          )}
+
           {/* No results */}
-          {noResults && !selected && (
+          {noResults && !selected && !searchError && (
             <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', color: 'var(--white-dim)', opacity: 0.5, marginBottom: '0.6rem' }}>
               검색 결과 없음 — 이름을 직접 입력하세요
             </p>
@@ -222,7 +253,35 @@ export default function GameManager({ initialGames }: { initialGames: PlayerGame
 
           {/* Options */}
           {(selected || (noResults && nameOverride)) && (
-            <div style={{ marginBottom: '0.5rem' }}>
+            <div style={{ marginBottom: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+              {/* 장르 선택 */}
+              <div>
+                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.48rem', letterSpacing: '0.12em', color: 'var(--gold-dim)', marginBottom: '0.3rem' }}>
+                  장르
+                  {selected && genre && <span style={{ color: 'var(--gold)', marginLeft: '0.4rem' }}>· 보드라이프 자동 감지</span>}
+                  {selected && !genre && <span style={{ color: 'rgba(244,239,230,0.35)', marginLeft: '0.4rem' }}>· 직접 선택하세요</span>}
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>
+                  {GENRES.map(g => {
+                    const active = genre.split(',').includes(g);
+                    return (
+                      <button key={g} type="button" onClick={() => {
+                        const parts = genre ? genre.split(',').filter(Boolean) : [];
+                        if (parts.includes(g)) setGenre(parts.filter(p => p !== g).join(','));
+                        else setGenre([...parts, g].join(','));
+                      }} style={{
+                        fontFamily: "'Cinzel', serif", fontSize: '0.5rem', letterSpacing: '0.08em',
+                        padding: '0.2rem 0.55rem', cursor: 'pointer',
+                        border: `1px solid ${active ? (GENRE_COLOR[g] ?? 'var(--gold)') : 'rgba(201,168,76,0.2)'}`,
+                        background: active ? `${GENRE_COLOR[g] ?? 'var(--gold)'}22` : 'transparent',
+                        color: active ? (GENRE_COLOR[g] ?? 'var(--gold)') : 'var(--white-dim)',
+                      }}>
+                        {g}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
               <input
                 value={note}
                 onChange={e => setNote(e.target.value)}
@@ -248,12 +307,12 @@ export default function GameManager({ initialGames }: { initialGames: PlayerGame
       {games.length === 0 && !showAdd ? (
         <div className="board-empty"><p>등록된 게임이 없습니다</p></div>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 1, maxHeight: '420px', overflowY: 'auto' }}>
           {games.map(g => (
             <div key={g.id} style={{
               display: 'flex', gap: '0.6rem', alignItems: 'center',
               padding: '0.6rem 0.8rem', background: 'rgba(30,74,52,0.15)',
-              borderLeft: '2px solid var(--gold-dim)', overflow: 'hidden',
+              borderLeft: '2px solid var(--gold-dim)',
             }}>
               {/* Thumbnail / placeholder */}
               <button onClick={() => openBoardlife(g)} title="보드라이브에서 보기" style={{
@@ -278,7 +337,17 @@ export default function GameManager({ initialGames }: { initialGames: PlayerGame
                     {g.name}
                   </p>
                 </button>
-                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginTop: '0.1rem', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center', marginTop: '0.1rem', flexWrap: 'wrap' }}>
+                  {g.genre && g.genre.split(',').slice(0, 2).map((cat, ci) => (
+                    <span key={ci} style={{
+                      fontFamily: "'Cinzel', serif", fontSize: '0.45rem', letterSpacing: '0.05em',
+                      padding: '0.1rem 0.35rem',
+                      border: `1px solid ${GENRE_COLOR[cat] ?? 'var(--gold)'}55`,
+                      color: GENRE_COLOR[cat] ?? 'var(--gold)',
+                    }}>
+                      {cat}
+                    </span>
+                  ))}
                   {g.min_players && (
                     <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.52rem', color: 'var(--white-dim)' }}>
                       {g.min_players}{g.max_players && g.max_players !== g.min_players ? `–${g.max_players}` : ''}인
