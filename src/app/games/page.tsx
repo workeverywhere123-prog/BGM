@@ -51,6 +51,8 @@ export default async function GamesPage() {
       entry.owners.push({ ...g.players, playerGameId: g.id });
     }
     if (g.genre && !entry.genre) entry.genre = g.genre;
+    // thumbnail_url이 없는 entry면 나중 row에서라도 채우기
+    if (g.thumbnail_url && !entry.thumbnail_url) entry.thumbnail_url = g.thumbnail_url;
   }
 
   const ownerMap = new Map<string, { id: string; nickname: string; username: string }>();

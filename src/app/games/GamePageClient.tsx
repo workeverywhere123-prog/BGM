@@ -567,9 +567,9 @@ export default function GamePageClient({
           </div>
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '0.75rem' }}>
-            {pagedGames.map((g, i) => (
+            {pagedGames.map((g) => (
               <div
-                key={i}
+                key={g.boardlife_id ?? g.name}
                 onClick={() => handleGameClick(g)}
                 style={{
                   border: '1px solid rgba(201,168,76,0.15)', background: 'rgba(30,74,52,0.1)',
