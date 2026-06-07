@@ -35,8 +35,13 @@ function extractBoardlifeId(url: string): string | null {
   return null;
 }
 
+/** 입력이 boardlife URL인지 빠르게 확인 */
+function isBoardlifeUrl(s: string): boolean {
+  return s.includes('boardlife.co.kr/game/');
+}
+
 export default function BoardlifeGamePicker({
-  value, onChange, placeholder = '보드게임 검색 (예: 카탄, 브라스...)',
+  value, onChange, placeholder = '게임 이름 검색 또는 보드라이프 URL 붙여넣기',
 }: {
   value: PickedGame | null;
   onChange: (g: PickedGame | null) => void;
@@ -53,10 +58,12 @@ export default function BoardlifeGamePicker({
   const [urlInput, setUrlInput] = useState('');
   const [urlName, setUrlName] = useState('');
   const [urlId, setUrlId] = useState<string | null>(null);
+  const [urlFetching, setUrlFetching] = useState(false);
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // 외부 클릭 시 드롭다운 닫기
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
@@ -67,27 +74,61 @@ export default function BoardlifeGamePicker({
     return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 
+  // 검색어 변경 시 처리
   useEffect(() => {
-    if (!query.trim()) { setResults([]); setOpen(false); setSearched(false); return; }
+    const q = query.trim();
+    if (!q) { setResults([]); setOpen(false); setSearched(false); return; }
+
+    // boardlife URL을 검색창에 붙여넣으면 자동으로 URL 모드 전환
+    if (isBoardlifeUrl(q)) {
+      const id = extractBoardlifeId(q);
+      if (id) {
+        setUrlMode(true);
+        setUrlInput(q);
+        setUrlId(id);
+        setQuery('');
+        return;
+      }
+    }
+
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(async () => {
       setLoading(true);
       setSearched(false);
       try {
-        const res = await fetch(`/api/boardlife/search?q=${encodeURIComponent(query)}`);
-        const data = await res.json();
-        setResults(data);
-        setOpen(data.length > 0);
-      } catch { setResults([]); }
+        // 1순위: 내부 DB 검색 (항상 작동)
+        // 2순위: 보드라이프 API (Cloudflare로 자주 차단)
+        const [localRes, blRes] = await Promise.allSettled([
+          fetch(`/api/games/search?q=${encodeURIComponent(q)}`).then(r => r.json()),
+          fetch(`/api/boardlife/search?q=${encodeURIComponent(q)}`).then(r => r.json()),
+        ]);
+
+        const local: SearchResult[] = localRes.status === 'fulfilled' ? (localRes.value ?? []) : [];
+        const bl: SearchResult[] = blRes.status === 'fulfilled' ? (blRes.value ?? []) : [];
+
+        // 중복 제거: boardlife_id 기준으로 local 우선, bl 추가
+        const seen = new Set(local.map((g: SearchResult) => g.boardlife_id));
+        const merged = [
+          ...local,
+          ...bl.filter((g: SearchResult) => !seen.has(g.boardlife_id)),
+        ];
+
+        setResults(merged);
+        setOpen(merged.length > 0);
+      } catch {
+        setResults([]);
+      }
       setLoading(false);
       setSearched(true);
-    }, 500);
+    }, 400);
   }, [query]);
 
   // URL 입력 시 boardlife_id 자동 추출
   useEffect(() => {
     const id = extractBoardlifeId(urlInput);
     setUrlId(id);
+    setUrlName('');
+    setUrlFetching(false);
   }, [urlInput]);
 
   const select = (g: SearchResult) => {
@@ -112,9 +153,16 @@ export default function BoardlifeGamePicker({
     setUrlMode(false);
   };
 
+  const exitUrlMode = () => {
+    setUrlMode(false);
+    setUrlInput('');
+    setUrlName('');
+    setUrlId(null);
+  };
+
   const clear = () => { onChange(null); setQuery(''); setSearched(false); };
 
-  // 선택된 게임 표시
+  // ── 선택된 게임 표시 ──────────────────────────────────────────────────
   if (value) {
     return (
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', padding: '0.5rem 0.8rem', background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.3)' }}>
@@ -129,51 +177,67 @@ export default function BoardlifeGamePicker({
     );
   }
 
-  // URL 직접 입력 모드
+  // ── URL 직접 입력 모드 ────────────────────────────────────────────────
   if (urlMode) {
     return (
       <div ref={containerRef} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <button type="button" onClick={() => setUrlMode(false)} style={{ background: 'none', border: 'none', color: 'var(--white-dim)', cursor: 'pointer', fontSize: '0.8rem', opacity: 0.6, padding: 0 }}>←</button>
+          <button type="button" onClick={exitUrlMode} style={{ background: 'none', border: 'none', color: 'var(--white-dim)', cursor: 'pointer', fontSize: '0.85rem', opacity: 0.6, padding: 0 }}>←</button>
           <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.5rem', letterSpacing: '0.1em', color: 'var(--gold-dim)' }}>보드라이프 URL 직접 입력</span>
         </div>
+
         <input
           value={urlInput}
           onChange={e => setUrlInput(e.target.value)}
           placeholder="https://boardlife.co.kr/game/12345"
           style={inp}
+          autoFocus
         />
-        {urlId && (
-          <input
-            value={urlName}
-            onChange={e => setUrlName(e.target.value)}
-            placeholder="게임 이름 입력 (필수)"
-            style={inp}
-            autoFocus
-          />
-        )}
-        {urlId && urlName.trim() && (
-          <button
-            type="button"
-            onClick={selectFromUrl}
-            style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', letterSpacing: '0.1em', padding: '0.5rem', border: '1px solid rgba(201,168,76,0.4)', background: 'rgba(201,168,76,0.1)', color: 'var(--gold)', cursor: 'pointer' }}
-          >
-            이 게임으로 추가
-          </button>
-        )}
-        {!urlId && urlInput.trim() && (
+
+        {urlId ? (
+          <>
+            <input
+              value={urlName}
+              onChange={e => setUrlName(e.target.value)}
+              onKeyDown={e => { if (e.key === 'Enter' && urlName.trim()) selectFromUrl(); }}
+              placeholder="게임 한국어 이름 입력 (필수)"
+              style={inp}
+              autoFocus
+            />
+            {urlName.trim() && (
+              <button
+                type="button"
+                onClick={selectFromUrl}
+                style={{
+                  fontFamily: "'Cinzel', serif", fontSize: '0.55rem', letterSpacing: '0.1em',
+                  padding: '0.55rem', border: 'none',
+                  background: 'var(--gold)', color: '#0b2218',
+                  cursor: 'pointer', fontWeight: 600,
+                }}
+              >
+                이 게임으로 추가 →
+              </button>
+            )}
+            {urlFetching && (
+              <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.48rem', color: 'var(--gold-dim)', opacity: 0.6 }}>
+                게임 정보 가져오는 중...
+              </p>
+            )}
+          </>
+        ) : urlInput.trim() ? (
           <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.5rem', color: 'rgba(255,136,136,0.7)' }}>
             유효한 보드라이프 게임 URL이 아닙니다
           </p>
-        )}
-        <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.48rem', color: 'var(--white-dim)', opacity: 0.4 }}>
-          보드라이프에서 게임을 찾은 후 주소창 URL을 복사하여 붙여넣으세요
+        ) : null}
+
+        <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.48rem', color: 'var(--white-dim)', opacity: 0.4, lineHeight: 1.6 }}>
+          보드라이프에서 원하는 게임 페이지를 열고 주소창 URL을 복사하여 위에 붙여넣으세요
         </p>
       </div>
     );
   }
 
-  // 기본 검색 모드
+  // ── 기본 검색 모드 ────────────────────────────────────────────────────
   return (
     <div ref={containerRef} style={{ position: 'relative' }}>
       <div style={{ position: 'relative' }}>
@@ -186,14 +250,14 @@ export default function BoardlifeGamePicker({
         />
         {loading && (
           <span style={{ position: 'absolute', right: '0.8rem', top: '50%', transform: 'translateY(-50%)', fontFamily: "'Cinzel', serif", fontSize: '0.5rem', color: 'var(--gold-dim)' }}>
-            검색중
+            검색중...
           </span>
         )}
       </div>
 
       {/* 검색 결과 드롭다운 */}
       {open && results.length > 0 && (
-        <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, zIndex: 500, background: 'var(--background)', border: '1px solid rgba(201,168,76,0.25)', borderTop: 'none', maxHeight: 240, overflowY: 'auto' }}>
+        <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, zIndex: 500, background: 'var(--background)', border: '1px solid rgba(201,168,76,0.25)', borderTop: 'none', maxHeight: 260, overflowY: 'auto' }}>
           {results.map(g => (
             <button
               key={g.boardlife_id}
@@ -209,34 +273,58 @@ export default function BoardlifeGamePicker({
               ) : (
                 <div style={{ width: 32, height: 32, background: 'rgba(201,168,76,0.08)', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--gold-dim)', fontSize: '0.7rem' }}>🎲</div>
               )}
-              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: 'var(--foreground)' }}>{g.name}</span>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: 'var(--foreground)', flex: 1 }}>{g.name}</span>
             </button>
           ))}
         </div>
       )}
 
-      {/* 검색 결과 없음 → 보드라이프 URL 입력 안내 */}
+      {/* 검색 완료 후 결과 없음 */}
       {searched && !loading && results.length === 0 && query.trim() && (
-        <div style={{ marginTop: '0.6rem', padding: '0.75rem', background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(201,168,76,0.12)' }}>
-          <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.5rem', color: 'var(--white-dim)', marginBottom: '0.5rem' }}>
-            검색 결과가 없거나 보드라이프 서버에 연결할 수 없습니다
-          </p>
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
-            <a
-              href={`https://boardlife.co.kr/search.php?keyword=${encodeURIComponent(query)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ fontFamily: "'Cinzel', serif", fontSize: '0.5rem', letterSpacing: '0.08em', color: 'var(--gold)', textDecoration: 'none', border: '1px solid rgba(201,168,76,0.35)', padding: '0.3rem 0.6rem' }}
-            >
-              보드라이프에서 검색 ↗
-            </a>
-            <button
-              type="button"
-              onClick={() => setUrlMode(true)}
-              style={{ fontFamily: "'Cinzel', serif", fontSize: '0.5rem', letterSpacing: '0.08em', color: 'var(--white-dim)', background: 'none', border: '1px solid rgba(201,168,76,0.15)', padding: '0.3rem 0.6rem', cursor: 'pointer' }}
-            >
-              URL로 직접 추가
-            </button>
+        <div style={{ marginTop: '0.5rem' }}>
+          {/* URL 직접 추가 인라인 영역 */}
+          <div style={{ padding: '0.85rem', background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(201,168,76,0.12)' }}>
+            <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.5rem', color: 'var(--white-dim)', marginBottom: '0.6rem', lineHeight: 1.7 }}>
+              검색 결과 없음 — 보드라이프 서버에 연결할 수 없거나 등록된 게임이 아닙니다
+            </p>
+
+            {/* 보드라이프에서 검색 링크 */}
+            <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
+              <a
+                href={`https://boardlife.co.kr/search.php?keyword=${encodeURIComponent(query)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontFamily: "'Cinzel', serif", fontSize: '0.5rem', letterSpacing: '0.08em', color: 'var(--gold)', textDecoration: 'none', border: '1px solid rgba(201,168,76,0.35)', padding: '0.3rem 0.7rem', whiteSpace: 'nowrap' }}
+              >
+                보드라이프에서 검색 ↗
+              </a>
+            </div>
+
+            {/* URL 입력 인라인 */}
+            <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.48rem', color: 'var(--gold-dim)', marginBottom: '0.35rem' }}>
+              게임 URL 붙여넣기로 직접 추가
+            </p>
+            <div style={{ display: 'flex', gap: '0.4rem' }}>
+              <input
+                placeholder="https://boardlife.co.kr/game/..."
+                style={{ ...inp, fontSize: '0.85rem', padding: '0.45rem 0.7rem', flex: 1 }}
+                onChange={e => {
+                  const val = e.target.value.trim();
+                  if (isBoardlifeUrl(val) && extractBoardlifeId(val)) {
+                    setUrlMode(true);
+                    setUrlInput(val);
+                    setUrlId(extractBoardlifeId(val));
+                  }
+                }}
+              />
+              <button
+                type="button"
+                onClick={() => setUrlMode(true)}
+                style={{ fontFamily: "'Cinzel', serif", fontSize: '0.48rem', letterSpacing: '0.08em', color: 'var(--white-dim)', background: 'none', border: '1px solid rgba(201,168,76,0.2)', padding: '0.3rem 0.6rem', cursor: 'pointer', whiteSpace: 'nowrap' }}
+              >
+                URL 입력
+              </button>
+            </div>
           </div>
         </div>
       )}
