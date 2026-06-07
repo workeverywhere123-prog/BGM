@@ -15,13 +15,42 @@ const CATALOG: CatalogEntry[] = catalogRaw as CatalogEntry[];
  * 보드라이프 서버가 Cloudflare로 차단될 때 대안으로 사용
  */
 
-/** 간단한 이름 매칭 점수 (0~1) */
+/**
+ * 한글 모음 정규화: ㅑ→ㅏ, ㅕ→ㅓ, ㅛ→ㅗ, ㅠ→ㅜ
+ * "설록"(ㅓ) ↔ "셜록"(ㅕ) 같은 오타를 동일하게 처리
+ */
+function normalizeKorean(str: string): string {
+  const BASE = 0xAC00;
+  // jungseong index: ㅑ(2)→ㅏ(0), ㅕ(6)→ㅓ(4), ㅛ(12)→ㅗ(8), ㅠ(17)→ㅜ(13)
+  const VOWEL_MAP: Record<number, number> = { 2: 0, 6: 4, 12: 8, 17: 13 };
+  return Array.from(str).map(ch => {
+    const code = ch.charCodeAt(0);
+    if (code >= 0xAC00 && code <= 0xD7A3) {
+      const off = code - BASE;
+      const jong = off % 28;
+      const rest = Math.floor(off / 28);
+      const jung = rest % 21;
+      const cho = Math.floor(rest / 21);
+      const normJung = VOWEL_MAP[jung] ?? jung;
+      return String.fromCharCode(BASE + (cho * 21 + normJung) * 28 + jong);
+    }
+    return ch;
+  }).join('');
+}
+
+/** 이름 매칭 점수 (0~1). 정규화된 한글로 2차 비교 */
 function matchScore(name: string, q: string): number {
   const n = name.toLowerCase();
   const query = q.toLowerCase();
   if (n === query) return 1;
   if (n.startsWith(query)) return 0.9;
   if (n.includes(query)) return 0.7;
+  // 한글 정규화(ㅕ→ㅓ 등) 후 재비교
+  const nn = normalizeKorean(n);
+  const nq = normalizeKorean(query);
+  if (nn === nq) return 0.65;
+  if (nn.startsWith(nq)) return 0.6;
+  if (nn.includes(nq)) return 0.55;
   return 0;
 }
 

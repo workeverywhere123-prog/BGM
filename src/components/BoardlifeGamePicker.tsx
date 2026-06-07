@@ -62,6 +62,8 @@ export default function BoardlifeGamePicker({
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  /** 마지막으로 실행된 검색어 — stale 업데이트 방지 */
+  const latestQueryRef = useRef('');
 
   // 외부 클릭 시 드롭다운 닫기
   useEffect(() => {
@@ -93,33 +95,44 @@ export default function BoardlifeGamePicker({
 
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(async () => {
+      const snap = q; // 이 실행 시점의 쿼리 스냅샷
+      latestQueryRef.current = snap;
+
       setLoading(true);
       setSearched(false);
+
+      // ── 1. 로컬 DB+카탈로그 검색 (빠름, 항상 작동) ──────────────────
+      let local: SearchResult[] = [];
       try {
-        // 1순위: 내부 DB 검색 (항상 작동)
-        // 2순위: 보드라이프 API (Cloudflare로 자주 차단)
-        const [localRes, blRes] = await Promise.allSettled([
-          fetch(`/api/games/search?q=${encodeURIComponent(q)}`).then(r => r.json()),
-          fetch(`/api/boardlife/search?q=${encodeURIComponent(q)}`).then(r => r.json()),
-        ]);
+        const r = await fetch(`/api/games/search?q=${encodeURIComponent(snap)}`);
+        local = (await r.json()) ?? [];
+      } catch { /* ignore */ }
 
-        const local: SearchResult[] = localRes.status === 'fulfilled' ? (localRes.value ?? []) : [];
-        const bl: SearchResult[] = blRes.status === 'fulfilled' ? (blRes.value ?? []) : [];
+      if (latestQueryRef.current !== snap) return; // 새 쿼리가 시작됐으면 중단
 
-        // 중복 제거: boardlife_id 기준으로 local 우선, bl 추가
-        const seen = new Set(local.map((g: SearchResult) => g.boardlife_id));
-        const merged = [
-          ...local,
-          ...bl.filter((g: SearchResult) => !seen.has(g.boardlife_id)),
-        ];
-
-        setResults(merged);
-        setOpen(merged.length > 0);
-      } catch {
-        setResults([]);
-      }
+      // 로컬 결과 즉시 표시 (보드라이프 대기 없이)
+      setResults(local);
+      setOpen(local.length > 0);
       setLoading(false);
       setSearched(true);
+
+      // ── 2. 보드라이프 API 백그라운드 시도 (4초 타임아웃, Cloudflare에 자주 차단) ──
+      try {
+        const ac = new AbortController();
+        const t = setTimeout(() => ac.abort(), 4000);
+        const r = await fetch(`/api/boardlife/search?q=${encodeURIComponent(snap)}`, { signal: ac.signal });
+        clearTimeout(t);
+        const bl: SearchResult[] = (await r.json()) ?? [];
+
+        if (latestQueryRef.current !== snap) return; // 쿼리 변경됐으면 무시
+
+        if (bl.length > 0) {
+          const seen = new Set(local.map(g => g.boardlife_id));
+          const merged = [...local, ...bl.filter(g => !seen.has(g.boardlife_id))];
+          setResults(merged);
+          setOpen(merged.length > 0);
+        }
+      } catch { /* boardlife 실패 → 로컬 결과 유지 */ }
     }, 400);
   }, [query]);
 
