@@ -155,6 +155,72 @@ export default function RulesContent({ openRaffleCount = 0 }: { openRaffleCount?
         </RuleCard>
       </div>
 
+      <Divider label={<>✦ 게임 방 진행 방식 · MVP 투표 ✦</>} />
+
+      {/* 게임 방 플로우 */}
+      <div style={{ marginBottom: '2rem' }}>
+        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', color: 'var(--white-dim)', lineHeight: 1.7, marginBottom: '2rem', opacity: 0.85 }}>
+          게임 방에 입장하면 게임이 끝난 후 <strong style={{ color: '#e879f9' }}>MVP 투표</strong>가 진행됩니다.
+          이 투표를 통해 추가 <LapisIcon size={13} style={{ display: 'inline' }} /> LAPIS를 획득할 수 있습니다.
+        </p>
+
+        {/* 진행 플로우 */}
+        <div style={{ display: 'flex', alignItems: 'stretch', gap: 0, marginBottom: '2rem', flexWrap: 'wrap' }}>
+          {[
+            { step: '01', icon: '🎲', label: '게임 진행', desc: '방에 입장하고\n게임을 플레이합니다', color: 'var(--gold)' },
+            { step: '02', icon: '📋', label: '결과 등록', desc: '방장이 게임 결과를\n입력합니다', color: '#fb923c' },
+            { step: '03', icon: '🏆', label: 'MVP 투표', desc: '참가자 전원이\nMVP를 투표합니다', color: '#e879f9' },
+            { step: '04', icon: '✨', label: 'LAPIS 지급', desc: 'MVP 보너스\nLAPIS가 지급됩니다', color: '#4ade80' },
+          ].map((s, i, arr) => (
+            <div key={s.step} style={{ display: 'flex', alignItems: 'stretch', flex: 1, minWidth: 130 }}>
+              <div style={{ flex: 1, border: `1px solid ${s.color}33`, background: `${s.color}08`, padding: '1.2rem 1rem', textAlign: 'center' }}>
+                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.48rem', letterSpacing: '0.2em', color: s.color, marginBottom: '0.5rem', opacity: 0.7 }}>STEP {s.step}</p>
+                <span style={{ fontSize: '1.6rem', display: 'block', marginBottom: '0.5rem' }}>{s.icon}</span>
+                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', letterSpacing: '0.12em', color: s.color, marginBottom: '0.5rem' }}>{s.label}</p>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.88rem', color: 'var(--white-dim)', opacity: 0.7, lineHeight: 1.55, whiteSpace: 'pre-line' }}>{s.desc}</p>
+              </div>
+              {i < arr.length - 1 && (
+                <div style={{ display: 'flex', alignItems: 'center', padding: '0 0.3rem', color: 'rgba(201,168,76,0.3)', fontSize: '0.9rem', flexShrink: 0 }}>›</div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* MVP 투표 규칙 */}
+        <div style={{ border: '1px solid rgba(232,121,249,0.25)', background: 'rgba(232,121,249,0.05)', padding: '1.8rem 2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.4rem' }}>
+            <span style={{ fontSize: '1.3rem' }}>🏆</span>
+            <div>
+              <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.52rem', letterSpacing: '0.22em', color: 'rgba(232,121,249,0.7)', marginBottom: '0.2rem' }}>MVP VOTE</p>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.4rem', fontWeight: 600, color: 'var(--foreground)', lineHeight: 1 }}>MVP 투표 방식</h3>
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '1rem', marginBottom: '1.4rem' }}>
+            {[
+              { icon: '🗳️', title: '자신 제외 투표', desc: '참가자 전원이 자신을 제외한\n다른 참가자 1명에게 투표합니다' },
+              { icon: '📊', title: '최다 득표 = MVP', desc: '가장 많은 표를 받은 플레이어가\nMVP로 선정됩니다' },
+              { icon: '✨', title: 'MVP 보너스', desc: 'MVP로 선정된 플레이어는\n+1 LAPIS 보너스를 획득합니다' },
+              { icon: '⏱️', title: '투표 종료', desc: '방장이 투표 종료 버튼을 누르면\n결과가 확정되고 방이 닫힙니다' },
+            ].map(item => (
+              <div key={item.title} style={{ padding: '1rem', background: 'rgba(30,74,52,0.2)', border: '1px solid rgba(232,121,249,0.12)' }}>
+                <span style={{ fontSize: '1.1rem', display: 'block', marginBottom: '0.5rem' }}>{item.icon}</span>
+                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.58rem', letterSpacing: '0.12em', color: '#e879f9', marginBottom: '0.45rem', opacity: 0.85 }}>{item.title}</p>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.92rem', color: 'var(--white-dim)', lineHeight: 1.6, whiteSpace: 'pre-line', opacity: 0.8 }}>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ padding: '0.8rem 1.1rem', background: 'rgba(232,121,249,0.08)', border: '1px solid rgba(232,121,249,0.2)', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            <span style={{ fontSize: '1rem', flexShrink: 0 }}>💡</span>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: 'var(--white-dim)', lineHeight: 1.6 }}>
+              MVP 투표는 게임 종류와 관계없이 <strong style={{ color: '#e879f9' }}>모든 게임 방에서</strong> 진행됩니다.
+              게임이 끝나면 화면 상단 탭에 <strong style={{ color: '#e879f9' }}>「MVP 투표」</strong> 탭이 나타납니다.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <Divider label={<>✦ 출석 <LapisIcon size={13} /> LAPIS ✦</>} />
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>

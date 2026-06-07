@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
   try {
     const user = await requireSessionUser();
     const supabase = await createSupabaseServerClient();
-    const { title, location, scheduled_at, game_types, max_players, note, boardlife_game_id, boardlife_game_name, boardlife_game_thumb, is_online, is_ranked } = await req.json();
+    const { title, location, scheduled_at, game_types, max_players, note, boardlife_game_id, boardlife_game_name, boardlife_game_thumb, is_online, is_ranked, deathmatch_bet } = await req.json();
 
     if (!location || !scheduled_at) {
       return NextResponse.json({ error: '장소와 일시를 입력해주세요' }, { status: 400 });
@@ -60,8 +60,8 @@ export async function POST(req: NextRequest) {
 
     const { data: room, error } = await supabase
       .from('rooms')
-      .insert({ host_id: user.id, title: title || null, location, scheduled_at, game_types: game_types ?? [], max_players: max_players ?? 6, note: note || null, boardlife_game_id: boardlife_game_id || null, boardlife_game_name: boardlife_game_name || null, boardlife_game_thumb: boardlife_game_thumb || null, is_online: is_online ?? false, is_ranked: is_ranked ?? true })
-      .select('id, title, location, scheduled_at, game_types, max_players, status, note, host_id, boardlife_game_id, boardlife_game_name, boardlife_game_thumb, is_online, is_ranked')
+      .insert({ host_id: user.id, title: title || null, location, scheduled_at, game_types: game_types ?? [], max_players: max_players ?? 6, note: note || null, boardlife_game_id: boardlife_game_id || null, boardlife_game_name: boardlife_game_name || null, boardlife_game_thumb: boardlife_game_thumb || null, is_online: is_online ?? false, is_ranked: is_ranked ?? true, deathmatch_bet: deathmatch_bet ?? 3 })
+      .select('id, title, location, scheduled_at, game_types, max_players, status, note, host_id, boardlife_game_id, boardlife_game_name, boardlife_game_thumb, is_online, is_ranked, deathmatch_bet')
       .single();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });

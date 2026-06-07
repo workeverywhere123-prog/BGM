@@ -747,3 +747,11 @@ body {
   margin: 0 auto;
   min-height: 100vh;
 }
+
+/* ── BROKEN IMAGE ALT TEXT SUPPRESSION ── */
+/* boardlife CDN은 외부 요청 차단(403). alt 텍스트가 노출되지 않도록 전역 숨김 처리.
+   React onError + useEffect로 🎲 플레이스홀더로 교체됨 */
+img[src*="boardlife.co.kr"] {
+  color: transparent;
+  font-size: 0;
+}

@@ -12,12 +12,17 @@ export default async function MeetingDetailPage({ params }: { params: Promise<{ 
     { data: attendances },
     { data: rsvps },
     { data: activeQuarter },
+    { data: matches },
   ] = await Promise.all([
     supabase.from('meetings').select('id, number, held_at, status, note, rsvp_deadline, rsvp_processed').eq('id', id).maybeSingle(),
     supabase.from('players').select('id, nickname, username, avatar_url').eq('is_active', true).order('nickname'),
     supabase.from('meeting_attendances').select('player_id, status, voted').eq('meeting_id', id),
     supabase.from('meeting_rsvps').select('player_id, status, players(id, nickname, username, avatar_url)').eq('meeting_id', id),
     supabase.from('quarters').select('id, name').eq('is_active', true).maybeSingle(),
+    supabase.from('matches')
+      .select('id, game_type, played_at, boardlife_game_name, games(name), match_participants(player_id, team, rank, role, is_winner, is_mvp, chip_change)')
+      .eq('meeting_id', id)
+      .order('played_at'),
   ]);
 
   if (!meeting) notFound();
@@ -29,6 +34,8 @@ export default async function MeetingDetailPage({ params }: { params: Promise<{ 
       attendances={attendances ?? []}
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       rsvps={rsvps as any[] ?? []}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      matches={matches as any[] ?? []}
       activeQuarterId={(activeQuarter as { id?: string } | null)?.id ?? null}
       activeQuarterName={(activeQuarter as { name?: string } | null)?.name ?? null}
     />

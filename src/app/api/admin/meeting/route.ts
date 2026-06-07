@@ -318,6 +318,101 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ ok: true });
     }
 
+    // ── 경기 수정 (칩 재계산 포함) ───────────────────
+    if (action === 'edit_match') {
+      const { match_id, game_type, game_name, boardlife_game_id, boardlife_game_name, quarter_id, participants } = body as {
+        match_id: string;
+        game_type: string;
+        game_name?: string;
+        boardlife_game_id?: string | null;
+        boardlife_game_name?: string | null;
+        quarter_id?: string | null;
+        participants: {
+          player_id: string;
+          team?: string;
+          rank?: number;
+          role?: string;
+          is_winner?: boolean;
+          is_mvp?: boolean;
+        }[];
+      };
+
+      // 게임 upsert (이름이 바뀐 경우)
+      let game_id: string | null = null;
+      if (game_name) {
+        const { data: existingGame } = await supabase.from('games').select('id').eq('name', game_name).maybeSingle();
+        if (existingGame) {
+          game_id = existingGame.id;
+        } else {
+          const { data: newGame } = await supabase.from('games').insert({
+            name: game_name, min_players: 2, max_players: 10, supports_draw: false,
+          }).select('id').single();
+          game_id = newGame?.id ?? null;
+        }
+      }
+
+      // matches 업데이트
+      const matchUpdates: Record<string, unknown> = { game_type };
+      if (game_id !== null) matchUpdates.game_id = game_id;
+      if (boardlife_game_id !== undefined) matchUpdates.boardlife_game_id = boardlife_game_id || null;
+      if (boardlife_game_name !== undefined) matchUpdates.boardlife_game_name = boardlife_game_name || null;
+      if (game_name !== undefined) matchUpdates.boardlife_game_name = boardlife_game_name || game_name || null;
+      await supabase.from('matches').update(matchUpdates).eq('id', match_id);
+
+      // 기존 칩 트랜잭션 + 참여자 삭제
+      await supabase.from('chip_transactions').delete().eq('match_id', match_id);
+      await supabase.from('match_participants').delete().eq('match_id', match_id);
+
+      // 칩 재계산
+      const total = participants.length;
+      const chipChanges: { player_id: string; chip_change: number }[] = participants.map(p => {
+        let chip_change = 0;
+        if (game_type === 'ranking') {
+          chip_change = rankingPoints(p.rank ?? total, total);
+        } else if (game_type === 'mafia') {
+          if (p.role === 'mafia') chip_change = p.is_winner ? 3 : -3;
+          else chip_change = p.is_winner ? 1 : -1;
+        } else if (game_type === 'team') {
+          chip_change = p.is_winner ? 2 : -2;
+        } else if (game_type === 'coop') {
+          const allWin = participants.every(x => x.is_winner);
+          chip_change = (allWin ? 2 : -2) + (p.is_mvp ? 1 : 0);
+        } else if (game_type === 'onevsmany') {
+          if (p.team === 'solo') chip_change = p.is_winner ? 5 : -5;
+          else chip_change = p.is_winner ? 1 : -1;
+        } else if (game_type === 'deathmatch') {
+          chip_change = p.is_winner ? 2 : -2;
+        }
+        return { player_id: p.player_id, chip_change };
+      });
+
+      // match_participants 재삽입
+      for (const p of participants) {
+        const cc = chipChanges.find(c => c.player_id === p.player_id)?.chip_change ?? 0;
+        await supabase.from('match_participants').insert({
+          match_id,
+          player_id: p.player_id,
+          team: p.team ?? null,
+          rank: p.rank ?? null,
+          role: p.role ?? null,
+          is_winner: p.is_winner ?? null,
+          is_mvp: p.is_mvp ?? false,
+          chip_change: cc,
+        });
+        await supabase.from('chip_transactions').insert({
+          player_id: p.player_id,
+          meeting_id,
+          match_id,
+          tx_type: 'game',
+          amount: cc,
+          quarter_id: quarter_id ?? null,
+          note: `${game_name || boardlife_game_name || game_type} 경기 수정 결과`,
+          created_by: user.id,
+        });
+      }
+      return NextResponse.json({ ok: true });
+    }
+
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
   } catch (e) {
     return NextResponse.json({ error: e instanceof Error ? e.message : '오류' }, { status: 403 });

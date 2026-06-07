@@ -13,7 +13,7 @@ export default async function RoomDetailPage({ params }: { params: Promise<{ id:
 
   const { data: room } = await supabase
     .from('rooms')
-    .select('id, title, location, scheduled_at, game_types, max_players, status, note, host_id, youtube_url, last_match_id, games_json, game_order_json, team_result_json, is_online, boardlife_game_id, boardlife_game_name, boardlife_game_thumb, ready_player_ids, started_at, league_match_id, room_members(player_id, bring_game_ids, is_spectator)')
+    .select('id, title, location, scheduled_at, game_types, max_players, status, note, host_id, youtube_url, last_match_id, games_json, game_order_json, team_result_json, is_online, is_ranked, boardlife_game_id, boardlife_game_name, boardlife_game_thumb, ready_player_ids, started_at, league_match_id, deathmatch_bet, room_game_type, bet_agreements, room_members(player_id, bring_game_ids, is_spectator)')
     .eq('id', id)
     .maybeSingle();
 

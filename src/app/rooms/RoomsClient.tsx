@@ -527,7 +527,7 @@ interface CreateData {
   title?: string; location: string; scheduled_at: string;
   game_types: string[]; max_players: number; note?: string; bring_game_ids?: string[];
   boardlife_game_id?: string; boardlife_game_name?: string; boardlife_game_thumb?: string;
-  is_online: boolean; is_ranked: boolean;
+  is_online: boolean; is_ranked: boolean; deathmatch_bet?: number;
 }
 
 function CreateModal({ onClose, onCreate, isPending, currentUserNickname, userGames, hasActiveMeeting }: {
@@ -549,6 +549,7 @@ function CreateModal({ onClose, onCreate, isPending, currentUserNickname, userGa
   const [saveGameToCollection, setSaveGameToCollection] = useState(false);
   const [isOnline, setIsOnline] = useState(false);
   const [isRanked, setIsRanked] = useState(hasActiveMeeting);
+  const [deathmatchBet, setDeathmatchBet] = useState(3);
 
   const toggleType = (t: string) => setGameTypes(prev => prev.includes(t) ? prev.filter(x => x !== t) : [...prev, t]);
   const addCustom = () => { const v = customType.trim(); if (v && !gameTypes.includes(v)) setGameTypes(prev => [...prev, v]); setCustomType(''); };
@@ -562,7 +563,7 @@ function CreateModal({ onClose, onCreate, isPending, currentUserNickname, userGa
         body: JSON.stringify({ name: boardlifeGame.name, boardlife_id: boardlifeGame.boardlife_id, boardlife_url: boardlifeGame.boardlife_url, thumbnail_url: boardlifeGame.thumbnail_url, name_en: null, min_players: null, max_players: null, note: null, genre: null }),
       }).catch(() => {});
     }
-    onCreate({ title: title || undefined, location, scheduled_at: new Date(`${date}T${time}:00`).toISOString(), game_types: gameTypes, max_players: maxPlayers, note: note || undefined, bring_game_ids: bringGames, boardlife_game_id: boardlifeGame?.boardlife_id, boardlife_game_name: boardlifeGame?.name, boardlife_game_thumb: boardlifeGame?.thumbnail_url ?? undefined, is_online: isOnline, is_ranked: isRanked });
+    onCreate({ title: title || undefined, location, scheduled_at: new Date(`${date}T${time}:00`).toISOString(), game_types: gameTypes, max_players: maxPlayers, note: note || undefined, bring_game_ids: bringGames, boardlife_game_id: boardlifeGame?.boardlife_id, boardlife_game_name: boardlifeGame?.name, boardlife_game_thumb: boardlifeGame?.thumbnail_url ?? undefined, is_online: isOnline, is_ranked: isRanked, deathmatch_bet: deathmatchBet });
   };
 
   return (
@@ -677,6 +678,41 @@ function CreateModal({ onClose, onCreate, isPending, currentUserNickname, userGa
                 </Field>
               )}
             </div>
+          </div>
+
+          {/* 데스매치 베팅 설정 */}
+          <div style={{ marginTop: '1.2rem', padding: '1rem 1.2rem', border: '1px solid rgba(248,113,113,0.2)', background: 'rgba(248,113,113,0.04)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.7rem' }}>
+              <div>
+                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.58rem', letterSpacing: '0.15em', color: '#f87171', marginBottom: '0.15rem' }}>
+                  ⚔️ 데스매치 베팅 설정
+                </p>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.85rem', color: 'var(--white-dim)', opacity: 0.6 }}>
+                  인당 베팅할 LAPIS 수 (기본 3)
+                </p>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                <button type="button" onClick={() => setDeathmatchBet(b => Math.max(1, b - 1))}
+                  style={{ width: 28, height: 28, fontFamily: "'Cinzel', serif", fontSize: '1rem', border: '1px solid rgba(248,113,113,0.3)', background: 'transparent', color: '#f87171', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>−</button>
+                <span style={{ fontFamily: "'Cinzel', serif", fontSize: '1.1rem', color: '#f87171', minWidth: 28, textAlign: 'center', fontWeight: 700 }}>{deathmatchBet}</span>
+                <button type="button" onClick={() => setDeathmatchBet(b => Math.min(10, b + 1))}
+                  style={{ width: 28, height: 28, fontFamily: "'Cinzel', serif", fontSize: '1rem', border: '1px solid rgba(248,113,113,0.3)', background: 'transparent', color: '#f87171', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>+</button>
+              </div>
+            </div>
+            <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap' }}>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
+                <button key={n} type="button" onClick={() => setDeathmatchBet(n)} style={{
+                  fontFamily: "'Cinzel', serif", fontSize: '0.65rem', width: 32, height: 28,
+                  border: `1px solid ${deathmatchBet === n ? '#f87171' : 'rgba(248,113,113,0.15)'}`,
+                  background: deathmatchBet === n ? 'rgba(248,113,113,0.15)' : 'transparent',
+                  color: deathmatchBet === n ? '#f87171' : 'var(--white-dim)', cursor: 'pointer',
+                  fontWeight: deathmatchBet === n ? 700 : 400,
+                }}>{n}</button>
+              ))}
+            </div>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.82rem', color: 'rgba(248,113,113,0.7)', marginTop: '0.5rem' }}>
+              데스매치 시 승자는 패자 수 × {deathmatchBet} LAPIS를 획득합니다
+            </p>
           </div>
 
           {/* 라피스 반영 여부 */}

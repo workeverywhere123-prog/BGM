@@ -22,11 +22,15 @@ interface Room {
   game_order_json: Member[] | null;
   team_result_json: Member[][] | null;
   is_online: boolean;
+  is_ranked: boolean;
   boardlife_game_id: string | null;
   boardlife_game_name: string | null;
   boardlife_game_thumb: string | null;
   ready_player_ids: string[];
   started_at: string | null;
+  deathmatch_bet: number;
+  room_game_type: string | null;
+  bet_agreements: Record<string, number>;
 }
 
 const TYPE_COLOR: Record<string, string> = {
@@ -84,9 +88,18 @@ export default function RoomDetail({ room, currentUserId, initialMvpVotes, initi
   const [userVote, setUserVote] = useState<string | null>(initialUserVote);
   const [myInvite, setMyInvite] = useState(pendingInvite);
   const [pendingInvitations, setPendingInvitations] = useState(initialPendingInvitations);
-  const [tab, setTab] = useState<'info' | 'order' | 'team' | 'manage' | 'result' | 'vote' | 'youtube' | 'bgm'>(
-    room.status === 'voting' ? 'vote' : 'info'
-  );
+
+  const [tab, setTab] = useState<'info' | 'order' | 'team' | 'manage' | 'result' | 'vote' | 'youtube' | 'bgm'>(() => {
+    if (room.status !== 'voting') return 'info';
+    const isMemberInit = room.members.some(m => m.id === currentUserId);
+    const isSpectatorInit = room.spectators.some(s => s.id === currentUserId);
+    const is1v1Init = room.members.length === 2;
+    if (isMemberInit && !is1v1Init) return 'vote';
+    if (is1v1Init && (isMemberInit || isSpectatorInit)) return 'vote';
+    return 'info';
+  });
+  const [roomGameType, setRoomGameType] = useState<string | null>(room.room_game_type ?? null);
+  const [betAgreements, setBetAgreements] = useState<Record<string, number>>(room.bet_agreements ?? {});
   const [starting, setStarting] = useState(false);
   const [actionLoading, setActionLoading] = useState(false);
   const [isOnline, setIsOnline] = useState(room.is_online);
@@ -110,16 +123,23 @@ export default function RoomDetail({ room, currentUserId, initialMvpVotes, initi
   const isHost = room.host_id === currentUserId;
   const st = statusLabel(status);
 
+  // 1:1 게임(2인)에서는 관전자가 MVP 투표
+  const is1v1 = members.length === 2;
+  const canSeeVoteTab = (isMember && !is1v1) || (is1v1 && (isMember || isSpectator));
+
   useEffect(() => {
     const supabase = createSupabaseBrowserClient();
     const ch = supabase
       .channel(`room-sync-${room.id}`)
       .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'rooms', filter: `id=eq.${room.id}` }, (payload) => {
-        const r = payload.new as { game_order_json?: Member[] | null; team_result_json?: Member[][] | null; ready_player_ids?: string[]; started_at?: string | null };
+        const r = payload.new as { game_order_json?: Member[] | null; team_result_json?: Member[][] | null; ready_player_ids?: string[]; started_at?: string | null; status?: string; room_game_type?: string | null; bet_agreements?: Record<string, number> };
         if (r.game_order_json !== undefined) setGameOrder(r.game_order_json ?? []);
         if (r.team_result_json !== undefined) setTeamResult(r.team_result_json ?? []);
         if (r.ready_player_ids !== undefined) setReadyIds(r.ready_player_ids ?? []);
         if (r.started_at !== undefined) setStartedAt(r.started_at ?? null);
+        if (r.status !== undefined) setStatus(r.status);
+        if (r.room_game_type !== undefined) setRoomGameType(r.room_game_type ?? null);
+        if (r.bet_agreements !== undefined) setBetAgreements((r.bet_agreements ?? {}) as Record<string, number>);
       })
       .subscribe();
     return () => { supabase.removeChannel(ch); };
@@ -140,7 +160,7 @@ export default function RoomDetail({ room, currentUserId, initialMvpVotes, initi
     { key: 'team' as const, label: '팀 빌더' },
     ...(isHost ? [{ key: 'manage' as const, label: '방장 관리' }] : []),
     ...(isHost && status === 'playing' ? [{ key: 'result' as const, label: '결과 등록' }] : []),
-    ...(status === 'voting' && isMember ? [{ key: 'vote' as const, label: 'MVP 투표' }] : []),
+    ...(status === 'voting' && canSeeVoteTab ? [{ key: 'vote' as const, label: is1v1 ? '👁 관전자 MVP 투표' : 'MVP 투표' }] : []),
     { key: 'youtube' as const, label: '룰 영상' },
     { key: 'bgm' as const, label: '배경음악' },
   ];
@@ -200,8 +220,43 @@ export default function RoomDetail({ room, currentUserId, initialMvpVotes, initi
   const nonHostMembers = members.filter(m => m.id !== room.host_id);
   const allReady = nonHostMembers.length === 0 || nonHostMembers.every(m => readyIds.includes(m.id));
 
+  // canStart: game type must be selected; deathmatch needs exactly 2 members with matching bets
+  const canStart = !!roomGameType && (
+    roomGameType !== 'deathmatch' ||
+    (members.length === 2 &&
+      betAgreements[members[0]?.id] != null &&
+      betAgreements[members[1]?.id] != null &&
+      betAgreements[members[0]?.id] === betAgreements[members[1]?.id])
+  );
+
+  async function handleSetGameType(gt: string) {
+    setRoomGameType(gt);
+    setBetAgreements({});
+    await fetch(`/api/rooms/${room.id}`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'set_game_type', game_type: gt }),
+    });
+  }
+
+  async function handleSetBet(amount: number) {
+    if (!currentUserId) return;
+    setBetAgreements(prev => ({ ...prev, [currentUserId]: amount }));
+    await fetch(`/api/rooms/${room.id}`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'set_bet', bet: amount }),
+    });
+  }
+
   async function handleStart() {
     if (!allReady) { alert('모든 참가자가 준비를 완료해야 시작할 수 있습니다.'); return; }
+    if (!roomGameType) { alert('게임 유형을 먼저 선택해주세요.'); return; }
+    if (roomGameType === 'deathmatch') {
+      if (members.length !== 2) { alert(`데스매치는 정확히 2명이어야 합니다. (현재 ${members.length}명)`); return; }
+      const p1Bet = betAgreements[members[0]?.id];
+      const p2Bet = betAgreements[members[1]?.id];
+      if (p1Bet == null || p2Bet == null) { alert('두 플레이어 모두 베팅 금액을 입력해야 합니다.'); return; }
+      if (p1Bet !== p2Bet) { alert('두 플레이어의 베팅 금액이 같아야 합니다.'); return; }
+    }
     if (!confirm('모임을 시작하면 더 이상 참가자가 참여할 수 없습니다. 시작하시겠습니까?')) return;
     setStarting(true);
     const res = await fetch(`/api/rooms/${room.id}`, {
@@ -498,6 +553,108 @@ export default function RoomDetail({ room, currentUserId, initialMvpVotes, initi
           </div>
         )}
 
+        {/* 게임 유형 선택 (게임 시작 전) */}
+        {['open', 'full'].includes(status) && (
+          <div style={{ marginTop: '1.2rem', padding: '1rem 1.2rem', border: '1px solid rgba(201,168,76,0.2)', background: 'rgba(30,74,52,0.06)', width: '100%' }}>
+            <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', letterSpacing: '0.15em', color: 'var(--gold-dim)', marginBottom: '0.7rem' }}>
+              {isHost ? '⚙ 게임 유형 선택' : '게임 유형'}
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+              {(Object.keys(GAME_TYPE_LABELS) as GameTypeKey[]).map(gt => (
+                <button key={gt}
+                  onClick={isHost ? () => handleSetGameType(gt) : undefined}
+                  disabled={!isHost}
+                  style={{
+                    padding: '0.45rem 1rem',
+                    fontFamily: "'Cinzel', serif", fontSize: '0.62rem',
+                    border: `1px solid ${roomGameType === gt ? '#fb923c' : 'rgba(201,168,76,0.2)'}`,
+                    background: roomGameType === gt ? 'rgba(251,146,60,0.12)' : 'transparent',
+                    color: roomGameType === gt ? '#fb923c' : isHost ? 'var(--white-dim)' : 'rgba(244,239,230,0.4)',
+                    cursor: isHost ? 'pointer' : 'default',
+                  }}>{GAME_TYPE_LABELS[gt]}</button>
+              ))}
+            </div>
+            {!roomGameType && (
+              <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.52rem', color: 'rgba(251,146,60,0.6)', marginTop: '0.5rem' }}>
+                {isHost ? '⚠ 시작 전에 게임 유형을 선택해주세요' : '방장이 게임 유형을 선택하면 표시됩니다'}
+              </p>
+            )}
+
+            {/* 데스매치 베팅 합의 */}
+            {roomGameType === 'deathmatch' && (
+              <div style={{ marginTop: '1rem', padding: '0.9rem 1rem', border: '1px solid rgba(248,113,113,0.3)', background: 'rgba(248,113,113,0.04)' }}>
+                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.52rem', letterSpacing: '0.15em', color: '#f87171', marginBottom: '0.8rem' }}>
+                  DEATHMATCH BET — 인당 베팅 (최대 3 LAPIS)
+                </p>
+                {members.length !== 2 ? (
+                  <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', color: '#f87171' }}>
+                    ⚠ 데스매치는 정확히 2명이어야 합니다. 현재: {members.length}명
+                  </p>
+                ) : (
+                  <>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem', marginBottom: '0.8rem' }}>
+                      {members.map(m => {
+                        const myBet = betAgreements[m.id];
+                        const isMe = m.id === currentUserId && isMember;
+                        return (
+                          <div key={m.id} style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', flexWrap: 'wrap' }}>
+                            <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: 'var(--foreground)', minWidth: 90 }}>
+                              {m.nickname}
+                              {m.id === currentUserId && <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.48rem', color: 'var(--gold-dim)', marginLeft: '0.4rem' }}>나</span>}
+                            </span>
+                            {isMe ? (
+                              <div style={{ display: 'flex', gap: '0.3rem' }}>
+                                {[1, 2, 3].map(n => (
+                                  <button key={n} onClick={() => handleSetBet(n)} style={{
+                                    width: 38, height: 34,
+                                    fontFamily: "'Cinzel', serif", fontSize: '0.8rem',
+                                    border: `1px solid ${myBet === n ? '#f87171' : 'rgba(248,113,113,0.3)'}`,
+                                    background: myBet === n ? 'rgba(248,113,113,0.18)' : 'transparent',
+                                    color: myBet === n ? '#f87171' : 'var(--white-dim)',
+                                    cursor: 'pointer', fontWeight: myBet === n ? 700 : 400,
+                                  }}>{n}</button>
+                                ))}
+                              </div>
+                            ) : (
+                              <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.65rem', color: myBet != null ? '#f87171' : 'rgba(244,239,230,0.3)' }}>
+                                {myBet != null ? `${myBet} LAPIS ✓` : '미설정'}
+                              </span>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                    {/* 합의 상태 */}
+                    {(() => {
+                      const p1Bet = betAgreements[members[0].id];
+                      const p2Bet = betAgreements[members[1].id];
+                      const agreed = p1Bet != null && p2Bet != null && p1Bet === p2Bet;
+                      const bothSet = p1Bet != null && p2Bet != null;
+                      return (
+                        <div style={{ padding: '0.5rem 0.8rem', background: 'rgba(0,0,0,0.2)', border: `1px solid ${agreed ? 'rgba(74,222,128,0.3)' : 'rgba(248,113,113,0.2)'}` }}>
+                          {agreed ? (
+                            <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', color: '#4ade80' }}>
+                              ✓ 합의 완료 — 인당 {p1Bet} LAPIS 베팅 (승자 +{p1Bet} <LapisIcon size={10} />, 패자 −{p1Bet} <LapisIcon size={10} />)
+                            </p>
+                          ) : bothSet ? (
+                            <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', color: '#f87171' }}>
+                              ✗ 베팅 금액이 다릅니다 ({p1Bet} vs {p2Bet}) — 같은 금액으로 맞춰주세요
+                            </p>
+                          ) : (
+                            <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', color: 'rgba(244,239,230,0.4)' }}>
+                              두 플레이어 모두 베팅 금액을 선택해주세요
+                            </p>
+                          )}
+                        </div>
+                      );
+                    })()}
+                  </>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
         {/* 준비 버튼 (비방장 참가자) */}
           {currentUserId && isMember && !isHost && ['open', 'full'].includes(status) && (
             <button onClick={handleToggleReady} style={{
@@ -520,10 +677,25 @@ export default function RoomDetail({ room, currentUserId, initialMvpVotes, initi
                   {allReady ? '✓ 모든 참가자 준비완료' : `준비 대기 중 (${readyIds.filter(id => nonHostMembers.some(m => m.id === id)).length}/${nonHostMembers.length}명 준비)`}
                 </p>
               )}
-              <button onClick={handleStart} disabled={starting || !allReady} style={{
-                padding: '0.6rem 1.8rem', background: allReady ? '#fb923c' : 'rgba(251,146,60,0.25)', border: 'none',
-                color: allReady ? '#0b2218' : 'rgba(251,146,60,0.5)', fontFamily: "'Cinzel', serif", fontSize: '0.65rem', letterSpacing: '0.15em',
-                fontWeight: 700, cursor: starting || !allReady ? 'not-allowed' : 'pointer', opacity: starting ? 0.7 : 1,
+              {!roomGameType && (
+                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.52rem', color: '#f87171' }}>
+                  ⚠ 위에서 게임 유형을 먼저 선택해주세요
+                </p>
+              )}
+              {roomGameType === 'deathmatch' && members.length !== 2 && (
+                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.52rem', color: '#f87171' }}>
+                  ⚠ 데스매치는 정확히 2명이어야 합니다
+                </p>
+              )}
+              {roomGameType === 'deathmatch' && members.length === 2 && !canStart && (
+                <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.52rem', color: '#f87171' }}>
+                  ⚠ 두 플레이어의 베팅 금액 합의가 필요합니다
+                </p>
+              )}
+              <button onClick={handleStart} disabled={starting || !allReady || !canStart} style={{
+                padding: '0.6rem 1.8rem', background: (allReady && canStart) ? '#fb923c' : 'rgba(251,146,60,0.25)', border: 'none',
+                color: (allReady && canStart) ? '#0b2218' : 'rgba(251,146,60,0.5)', fontFamily: "'Cinzel', serif", fontSize: '0.65rem', letterSpacing: '0.15em',
+                fontWeight: 700, cursor: (starting || !allReady || !canStart) ? 'not-allowed' : 'pointer', opacity: starting ? 0.7 : 1,
               }}>
                 {starting ? '시작 중...' : '▶ 모임 시작'}
               </button>
@@ -627,13 +799,25 @@ export default function RoomDetail({ room, currentUserId, initialMvpVotes, initi
         />
       )}
       {tab === 'result' && isHost && status === 'playing' && (
-        <ResultRecorder members={members} roomId={room.id} onDone={() => { setStatus('voting'); setTab('vote'); }} />
+        <ResultRecorder
+          members={members} roomId={room.id} roomBet={room.deathmatch_bet ?? 3}
+          initialGameType={roomGameType}
+          initialBet={
+            roomGameType === 'deathmatch' && members.length === 2
+              ? (Object.values(betAgreements)[0] ?? room.deathmatch_bet ?? 3)
+              : (room.deathmatch_bet ?? 3)
+          }
+          onDone={() => { setStatus('voting'); setTab('vote'); }}
+        />
       )}
-      {tab === 'vote' && status === 'voting' && isMember && (
+      {tab === 'vote' && status === 'voting' && canSeeVoteTab && (
         <MvpVoting
           members={members} roomId={room.id} isHost={isHost}
           votes={mvpVotes} userVote={userVote}
           onVote={handleVote} onFinalize={handleFinalizeMvp}
+          is1v1={is1v1}
+          isSpectator={isSpectator}
+          spectatorCount={spectators.length}
         />
       )}
       {tab === 'youtube' && <YoutubeSearch gameTypes={room.game_types} selectedGames={selectedGames} initialUrl={room.youtube_url} roomId={room.id} isHost={isHost} />}
@@ -672,6 +856,18 @@ function InfoTab({ room, spectators, currentUserId, isHost, isMember, status, se
       <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', letterSpacing: '0.2em', color: 'var(--gold-dim)', marginBottom: '1rem' }}>
         참가자 {room.members.length} / {room.max_players}명
       </p>
+
+      {/* MVP 안내 배너 (게임 시작 전) */}
+      {['open', 'full'].includes(status) && isMember && (
+        <div style={{ marginBottom: '1.2rem', padding: '0.75rem 1rem', border: '1px solid rgba(232,121,249,0.2)', background: 'rgba(232,121,249,0.04)', display: 'flex', alignItems: 'center', gap: '0.7rem' }}>
+          <span style={{ fontSize: '1rem', flexShrink: 0 }}>🏆</span>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.9rem', color: 'var(--white-dim)', opacity: 0.8, lineHeight: 1.5 }}>
+            게임 종료 후 <strong style={{ color: '#e879f9' }}>MVP 투표</strong>가 진행됩니다.
+            최다 득표자는 <strong style={{ color: '#e879f9', display: 'inline-flex', alignItems: 'center', gap: '0.15rem' }}>+1 <LapisIcon size={12} /> LAPIS</strong> 보너스를 받습니다.
+          </p>
+        </div>
+      )}
+
       <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         {room.members.map(m => (
           <Link href={`/profile/${m.username}`} key={m.id} style={{
@@ -927,10 +1123,11 @@ function calcLapis(rank: number, total: number): number {
   return rank <= half ? half - rank + 1 : half - rank;
 }
 
-function ResultRecorder({ members, roomId, onDone }: { members: Member[]; roomId: string; onDone: () => void }) {
-  const [gameType, setGameType] = useState<GameTypeKey>('ranking');
+function ResultRecorder({ members, roomId, roomBet, initialGameType, initialBet, onDone }: { members: Member[]; roomId: string; roomBet: number; initialGameType?: string | null; initialBet?: number; onDone: () => void }) {
+  const [gameType, setGameType] = useState<GameTypeKey>((initialGameType as GameTypeKey | null | undefined) ?? 'ranking');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const [betAmount, setBetAmount] = useState(initialBet ?? roomBet);
 
   // 순위전: members 순서 = 순위 (위에서부터 1등)
   const [rankOrder, setRankOrder] = useState<Member[]>([...members]);
@@ -938,8 +1135,9 @@ function ResultRecorder({ members, roomId, onDone }: { members: Member[]; roomId
   const initialOther = useMemo(() => members.map((m, i) => ({
     player_id: m.id, nickname: m.nickname,
     rank: i + 1, team: i % 2 === 0 ? 'A' : 'B',
-    role: '', score: '', is_winner: false, is_mvp: false,
-  })), [members]);
+    role: (initialGameType === 'mafia') ? '시민' : (initialGameType === 'onevsmany') ? '다수' : '',
+    score: '', is_winner: false, is_mvp: false,
+  })), [members, initialGameType]);
   const [parts, setParts] = useState<ParticipantInput[]>(initialOther);
 
   const update = (idx: number, patch: Partial<ParticipantInput>) =>
@@ -978,7 +1176,10 @@ function ResultRecorder({ members, roomId, onDone }: { members: Member[]; roomId
 
     const res = await fetch(`/api/rooms/${roomId}`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'record_results', game_type: gameType, participants }),
+      body: JSON.stringify({
+        action: 'record_results', game_type: gameType, participants,
+        ...(gameType === 'deathmatch' ? { deathmatch_bet: betAmount } : {}),
+      }),
     });
     if (res.ok) { onDone(); }
     else { const d = await res.json(); setError(d.error ?? '오류가 발생했습니다'); }
@@ -1008,6 +1209,38 @@ function ResultRecorder({ members, roomId, onDone }: { members: Member[]; roomId
           ))}
         </div>
       </div>
+
+      {/* ── 데스매치 베팅 설정 ── */}
+      {gameType === 'deathmatch' && (
+        <div style={{ marginBottom: '1.8rem', padding: '1.2rem 1.4rem', border: '1px solid rgba(248,113,113,0.3)', background: 'rgba(248,113,113,0.05)' }}>
+          <p style={{ ...s, fontSize: '0.55rem', letterSpacing: '0.15em', color: '#f87171', marginBottom: '1rem' }}>DEATHMATCH BET — 인당 베팅 라피스</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', flexWrap: 'wrap' }}>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
+              <button key={n} type="button" onClick={() => setBetAmount(n)} style={{
+                width: 38, height: 38, ...s, fontSize: '0.8rem',
+                border: `1px solid ${betAmount === n ? '#f87171' : 'rgba(248,113,113,0.2)'}`,
+                background: betAmount === n ? 'rgba(248,113,113,0.15)' : 'transparent',
+                color: betAmount === n ? '#f87171' : 'var(--white-dim)', cursor: 'pointer',
+                fontWeight: betAmount === n ? 700 : 400,
+              }}>{n}</button>
+            ))}
+          </div>
+          <div style={{ marginTop: '1rem', padding: '0.7rem 1rem', background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(248,113,113,0.15)', display: 'flex', gap: '1.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
+            <span style={{ ...s, fontSize: '0.52rem', color: '#f87171', display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
+              <LapisIcon size={10} /> 베팅 미리보기 ({members.length}인)
+            </span>
+            <span style={{ ...s, fontSize: '0.6rem', color: '#4ade80' }}>
+              승자: +{(members.length - 1) * betAmount} <LapisIcon size={10} style={{ display: 'inline' }} />
+            </span>
+            <span style={{ ...s, fontSize: '0.6rem', color: '#f87171' }}>
+              패자: −{betAmount} <LapisIcon size={10} style={{ display: 'inline' }} />
+            </span>
+            <span style={{ ...s, fontSize: '0.52rem', color: 'var(--white-dim)', opacity: 0.5 }}>
+              (판돈 총 {members.length * betAmount} <LapisIcon size={9} style={{ display: 'inline' }} />)
+            </span>
+          </div>
+        </div>
+      )}
 
       {/* ── 순위전 UI ── */}
       {gameType === 'ranking' && (
@@ -1422,38 +1655,72 @@ function BgmSearch({ gameTypes, selectedGames }: { gameTypes: string[]; selected
 /* ─────────────────────────────── */
 /* MVP Voting                      */
 /* ─────────────────────────────── */
-function MvpVoting({ members, roomId, isHost, votes, userVote, onVote, onFinalize }: {
+function MvpVoting({ members, roomId, isHost, votes, userVote, onVote, onFinalize, is1v1, isSpectator, spectatorCount }: {
   members: Member[]; roomId: string; isHost: boolean;
   votes: Record<string, number>; userVote: string | null;
   onVote: (nomineeId: string) => void;
   onFinalize: () => void;
+  is1v1: boolean;
+  isSpectator: boolean;
+  spectatorCount: number;
 }) {
   const [finalizing, setFinalizing] = useState(false);
   const totalVotes = Object.values(votes).reduce((a, b) => a + b, 0);
   const maxVotes = Math.max(...Object.values(votes), 0);
 
+  // 1:1 게임에서 관전자가 아닌 플레이어는 투표 불가
+  const canVote = is1v1 ? isSpectator : !isSpectator;
+
   return (
     <div>
+      {/* 헤더 */}
       <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', letterSpacing: '0.2em', color: '#e879f9', marginBottom: '0.5rem' }}>
-        MVP VOTE — 이번 게임의 MVP를 선정하세요
-      </p>
-      <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.9rem', fontStyle: 'italic', color: 'var(--white-dim)', opacity: 0.6, marginBottom: '2rem' }}>
-        한 명을 선택해 투표하세요. MVP는 +1 <LapisIcon size={12} /> LAPIS 보너스를 받습니다.
+        {is1v1 ? '👁 1:1 MVP VOTE — 관전자 투표' : 'MVP VOTE — 이번 게임의 MVP를 선정하세요'}
       </p>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: '2rem' }}>
+      {/* 1:1 모드 — 안내 배너 */}
+      {is1v1 && (
+        <div style={{ marginBottom: '1.5rem', padding: '0.9rem 1.1rem', border: '1px solid rgba(232,121,249,0.25)', background: 'rgba(232,121,249,0.06)' }}>
+          {spectatorCount === 0 ? (
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: '#fb923c' }}>
+              ⚠️ 현재 관전자가 없습니다. 관전자가 없으면 MVP를 선정할 수 없습니다.
+            </p>
+          ) : isSpectator ? (
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: 'var(--white-dim)', lineHeight: 1.6 }}>
+              🏆 1:1 게임에서는 <strong style={{ color: '#e879f9' }}>관전자</strong>가 MVP를 결정합니다.
+              두 플레이어 중 더 인상적인 플레이를 한 분에게 투표하세요.<br/>
+              MVP는 <strong style={{ color: '#e879f9', display: 'inline-flex', alignItems: 'center', gap: '0.15rem' }}>+1 <LapisIcon size={12} /></strong> LAPIS 보너스를 받습니다.
+            </p>
+          ) : (
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: 'var(--white-dim)', lineHeight: 1.6 }}>
+              👁 1:1 게임에서는 관전자가 MVP를 결정합니다.<br/>
+              현재 <strong style={{ color: '#e879f9' }}>{spectatorCount}명의 관전자</strong>가 투표 중입니다.
+              MVP는 <strong style={{ color: '#e879f9', display: 'inline-flex', alignItems: 'center', gap: '0.15rem' }}>+1 <LapisIcon size={12} /></strong> LAPIS를 받습니다.
+            </p>
+          )}
+        </div>
+      )}
+
+      {/* 일반 모드 안내 */}
+      {!is1v1 && (
+        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.9rem', fontStyle: 'italic', color: 'var(--white-dim)', opacity: 0.6, marginBottom: '1.5rem' }}>
+          {canVote
+            ? <>한 명을 선택해 투표하세요. MVP는 +1 <LapisIcon size={12} /> LAPIS 보너스를 받습니다.</>
+            : '관전자는 MVP 투표에 참여할 수 없습니다.'}
+        </p>
+      )}
+
+      {/* 후보 목록 — 투표 가능하면 버튼, 아니면 카드 */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: '1.5rem' }}>
         {members.map(m => {
           const count = votes[m.id] ?? 0;
           const isMyVote = userVote === m.id;
           const isLeading = count === maxVotes && count > 0;
-          return (
-            <button key={m.id} onClick={() => onVote(m.id)} style={{
-              display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem 1.2rem',
-              background: isMyVote ? 'rgba(232,121,249,0.1)' : 'rgba(30,74,52,0.2)',
-              border: `1px solid ${isMyVote ? '#e879f9' : isLeading ? 'rgba(232,121,249,0.3)' : 'rgba(201,168,76,0.1)'}`,
-              cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s', width: '100%',
-            }}>
-              <div style={{ width: 40, height: 40, borderRadius: '50%', border: `2px solid ${isMyVote ? '#e879f9' : 'rgba(201,168,76,0.3)'}`, background: 'rgba(30,74,52,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Cinzel', serif", fontSize: '0.9rem', color: isMyVote ? '#e879f9' : 'var(--gold)', flexShrink: 0, overflow: 'hidden' }}>
+          const pct = totalVotes > 0 ? (count / totalVotes) * 100 : 0;
+
+          const inner = (
+            <>
+              <div style={{ width: 40, height: 40, borderRadius: '50%', border: `2px solid ${isMyVote ? '#e879f9' : isLeading ? 'rgba(232,121,249,0.5)' : 'rgba(201,168,76,0.3)'}`, background: 'rgba(30,74,52,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Cinzel', serif", fontSize: '0.9rem', color: isMyVote ? '#e879f9' : 'var(--gold)', flexShrink: 0, overflow: 'hidden' }}>
                 {m.avatar_url
                   // eslint-disable-next-line @next/next/no-img-element
                   ? <img src={m.avatar_url} alt={m.nickname} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -1466,34 +1733,63 @@ function MvpVoting({ members, roomId, isHost, votes, userVote, onVote, onFinaliz
                   {isLeading && !isMyVote && <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.52rem', color: '#fb923c', marginLeft: '0.6rem' }}>선두</span>}
                 </p>
                 <div style={{ marginTop: '0.4rem', height: 3, background: 'rgba(201,168,76,0.1)', borderRadius: 2, overflow: 'hidden' }}>
-                  <div style={{ height: '100%', width: totalVotes > 0 ? `${(count / members.length) * 100}%` : '0%', background: isMyVote ? '#e879f9' : '#fb923c', transition: 'width 0.4s ease' }} />
+                  <div style={{ height: '100%', width: `${pct}%`, background: isMyVote ? '#e879f9' : '#fb923c', transition: 'width 0.4s ease' }} />
                 </div>
               </div>
-              <span style={{ fontFamily: "'Cinzel', serif", fontSize: '1rem', color: isMyVote ? '#e879f9' : count > 0 ? '#fb923c' : 'rgba(201,168,76,0.3)', flexShrink: 0, minWidth: 24, textAlign: 'center' }}>
-                {count}
+              <span style={{ fontFamily: "'Cinzel', serif", fontSize: '1rem', color: isMyVote ? '#e879f9' : count > 0 ? '#fb923c' : 'rgba(201,168,76,0.3)', flexShrink: 0, minWidth: 30, textAlign: 'right' }}>
+                {count}표
               </span>
-            </button>
+            </>
+          );
+
+          if (canVote) {
+            return (
+              <button key={m.id} onClick={() => onVote(m.id)} style={{
+                display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem 1.2rem',
+                background: isMyVote ? 'rgba(232,121,249,0.1)' : 'rgba(30,74,52,0.2)',
+                border: `1px solid ${isMyVote ? '#e879f9' : isLeading ? 'rgba(232,121,249,0.3)' : 'rgba(201,168,76,0.1)'}`,
+                cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s', width: '100%',
+              }}>{inner}</button>
+            );
+          }
+          return (
+            <div key={m.id} style={{
+              display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem 1.2rem',
+              background: isLeading ? 'rgba(232,121,249,0.06)' : 'rgba(30,74,52,0.15)',
+              border: `1px solid ${isLeading ? 'rgba(232,121,249,0.3)' : 'rgba(201,168,76,0.08)'}`,
+            }}>{inner}</div>
           );
         })}
       </div>
 
+      {/* 투표 현황 */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.8rem 1rem', background: 'rgba(30,74,52,0.15)', border: '1px solid rgba(201,168,76,0.1)', marginBottom: '1.5rem' }}>
         <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: 'var(--white-dim)', letterSpacing: '0.1em' }}>
-          {totalVotes} / {members.length}명 투표 완료
+          {is1v1
+            ? `관전자 ${totalVotes} / ${spectatorCount}명 투표`
+            : `${totalVotes} / ${members.length}명 투표 완료`}
         </span>
-        {totalVotes === members.length && (
+        {(is1v1 ? totalVotes === spectatorCount && spectatorCount > 0 : totalVotes === members.length) && (
           <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: '#4ade80' }}>✓ 모든 투표 완료</span>
         )}
       </div>
 
+      {/* 방장 종료 버튼 */}
       {isHost && (
-        <button onClick={async () => { setFinalizing(true); await onFinalize(); setFinalizing(false); }} disabled={finalizing} style={{
-          padding: '0.7rem 2.4rem', background: finalizing ? 'rgba(232,121,249,0.3)' : '#e879f9',
-          border: 'none', color: '#0b2218', fontFamily: "'Cinzel', serif", fontSize: '0.7rem',
-          letterSpacing: '0.15em', fontWeight: 700, cursor: finalizing ? 'not-allowed' : 'pointer',
-        }}>
-          {finalizing ? '처리 중...' : '투표 종료 & 방 닫기'}
-        </button>
+        <>
+          {is1v1 && spectatorCount === 0 && (
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.9rem', color: '#fb923c', marginBottom: '0.8rem' }}>
+              ⚠️ 관전자가 없어 MVP를 선정할 수 없습니다. 투표 없이 종료됩니다.
+            </p>
+          )}
+          <button onClick={async () => { setFinalizing(true); await onFinalize(); setFinalizing(false); }} disabled={finalizing} style={{
+            padding: '0.7rem 2.4rem', background: finalizing ? 'rgba(232,121,249,0.3)' : '#e879f9',
+            border: 'none', color: '#0b2218', fontFamily: "'Cinzel', serif", fontSize: '0.7rem',
+            letterSpacing: '0.15em', fontWeight: 700, cursor: finalizing ? 'not-allowed' : 'pointer',
+          }}>
+            {finalizing ? '처리 중...' : '투표 종료 & 방 닫기'}
+          </button>
+        </>
       )}
       {!isHost && (
         <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.9rem', fontStyle: 'italic', color: 'var(--white-dim)', opacity: 0.5 }}>

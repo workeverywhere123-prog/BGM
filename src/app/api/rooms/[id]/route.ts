@@ -139,10 +139,46 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       return NextResponse.json({ ok: true, ready_player_ids: next });
     }
 
+    if (action === 'set_game_type') {
+      const { data: room } = await supabase.from('rooms').select('host_id').eq('id', id).single();
+      if (room?.host_id !== user.id) return NextResponse.json({ error: '권한이 없습니다' }, { status: 403 });
+      const { game_type } = body as { game_type: string };
+      const valid = ['ranking', 'mafia', 'team', 'coop', 'onevsmany', 'deathmatch'];
+      if (!valid.includes(game_type)) return NextResponse.json({ error: '유효하지 않은 게임 유형입니다' }, { status: 400 });
+      // Reset bet_agreements when game type changes
+      await supabase.from('rooms').update({ room_game_type: game_type, bet_agreements: {} }).eq('id', id);
+      return NextResponse.json({ ok: true });
+    }
+
+    if (action === 'set_bet') {
+      // Only non-spectator members can set a bet
+      const { data: memberRow } = await supabase.from('room_members').select('id').eq('room_id', id).eq('player_id', user.id).eq('is_spectator', false).maybeSingle();
+      if (!memberRow) return NextResponse.json({ error: '참가자만 베팅할 수 있습니다' }, { status: 403 });
+      const { bet } = body as { bet: number };
+      const clampedBet = Math.max(1, Math.min(3, Math.round(bet)));
+      const { data: room } = await supabase.from('rooms').select('bet_agreements').eq('id', id).single();
+      const current = ((room?.bet_agreements ?? {}) as Record<string, number>);
+      current[user.id] = clampedBet;
+      await supabase.from('rooms').update({ bet_agreements: current }).eq('id', id);
+      return NextResponse.json({ ok: true, bet_agreements: current });
+    }
+
     if (action === 'start') {
-      const { data: room } = await supabase.from('rooms').select('host_id, status, ready_player_ids').eq('id', id).single();
+      const { data: room } = await supabase.from('rooms').select('host_id, status, room_game_type, bet_agreements').eq('id', id).single();
       if (room?.host_id !== user.id) return NextResponse.json({ error: '권한이 없습니다' }, { status: 403 });
       if (!['open', 'full'].includes(room?.status ?? '')) return NextResponse.json({ error: '이미 시작됐거나 종료된 방입니다' }, { status: 400 });
+      if (!room?.room_game_type) return NextResponse.json({ error: '게임 유형을 먼저 선택해주세요' }, { status: 400 });
+
+      if (room.room_game_type === 'deathmatch') {
+        const { data: memberRows } = await supabase.from('room_members').select('player_id').eq('room_id', id).eq('is_spectator', false);
+        const memberIds = (memberRows ?? []).map(r => r.player_id);
+        if (memberIds.length !== 2) return NextResponse.json({ error: '데스매치는 정확히 2명이어야 합니다' }, { status: 400 });
+        const bets = ((room.bet_agreements ?? {}) as Record<string, number>);
+        const p1Bet = bets[memberIds[0]];
+        const p2Bet = bets[memberIds[1]];
+        if (!p1Bet || !p2Bet) return NextResponse.json({ error: '두 플레이어 모두 베팅 금액을 입력해야 합니다' }, { status: 400 });
+        if (p1Bet !== p2Bet) return NextResponse.json({ error: '두 플레이어의 베팅 금액이 같아야 합니다' }, { status: 400 });
+      }
 
       const now = new Date().toISOString();
       await supabase.from('rooms').update({ status: 'playing', started_at: now }).eq('id', id);
@@ -150,7 +186,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
     }
 
     if (action === 'record_results') {
-      const { data: room } = await supabase.from('rooms').select('host_id, status, started_at, is_ranked, boardlife_game_id, boardlife_game_name').eq('id', id).single();
+      const { data: room } = await supabase.from('rooms').select('host_id, status, started_at, is_ranked, boardlife_game_id, boardlife_game_name, deathmatch_bet, room_game_type, bet_agreements').eq('id', id).single();
       if (room?.host_id !== user.id) return NextResponse.json({ error: '권한이 없습니다' }, { status: 403 });
 
       const isRanked = room?.is_ranked ?? true;
@@ -159,10 +195,19 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
         ? Math.round((Date.now() - new Date(room.started_at).getTime()) / 60000)
         : null;
 
-      const { game_type, participants } = body as {
-        game_type: string;
+      const { game_type: reqGameType, participants, deathmatch_bet: reqBet } = body as {
+        game_type?: string;
         participants: { player_id: string; rank?: number; team?: string; role?: string; is_winner?: boolean; score?: number }[];
+        deathmatch_bet?: number;
       };
+
+      // Fall back to pre-selected room game type if not provided in request
+      const game_type = reqGameType ?? room?.room_game_type;
+      if (!game_type) return NextResponse.json({ error: '게임 유형을 선택해주세요' }, { status: 400 });
+
+      // 데스매치 베팅 — 사전 합의값 우선, 요청값으로 덮어쓰기 가능, 없으면 방 기본값
+      const agreedBet = Object.values((room?.bet_agreements ?? {}) as Record<string, number>)[0];
+      const bet = Math.max(1, Math.min(10, reqBet ?? agreedBet ?? room?.deathmatch_bet ?? 3));
 
       const { data: match, error: matchErr } = await supabase
         .from('matches')
@@ -172,12 +217,50 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       if (matchErr || !match) return NextResponse.json({ error: matchErr?.message ?? 'match 생성 실패' }, { status: 500 });
 
       const total = participants.length;
-      for (const p of participants) {
-        let chip_change = 0;
-        if (isRanked) {
-          if (game_type === 'ranking') chip_change = rankingPoints(p.rank ?? total, total);
-          else chip_change = p.is_winner ? 2 : -1;
+
+      // 게임 타입별 칩 계산
+      function calcChipChange(p: typeof participants[0]): number {
+        if (!isRanked) return 0;
+        if (game_type === 'ranking') {
+          return rankingPoints(p.rank ?? total, total);
         }
+        if (game_type === 'deathmatch') {
+          // 전체 계산은 아래 별도 처리
+          return 0; // placeholder
+        }
+        if (game_type === 'mafia') {
+          if (!p.is_winner) return 0;
+          if (p.role === '마피아') return 2;
+          return 1; // 시민, 경찰, 의사 등
+        }
+        if (game_type === 'onevsmany') {
+          const isSolo = p.role === '단독';
+          return p.is_winner ? (isSolo ? 2 : 1) : -1;
+        }
+        if (game_type === 'coop') {
+          return 0; // coop MVP는 finalize_mvp에서 처리
+        }
+        // team
+        return p.is_winner ? 1 : -1;
+      }
+
+      // 데스매치 전체 계산 (pot 필요)
+      const chipChanges: Record<string, number> = {};
+      if (game_type === 'deathmatch' && isRanked) {
+        const losers = participants.filter(p => !p.is_winner);
+        const winners = participants.filter(p => p.is_winner);
+        const pot = losers.length * bet;
+        const winnerShare = winners.length > 0 ? Math.floor(pot / winners.length) : 0;
+        for (const p of participants) {
+          chipChanges[p.player_id] = p.is_winner ? winnerShare : -bet;
+        }
+      } else {
+        for (const p of participants) {
+          chipChanges[p.player_id] = calcChipChange(p);
+        }
+      }
+
+      for (const p of participants) {
         await supabase.from('match_participants').insert({
           match_id: match.id,
           player_id: p.player_id,
@@ -187,23 +270,21 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
           is_winner: p.is_winner ?? false,
           score: p.score ?? null,
           is_mvp: false,
-          chip_change,
+          chip_change: chipChanges[p.player_id] ?? 0,
         });
       }
 
       if (isRanked) {
         const { data: quarter } = await supabase.from('quarters').select('id').eq('is_active', true).maybeSingle();
         for (const p of participants) {
-          let amount = 0;
-          if (game_type === 'ranking') amount = rankingPoints(p.rank ?? total, total);
-          else amount = p.is_winner ? 2 : -1;
+          const amount = chipChanges[p.player_id] ?? 0;
           if (amount !== 0) {
             await supabase.from('chip_transactions').insert({
               player_id: p.player_id,
               tx_type: 'game',
               amount,
               quarter_id: quarter?.id ?? null,
-              note: `보드게임방 ${game_type} 결과`,
+              note: game_type === 'deathmatch' ? `데스매치 (베팅 ${bet} LAPIS)` : `보드게임방 ${game_type} 결과`,
               created_by: user.id,
             });
           }

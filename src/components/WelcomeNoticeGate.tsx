@@ -5,16 +5,21 @@ import WelcomeNoticeModal from './WelcomeNoticeModal';
 
 const getWelcomeNotice = unstable_cache(
   async () => {
-    const supabase = createSupabaseAdminClient();
-    const { data } = await supabase
-      .from('notices')
-      .select('id')
-      .eq('is_pinned', true)
-      .eq('category', 'important')
-      .order('created_at', { ascending: false })
-      .limit(1)
-      .maybeSingle();
-    return data;
+    try {
+      const supabase = createSupabaseAdminClient();
+      const { data } = await supabase
+        .from('notices')
+        .select('id')
+        .eq('is_pinned', true)
+        .eq('category', 'important')
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .maybeSingle();
+      return data;
+    } catch {
+      // Supabase 연결 실패(일시정지 등) 시 조용히 null 반환
+      return null;
+    }
   },
   ['welcome-notice'],
   { revalidate: 300 }

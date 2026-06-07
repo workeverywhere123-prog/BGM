@@ -9,6 +9,8 @@ interface Player { id: string; nickname: string; username: string; avatar_url?: 
 interface Attendance { player_id: string; status: 'attended' | 'late' | 'absent'; voted: boolean; }
 interface RsvpEntry { player_id: string; status: string; players: Player | null; }
 interface Meeting { id: string; number: number; held_at: string; status: string; note: string | null; rsvp_deadline: string | null; rsvp_processed: boolean; }
+interface MatchParticipant { player_id: string; team?: string | null; rank?: number | null; role?: string | null; is_winner?: boolean | null; is_mvp: boolean; chip_change: number; }
+interface Match { id: string; game_type: string; played_at: string; boardlife_game_name?: string | null; games?: { name: string } | null; match_participants: MatchParticipant[]; }
 
 const STATUS_META: Record<string, { label: string; color: string }> = {
   upcoming:  { label: '예정',   color: 'var(--gold)' },
@@ -18,6 +20,9 @@ const STATUS_META: Record<string, { label: string; color: string }> = {
 };
 const ATT_COLOR: Record<string, string> = { attended: '#4ade80', late: '#c9a84c', absent: '#f87171' };
 const ATT_LABEL: Record<string, string> = { attended: '출석', late: '지각', absent: '불참' };
+const GAME_TYPE_LABEL: Record<string, string> = {
+  team: '팀전', mafia: '마피아', deathmatch: '데스매치', onevsmany: '1vs多', coop: '협력', ranking: '순위',
+};
 
 const s = {
   label:   { fontFamily: "'Cinzel', serif", fontSize: '0.62rem', letterSpacing: '0.14em', color: 'var(--white-dim)', display: 'block', marginBottom: '0.3rem' } as React.CSSProperties,
@@ -32,22 +37,191 @@ function toLocalInput(iso: string | null) {
   return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
 }
 
+// ── 경기 편집 인라인 폼 ─────────────────────────────────────
+function MatchEditForm({
+  match, players, meetingId, activeQuarterId,
+  onDone, onCancel,
+}: {
+  match: Match;
+  players: Player[];
+  meetingId: string;
+  activeQuarterId: string | null;
+  onDone: () => void;
+  onCancel: () => void;
+}) {
+  const [gameType, setGameType] = useState(match.game_type);
+  const [gameName, setGameName] = useState(match.games?.name ?? match.boardlife_game_name ?? '');
+  const [saving, setSaving] = useState(false);
+  const [msg, setMsg] = useState('');
+
+  // 참여자 상태: {player_id, team, rank, role, is_winner, is_mvp} 배열
+  const initParticipants = match.match_participants.map(p => ({
+    player_id: p.player_id,
+    team: p.team ?? '',
+    rank: p.rank ?? 1,
+    role: p.role ?? 'citizen',
+    is_winner: p.is_winner ?? false,
+    is_mvp: p.is_mvp,
+  }));
+  const [parts, setParts] = useState(initParticipants);
+
+  function updatePart(player_id: string, field: string, value: unknown) {
+    setParts(prev => prev.map(p => p.player_id === player_id ? { ...p, [field]: value } : p));
+  }
+
+  async function save() {
+    setSaving(true); setMsg('');
+    const res = await fetch('/api/admin/meeting', {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'edit_match',
+        meeting_id: meetingId,
+        match_id: match.id,
+        game_type: gameType,
+        game_name: gameName,
+        quarter_id: activeQuarterId,
+        participants: parts.map(p => ({
+          player_id: p.player_id,
+          team: gameType === 'team' || gameType === 'onevsmany' ? p.team : undefined,
+          rank: gameType === 'ranking' ? p.rank : undefined,
+          role: gameType === 'mafia' ? p.role : undefined,
+          is_winner: gameType !== 'ranking' ? p.is_winner : undefined,
+          is_mvp: gameType === 'coop' ? p.is_mvp : false,
+        })),
+      }),
+    });
+    setSaving(false);
+    if (res.ok) { onDone(); }
+    else { const d = await res.json(); setMsg(d.error ?? '오류 발생'); }
+  }
+
+  const pmap = Object.fromEntries(players.map(p => [p.id, p]));
+
+  return (
+    <div style={{ padding: '1.2rem', background: 'rgba(201,168,76,0.04)', border: '1px solid rgba(201,168,76,0.2)', marginTop: 4 }}>
+      <p style={s.section}>경기 수정</p>
+
+      {/* 게임명 + 타입 */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 180px', gap: '0.8rem', marginBottom: '1rem' }}>
+        <div>
+          <label style={s.label}>게임명</label>
+          <input value={gameName} onChange={e => setGameName(e.target.value)} style={s.input} />
+        </div>
+        <div>
+          <label style={s.label}>게임 타입</label>
+          <select value={gameType} onChange={e => setGameType(e.target.value)}
+            style={{ ...s.input, appearance: 'none' }}>
+            {Object.entries(GAME_TYPE_LABEL).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+          </select>
+        </div>
+      </div>
+
+      {/* 참여자 */}
+      <p style={{ ...s.label, marginBottom: '0.5rem' }}>참여자 ({parts.length}명)</p>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: '1rem' }}>
+        {parts.map(p => {
+          const pl = pmap[p.player_id];
+          return (
+            <div key={p.player_id} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.5rem 0.8rem', background: 'rgba(11,34,24,0.6)', flexWrap: 'wrap' }}>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: 'var(--foreground)', minWidth: 80 }}>
+                {pl?.nickname ?? p.player_id.slice(0, 6)}
+              </span>
+
+              {/* 팀전 / 1vs多 */}
+              {(gameType === 'team' || gameType === 'onevsmany') && (
+                <select value={p.team} onChange={e => updatePart(p.player_id, 'team', e.target.value)}
+                  style={{ padding: '0.2rem 0.4rem', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(201,168,76,0.2)', color: 'var(--foreground)', fontFamily: "'Cinzel', serif", fontSize: '0.6rem' }}>
+                  {gameType === 'team' ? (<><option value="A">A팀</option><option value="B">B팀</option></>) : (<><option value="solo">1인팀</option><option value="group">다인팀</option></>)}
+                </select>
+              )}
+
+              {/* 마피아 역할 */}
+              {gameType === 'mafia' && (
+                <select value={p.role} onChange={e => updatePart(p.player_id, 'role', e.target.value)}
+                  style={{ padding: '0.2rem 0.4rem', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(201,168,76,0.2)', color: 'var(--foreground)', fontFamily: "'Cinzel', serif", fontSize: '0.6rem' }}>
+                  <option value="citizen">시민</option>
+                  <option value="mafia">마피아</option>
+                  <option value="special">특수</option>
+                </select>
+              )}
+
+              {/* 순위게임 */}
+              {gameType === 'ranking' && (
+                <input type="number" min={1} max={parts.length} value={p.rank}
+                  onChange={e => updatePart(p.player_id, 'rank', parseInt(e.target.value))}
+                  style={{ width: 60, padding: '0.2rem 0.4rem', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(201,168,76,0.2)', color: 'var(--gold)', fontFamily: "'Cinzel', serif", fontSize: '0.7rem', textAlign: 'center' }} />
+              )}
+
+              {/* 승패 (ranking 아닌 경우) */}
+              {gameType !== 'ranking' && (
+                <div style={{ display: 'flex', gap: '0.3rem' }}>
+                  <button onClick={() => updatePart(p.player_id, 'is_winner', true)}
+                    style={{ padding: '0.2rem 0.5rem', fontFamily: "'Cinzel', serif", fontSize: '0.55rem', background: p.is_winner ? 'rgba(74,222,128,0.15)' : 'none', border: `1px solid ${p.is_winner ? '#4ade80' : 'rgba(201,168,76,0.15)'}`, color: p.is_winner ? '#4ade80' : 'var(--white-dim)', cursor: 'pointer' }}>승</button>
+                  <button onClick={() => updatePart(p.player_id, 'is_winner', false)}
+                    style={{ padding: '0.2rem 0.5rem', fontFamily: "'Cinzel', serif", fontSize: '0.55rem', background: !p.is_winner ? 'rgba(248,113,113,0.15)' : 'none', border: `1px solid ${!p.is_winner ? '#f87171' : 'rgba(201,168,76,0.15)'}`, color: !p.is_winner ? '#f87171' : 'var(--white-dim)', cursor: 'pointer' }}>패</button>
+                </div>
+              )}
+
+              {/* 협력게임 MVP */}
+              {gameType === 'coop' && (
+                <label style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', cursor: 'pointer', fontFamily: "'Cinzel', serif", fontSize: '0.55rem', color: 'var(--gold-dim)' }}>
+                  <input type="checkbox" checked={p.is_mvp} onChange={e => updatePart(p.player_id, 'is_mvp', e.target.checked)} style={{ accentColor: 'var(--gold)' }} />
+                  MVP
+                </label>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
+        <button onClick={save} disabled={saving} className="btn-gold" style={{ fontSize: '0.6rem' }}>
+          {saving ? '저장 중...' : '저장 (칩 재계산)'}
+        </button>
+        <button onClick={onCancel} style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', background: 'none', border: '1px solid rgba(201,168,76,0.2)', color: 'var(--white-dim)', padding: '0.4rem 0.9rem', cursor: 'pointer' }}>
+          취소
+        </button>
+        {msg && <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: '#f87171' }}>{msg}</span>}
+      </div>
+    </div>
+  );
+}
+
 export default function MeetingDetailClient({
-  meeting: initialMeeting, players, attendances, rsvps, activeQuarterId, activeQuarterName,
+  meeting: initialMeeting, players, attendances, rsvps, matches: initialMatches, activeQuarterId, activeQuarterName,
 }: {
   meeting: Meeting;
   players: Player[];
   attendances: Attendance[];
   rsvps: RsvpEntry[];
+  matches: Match[];
   activeQuarterId: string | null;
   activeQuarterName: string | null;
 }) {
   const router = useRouter();
   const [, startT] = useTransition();
-  const [tab, setTab] = useState<'rsvp' | 'attendance' | 'settings'>('rsvp');
+  const [tab, setTab] = useState<'rsvp' | 'attendance' | 'matches' | 'settings'>('rsvp');
 
   // ── 모임 상태 (낙관적 업데이트용) ─────────────────────────────
   const [meetingStatus, setMeetingStatus] = useState(initialMeeting.status);
+
+  // ── 경기 기록 상태 ─────────────────────────────────────────────
+  const [matches, setMatches] = useState<Match[]>(initialMatches);
+  const [editingMatchId, setEditingMatchId] = useState<string | null>(null);
+  const [deletingMatchId, setDeletingMatchId] = useState<string | null>(null);
+
+  async function deleteMatch(matchId: string) {
+    if (!confirm('이 경기 기록을 삭제하시겠습니까?\n⚠ 칩 트랜잭션도 모두 삭제됩니다.')) return;
+    setDeletingMatchId(matchId);
+    const res = await fetch('/api/admin/meeting', {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'delete_match', meeting_id: initialMeeting.id, match_id: matchId }),
+    });
+    if (res.ok) {
+      setMatches(prev => prev.filter(m => m.id !== matchId));
+    }
+    setDeletingMatchId(null);
+  }
 
   // ── 정보 수정 ──────────────────────────────────────────────────
   const [editing, setEditing] = useState(false);
@@ -205,6 +379,7 @@ export default function MeetingDetailClient({
   const TABS = [
     { key: 'rsvp' as const,        label: '참석 투표 현황' },
     { key: 'attendance' as const,  label: '출석 관리' },
+    { key: 'matches' as const,     label: `경기 기록 (${matches.length})` },
     { key: 'settings' as const,    label: '모임 설정' },
   ];
 
@@ -427,6 +602,85 @@ export default function MeetingDetailClient({
             </button>
             {attMsg && <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.65rem', color: attMsg.startsWith('✓') ? '#4ade80' : '#f87171' }}>{attMsg}</span>}
             {!activeQuarterId && <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: '#fb923c', display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>⚠ 활성 분기 없음 — <LapisIcon size={11} /> LAPIS가 분기에 귀속되지 않습니다</span>}
+          </div>
+        </div>
+      )}
+
+      {/* ── 경기 기록 탭 ── */}
+      {tab === 'matches' && (
+        <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+            <p style={s.section}>경기 기록 ({matches.length}건)</p>
+            <Link href="/record" style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: 'var(--gold-dim)', padding: '0.4rem 1rem', border: '1px solid rgba(201,168,76,0.2)', textDecoration: 'none' }}>
+              + 경기 추가
+            </Link>
+          </div>
+
+          {matches.length === 0 && (
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', fontStyle: 'italic', color: 'rgba(244,239,230,0.25)', textAlign: 'center', padding: '3rem 0' }}>
+              이 모임에 기록된 경기가 없습니다
+            </p>
+          )}
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            {matches.map(match => {
+              const gameName = match.games?.name ?? match.boardlife_game_name ?? match.game_type;
+              const typeLabel = GAME_TYPE_LABEL[match.game_type] ?? match.game_type;
+              const isEditing = editingMatchId === match.id;
+
+              return (
+                <div key={match.id}>
+                  {/* 경기 헤더 행 */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.9rem 1.2rem', background: 'rgba(30,74,52,0.15)', borderLeft: '2px solid rgba(201,168,76,0.25)', flexWrap: 'wrap' }}>
+                    {/* 게임 정보 */}
+                    <div style={{ flex: 1 }}>
+                      <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.05rem', color: 'var(--foreground)' }}>{gameName}</span>
+                      <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.52rem', letterSpacing: '0.1em', color: 'var(--gold-dim)', marginLeft: '0.6rem', padding: '0.1rem 0.4rem', border: '1px solid rgba(201,168,76,0.25)' }}>{typeLabel}</span>
+                      <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.5rem', color: 'var(--white-dim)', marginLeft: '0.6rem', opacity: 0.5 }}>
+                        {new Date(match.played_at).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' })}
+                      </span>
+                    </div>
+
+                    {/* 참여자 칩 요약 */}
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>
+                      {match.match_participants.map(mp => {
+                        const pl = pmap[mp.player_id];
+                        const cc = mp.chip_change;
+                        return (
+                          <span key={mp.player_id} style={{ fontFamily: "'Cinzel', serif", fontSize: '0.52rem', padding: '0.15rem 0.5rem', background: cc > 0 ? 'rgba(74,222,128,0.08)' : cc < 0 ? 'rgba(248,113,113,0.08)' : 'rgba(201,168,76,0.06)', border: `1px solid ${cc > 0 ? 'rgba(74,222,128,0.25)' : cc < 0 ? 'rgba(248,113,113,0.25)' : 'rgba(201,168,76,0.15)'}`, color: cc > 0 ? '#4ade80' : cc < 0 ? '#f87171' : 'var(--gold-dim)' }}>
+                            {pl?.nickname ?? '?'} {cc > 0 ? `+${cc}` : cc}
+                          </span>
+                        );
+                      })}
+                    </div>
+
+                    {/* 액션 버튼 */}
+                    <div style={{ display: 'flex', gap: '0.4rem', flexShrink: 0 }}>
+                      <button onClick={() => setEditingMatchId(isEditing ? null : match.id)}
+                        style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', padding: '0.3rem 0.7rem', background: isEditing ? 'rgba(201,168,76,0.12)' : 'none', border: `1px solid ${isEditing ? 'var(--gold)' : 'rgba(201,168,76,0.2)'}`, color: isEditing ? 'var(--gold)' : 'var(--gold-dim)', cursor: 'pointer' }}>
+                        ✎ 수정
+                      </button>
+                      <button onClick={() => deleteMatch(match.id)} disabled={deletingMatchId === match.id}
+                        style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', padding: '0.3rem 0.7rem', background: 'none', border: '1px solid rgba(248,113,113,0.25)', color: '#f87171', cursor: 'pointer' }}>
+                        {deletingMatchId === match.id ? '...' : '삭제'}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* 인라인 수정 폼 */}
+                  {isEditing && (
+                    <MatchEditForm
+                      match={match}
+                      players={players}
+                      meetingId={initialMeeting.id}
+                      activeQuarterId={activeQuarterId}
+                      onDone={() => { setEditingMatchId(null); startT(() => router.refresh()); }}
+                      onCancel={() => setEditingMatchId(null)}
+                    />
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       )}
