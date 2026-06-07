@@ -10,7 +10,7 @@ async function getAllPlayerGames() {
     const supabase = await createSupabaseServerClient();
     const { data } = await supabase
       .from('player_games')
-      .select('id, name, boardlife_id, boardlife_url, thumbnail_url, min_players, max_players, genre, note, players(id, nickname, username)')
+      .select('id, name, name_en, bgg_id, boardlife_id, boardlife_url, thumbnail_url, min_players, max_players, genre, note, players(id, nickname, username)')
       .order('name');
     return data ?? [];
   } catch { return []; }
@@ -25,7 +25,8 @@ export default async function GamesPage() {
 
   const gameMap = new Map<string, {
     boardlife_id: string | null; boardlife_url: string | null;
-    name: string; thumbnail_url: string | null;
+    name: string; name_en: string | null; bgg_id: string | null;
+    thumbnail_url: string | null;
     min_players: number | null; max_players: number | null;
     genre: string | null; note: string | null;
     // owner별 player_game_id 포함 (수정 API 호출용)
@@ -38,7 +39,8 @@ export default async function GamesPage() {
     if (!gameMap.has(key)) {
       gameMap.set(key, {
         boardlife_id: g.boardlife_id, boardlife_url: g.boardlife_url,
-        name: g.name, thumbnail_url: g.thumbnail_url,
+        name: g.name, name_en: g.name_en ?? null, bgg_id: g.bgg_id ?? null,
+        thumbnail_url: g.thumbnail_url,
         min_players: g.min_players, max_players: g.max_players,
         genre: g.genre, note: g.note,
         owners: [],

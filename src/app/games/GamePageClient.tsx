@@ -1,14 +1,90 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import GamePopup, { type GameInfo } from '@/components/GamePopup';
 import BoardlifeGamePicker, { type PickedGame } from '@/components/BoardlifeGamePicker';
+
+/**
+ * 보드게임 썸네일 컴포넌트
+ * 1순위: boardlife CDN URL 직접 로드 시도
+ * 2순위: 실패 시 BGG(BoardGameGeek) API에서 이미지 검색 (브라우저에서 직접 호출)
+ * 3순위: 🎲 플레이스홀더
+ *
+ * boardlife img CDN은 외부 hotlinking 차단 (Cloudflare).
+ * BGG API는 서버 사이드에서 차단되지만 브라우저(ISP IP)에서는 가능.
+ */
+
+/**
+ * 보드게임 썸네일 컴포넌트
+ * 1순위: boardlife CDN URL 직접 로드 (thumbnail_url 있을 때)
+ * 2순위: BGG API에서 이미지 검색 (bgg_id > name_en > name 순)
+ * 3순위: 🎲 플레이스홀더
+ */
+/**
+ * 이미지 소스: DB의 thumbnail_url만 사용 (Wikipedia 업데이트로 관리)
+ * - src 있음 → 직접 표시
+ * - src 없음 → 🎲
+ * - src 로드 실패 → 🎲
+ * SSR과 CSR 초기 상태 동일 → hydration mismatch 없음
+ */
+function GameThumbnail({
+  src,
+  name,
+  h = '130px',
+}: {
+  src: string | null;
+  name: string;
+  /** CSS height 값 — 문자열로 전달 (hydration mismatch 방지) */
+  h?: string;
+}) {
+  const [displaySrc, setDisplaySrc] = useState<string | null>(null);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    // SSR에서는 실행 안 됨 → hydration mismatch 제거
+    // v2: DB-only, no Wikipedia fallback
+    setDisplaySrc(src);
+    setReady(true);
+  }, [src]);
+
+  // SSR + 초기 클라이언트: 스켈레톤 (서버/클라이언트 동일)
+  if (!ready) {
+    return (
+      <div style={{ width: '100%', height: h, background: 'rgba(201,168,76,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', animation: 'skeletonPulse 1.6s ease-in-out infinite' }}>
+        <span style={{ fontSize: '1.2rem', opacity: 0.4 }}>🎲</span>
+      </div>
+    );
+  }
+
+  // 이미지 없음 → 🎲
+  if (!displaySrc) {
+    return (
+      <div style={{ width: '100%', height: h, background: 'rgba(201,168,76,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem' }}>🎲</div>
+    );
+  }
+
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={displaySrc}
+      alt={name}
+      style={{
+        width: '100%', height: h, objectFit: 'contain' as const,
+        background: 'rgba(0,0,0,0.25)', display: 'block',
+        color: 'transparent',
+      }}
+      onError={() => setDisplaySrc(null)}
+    />
+  );
+}
 
 interface GroupedGame {
   boardlife_id: string | null;
   boardlife_url: string | null;
   name: string;
+  name_en: string | null;
+  bgg_id: string | null;
   thumbnail_url: string | null;
   min_players: number | null;
   max_players: number | null;
@@ -519,12 +595,11 @@ export default function GamePageClient({
               >
                 {/* 썸네일 */}
                 <div style={{ position: 'relative' }}>
-                  {g.thumbnail_url ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={g.thumbnail_url} alt={g.name} style={{ width: '100%', height: 130, objectFit: 'contain', background: 'rgba(0,0,0,0.25)', display: 'block' }} />
-                  ) : (
-                    <div style={{ width: '100%', height: 90, background: 'rgba(201,168,76,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem' }}>🎲</div>
-                  )}
+                  <GameThumbnail
+                    src={g.thumbnail_url}
+                    name={g.name}
+                    h="130px"
+                  />
                   {/* 장르 뱃지 */}
                   {g.genre && (() => {
                     const primaryGenre = g.genre.split(',')[0];
