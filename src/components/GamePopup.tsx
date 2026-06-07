@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 
 export interface GameInfo {
@@ -22,6 +22,8 @@ export default function GamePopup({ game, onClose }: { game: GameInfo; onClose: 
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
   const [owning, setOwning] = useState(false);
+  const [imgFailed, setImgFailed] = useState(false);
+  const handleImgError = useCallback(() => setImgFailed(true), []);
 
   useEffect(() => {
     fetch(`/api/games/stats?boardlife_id=${encodeURIComponent(game.boardlife_id)}`)
@@ -73,9 +75,9 @@ export default function GamePopup({ game, onClose }: { game: GameInfo; onClose: 
         {/* Header */}
         <div style={{ display: 'flex', gap: '1.5rem', padding: '2rem', borderBottom: '1px solid rgba(201,168,76,0.1)' }}>
           <div style={{ width: 100, height: 100, flexShrink: 0, background: 'rgba(201,168,76,0.05)', border: '1px solid rgba(201,168,76,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            {game.thumbnail_url
+            {game.thumbnail_url && !imgFailed
               // eslint-disable-next-line @next/next/no-img-element
-              ? <img src={game.thumbnail_url} alt={game.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              ? <img src={game.thumbnail_url} alt={game.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} onError={handleImgError} />
               : <span style={{ fontSize: '2.5rem' }}>🎲</span>
             }
           </div>

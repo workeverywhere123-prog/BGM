@@ -22,11 +22,10 @@ import BoardlifeGamePicker, { type PickedGame } from '@/components/BoardlifeGame
  * 3순위: 🎲 플레이스홀더
  */
 /**
- * 이미지 소스: DB의 thumbnail_url만 사용 (Wikipedia 업데이트로 관리)
- * - src 있음 → 직접 표시
- * - src 없음 → 🎲
- * - src 로드 실패 → 🎲
- * SSR과 CSR 초기 상태 동일 → hydration mismatch 없음
+ * boardlife.co.kr 이미지 상태 훅
+ * - img.boardlife.co.kr (구 CDN): CORP 헤더로 브라우저 차단 → 🎲
+ * - boardlife.co.kr/data/... (og:image): CORP 없음 → 직접 로드 가능
+ * - 기타 URL (Wikipedia 등): 직접 로드
  */
 function GameThumbnail({
   src,
@@ -35,46 +34,33 @@ function GameThumbnail({
 }: {
   src: string | null;
   name: string;
-  /** CSS height 값 — 문자열로 전달 (hydration mismatch 방지) */
+  /** CSS height 값 (e.g. '130px') */
   h?: string;
 }) {
-  const [displaySrc, setDisplaySrc] = useState<string | null>(null);
-  const [ready, setReady] = useState(false);
+  const [failed, setFailed] = useState(false);
 
-  useEffect(() => {
-    // SSR에서는 실행 안 됨 → hydration mismatch 제거
-    // v2: DB-only, no Wikipedia fallback
-    setDisplaySrc(src);
-    setReady(true);
-  }, [src]);
+  // src가 바뀌면 실패 상태 초기화
+  useEffect(() => { setFailed(false); }, [src]);
 
-  // SSR + 초기 클라이언트: 스켈레톤 (서버/클라이언트 동일)
-  if (!ready) {
+  if (!src || failed) {
     return (
-      <div style={{ width: '100%', height: h, background: 'rgba(201,168,76,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', animation: 'skeletonPulse 1.6s ease-in-out infinite' }}>
-        <span style={{ fontSize: '1.2rem', opacity: 0.4 }}>🎲</span>
+      <div style={{ width: '100%', height: h, background: 'rgba(201,168,76,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem' }}>
+        🎲
       </div>
-    );
-  }
-
-  // 이미지 없음 → 🎲
-  if (!displaySrc) {
-    return (
-      <div style={{ width: '100%', height: h, background: 'rgba(201,168,76,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem' }}>🎲</div>
     );
   }
 
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={displaySrc}
+      src={src}
       alt={name}
       style={{
         width: '100%', height: h, objectFit: 'contain' as const,
         background: 'rgba(0,0,0,0.25)', display: 'block',
         color: 'transparent',
       }}
-      onError={() => setDisplaySrc(null)}
+      onError={() => setFailed(true)}
     />
   );
 }

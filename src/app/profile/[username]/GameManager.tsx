@@ -2,6 +2,32 @@
 
 import { useState, useEffect, useRef } from 'react';
 
+/** boardlife CDN 이미지 — 403/Cloudflare 차단 대응 썸네일 컴포넌트
+ *  size를 px 문자열로 통일해 SSR/CSR hydration mismatch 방지 */
+function GameThumb({ src, fallback, size = 40 }: { src: string | null; fallback: string; size?: number }) {
+  const [failed, setFailed] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth === 0) setFailed(true);
+  }, []);
+
+  const sz = `${size}px`;
+  const placeholderStyle: React.CSSProperties = {
+    width: sz, height: sz,
+    background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.15)',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    fontFamily: "'Cinzel', serif", fontSize: `${size * 0.4}px`, color: 'var(--gold-dim)', flexShrink: 0,
+  };
+
+  if (!src || failed) return <div style={placeholderStyle}>{fallback}</div>;
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img ref={imgRef} src={src} alt="" style={{ width: sz, height: sz, objectFit: 'contain', display: 'block', flexShrink: 0, color: 'transparent' }}
+      onError={() => setFailed(true)} />
+  );
+}
+
 const GENRES = ['전략', '파티', '가족', '추상', '테마', '전쟁', '아동', '커스터마이즈'];
 const GENRE_COLOR: Record<string, string> = {
   '전략': '#4ade80', '파티': '#fb923c', '가족': '#60a5fa',
@@ -190,14 +216,7 @@ export default function GameManager({ initialGames }: { initialGames: PlayerGame
                   border: 'none', borderBottom: '1px solid rgba(201,168,76,0.07)',
                   cursor: 'pointer', textAlign: 'left',
                 }}>
-                  {g.thumbnail_url ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={g.thumbnail_url} alt={g.name} style={{ width: 36, height: 36, objectFit: 'contain', flexShrink: 0 }} />
-                  ) : (
-                    <div style={{ width: 36, height: 36, background: 'rgba(201,168,76,0.1)', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: 'var(--gold-dim)' }}>
-                      {g.name[0]}
-                    </div>
-                  )}
+                  <GameThumb src={g.thumbnail_url} fallback={g.name[0]} size={36} />
                   <div>
                     <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: 'var(--foreground)' }}>{g.name}</p>
                     {(g.min_players || g.max_players) && (
@@ -231,10 +250,7 @@ export default function GameManager({ initialGames }: { initialGames: PlayerGame
             <div style={{ marginBottom: '0.6rem' }}>
               {selected && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.5rem', background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', marginBottom: '0.5rem' }}>
-                  {selected.thumbnail_url && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={selected.thumbnail_url} alt={selected.name} style={{ width: 40, height: 40, objectFit: 'contain' }} />
-                  )}
+                  <GameThumb src={selected.thumbnail_url} fallback={selected.name[0]} size={40} />
                   <div style={{ flex: 1 }}>
                     <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.95rem', color: 'var(--gold)' }}>{selected.name}</p>
                     <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.48rem', color: 'var(--gold-dim)', opacity: 0.7 }}>보드라이브 #{selected.boardlife_id}</p>
@@ -318,14 +334,7 @@ export default function GameManager({ initialGames }: { initialGames: PlayerGame
               <button onClick={() => openBoardlife(g)} title="보드라이브에서 보기" style={{
                 background: 'none', border: 'none', cursor: 'pointer', padding: 0, flexShrink: 0,
               }}>
-                {g.thumbnail_url ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={g.thumbnail_url} alt={g.name} style={{ width: 40, height: 40, objectFit: 'contain', display: 'block' }} />
-                ) : (
-                  <div style={{ width: 40, height: 40, background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Cinzel', serif", fontSize: '1rem', color: 'var(--gold-dim)' }}>
-                    {g.name[0]}
-                  </div>
-                )}
+                <GameThumb src={g.thumbnail_url} fallback={g.name[0]} size={40} />
               </button>
 
               {/* Info */}
