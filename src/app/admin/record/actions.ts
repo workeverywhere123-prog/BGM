@@ -157,3 +157,35 @@ export async function ensureMeetingAction(
   }
   return { ok: true, data: { meeting_id: data.id } };
 }
+
+// ─────────────────────────────────────────────────────────
+// deleteMatchAction — 경기 삭제 (관리자 전용)
+// ─────────────────────────────────────────────────────────
+
+export async function deleteMatchAction(
+  matchId: string
+): Promise<ActionResult<null>> {
+  const user = await requireSessionUser().catch(() => null);
+  if (!user?.is_admin) {
+    return { ok: false, error: { code: 'FORBIDDEN', message: '관리자 권한이 필요합니다' } };
+  }
+
+  const svc = createSupabaseServiceClient();
+
+  // chip_transactions 먼저 삭제 (FK)
+  await svc.from('chip_transactions').delete().eq('match_id', matchId);
+  // match_participants 삭제 (FK)
+  await svc.from('match_participants').delete().eq('match_id', matchId);
+  // rooms.last_match_id FK 해제
+  await svc.from('rooms').update({ last_match_id: null }).eq('last_match_id', matchId);
+  // match 삭제
+  const { error } = await svc.from('matches').delete().eq('id', matchId);
+
+  if (error) {
+    return { ok: false, error: { code: 'UNKNOWN', message: error.message } };
+  }
+
+  revalidatePath('/admin/record');
+  revalidatePath('/');
+  return { ok: true, data: null };
+}

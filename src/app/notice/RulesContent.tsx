@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import LapisIcon from '@/components/LapisIcon';
+import RulesClaimButton from './RulesClaimButton';
 
 const noteStyle: React.CSSProperties = {
   fontFamily: "'Cormorant Garamond', serif",
@@ -73,7 +74,15 @@ function Divider({ label, color = 'var(--gold-dim)' }: { label: React.ReactNode;
   );
 }
 
-export default function RulesContent({ openRaffleCount = 0 }: { openRaffleCount?: number }) {
+export default function RulesContent({
+  openRaffleCount = 0,
+  isLoggedIn = false,
+  alreadyClaimed = false,
+}: {
+  openRaffleCount?: number;
+  isLoggedIn?: boolean;
+  alreadyClaimed?: boolean;
+}) {
   return (
     <div style={{ maxWidth: 900, margin: '0 auto', padding: '0 2rem 8rem' }}>
 
@@ -311,6 +320,9 @@ export default function RulesContent({ openRaffleCount = 0 }: { openRaffleCount?
         </p>
         <p style={{ fontFamily: "'Great Vibes', cursive", fontSize: '2rem', color: 'var(--gold)', marginTop: '1rem', opacity: 0.6 }}>BGM</p>
       </div>
+
+      {/* ── 규칙 정독 보너스 버튼 ── */}
+      <RulesClaimButton isLoggedIn={isLoggedIn} alreadyClaimed={alreadyClaimed} />
 
     </div>
   );

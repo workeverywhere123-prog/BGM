@@ -107,6 +107,13 @@ export async function signupAction(
         .from('players')
         .update({ nickname })
         .eq('id', data.user.id),
+      // 가입 보너스 +10 LAPIS
+      serviceClient.from('chip_transactions').insert({
+        player_id: data.user.id,
+        amount: 10,
+        tx_type: 'welcome',
+        note: '첫 가입 보너스 🎉',
+      }),
     ]);
   }
 

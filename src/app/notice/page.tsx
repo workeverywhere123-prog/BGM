@@ -94,6 +94,7 @@ export default async function NoticeHubPage({ searchParams }: { searchParams: Se
   let winnerMap: Record<string, { nickname: string; username: string }> = {};
   let myBalance = 0;
   let isLoggedIn = false;
+  let rulesAlreadyClaimed = false;
 
   if (configured) {
     const supabase = await createSupabaseServerClient();
@@ -115,6 +116,19 @@ export default async function NoticeHubPage({ searchParams }: { searchParams: Se
           .order('created_at', { ascending: false });
         notices = data ?? [];
       } catch { /* empty */ }
+    }
+
+    if (activeTab === 'rules') {
+      const sessionUser = await getSessionUser().catch(() => null);
+      isLoggedIn = !!sessionUser;
+      if (sessionUser) {
+        const { data: p } = await supabase
+          .from('players')
+          .select('rules_read_at')
+          .eq('id', sessionUser.id)
+          .single();
+        rulesAlreadyClaimed = !!(p as { rules_read_at: string | null } | null)?.rules_read_at;
+      }
     }
 
     if (activeTab === 'raffle') {
@@ -209,7 +223,13 @@ export default async function NoticeHubPage({ searchParams }: { searchParams: Se
         )}
 
         {/* ── 게임 규칙 탭 ── */}
-        {activeTab === 'rules' && <RulesContent openRaffleCount={openRaffleCount} />}
+        {activeTab === 'rules' && (
+          <RulesContent
+            openRaffleCount={openRaffleCount}
+            isLoggedIn={isLoggedIn}
+            alreadyClaimed={rulesAlreadyClaimed}
+          />
+        )}
 
         {/* ── 행운판 탭 ── */}
         {activeTab === 'raffle' && (
