@@ -42,16 +42,18 @@ export default async function RecordPage() {
 
   if (!data) {
     return (
-      <div className="space-y-4">
-        <h1 className="text-2xl font-bold">경기 기록</h1>
-        <div className="rounded-lg border border-yellow-500/30 bg-yellow-500/5 p-4 text-sm text-yellow-200">
-          <p className="font-medium">리그가 없습니다</p>
-          <p className="mt-1 opacity-80">
-            먼저 Supabase에서 리그를 생성하거나 아래 SQL을 실행하세요:
+      <div>
+        <div style={{ marginBottom: '2rem' }}>
+          <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', letterSpacing: '0.25em', color: 'var(--gold-dim)', marginBottom: '0.4rem' }}>ADMIN</p>
+          <h1 style={{ fontFamily: "'Great Vibes', cursive", fontSize: '2.5rem', color: 'var(--foreground)' }}>경기 기록</h1>
+        </div>
+        <div style={{ padding: '1.25rem 1.5rem', border: '1px solid rgba(201,168,76,0.25)', background: 'rgba(201,168,76,0.05)' }}>
+          <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', letterSpacing: '0.1em', color: 'var(--gold)', marginBottom: '0.4rem' }}>리그가 없습니다</p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '0.9rem', color: 'var(--white-dim)', opacity: 0.7, marginBottom: '0.75rem' }}>
+            먼저 Supabase에서 리그를 생성하거나 아래 SQL을 실행하세요
           </p>
-          <pre className="mt-2 rounded bg-black/30 p-3 text-xs font-mono overflow-x-auto">
-{`INSERT INTO public.leagues (name, slug, owner_id, is_public)
-VALUES ('BGM Melbourne', 'bgm-melbourne', auth.uid(), true);`}
+          <pre style={{ fontFamily: 'monospace', fontSize: '0.75rem', background: 'rgba(0,0,0,0.3)', padding: '0.75rem 1rem', color: 'var(--gold-dim)', overflowX: 'auto' }}>
+{`INSERT INTO public.leagues (name, slug, owner_id, is_public)\nVALUES ('BGM Melbourne', 'bgm-melbourne', auth.uid(), true);`}
           </pre>
         </div>
       </div>
@@ -59,10 +61,13 @@ VALUES ('BGM Melbourne', 'bgm-melbourne', auth.uid(), true);`}
   }
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold">경기 기록</h1>
-        <p className="mt-1 text-sm opacity-50">게임 결과를 입력하면 칩이 자동 계산됩니다</p>
+    <div>
+      <div style={{ marginBottom: '2rem' }}>
+        <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', letterSpacing: '0.25em', color: 'var(--gold-dim)', marginBottom: '0.4rem' }}>ADMIN</p>
+        <h1 style={{ fontFamily: "'Great Vibes', cursive", fontSize: '2.5rem', color: 'var(--foreground)', lineHeight: 1 }}>경기 기록</h1>
+        <p style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', color: 'var(--white-dim)', opacity: 0.45, marginTop: '0.4rem', letterSpacing: '0.08em' }}>
+          게임 결과를 입력하면 칩이 자동 계산됩니다
+        </p>
       </div>
       <RecordForm
         players={data.players}
