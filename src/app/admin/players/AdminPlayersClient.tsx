@@ -101,10 +101,16 @@ export default function AdminPlayersClient({ players, activeQuarterId }: {
         <div key={p.id} style={{ marginBottom: 2 }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 90px 80px 80px 90px', gap: '1rem', alignItems: 'center', padding: '0.8rem 1.2rem', background: p.is_admin ? 'rgba(201,168,76,0.06)' : 'rgba(30,74,52,0.12)', borderLeft: `2px solid ${p.is_admin ? 'var(--gold)' : 'rgba(201,168,76,0.2)'}`, cursor: 'pointer' }}
             onClick={() => setExpandedId(expandedId === p.id ? null : p.id)}>
-            <div>
-              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', color: 'var(--foreground)' }}>{p.nickname}</span>
-              <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.58rem', color: 'var(--white-dim)', marginLeft: '0.5rem', opacity: 0.6 }}>@{p.username}</span>
-              {p.discord_id && <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.52rem', color: '#5865f2', marginLeft: '0.5rem' }}>Discord ✓</span>}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+              <Link
+                href={`/profile/${p.username}`}
+                onClick={e => e.stopPropagation()}
+                style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1rem', color: 'var(--foreground)', textDecoration: 'none', borderBottom: '1px solid rgba(201,168,76,0.3)' }}
+              >
+                {p.nickname}
+              </Link>
+              <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.58rem', color: 'var(--white-dim)', opacity: 0.6 }}>@{p.username}</span>
+              {p.discord_id && <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.52rem', color: '#5865f2' }}>Discord ✓</span>}
             </div>
             <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.6rem', color: 'var(--white-dim)' }}>{new Date(p.created_at).toLocaleDateString('ko-KR')}</span>
             <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.9rem', color: 'var(--gold)', textAlign: 'center', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.2rem' }}>{p.total_chips} <LapisIcon size={12} /> LAPIS</span>
@@ -115,9 +121,20 @@ export default function AdminPlayersClient({ players, activeQuarterId }: {
                 {loading === p.id ? '...' : p.is_admin ? '관리자' : '일반'}
               </button>
             </span>
-            <div style={{ display: 'flex', gap: '0.4rem', justifyContent: 'center' }}>
-              <Link href={`/profile/${p.username}`} onClick={e => e.stopPropagation()}
-                style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', color: 'var(--gold-dim)', textDecoration: 'none' }}>프로필</Link>
+            <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', alignItems: 'center' }}>
+              <Link
+                href={`/profile/${p.username}`}
+                onClick={e => e.stopPropagation()}
+                style={{
+                  fontFamily: "'Cinzel', serif", fontSize: '0.55rem', letterSpacing: '0.08em',
+                  color: 'var(--gold)', textDecoration: 'none',
+                  border: '1px solid rgba(201,168,76,0.35)',
+                  padding: '0.2rem 0.6rem',
+                  display: 'inline-flex', alignItems: 'center', gap: '0.3rem',
+                }}
+              >
+                ↗ 프로필
+              </Link>
               <span style={{ color: 'var(--white-dim)', opacity: 0.3, fontSize: '0.6rem' }}>{expandedId === p.id ? '▲' : '▼'}</span>
             </div>
           </div>
