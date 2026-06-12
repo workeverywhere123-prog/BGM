@@ -569,7 +569,7 @@ function CreateModal({ onClose, onCreate, isPending, currentUserNickname, userGa
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: 1000, background: 'rgba(11,34,24,0.88)', backdropFilter: 'blur(6px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1.5rem' }}
       onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
-      <div style={{ background: 'var(--background)', border: '1px solid rgba(201,168,76,0.3)', width: '100%', maxWidth: 960, padding: '2rem 2.5rem' }}>
+      <div style={{ background: 'var(--background)', border: '1px solid rgba(201,168,76,0.3)', width: '100%', maxWidth: 960, maxHeight: '90vh', overflowY: 'auto', padding: '2rem 2.5rem' }}>
 
         {/* 헤더 */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.6rem' }}>
@@ -582,8 +582,8 @@ function CreateModal({ onClose, onCreate, isPending, currentUserNickname, userGa
         </div>
 
         <form onSubmit={handleSubmit}>
-          {/* 2열 그리드 */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.2rem 2.5rem' }}>
+          {/* 2열 그리드 (모바일에서 1열로 자동 전환) */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.2rem 2.5rem' }}>
 
             {/* 왼쪽 열 */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
