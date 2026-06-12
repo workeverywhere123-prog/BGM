@@ -1,4 +1,4 @@
-import { createSupabaseAdminClient } from '@/lib/supabase/server';
+import { createSupabaseServiceClient as createSupabaseAdminClient } from '@/lib/supabase/service';
 import RaffleAdminClient, { type RaffleRow } from './RaffleAdminClient';
 
 async function getData() {
