@@ -1,5 +1,6 @@
 import { createSupabaseServiceClient as createSupabaseAdminClient } from '@/lib/supabase/service';
-import RaffleAdminClient, { type RaffleRow } from './RaffleAdminClient';
+import type { RaffleRow } from './types';
+import RaffleAdminClient from './RaffleAdminClient';
 
 async function getData() {
   const supabase = createSupabaseAdminClient();

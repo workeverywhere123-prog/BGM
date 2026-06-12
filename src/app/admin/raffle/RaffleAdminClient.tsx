@@ -1,15 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import type { RaffleRow } from './types';
 
-/* ── Types ── */
-export interface RaffleRow {
-  id: string; name: string; prize: string; description: string | null;
-  status: 'open' | 'closed' | 'drawn';
-  created_at: string; ends_at: string | null; drawn_at: string | null;
-  winner_id: string | null; winner_nickname: string | null; winner_username: string | null;
-  entry_count: number; total_tickets: number;
-}
+/* ── Internal types ── */
 interface Entry {
   player_id: string; tickets: number; created_at: string | null;
   players: { nickname: string; username: string } | null;
