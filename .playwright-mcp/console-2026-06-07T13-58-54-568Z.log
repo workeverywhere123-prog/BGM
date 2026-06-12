@@ -1,0 +1,50 @@
+[    5130ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:25630
+[    5393ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/01/20/1642679964183624_lg_w300.jpg:0
+[    5400ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/01/31/1643561558733610_lg_w300.jpg:0
+[    5403ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/01/10/1641796147314874_lg_w300.png:0
+[    5417ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:9000/api/auth/me:0
+[    7067ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Detective%20Club%20(board%20game):0
+[    7069ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Last%20Will%20(board%20game):0
+[    7078ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Durian%20(board%20game):0
+[    7089ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Agora%20(board%20game):0
+[    7101ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Pantheon%20(board%20game):0
+[    8546ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Detective%20Club%20(card%20game):0
+[    8555ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Last%20Will%20(card%20game):0
+[    8567ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Durian%20(card%20game):0
+[    8578ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Agora%20(card%20game):0
+[    8600ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Pantheon%20(card%20game):0
+[   10427ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Detective%20Club%20(game):0
+[   10445ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Last%20Will%20(game):0
+[   10460ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Durian%20(game):0
+[   10467ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Agora%20(game):0
+[   10504ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Pantheon%20(game):0
+[   11721ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Agora:0
+[   11738ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Pantheon:0
+[   12323ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2023/07/08/1688808222265518_lg_w300.png:0
+[   12334ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/01/17/1642351487376782_lg_w300.jpg:0
+[   12336ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/data/photo/2024/05/22/1716317107-683325_w300.png:0
+[   12337ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2023/07/08/1688808248233678_lg_w300.png:0
+[   12338ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/02/02/1643746154248788_lg_w300.png:0
+[   12339ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/10/03/1664753408678981_lg_w300.jpg:0
+[   12340ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2023/03/21/1679330743015968_lg_w300.jpg:0
+[   12341ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/02/24/1645642525686075_lg_w300.jpg:0
+[   13024ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/data/photo/2024/04/21/1713678035-299279_w300.jpg:0
+[   13028ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/01/14/1642089121363109_lg_w300.jpg:0
+[   13238ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Nine%20Tiles%20Panic%20(board%20game):0
+[   13246ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Dark%20Horse%20(board%20game):0
+[   13258ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Decrypto%20(board%20game):0
+[   13268ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Dungeons%20%26%20Dragons%3A%20Rock%20Paper%20Wizard%20(board%20game):0
+[   15619ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Las%20Vegas%20Royale%20(board%20game):0
+[   15629ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Decrypto%20(card%20game):0
+[   15641ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Dark%20Horse%20(card%20game):0
+[   15651ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Dungeons%20%26%20Dragons%3A%20Rock%20Paper%20Wizard%20(card%20game):0
+[   15667ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Nine%20Tiles%20Panic%20(card%20game):0
+[   15880ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Las%20Vegas%20Royale%20(card%20game):0
+[   15881ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Decrypto%20(game):0
+[   16104ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Dark%20Horse%20(game):0
+[   16104ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Dungeons%20%26%20Dragons%3A%20Rock%20Paper%20Wizard%20(game):0
+[   16111ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Nine%20Tiles%20Panic%20(game):0
+[   16137ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Las%20Vegas%20Royale%20(game):0
+[   16377ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Dungeons%20%26%20Dragons%3A%20Rock%20Paper%20Wizard:0
+[   16400ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Nine%20Tiles%20Panic:0
+[   16413ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Las%20Vegas%20Royale:0

@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-05-21T09:21:31.173Z",
+  "timestamp": "2026-06-07T06:17:45.348Z",
   "reason": "compaction",
   "status": {
     "version": "2.0",
-    "lastUpdated": "2026-05-21T09:21:30.892Z",
+    "lastUpdated": "2026-06-07T06:09:10.541Z",
     "activeFeatures": [
       "boardgame-league",
       "records",
@@ -11,7 +11,11 @@
       "(auth)",
       "invites",
       "admin",
-      "rooms"
+      "rooms",
+      "[id]",
+      "notice",
+      "games",
+      "[username]"
     ],
     "primaryFeature": "boardgame-league",
     "features": {
@@ -42,6 +46,11 @@
             "scope": "Steps 1-6 of 7 (Google OAuth pending dashboard config)",
             "completedAt": "2026-04-21T00:00:00.000Z"
           }
+        },
+        "phaseNumber": 3,
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/components/WelcomeNoticeGate.tsx",
+        "timestamps": {
+          "lastUpdated": "2026-06-06T11:10:12.541Z"
         }
       },
       "records": {
@@ -118,9 +127,61 @@
         "documents": {},
         "timestamps": {
           "started": "2026-05-21T09:18:34.545Z",
-          "lastUpdated": "2026-05-21T09:21:30.892Z"
+          "lastUpdated": "2026-05-22T20:28:46.212Z"
         },
         "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/rooms/RoomsClient.tsx"
+      },
+      "[id]": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-05-21T19:21:59.363Z",
+          "lastUpdated": "2026-05-24T00:51:40.391Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/rooms/[id]/RoomDetail.tsx"
+      },
+      "notice": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-05-22T14:18:25.458Z",
+          "lastUpdated": "2026-05-22T14:18:25.458Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/notice/RulesContent.tsx"
+      },
+      "games": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-06-07T06:08:26.094Z",
+          "lastUpdated": "2026-06-07T06:08:43.138Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/games/GamePageClient.tsx"
+      },
+      "[username]": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-06-07T06:09:10.541Z",
+          "lastUpdated": "2026-06-07T06:09:10.541Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/profile/[username]/GameManager.tsx"
       }
     },
     "pipeline": {
@@ -165,7 +226,7 @@
     "session": {
       "startedAt": "2026-04-20T09:15:42.634Z",
       "onboardingCompleted": true,
-      "lastActivity": "2026-05-21T09:21:30.892Z"
+      "lastActivity": "2026-06-07T06:09:10.541Z"
     },
     "history": [
       {
@@ -399,6 +460,252 @@
       {
         "timestamp": "2026-05-21T09:21:30.892Z",
         "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-21T19:21:59.363Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T14:18:25.458Z",
+        "feature": "notice",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T14:18:42.370Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:23:39.968Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:23:47.273Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:24:18.185Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:24:27.212Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:24:36.935Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:24:48.513Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:24:58.709Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:25:05.829Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:25:12.796Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:25:21.475Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:25:38.383Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:25:45.960Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:26:43.203Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:26:52.664Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:27:02.064Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:27:09.199Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:27:28.558Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:28:08.535Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:28:15.255Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:28:23.272Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:28:38.844Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:28:46.212Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:49:19.384Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:49:36.777Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:49:45.229Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:49:56.077Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:50:02.576Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:50:13.134Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:50:20.863Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:50:32.073Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:51:02.309Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:51:19.020Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:51:27.773Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:51:40.391Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-06T11:10:12.541Z",
+        "feature": "boardgame-league",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T06:08:26.094Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T06:08:43.138Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T06:09:10.541Z",
+        "feature": "[username]",
         "phase": "do",
         "action": "updated"
       }

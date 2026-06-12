@@ -1,0 +1,3 @@
+[     440ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://boardlife.co.kr/search.php?keyword=%EC%85%9C%EB%A1%9D:0
+[   16599ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://boardlife.co.kr/game/836:0
+[  907584ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://boardlife.co.kr/wys2/swf_upload/2022/01/12/1641926808016701_lg.png:0

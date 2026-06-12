@@ -1,0 +1,1482 @@
+- generic [ref=e1]:
+  - generic [ref=e2]: 저장이 완료되었습니다.
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e8] [cursor=pointer]: 플레이 리스트
+      - link "보드게임이 처음이세요?" [ref=e9] [cursor=pointer]:
+        - /url: /start.php
+      - link "광고센터" [ref=e10] [cursor=pointer]:
+        - /url: /serviceAD.php
+    - link "커뮤니티 규칙" [ref=e12] [cursor=pointer]:
+      - /url: /policy
+    - generic [ref=e16] [cursor=pointer]: 어두운화면
+  - generic [ref=e19]:
+    - link [ref=e26] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - link "보드게임" [ref=e32] [cursor=pointer]:
+          - /url: /explore
+        - link "게시글" [ref=e34] [cursor=pointer]:
+          - /url: /board
+        - link "내 게임" [ref=e36] [cursor=pointer]:
+          - /url: /collection
+        - link "로컬" [ref=e38] [cursor=pointer]:
+          - /url: /local
+        - link "쇼핑" [ref=e40] [cursor=pointer]:
+          - /url: /shop/link
+      - textbox "통합검색" [active] [ref=e43]: 셜록
+    - generic [ref=e45]:
+      - link "페이스북 계정이전" [ref=e46] [cursor=pointer]:
+        - /url: /facebook.php
+      - link "회원가입" [ref=e47] [cursor=pointer]:
+        - /url: /joinus.php
+      - generic [ref=e48] [cursor=pointer]: 로그인
+  - generic [ref=e52]:
+    - generic [ref=e53]:
+      - generic [ref=e54]: 보드게임
+      - list [ref=e56]:
+        - listitem [ref=e57] [cursor=pointer]:
+          - link "발견" [ref=e58]:
+            - /url: /
+          - generic [ref=e59]: 트랜디한 보드게임은?
+        - listitem [ref=e60] [cursor=pointer]:
+          - link "순위" [ref=e61]:
+            - /url: /rank
+          - generic [ref=e62]: 보드게임 순위를 확인하세요.
+        - listitem [ref=e63] [cursor=pointer]:
+          - link "평가" [ref=e64]:
+            - /url: /rate
+          - generic [ref=e65]: 게임평을 한눈에 볼수 있어요.
+        - listitem [ref=e66] [cursor=pointer]:
+          - link "PLAY" [ref=e67]:
+            - /url: /play
+          - generic [ref=e68]: 최근 많이 플레이된 보드게임은?
+        - listitem [ref=e69] [cursor=pointer]:
+          - link "정보" [ref=e70]:
+            - /url: /info
+          - generic [ref=e71]: 세부 정보로 게임 리스트를 찾아요.
+        - listitem [ref=e72] [cursor=pointer]:
+          - link "탐색" [ref=e73]:
+            - /url: /advanced
+          - generic [ref=e74]: 조건 설정으로 보드게임을 찾아요.
+        - listitem [ref=e75] [cursor=pointer]:
+          - link "데이터" [ref=e76]:
+            - /url: /record
+          - generic [ref=e77]: 게임 데이터를 추가/수정해요.
+    - generic [ref=e78]:
+      - generic [ref=e79]: 게시글
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - generic [ref=e83]:
+            - link "메인" [ref=e84] [cursor=pointer]:
+              - /url: /board
+            - list [ref=e85]:
+              - listitem [ref=e86] [cursor=pointer]:
+                - link "신규" [ref=e87]:
+                  - /url: /board
+                - generic [ref=e88]: 최근 등록된 게시글
+              - listitem [ref=e89] [cursor=pointer]:
+                - link "베스트" [ref=e90]:
+                  - /url: /board/best
+                - generic [ref=e91]: 베스트로 선정된 게시글
+              - listitem [ref=e92] [cursor=pointer]:
+                - link "팔로우" [ref=e93]:
+                  - /url: /board/follow
+                - generic [ref=e94]: 내 팔로우의 최근 게시글
+          - generic [ref=e95]:
+            - link "지역" [ref=e96] [cursor=pointer]:
+              - /url: /board/local
+            - generic [ref=e97]: 각 지역의 소식을 확인해 보세요.
+            - list [ref=e98]:
+              - listitem [ref=e99] [cursor=pointer]:
+                - link "서울" [ref=e100]:
+                  - /url: /board/local/서울/1
+              - listitem [ref=e101] [cursor=pointer]:
+                - link "경기" [ref=e102]:
+                  - /url: /board/local/경기/1
+              - listitem [ref=e103] [cursor=pointer]:
+                - link "부산" [ref=e104]:
+                  - /url: /board/local/부산/1
+              - listitem [ref=e105] [cursor=pointer]:
+                - link "인천" [ref=e106]:
+                  - /url: /board/local/인천/1
+              - listitem [ref=e107] [cursor=pointer]:
+                - link "대전" [ref=e108]:
+                  - /url: /board/local/대전/1
+              - listitem [ref=e109] [cursor=pointer]:
+                - link "대구" [ref=e110]:
+                  - /url: /board/local/대구/1
+              - listitem [ref=e111] [cursor=pointer]:
+                - link "울산" [ref=e112]:
+                  - /url: /board/local/울산/1
+              - listitem [ref=e113] [cursor=pointer]:
+                - link "광주" [ref=e114]:
+                  - /url: /board/local/광주/1
+              - listitem [ref=e115] [cursor=pointer]:
+                - link "강원" [ref=e116]:
+                  - /url: /board/local/강원/1
+              - listitem [ref=e117] [cursor=pointer]:
+                - link "충북" [ref=e118]:
+                  - /url: /board/local/충북/1
+              - listitem [ref=e119] [cursor=pointer]:
+                - link "충남" [ref=e120]:
+                  - /url: /board/local/충남/1
+              - listitem [ref=e121] [cursor=pointer]:
+                - link "전북" [ref=e122]:
+                  - /url: /board/local/전북/1
+              - listitem [ref=e123] [cursor=pointer]:
+                - link "전남" [ref=e124]:
+                  - /url: /board/local/전남/1
+              - listitem [ref=e125] [cursor=pointer]:
+                - link "경북" [ref=e126]:
+                  - /url: /board/local/경북/1
+              - listitem [ref=e127] [cursor=pointer]:
+                - link "경남" [ref=e128]:
+                  - /url: /board/local/경남/1
+              - listitem [ref=e129] [cursor=pointer]:
+                - link "제주" [ref=e130]:
+                  - /url: /board/local/제주/1
+              - listitem [ref=e131] [cursor=pointer]:
+                - link "해외" [ref=e132]:
+                  - /url: /board/local/community_meet_oversea/메인/1
+        - generic [ref=e134]:
+          - link "정보" [ref=e135] [cursor=pointer]:
+            - /url: /board/story
+          - list [ref=e136]:
+            - listitem [ref=e137] [cursor=pointer]:
+              - link "메인" [ref=e138]:
+                - /url: /board/story
+              - generic [ref=e139]: 정보 게시글 메인
+            - listitem [ref=e140] [cursor=pointer]:
+              - link "신작" [ref=e141]:
+                - /url: /board/story/board_release/1
+              - generic [ref=e142]: 새로 출시된 보드게임 소식
+            - listitem [ref=e143] [cursor=pointer]:
+              - link "게임" [ref=e144]:
+                - /url: /board/story/board_general/1
+              - generic [ref=e145]: 보드게임 관련 이야기
+            - listitem [ref=e146] [cursor=pointer]:
+              - link "후기" [ref=e147]:
+                - /url: /board/story/community_post/1
+              - generic [ref=e148]: 보드게임 플레이 후기
+            - listitem [ref=e149] [cursor=pointer]:
+              - link "자게" [ref=e150]:
+                - /url: /board/story/board_community/1
+              - generic [ref=e151]: 자유롭게 소통하는 게시판
+            - listitem [ref=e152] [cursor=pointer]:
+              - link "문의" [ref=e153]:
+                - /url: /board/story/community_qna/1
+              - generic [ref=e154]: 보드게임 관련 질문과 답변
+            - listitem [ref=e155] [cursor=pointer]:
+              - link "영상" [ref=e156]:
+                - /url: /board/story/info_movie/1
+              - generic [ref=e157]: 보드게임 관련 영상 콘텐츠
+            - listitem [ref=e158] [cursor=pointer]:
+              - link "자료" [ref=e159]:
+                - /url: /board/story/info_files/1
+              - generic [ref=e160]: 보드게임 관련 자료 모음
+            - listitem [ref=e161] [cursor=pointer]:
+              - link "구성" [ref=e162]:
+                - /url: /board/story/info_boardgame/1
+              - generic [ref=e163]: 보드게임 구성물 정보
+            - listitem [ref=e164] [cursor=pointer]:
+              - link "설문" [ref=e165]:
+                - /url: /board/story/board_discuss/1
+              - generic [ref=e166]: 보드게임 관련 투표 및 토론
+            - listitem [ref=e167] [cursor=pointer]:
+              - link "꿀팁" [ref=e168]:
+                - /url: /board/story/board_knowhow/1
+              - generic [ref=e169]: 보드게임 꿀팁과 노하우
+            - listitem [ref=e170] [cursor=pointer]:
+              - link "공방" [ref=e171]:
+                - /url: /board/story/info_gallery/1
+              - generic [ref=e172]: 보드게임 공방 및 DIY
+            - listitem [ref=e173] [cursor=pointer]:
+              - link "앱피" [ref=e174]:
+                - /url: /board/story/board_pc/1
+              - generic [ref=e175]: 디지털 보드게임 앱/PC
+            - listitem [ref=e176] [cursor=pointer]:
+              - link "창작" [ref=e177]:
+                - /url: /board/story/board_design/1
+              - generic [ref=e178]: 보드게임 창작 및 디자인
+            - listitem [ref=e179] [cursor=pointer]:
+              - link "팟캐" [ref=e180]:
+                - /url: /board/story/pod_cast/1
+              - generic [ref=e181]: 보드게임 팟캐스트
+        - generic [ref=e182]:
+          - generic [ref=e183]:
+            - link "공유" [ref=e184] [cursor=pointer]:
+              - /url: /board/share
+            - list [ref=e185]:
+              - listitem [ref=e186] [cursor=pointer]:
+                - link "소식" [ref=e187]:
+                  - /url: /board/share/board_news/1
+                - generic [ref=e188]: 국내 업체 및 보드게임 소식
+              - listitem [ref=e189] [cursor=pointer]:
+                - link "홍보" [ref=e190]:
+                  - /url: /board/share/ad_board/1
+                - generic [ref=e191]: 보드게임 홍보 정보
+          - generic [ref=e192]:
+            - link "중고" [ref=e193] [cursor=pointer]:
+              - /url: /board/used
+            - list [ref=e194]:
+              - listitem [ref=e195] [cursor=pointer]:
+                - link "게시판" [ref=e196]:
+                  - /url: /board/used/board_used/1
+                - generic [ref=e197]: 중고 보드게임 거래 게시판
+              - listitem [ref=e198] [cursor=pointer]:
+                - link "가격비교" [ref=e199]:
+                  - /url: /board/used/product/1
+                - generic [ref=e200]: 중고 보드게임 시세 비교
+              - listitem [ref=e201] [cursor=pointer]:
+                - link "직거래" [ref=e202]:
+                  - /url: /local?only=used
+                - generic [ref=e203]: 나와 가까운 중고 게시글
+              - listitem [ref=e204] [cursor=pointer]:
+                - link "장터보호" [ref=e205]:
+                  - /url: /board/used/board_used_safe/1
+                - generic [ref=e206]: 안전한 중고 거래 가이드
+    - generic [ref=e207]:
+      - generic [ref=e208]: 내 게임
+      - list [ref=e210]:
+        - listitem [ref=e211] [cursor=pointer]:
+          - link "전체" [ref=e212]:
+            - /url: /collection
+          - generic [ref=e213]: 내 보드게임 관리 페이지
+        - listitem [ref=e214] [cursor=pointer]:
+          - link "최근 본 게임" [ref=e215]:
+            - /url: /collection/history
+          - generic [ref=e216]: 최근 조회한 보드게임 목록
+        - listitem [ref=e217] [cursor=pointer]:
+          - link "플레이리스트" [ref=e218]:
+            - /url: /collection/playlist
+          - generic [ref=e219]: 관심 보드게임 임시 보관소
+        - listitem [ref=e220] [cursor=pointer]:
+          - link "플레이" [ref=e221]:
+            - /url: /collection/play
+          - generic [ref=e222]: 플레이 기록 관리
+        - listitem [ref=e223] [cursor=pointer]:
+          - link "내 평가" [ref=e224]:
+            - /url: /collection/rank
+          - generic [ref=e225]: 내가 평가한 보드게임
+        - listitem [ref=e226] [cursor=pointer]:
+          - link "내 구매" [ref=e227]:
+            - /url: /collection/buy
+          - generic [ref=e228]: 구매한 보드게임 관리
+        - listitem [ref=e229] [cursor=pointer]:
+          - link "컬렉션" [ref=e230]:
+            - /url: /collection/my
+          - generic [ref=e231]: 내 보드게임 목록 관리
+        - listitem [ref=e232] [cursor=pointer]:
+          - link "셀렉션" [ref=e233]:
+            - /url: /collection/selection
+          - generic [ref=e234]: 테마별 보드게임 관리
+    - generic [ref=e235]:
+      - generic [ref=e236]: 로컬
+      - list [ref=e238]:
+        - listitem [ref=e239] [cursor=pointer]:
+          - link "전체" [ref=e240]:
+            - /url: /local
+          - generic [ref=e241]: 전국 보드게임 로컬 정보
+        - listitem [ref=e242] [cursor=pointer]:
+          - link "카페" [ref=e243]:
+            - /url: /local/cafe
+          - generic [ref=e244]: 보드게임 카페
+        - listitem [ref=e245] [cursor=pointer]:
+          - link "모임" [ref=e246]:
+            - /url: /local/club
+          - generic [ref=e247]: 보드게임 모임
+        - listitem [ref=e248] [cursor=pointer]:
+          - link "매장" [ref=e249]:
+            - /url: /local/store
+          - generic [ref=e250]: 보드게임 매장
+        - listitem [ref=e251] [cursor=pointer]:
+          - link "이벤트" [ref=e252]:
+            - /url: /local/event
+          - generic [ref=e253]: 보드게임 행사 및 이벤트
+      - generic [ref=e254]: 쇼핑
+      - list [ref=e256]:
+        - listitem [ref=e257] [cursor=pointer]:
+          - link "신규" [ref=e258]:
+            - /url: /shop
+          - generic [ref=e259]: 신규 입고 보드게임
+        - listitem [ref=e260] [cursor=pointer]:
+          - link "인기" [ref=e261]:
+            - /url: /shop/best
+          - generic [ref=e262]: 베스트 인기 보드게임
+  - generic [ref=e265]:
+    - heading "로그인" [level=3] [ref=e266]
+    - button "✕" [ref=e267] [cursor=pointer]
+  - generic [ref=e269]:
+    - generic [ref=e271]:
+      - button "✕" [ref=e272] [cursor=pointer]
+      - heading "선택된 게임" [level=3] [ref=e273]
+      - generic [ref=e274]: "0"
+    - generic [ref=e276]:
+      - generic [ref=e277]:
+        - button "플레이리스트에 추가" [ref=e278] [cursor=pointer]:
+          - generic [ref=e281]: 플레이리스트에 추가
+        - button "삭제" [ref=e282] [cursor=pointer]:
+          - generic [ref=e285]: 삭제
+      - generic [ref=e286]:
+        - generic [ref=e287]: 글쓰기
+        - button "게시글 작성" [ref=e288] [cursor=pointer]:
+          - generic [ref=e291]: 게시글 작성
+        - button "중고 상품 등록" [ref=e292] [cursor=pointer]:
+          - generic [ref=e295]: 중고 상품 등록
+      - generic [ref=e296]:
+        - generic [ref=e297]: 컬렉션에 담기
+        - button "팬" [ref=e298] [cursor=pointer]:
+          - generic [ref=e301]: 팬
+        - button "구독" [ref=e302] [cursor=pointer]:
+          - generic [ref=e305]: 구독
+        - button "보유" [ref=e306] [cursor=pointer]:
+          - generic [ref=e309]: 보유
+        - button "위시리스트" [ref=e310] [cursor=pointer]:
+          - generic [ref=e313]: 위시리스트
+        - button "선주문" [ref=e314] [cursor=pointer]:
+          - generic [ref=e317]: 선주문
+        - button "펀딩" [ref=e318] [cursor=pointer]:
+          - generic [ref=e321]: 펀딩
+        - button "즐겨본 게임" [ref=e322] [cursor=pointer]:
+          - generic [ref=e325]: 즐겨본 게임
+        - button "방출예정" [ref=e326] [cursor=pointer]:
+          - generic [ref=e329]: 방출예정
+        - button "방출" [ref=e330] [cursor=pointer]:
+          - generic [ref=e333]: 방출
+  - generic [ref=e334]:
+    - generic [ref=e336]:
+      - heading "플레이 리스트" [level=3] [ref=e337]
+      - button "✕" [ref=e338] [cursor=pointer]
+    - generic [ref=e341]:
+      - heading [level=4]
+      - link "전체" [ref=e343] [cursor=pointer]:
+        - /url: /collection/playlist
+        - button "전체" [ref=e344]
+  - generic [ref=e345]:
+    - generic [ref=e347]:
+      - button "✕" [ref=e348] [cursor=pointer]
+      - heading "게임 선택" [level=3] [ref=e349]
+    - generic [ref=e350]:
+      - generic [ref=e351]:
+        - textbox "게임명 검색..." [ref=e352]
+        - button "✕" [ref=e353] [cursor=pointer]
+      - generic [ref=e354]:
+        - generic [ref=e358] [cursor=pointer]: 플레이리스트
+        - generic [ref=e364] [cursor=pointer]: 최근 본 게임
+        - generic [ref=e370] [cursor=pointer]: 실시간 베스트
+        - generic [ref=e377] [cursor=pointer]: 내 셀렉션
+        - generic [ref=e384] [cursor=pointer]: 컬렉션
+    - button "선택 완료" [ref=e388] [cursor=pointer]
+  - generic [ref=e390]:
+    - heading "선택된 게임" [level=4] [ref=e391]
+    - generic [ref=e392]: "0"
+  - generic [ref=e395]:
+    - generic [ref=e396]:
+      - group "1 / 3" [ref=e397]:
+        - link "광고" [ref=e398] [cursor=pointer]:
+          - /url: /service/promote
+        - link "릴스 110만뷰, 요즘 최고의 화제작 <태플> 6월 8일 10시 플레이만두 출시!" [ref=e400] [cursor=pointer]:
+          - /url: https://mkt.shopping.naver.com/link/6a2144a71e63133d2865d628
+          - img "릴스 110만뷰, 요즘 최고의 화제작 <태플> 6월 8일 10시 플레이만두 출시!" [ref=e401]
+      - group "2 / 3" [ref=e402]:
+        - link "광고" [ref=e403] [cursor=pointer]:
+          - /url: /service/promote
+        - link "플립툰즈 단독" [ref=e405] [cursor=pointer]:
+          - /url: https://mkt.shopping.naver.com/link/6a16a01e1a6e247ec455c904
+          - img "플립툰즈 단독" [ref=e406]
+      - group "3 / 3" [ref=e407]:
+        - link "광고" [ref=e408] [cursor=pointer]:
+          - /url: /service/promote
+        - link "2026 보드라이프 웹사이트 리뉴얼" [ref=e410] [cursor=pointer]:
+          - /url: https://boardlife.co.kr/notice.php?number=1
+          - img "2026 보드라이프 웹사이트 리뉴얼" [ref=e411]
+      - group "1 / 3" [ref=e412]:
+        - link "광고" [ref=e413] [cursor=pointer]:
+          - /url: /service/promote
+        - link "릴스 110만뷰, 요즘 최고의 화제작 <태플> 6월 8일 10시 플레이만두 출시!" [ref=e415] [cursor=pointer]:
+          - /url: https://mkt.shopping.naver.com/link/6a2144a71e63133d2865d628
+          - img "릴스 110만뷰, 요즘 최고의 화제작 <태플> 6월 8일 10시 플레이만두 출시!" [ref=e416]
+      - group "2 / 3" [ref=e417]:
+        - link "광고" [ref=e418] [cursor=pointer]:
+          - /url: /service/promote
+        - link "플립툰즈 단독" [ref=e420] [cursor=pointer]:
+          - /url: https://mkt.shopping.naver.com/link/6a16a01e1a6e247ec455c904
+          - img "플립툰즈 단독" [ref=e421]
+      - group "3 / 3" [ref=e422]:
+        - link "광고" [ref=e423] [cursor=pointer]:
+          - /url: /service/promote
+        - link "2026 보드라이프 웹사이트 리뉴얼" [ref=e425] [cursor=pointer]:
+          - /url: https://boardlife.co.kr/notice.php?number=1
+          - img "2026 보드라이프 웹사이트 리뉴얼" [ref=e426]
+      - group "1 / 3" [ref=e427]:
+        - link "광고" [ref=e428] [cursor=pointer]:
+          - /url: /service/promote
+        - link "릴스 110만뷰, 요즘 최고의 화제작 <태플> 6월 8일 10시 플레이만두 출시!" [ref=e430] [cursor=pointer]:
+          - /url: https://mkt.shopping.naver.com/link/6a2144a71e63133d2865d628
+          - img "릴스 110만뷰, 요즘 최고의 화제작 <태플> 6월 8일 10시 플레이만두 출시!" [ref=e431]
+      - group "2 / 3" [ref=e432]:
+        - link "광고" [ref=e433] [cursor=pointer]:
+          - /url: /service/promote
+        - link "플립툰즈 단독" [ref=e435] [cursor=pointer]:
+          - /url: https://mkt.shopping.naver.com/link/6a16a01e1a6e247ec455c904
+          - img "플립툰즈 단독" [ref=e436]
+      - group "3 / 3" [ref=e437]:
+        - link "광고" [ref=e438] [cursor=pointer]:
+          - /url: /service/promote
+        - link "2026 보드라이프 웹사이트 리뉴얼" [ref=e440] [cursor=pointer]:
+          - /url: https://boardlife.co.kr/notice.php?number=1
+          - img "2026 보드라이프 웹사이트 리뉴얼" [ref=e441]
+    - generic [ref=e442]:
+      - button "Go to slide 1" [ref=e443] [cursor=pointer]
+      - button "Go to slide 2" [ref=e444] [cursor=pointer]
+      - button "Go to slide 3" [ref=e445] [cursor=pointer]
+    - button "Next slide" [ref=e446] [cursor=pointer]: next
+    - button "Previous slide" [ref=e447] [cursor=pointer]: prev
+  - generic [ref=e450]:
+    - generic [ref=e454] [cursor=pointer]: 베스트 게시글
+    - link "게임 순위" [ref=e455] [cursor=pointer]:
+      - /url: /rank
+      - generic [ref=e458]: 게임 순위
+    - link "게임평" [ref=e459] [cursor=pointer]:
+      - /url: /rate
+      - generic [ref=e462]: 게임평
+    - link "플레이 트렌드" [ref=e463] [cursor=pointer]:
+      - /url: /play
+      - generic [ref=e466]: 플레이 트렌드
+    - link "모임 카페" [ref=e467] [cursor=pointer]:
+      - /url: /local
+      - generic [ref=e471]:
+        - generic [ref=e472]: 모임
+        - generic [ref=e473]: 카페
+    - link "쇼핑" [ref=e474] [cursor=pointer]:
+      - /url: /shop
+      - generic [ref=e477]: 쇼핑
+    - link "중고게시판" [ref=e478] [cursor=pointer]:
+      - /url: /board/used/board_used/1
+      - generic [ref=e481]: 중고게시판
+    - link "가격비교" [ref=e482] [cursor=pointer]:
+      - /url: /board/used/product/1
+      - generic [ref=e485]: 가격비교
+    - link "직거래" [ref=e486] [cursor=pointer]:
+      - /url: /board/used/direct/1
+      - generic [ref=e489]: 직거래
+    - link "아스모디 코리아 아스모디 코리아" [ref=e490] [cursor=pointer]:
+      - /url: https://brand.naver.com/asmodeekorea
+      - img "아스모디 코리아" [ref=e492]
+      - generic [ref=e493]: 아스모디 코리아
+    - link "플레이만두 플레이만두" [ref=e494] [cursor=pointer]:
+      - /url: https://mkt.shopping.naver.com/link/698429e43b9377397d4376c1
+      - img "플레이만두" [ref=e496]
+      - generic [ref=e497]: 플레이만두
+    - link "입문 추천 입문 추천" [ref=e498] [cursor=pointer]:
+      - /url: /advanced?family=1&Gw1=1&mc=1&Dm18=1&Dm47=1&Dm25=1
+      - img "입문 추천" [ref=e500]
+      - generic [ref=e501]: 입문 추천
+    - link "매니아 매니아" [ref=e502] [cursor=pointer]:
+      - /url: /advanced.php?Gw3=1&Gw4=1
+      - img "매니아" [ref=e504]
+      - generic [ref=e505]: 매니아
+    - link "커플 커플" [ref=e506] [cursor=pointer]:
+      - /url: /advanced?strategy=1&family=1&PC2=1&Gw1=1&Gw2=1&Te=30&Ld1=1&Ld2=1&mc=1
+      - img "커플" [ref=e508]
+      - generic [ref=e509]: 커플
+    - link "타일놓기 타일놓기" [ref=e510] [cursor=pointer]:
+      - /url: /advanced?Gw1=1&Dm47=1
+      - img "타일놓기" [ref=e512]
+      - generic [ref=e513]: 타일놓기
+    - link "마피아 마피아" [ref=e514] [cursor=pointer]:
+      - /url: /advanced?Gw1=1&tm=1&Dc19=1&Dc52=1&Dc116=1
+      - img "마피아" [ref=e516]
+      - generic [ref=e517]: 마피아
+  - generic [ref=e519]:
+    - link "실시간 베스트 순위" [ref=e521] [cursor=pointer]:
+      - /url: /rank/realtime
+      - generic [ref=e522]: 실시간 베스트 순위
+    - generic [ref=e524]:
+      - generic [ref=e525]:
+        - 'link "1 엘더 스크롤: 두 번째 시대의 배신 보드게임 - 엘더 스크롤: 두 번째 시대의 배신" [ref=e1132] [cursor=pointer]':
+          - /url: /game/16974
+          - generic [ref=e527]:
+            - generic [ref=e528]: "1"
+            - 'img "엘더 스크롤: 두 번째 시대의 배신 보드게임" [ref=e1133]'
+          - generic [ref=e530]:
+            - generic [ref=e531]: "-"
+            - generic [ref=e532]: "엘더 스크롤: 두 번째 시대의 배신"
+        - link "2 아이스 보드게임 - 아이스" [ref=e1134] [cursor=pointer]:
+          - /url: /game/18249
+          - generic [ref=e534]:
+            - generic [ref=e535]: "2"
+            - img "아이스 보드게임" [ref=e1135]
+          - generic [ref=e537]:
+            - generic [ref=e538]: "-"
+            - generic [ref=e539]: 아이스
+        - link "3 스위트 랜드 보드게임 3 스위트 랜드" [ref=e1136] [cursor=pointer]:
+          - /url: /game/20251
+          - generic [ref=e541]:
+            - generic [ref=e542]: "3"
+            - img "스위트 랜드 보드게임" [ref=e1137]
+          - generic [ref=e544]:
+            - generic [ref=e547]: "3"
+            - generic [ref=e548]: 스위트 랜드
+        - 'link "4 디스 워 오브 마인: 보드게임 보드게임 6 디스 워 오브 마인: 보드게임" [ref=e1138] [cursor=pointer]':
+          - /url: /game/6676
+          - generic [ref=e550]:
+            - generic [ref=e551]: "4"
+            - 'img "디스 워 오브 마인: 보드게임 보드게임" [ref=e1139]'
+          - generic [ref=e553]:
+            - generic [ref=e556]: "6"
+            - generic [ref=e557]: "디스 워 오브 마인: 보드게임"
+        - 'link "5 헤게모니: 당신의 사회 계층을 승리로 이끄세요 보드게임 10 헤게모니: 당신의 사회 계층을 승리로 이끄세요" [ref=e1140] [cursor=pointer]':
+          - /url: /game/14443
+          - generic [ref=e559]:
+            - generic [ref=e560]: "5"
+            - 'img "헤게모니: 당신의 사회 계층을 승리로 이끄세요 보드게임" [ref=e1141]'
+          - generic [ref=e562]:
+            - generic [ref=e565]: "10"
+            - generic [ref=e566]: "헤게모니: 당신의 사회 계층을 승리로 이끄세요"
+        - 'link "6 푸에르토리코 1897: 스페셜 에디션 보드게임 15 푸에르토리코 1897: 스페셜 에디션" [ref=e1142] [cursor=pointer]':
+          - /url: /game/18893
+          - generic [ref=e568]:
+            - generic [ref=e569]: "6"
+            - 'img "푸에르토리코 1897: 스페셜 에디션 보드게임" [ref=e1143]'
+          - generic [ref=e571]:
+            - generic [ref=e574]: "15"
+            - generic [ref=e575]: "푸에르토리코 1897: 스페셜 에디션"
+        - 'link "7 버건디의 성: 스페셜 에디션 보드게임 3 버건디의 성: 스페셜 에디션" [ref=e1144] [cursor=pointer]':
+          - /url: /game/15647
+          - generic [ref=e577]:
+            - generic [ref=e578]: "7"
+            - 'img "버건디의 성: 스페셜 에디션 보드게임" [ref=e1145]'
+          - generic [ref=e580]:
+            - generic [ref=e583]: "3"
+            - generic [ref=e584]: "버건디의 성: 스페셜 에디션"
+        - 'link "8 마블 챔피언스: 카드 게임 보드게임 1 마블 챔피언스: 카드 게임" [ref=e1146] [cursor=pointer]':
+          - /url: /game/11763
+          - generic [ref=e586]:
+            - generic [ref=e587]: "8"
+            - 'img "마블 챔피언스: 카드 게임 보드게임" [ref=e1147]'
+          - generic [ref=e589]:
+            - generic [ref=e592]: "1"
+            - generic [ref=e593]: "마블 챔피언스: 카드 게임"
+        - link "9 아르낙의 잊혀진 유적 보드게임 6 아르낙의 잊혀진 유적" [ref=e1148] [cursor=pointer]:
+          - /url: /game/13341
+          - generic [ref=e595]:
+            - generic [ref=e596]: "9"
+            - img "아르낙의 잊혀진 유적 보드게임" [ref=e1149]
+          - generic [ref=e598]:
+            - generic [ref=e601]: "6"
+            - generic [ref=e602]: 아르낙의 잊혀진 유적
+        - link "10 3 테라포밍 마스" [ref=e603] [cursor=pointer]:
+          - /url: /game/6501
+          - generic [ref=e605]: "10"
+          - generic [ref=e607]:
+            - generic [ref=e610]: "3"
+            - generic [ref=e611]: 테라포밍 마스
+        - link "11 1 스피크이지" [ref=e612] [cursor=pointer]:
+          - /url: /game/18671
+          - generic [ref=e614]: "11"
+          - generic [ref=e616]:
+            - generic [ref=e619]: "1"
+            - generic [ref=e620]: 스피크이지
+        - 'link "12 8 엔데버: 심해" [ref=e621] [cursor=pointer]':
+          - /url: /game/17007
+          - generic [ref=e623]: "12"
+          - generic [ref=e625]:
+            - generic [ref=e628]: "8"
+            - generic [ref=e629]: "엔데버: 심해"
+        - link "13 13 자반도르의 셉터" [ref=e630] [cursor=pointer]:
+          - /url: /game/121
+          - generic [ref=e632]: "13"
+          - generic [ref=e634]:
+            - generic [ref=e637]: "13"
+            - generic [ref=e638]: 자반도르의 셉터
+        - link "14 16 칸반 EV" [ref=e639] [cursor=pointer]:
+          - /url: /game/12189
+          - generic [ref=e641]: "14"
+          - generic [ref=e643]:
+            - generic [ref=e646]: "16"
+            - generic [ref=e647]: 칸반 EV
+        - 'link "15 7 세티: 외계의 지성체를 찾아서" [ref=e648] [cursor=pointer]':
+          - /url: /game/19110
+          - generic [ref=e650]: "15"
+          - generic [ref=e652]:
+            - generic [ref=e655]: "7"
+            - generic [ref=e656]: "세티: 외계의 지성체를 찾아서"
+        - 'link "16 7 브라스: 버밍엄" [ref=e657] [cursor=pointer]':
+          - /url: /game/8569
+          - generic [ref=e659]: "16"
+          - generic [ref=e661]:
+            - generic [ref=e664]: "7"
+            - generic [ref=e665]: "브라스: 버밍엄"
+        - 'link "17 24 그랜드 오스트리아 호텔: 왈츠를 춥시다!" [ref=e666] [cursor=pointer]':
+          - /url: /game/13440
+          - generic [ref=e668]: "17"
+          - generic [ref=e670]:
+            - generic [ref=e673]: "24"
+            - generic [ref=e674]: "그랜드 오스트리아 호텔: 왈츠를 춥시다!"
+        - link "18 1 백로성" [ref=e675] [cursor=pointer]:
+          - /url: /game/17276
+          - generic [ref=e677]: "18"
+          - generic [ref=e679]:
+            - generic [ref=e682]: "1"
+            - generic [ref=e683]: 백로성
+        - link "19 3 정령섬" [ref=e684] [cursor=pointer]:
+          - /url: /game/9071
+          - generic [ref=e686]: "19"
+          - generic [ref=e688]:
+            - generic [ref=e691]: "3"
+            - generic [ref=e692]: 정령섬
+        - link "20 15 야단법석 달리기" [ref=e693] [cursor=pointer]:
+          - /url: /game/21287
+          - generic [ref=e695]: "20"
+          - generic [ref=e697]:
+            - generic [ref=e700]: "15"
+            - generic [ref=e701]: 야단법석 달리기
+        - link "21 8 버건디의 성" [ref=e702] [cursor=pointer]:
+          - /url: /game/11658
+          - generic [ref=e704]: "21"
+          - generic [ref=e706]:
+            - generic [ref=e709]: "8"
+            - generic [ref=e710]: 버건디의 성
+        - 'link "22 16 프라이멀: 어웨이크닝" [ref=e711] [cursor=pointer]':
+          - /url: /game/14116
+          - generic [ref=e713]: "22"
+          - generic [ref=e715]:
+            - generic [ref=e718]: "16"
+            - generic [ref=e719]: "프라이멀: 어웨이크닝"
+        - 'link "23 2 아컴 호러: 카드 게임" [ref=e720] [cursor=pointer]':
+          - /url: /game/7501
+          - generic [ref=e722]: "23"
+          - generic [ref=e724]:
+            - generic [ref=e727]: "2"
+            - generic [ref=e728]: "아컴 호러: 카드 게임"
+        - link "24 13 펜토리니" [ref=e729] [cursor=pointer]:
+          - /url: /game/21576
+          - generic [ref=e731]: "24"
+          - generic [ref=e733]:
+            - generic [ref=e736]: "13"
+            - generic [ref=e737]: 펜토리니
+        - link "25 - 멘 네페르" [ref=e738] [cursor=pointer]:
+          - /url: /game/20042
+          - generic [ref=e740]: "25"
+          - generic [ref=e742]:
+            - generic [ref=e743]: "-"
+            - generic [ref=e744]: 멘 네페르
+        - link "26 24 솔트피오르드" [ref=e745] [cursor=pointer]:
+          - /url: /game/19545
+          - generic [ref=e747]: "26"
+          - generic [ref=e749]:
+            - generic [ref=e752]: "24"
+            - generic [ref=e753]: 솔트피오르드
+        - link "27 9 윙스팬" [ref=e754] [cursor=pointer]:
+          - /url: /game/10661
+          - generic [ref=e756]: "27"
+          - generic [ref=e758]:
+            - generic [ref=e761]: "9"
+            - generic [ref=e762]: 윙스팬
+        - 'link "28 3 듄: 임페리움 - 봉기" [ref=e763] [cursor=pointer]':
+          - /url: /game/17524
+          - generic [ref=e765]: "28"
+          - generic [ref=e767]:
+            - generic [ref=e770]: "3"
+            - generic [ref=e771]: "듄: 임페리움 - 봉기"
+        - link "29 5 반지 전쟁 (2판)" [ref=e772] [cursor=pointer]:
+          - /url: /game/534
+          - generic [ref=e774]: "29"
+          - generic [ref=e776]:
+            - generic [ref=e779]: "5"
+            - generic [ref=e780]: 반지 전쟁 (2판)
+        - link "30 - 애프터 바이러스" [ref=e781] [cursor=pointer]:
+          - /url: /game/11909
+          - generic [ref=e783]: "30"
+          - generic [ref=e785]:
+            - generic [ref=e786]: "-"
+            - generic [ref=e787]: 애프터 바이러스
+        - link "31 3 버라지" [ref=e788] [cursor=pointer]:
+          - /url: /game/9804
+          - generic [ref=e790]: "31"
+          - generic [ref=e792]:
+            - generic [ref=e795]: "3"
+            - generic [ref=e796]: 버라지
+        - link "32 5 그랜드 오스트리아 호텔" [ref=e797] [cursor=pointer]:
+          - /url: /game/5603
+          - generic [ref=e799]: "32"
+          - generic [ref=e801]:
+            - generic [ref=e804]: "5"
+            - generic [ref=e805]: 그랜드 오스트리아 호텔
+        - link "33 4 에이언즈 엔드" [ref=e806] [cursor=pointer]:
+          - /url: /game/10647
+          - generic [ref=e808]: "33"
+          - generic [ref=e810]:
+            - generic [ref=e813]: "4"
+            - generic [ref=e814]: 에이언즈 엔드
+        - 'link "34 20 오를로이: 프라하 천문시계" [ref=e815] [cursor=pointer]':
+          - /url: /game/21270
+          - generic [ref=e817]: "34"
+          - generic [ref=e819]:
+            - generic [ref=e822]: "20"
+            - generic [ref=e823]: "오를로이: 프라하 천문시계"
+        - link "35 - 시계탑에 흐른 피" [ref=e824] [cursor=pointer]:
+          - /url: /game/15664
+          - generic [ref=e826]: "35"
+          - generic [ref=e828]:
+            - generic [ref=e829]: "-"
+            - generic [ref=e830]: 시계탑에 흐른 피
+        - link "36 6 테러스케이프" [ref=e831] [cursor=pointer]:
+          - /url: /game/16946
+          - generic [ref=e833]: "36"
+          - generic [ref=e835]:
+            - generic [ref=e838]: "6"
+            - generic [ref=e839]: 테러스케이프
+        - 'link "37 - 듄: 임페리움" [ref=e840] [cursor=pointer]':
+          - /url: /game/13486
+          - generic [ref=e842]: "37"
+          - generic [ref=e844]:
+            - generic [ref=e845]: "-"
+            - generic [ref=e846]: "듄: 임페리움"
+        - 'link "38 7 쓰루 디 에이지스: 문명에 관한 새로운 이야기" [ref=e847] [cursor=pointer]':
+          - /url: /game/5660
+          - generic [ref=e849]: "38"
+          - generic [ref=e851]:
+            - generic [ref=e854]: "7"
+            - generic [ref=e855]: "쓰루 디 에이지스: 문명에 관한 새로운 이야기"
+        - 'link "39 - 클랭크!: 카타콤" [ref=e856] [cursor=pointer]':
+          - /url: /game/15752
+          - generic [ref=e858]: "39"
+          - generic [ref=e860]:
+            - generic [ref=e861]: "-"
+            - generic [ref=e862]: "클랭크!: 카타콤"
+        - link "40 - 글룸헤이븐" [ref=e863] [cursor=pointer]:
+          - /url: /game/5625
+          - generic [ref=e865]: "40"
+          - generic [ref=e867]:
+            - generic [ref=e868]: "-"
+            - generic [ref=e869]: 글룸헤이븐
+        - link "41 6 트라야누스" [ref=e870] [cursor=pointer]:
+          - /url: /game/29
+          - generic [ref=e872]: "41"
+          - generic [ref=e874]:
+            - generic [ref=e877]: "6"
+            - generic [ref=e878]: 트라야누스
+        - link "42 - 레거시 오브 유" [ref=e879] [cursor=pointer]:
+          - /url: /game/15282
+          - generic [ref=e881]: "42"
+          - generic [ref=e883]:
+            - generic [ref=e884]: "-"
+            - generic [ref=e885]: 레거시 오브 유
+        - link "43 15 루트" [ref=e886] [cursor=pointer]:
+          - /url: /game/9450
+          - generic [ref=e888]: "43"
+          - generic [ref=e890]:
+            - generic [ref=e893]: "15"
+            - generic [ref=e894]: 루트
+        - link "44 - 엘더베일의 거처" [ref=e895] [cursor=pointer]:
+          - /url: /game/12243
+          - generic [ref=e897]: "44"
+          - generic [ref=e899]:
+            - generic [ref=e900]: "-"
+            - generic [ref=e901]: 엘더베일의 거처
+        - link "45 - 사이드" [ref=e902] [cursor=pointer]:
+          - /url: /game/5890
+          - generic [ref=e904]: "45"
+          - generic [ref=e906]:
+            - generic [ref=e907]: "-"
+            - generic [ref=e908]: 사이드
+        - link "46 29 페야의 늪" [ref=e909] [cursor=pointer]:
+          - /url: /game/21111
+          - generic [ref=e911]: "46"
+          - generic [ref=e913]:
+            - generic [ref=e916]: "29"
+            - generic [ref=e917]: 페야의 늪
+        - link "47 31 모던아트" [ref=e918] [cursor=pointer]:
+          - /url: /game/9406
+          - generic [ref=e920]: "47"
+          - generic [ref=e922]:
+            - generic [ref=e925]: "31"
+            - generic [ref=e926]: 모던아트
+        - 'link "48 25 히트: 질주의 열기" [ref=e927] [cursor=pointer]':
+          - /url: /game/15778
+          - generic [ref=e929]: "48"
+          - generic [ref=e931]:
+            - generic [ref=e934]: "25"
+            - generic [ref=e935]: "히트: 질주의 열기"
+        - link "49 - 원드러스 크리처" [ref=e936] [cursor=pointer]:
+          - /url: /game/18143
+          - generic [ref=e938]: "49"
+          - generic [ref=e940]:
+            - generic [ref=e941]: "-"
+            - generic [ref=e942]: 원드러스 크리처
+        - link "50 18 아크 노바" [ref=e943] [cursor=pointer]:
+          - /url: /game/14832
+          - generic [ref=e945]: "50"
+          - generic [ref=e947]:
+            - generic [ref=e950]: "18"
+            - generic [ref=e951]: 아크 노바
+      - button [ref=e1150] [cursor=pointer]
+  - generic [ref=e955]:
+    - generic [ref=e956]:
+      - img "아스모디 코리아" [ref=e958]
+      - generic [ref=e959]: 아스모디 코리아 추천 게임
+    - generic [ref=e960]:
+      - link "에이스 오브 스페이드 보드게임 에이스 오브 스페이드" [ref=e1152] [cursor=pointer]:
+        - /url: /game/21162
+        - img "에이스 오브 스페이드 보드게임" [ref=e1153]
+        - generic [ref=e965]: 에이스 오브 스페이드
+      - link "캐슬 콤보 보드게임 캐슬 콤보" [ref=e1154] [cursor=pointer]:
+        - /url: /game/19937
+        - img "캐슬 콤보 보드게임" [ref=e1155]
+        - generic [ref=e970]: 캐슬 콤보
+      - link "태양 너머로 보드게임 태양 너머로" [ref=e1156] [cursor=pointer]:
+        - /url: /game/13259
+        - img "태양 너머로 보드게임" [ref=e1157]
+        - generic [ref=e975]: 태양 너머로
+      - link "그건 바로 너! 보드게임 그건 바로 너!" [ref=e1158] [cursor=pointer]:
+        - /url: /game/21501
+        - img "그건 바로 너! 보드게임" [ref=e1159]
+        - generic [ref=e980]: 그건 바로 너!
+      - link "리미트 보드게임 리미트" [ref=e1160] [cursor=pointer]:
+        - /url: /game/21502
+        - img "리미트 보드게임" [ref=e1161]
+        - generic [ref=e985]: 리미트
+      - link "기프트 크래프트 보드게임 기프트 크래프트" [ref=e1162] [cursor=pointer]:
+        - /url: /game/20148
+        - img "기프트 크래프트 보드게임" [ref=e1163]
+        - generic [ref=e990]: 기프트 크래프트
+      - link "로커스 보드게임 로커스" [ref=e1164] [cursor=pointer]:
+        - /url: /game/21505
+        - img "로커스 보드게임" [ref=e1165]
+        - generic [ref=e995]: 로커스
+      - link "플립 7 보드게임 플립 7" [ref=e1166] [cursor=pointer]:
+        - /url: /game/19910
+        - img "플립 7 보드게임" [ref=e1167]
+        - generic [ref=e1000]: 플립 7
+      - link "브릭 파티" [ref=e1001] [cursor=pointer]:
+        - /url: /game/21310
+        - generic [ref=e1005]: 브릭 파티
+      - 'link "꼬치의 달인: 그랜드마스터" [ref=e1006] [cursor=pointer]':
+        - /url: /game/20610
+        - generic [ref=e1010]: "꼬치의 달인: 그랜드마스터"
+      - link "클러스터" [ref=e1011] [cursor=pointer]:
+        - /url: /game/17696
+        - generic [ref=e1015]: 클러스터
+      - link "스카이 팀" [ref=e1016] [cursor=pointer]:
+        - /url: /game/17089
+        - generic [ref=e1020]: 스카이 팀
+      - link "오딘" [ref=e1021] [cursor=pointer]:
+        - /url: /game/18780
+        - generic [ref=e1025]: 오딘
+      - link "꼬치의 달인" [ref=e1026] [cursor=pointer]:
+        - /url: /game/11322
+        - generic [ref=e1030]: 꼬치의 달인
+    - button [ref=e1168] [cursor=pointer]
+  - generic [ref=e1034]:
+    - generic [ref=e1035]:
+      - img "플레이만두" [ref=e1037]
+      - generic [ref=e1038]: 플레이만두 추천 게임
+    - generic [ref=e1039]:
+      - link "스토리타임 체스 보드게임 스토리타임 체스" [ref=e1170] [cursor=pointer]:
+        - /url: /game/16542
+        - img "스토리타임 체스 보드게임" [ref=e1171]
+        - generic [ref=e1044]: 스토리타임 체스
+      - link "거위가 꽥?! 보드게임 거위가 꽥?!" [ref=e1172] [cursor=pointer]:
+        - /url: /game/22087
+        - img "거위가 꽥?! 보드게임" [ref=e1173]
+        - generic [ref=e1049]: 거위가 꽥?!
+      - link "루쿠스 보드게임 루쿠스" [ref=e1174] [cursor=pointer]:
+        - /url: /game/22086
+        - img "루쿠스 보드게임" [ref=e1175]
+        - generic [ref=e1054]: 루쿠스
+      - link "대학전쟁 보드게임 대학전쟁" [ref=e1176] [cursor=pointer]:
+        - /url: /game/22088
+        - img "대학전쟁 보드게임" [ref=e1177]
+        - generic [ref=e1059]: 대학전쟁
+      - link "냠냠냠 보드게임 냠냠냠" [ref=e1178] [cursor=pointer]:
+        - /url: /game/21847
+        - img "냠냠냠 보드게임" [ref=e1179]
+        - generic [ref=e1064]: 냠냠냠
+      - link "보츠와나 보드게임 보츠와나" [ref=e1180] [cursor=pointer]:
+        - /url: /game/376
+        - img "보츠와나 보드게임" [ref=e1181]
+        - generic [ref=e1069]: 보츠와나
+      - link "사그라다 보드게임 사그라다" [ref=e1182] [cursor=pointer]:
+        - /url: /game/7328
+        - img "사그라다 보드게임" [ref=e1183]
+        - generic [ref=e1074]: 사그라다
+      - link "카르디아 보드게임 카르디아" [ref=e1184] [cursor=pointer]:
+        - /url: /game/21189
+        - img "카르디아 보드게임" [ref=e1185]
+        - generic [ref=e1079]: 카르디아
+      - link "심비오스" [ref=e1080] [cursor=pointer]:
+        - /url: /game/20785
+        - generic [ref=e1084]: 심비오스
+      - link "좋은놈, 나쁜놈, 그리고 염소" [ref=e1085] [cursor=pointer]:
+        - /url: /game/21089
+        - generic [ref=e1089]: 좋은놈, 나쁜놈, 그리고 염소
+      - link "12칩 트릭" [ref=e1090] [cursor=pointer]:
+        - /url: /game/16412
+        - generic [ref=e1094]: 12칩 트릭
+      - link "이개 누구 개?" [ref=e1095] [cursor=pointer]:
+        - /url: /game/21408
+        - generic [ref=e1099]: 이개 누구 개?
+    - button [ref=e1186] [cursor=pointer]
+  - generic [ref=e1103]:
+    - link "베스트 게시글" [ref=e1104] [cursor=pointer]:
+      - /url: /board/best
+      - generic [ref=e1105]: 베스트 게시글
+    - generic [ref=e1108]:
+      - link "roii 8시간 전 게이머 or 컬렉터....? 조회 549 17 18" [ref=e1188] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76804&view=best
+        - generic [ref=e1189]:
+          - generic [ref=e1191]:
+            - generic [ref=e1195]: roii
+            - generic [ref=e1196]: 8시간 전
+          - generic [ref=e1197]: 게이머 or 컬렉터....?
+          - generic [ref=e1200]:
+            - generic [ref=e1201]:
+              - generic [ref=e1202]: 조회
+              - generic [ref=e1203]: "549"
+            - generic [ref=e1206]: "17"
+            - generic [ref=e1209]: "18"
+      - link "보드하이 5시간 전 부루마불만 해본 분들과 즐긴 헤게모니 조회 402 24 10" [ref=e1210] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37532&view=best
+        - generic [ref=e1211]:
+          - generic [ref=e1213]:
+            - generic [ref=e1217]: 보드하이
+            - generic [ref=e1218]: 5시간 전
+          - generic [ref=e1219]: 부루마불만 해본 분들과 즐긴 헤게모니
+          - generic [ref=e1222]:
+            - generic [ref=e1223]:
+              - generic [ref=e1224]: 조회
+              - generic [ref=e1225]: "402"
+            - generic [ref=e1228]: "24"
+            - generic [ref=e1231]: "10"
+      - link "초인 2일 전 초인의 솔플시리즈#9. 노르웨이 로포텐 제도의 (누스피요르드) 조회 160 6 11" [ref=e1232] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37487&view=best
+        - generic [ref=e1233]:
+          - generic [ref=e1235]:
+            - generic [ref=e1239]: 초인
+            - generic [ref=e1240]: 2일 전
+          - generic [ref=e1241]: 초인의 솔플시리즈#9. 노르웨이 로포텐 제도의 (누스피요르드)
+          - generic [ref=e1244]:
+            - generic [ref=e1245]:
+              - generic [ref=e1246]: 조회
+              - generic [ref=e1247]: "160"
+            - generic [ref=e1250]: "6"
+            - generic [ref=e1253]: "11"
+      - link "Hahaho 15시간 전 천재가 만든 B급게임. Feat.초보의 중고구매기 조회 408 18 14" [ref=e1254] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37519&view=best
+        - generic [ref=e1255]:
+          - generic [ref=e1257]:
+            - generic [ref=e1261]: Hahaho
+            - generic [ref=e1262]: 15시간 전
+          - generic [ref=e1263]: 천재가 만든 B급게임. Feat.초보의 중고구매기
+          - generic [ref=e1266]:
+            - generic [ref=e1267]:
+              - generic [ref=e1268]: 조회
+              - generic [ref=e1269]: "408"
+            - generic [ref=e1272]: "18"
+            - generic [ref=e1275]: "14"
+      - link "초인 6시간 전 신작출시는 이렇게 해야한다!!!! 조회 710 17 9" [ref=e1276] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=info_boardgame&bbs_num=7898&view=best
+        - generic [ref=e1277]:
+          - generic [ref=e1279]:
+            - generic [ref=e1283]: 초인
+            - generic [ref=e1284]: 6시간 전
+          - generic [ref=e1285]: 신작출시는 이렇게 해야한다!!!!
+          - generic [ref=e1288]:
+            - generic [ref=e1289]:
+              - generic [ref=e1290]: 조회
+              - generic [ref=e1291]: "710"
+            - generic [ref=e1294]: "17"
+            - generic [ref=e1297]: "9"
+      - link "초인 1일 전 닭 받고... 자반고등어... 조회 392 11 14" [ref=e1298] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37510&view=best
+        - generic [ref=e1299]:
+          - generic [ref=e1301]:
+            - generic [ref=e1305]: 초인
+            - generic [ref=e1306]: 1일 전
+          - generic [ref=e1307]: 닭 받고... 자반고등어...
+          - generic [ref=e1310]:
+            - generic [ref=e1311]:
+              - generic [ref=e1312]: 조회
+              - generic [ref=e1313]: "392"
+            - generic [ref=e1316]: "11"
+            - generic [ref=e1319]: "14"
+      - link "워터다이스 1일 전 사이드, 스피크이지, 함부르크 후기 조회 623 21 14" [ref=e1320] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37506&view=best
+        - generic [ref=e1321]:
+          - generic [ref=e1323]:
+            - generic [ref=e1327]: 워터다이스
+            - generic [ref=e1328]: 1일 전
+          - generic [ref=e1329]: 사이드, 스피크이지, 함부르크 후기
+          - generic [ref=e1332]:
+            - generic [ref=e1333]:
+              - generic [ref=e1334]: 조회
+              - generic [ref=e1335]: "623"
+            - generic [ref=e1338]: "21"
+            - generic [ref=e1341]: "14"
+      - link "울버린 1일 전 <축하축하!!>울버린의 원대한 계획..성공! 대박! 조회 517 21 35" [ref=e1342] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76754&view=best
+        - generic [ref=e1343]:
+          - generic [ref=e1345]:
+            - generic [ref=e1349]: 울버린
+            - generic [ref=e1350]: 1일 전
+          - generic [ref=e1351]: <축하축하!!>울버린의 원대한 계획..성공! 대박!
+          - generic [ref=e1354]:
+            - generic [ref=e1355]:
+              - generic [ref=e1356]: 조회
+              - generic [ref=e1357]: "517"
+            - generic [ref=e1360]: "21"
+            - generic [ref=e1363]: "35"
+      - link "일다 1일 전 관짝은 들고다녀야 합니다. 조회 1,070 21 19" [ref=e1364] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76777&view=best
+        - generic [ref=e1365]:
+          - generic [ref=e1367]:
+            - generic [ref=e1371]: 일다
+            - generic [ref=e1372]: 1일 전
+          - generic [ref=e1373]: 관짝은 들고다녀야 합니다.
+          - generic [ref=e1376]:
+            - generic [ref=e1377]:
+              - generic [ref=e1378]: 조회
+              - generic [ref=e1379]: 1,070
+            - generic [ref=e1382]: "21"
+            - generic [ref=e1385]: "19"
+      - link "밍즈 1일 전 아이스 2판 간단 후기 조회 963 24 12" [ref=e1386] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37504&view=best
+        - generic [ref=e1387]:
+          - generic [ref=e1389]:
+            - generic [ref=e1393]: 밍즈
+            - generic [ref=e1394]: 1일 전
+          - generic [ref=e1395]: 아이스 2판 간단 후기
+          - generic [ref=e1398]:
+            - generic [ref=e1399]:
+              - generic [ref=e1400]: 조회
+              - generic [ref=e1401]: "963"
+            - generic [ref=e1404]: "24"
+            - generic [ref=e1407]: "12"
+      - link "초인 2일 전 어웨이큰 렐름스 스페셜에디션 시리즈 pledge... 조회 891 5 27" [ref=e1408] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_release&bbs_num=487&view=best
+        - generic [ref=e1409]:
+          - generic [ref=e1411]:
+            - generic [ref=e1415]: 초인
+            - generic [ref=e1416]: 2일 전
+          - generic [ref=e1417]: 어웨이큰 렐름스 스페셜에디션 시리즈 pledge...
+          - generic [ref=e1420]:
+            - generic [ref=e1421]:
+              - generic [ref=e1422]: 조회
+              - generic [ref=e1423]: "891"
+            - generic [ref=e1426]: "5"
+            - generic [ref=e1429]: "27"
+      - link "초인 1일 전 꿩 대신 닭 ….. 조회 706 16 30" [ref=e1430] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37503&view=best
+        - generic [ref=e1431]:
+          - generic [ref=e1433]:
+            - generic [ref=e1437]: 초인
+            - generic [ref=e1438]: 1일 전
+          - generic [ref=e1439]: 꿩 대신 닭 …..
+          - generic [ref=e1442]:
+            - generic [ref=e1443]:
+              - generic [ref=e1444]: 조회
+              - generic [ref=e1445]: "706"
+            - generic [ref=e1448]: "16"
+            - generic [ref=e1451]: "30"
+      - link "울버린 2일 전 야, 울버린! 너 과하다! (3탄)-미플, 업글용품 조회 587 29 29" [ref=e1452] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76734&view=best
+        - generic [ref=e1453]:
+          - generic [ref=e1455]:
+            - generic [ref=e1459]: 울버린
+            - generic [ref=e1460]: 2일 전
+          - generic [ref=e1461]: 야, 울버린! 너 과하다! (3탄)-미플, 업글용품
+          - generic [ref=e1464]:
+            - generic [ref=e1465]:
+              - generic [ref=e1466]: 조회
+              - generic [ref=e1467]: "587"
+            - generic [ref=e1470]: "29"
+            - generic [ref=e1473]: "29"
+      - link "울버린 2일 전 야, 울버린! 너 과하다! (2탄)-주사위트레이, 카드홀더, 그릇, 메탈코인 조회 557 36 38" [ref=e1474] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76733&view=best
+        - generic [ref=e1475]:
+          - generic [ref=e1477]:
+            - generic [ref=e1481]: 울버린
+            - generic [ref=e1482]: 2일 전
+          - generic [ref=e1483]: 야, 울버린! 너 과하다! (2탄)-주사위트레이, 카드홀더, 그릇, 메탈코인
+          - generic [ref=e1486]:
+            - generic [ref=e1487]:
+              - generic [ref=e1488]: 조회
+              - generic [ref=e1489]: "557"
+            - generic [ref=e1492]: "36"
+            - generic [ref=e1495]: "38"
+      - link "울버린 2일 전 보라를 끊을 수 없는 이유! 조회 635 20 26" [ref=e1496] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76726&view=best
+        - generic [ref=e1497]:
+          - generic [ref=e1499]:
+            - generic [ref=e1503]: 울버린
+            - generic [ref=e1504]: 2일 전
+          - generic [ref=e1505]: 보라를 끊을 수 없는 이유!
+          - generic [ref=e1508]:
+            - generic [ref=e1509]:
+              - generic [ref=e1510]: 조회
+              - generic [ref=e1511]: "635"
+            - generic [ref=e1514]: "20"
+            - generic [ref=e1517]: "26"
+      - generic [ref=e1520]:
+        - link "AD" [ref=e1521] [cursor=pointer]:
+          - /url: /serviceAD.php?page=sponsor
+        - link [ref=e1522] [cursor=pointer]:
+          - /url: https://boardlife.co.kr/notice.php?number=1
+      - link "착한아가 2일 전 엘더스크롤 아트북과... 칩... 언어 통일... ㅅㅂ... 이정도일 줄이야... 조회 1,345 18 28" [ref=e1523] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=info_boardgame&bbs_num=7897&view=best
+        - generic [ref=e1524]:
+          - generic [ref=e1526]:
+            - generic [ref=e1530]: 착한아가
+            - generic [ref=e1531]: 2일 전
+          - generic [ref=e1532]: 엘더스크롤 아트북과... 칩... 언어 통일... ㅅㅂ... 이정도일 줄이야...
+          - generic [ref=e1535]:
+            - generic [ref=e1536]:
+              - generic [ref=e1537]: 조회
+              - generic [ref=e1538]: 1,345
+            - generic [ref=e1541]: "18"
+            - generic [ref=e1544]: "28"
+      - link "울버린 2일 전 야, 울버린! 너 과하다!(4탄)-주머니, 밴드, 보관용품, 기타물품 조회 728 37 51" [ref=e1545] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76735&view=best
+        - generic [ref=e1546]:
+          - generic [ref=e1548]:
+            - generic [ref=e1552]: 울버린
+            - generic [ref=e1553]: 2일 전
+          - generic [ref=e1554]: 야, 울버린! 너 과하다!(4탄)-주머니, 밴드, 보관용품, 기타물품
+          - generic [ref=e1557]:
+            - generic [ref=e1558]:
+              - generic [ref=e1559]: 조회
+              - generic [ref=e1560]: "728"
+            - generic [ref=e1563]: "37"
+            - generic [ref=e1566]: "51"
+      - link "울버린 2일 전 울버린의 원대한 계획! 드디어 오픈! 조회 685 25 27" [ref=e1567] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76731&view=best
+        - generic [ref=e1568]:
+          - generic [ref=e1570]:
+            - generic [ref=e1574]: 울버린
+            - generic [ref=e1575]: 2일 전
+          - generic [ref=e1576]: 울버린의 원대한 계획! 드디어 오픈!
+          - generic [ref=e1579]:
+            - generic [ref=e1580]:
+              - generic [ref=e1581]: 조회
+              - generic [ref=e1582]: "685"
+            - generic [ref=e1585]: "25"
+            - generic [ref=e1588]: "27"
+      - link "울버린 2일 전 야, 울버린! 너 과하다!(1탄)-선마커 총집합 조회 686 33 43" [ref=e1589] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76732&view=best
+        - generic [ref=e1590]:
+          - generic [ref=e1592]:
+            - generic [ref=e1596]: 울버린
+            - generic [ref=e1597]: 2일 전
+          - generic [ref=e1598]: 야, 울버린! 너 과하다!(1탄)-선마커 총집합
+          - generic [ref=e1601]:
+            - generic [ref=e1602]:
+              - generic [ref=e1603]: 조회
+              - generic [ref=e1604]: "686"
+            - generic [ref=e1607]: "33"
+            - generic [ref=e1610]: "43"
+      - link "울버린 2일 전 울버린의 최근 즐긴 게임들 간단후기(22th)-미가챔, 트라야누스, 스카이... 조회 569 20 43" [ref=e1611] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37491&view=best
+        - generic [ref=e1612]:
+          - generic [ref=e1614]:
+            - generic [ref=e1618]: 울버린
+            - generic [ref=e1619]: 2일 전
+          - generic [ref=e1620]: 울버린의 최근 즐긴 게임들 간단후기(22th)-미가챔, 트라야누스, 스카이...
+          - generic [ref=e1623]:
+            - generic [ref=e1624]:
+              - generic [ref=e1625]: 조회
+              - generic [ref=e1626]: "569"
+            - generic [ref=e1629]: "20"
+            - generic [ref=e1632]: "43"
+      - link "softplus 2일 전 플레이 가능성 없는 게임에 20만원을 태운다고??? 조회 964 16 21" [ref=e1633] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76705&view=best
+        - generic [ref=e1634]:
+          - generic [ref=e1636]:
+            - generic [ref=e1640]: softplus
+            - generic [ref=e1641]: 2일 전
+          - generic [ref=e1642]: 플레이 가능성 없는 게임에 20만원을 태운다고???
+          - generic [ref=e1645]:
+            - generic [ref=e1646]:
+              - generic [ref=e1647]: 조회
+              - generic [ref=e1648]: "964"
+            - generic [ref=e1651]: "16"
+            - generic [ref=e1654]: "21"
+      - link "초인 2일 전 나는 왜 끊임 없이 새로운 보드게임을 갈구 하는가..!! 조회 815 19 43" [ref=e1655] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76723&view=best
+        - generic [ref=e1656]:
+          - generic [ref=e1658]:
+            - generic [ref=e1662]: 초인
+            - generic [ref=e1663]: 2일 전
+          - generic [ref=e1664]: 나는 왜 끊임 없이 새로운 보드게임을 갈구 하는가..!!
+          - generic [ref=e1667]:
+            - generic [ref=e1668]:
+              - generic [ref=e1669]: 조회
+              - generic [ref=e1670]: "815"
+            - generic [ref=e1673]: "19"
+            - generic [ref=e1676]: "43"
+      - link "라마나타 2일 전 26년 6월1주차 BGG 인기 급상승 게임 조회 669 18 13" [ref=e1677] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76717&view=best
+        - generic [ref=e1678]:
+          - generic [ref=e1680]:
+            - generic [ref=e1684]: 라마나타
+            - generic [ref=e1685]: 2일 전
+          - generic [ref=e1686]: 26년 6월1주차 BGG 인기 급상승 게임
+          - generic [ref=e1689]:
+            - generic [ref=e1690]:
+              - generic [ref=e1691]: 조회
+              - generic [ref=e1692]: "669"
+            - generic [ref=e1695]: "18"
+            - generic [ref=e1698]: "13"
+      - link "초인 2일 전 수수께끼의 아시아 문명 가필 게임즈의 《레거시 오브 유(Legacy of Yu)》 조회 372 11 15" [ref=e1699] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37488&view=best
+        - generic [ref=e1700]:
+          - generic [ref=e1702]:
+            - generic [ref=e1706]: 초인
+            - generic [ref=e1707]: 2일 전
+          - generic [ref=e1708]: 수수께끼의 아시아 문명 가필 게임즈의 《레거시 오브 유(Legacy of Yu)》
+          - generic [ref=e1711]:
+            - generic [ref=e1712]:
+              - generic [ref=e1713]: 조회
+              - generic [ref=e1714]: "372"
+            - generic [ref=e1717]: "11"
+            - generic [ref=e1720]: "15"
+      - 'link "☆Felix★ 2일 전 엘더 스크롤: 두 번째 시대의 배신 한글판 개봉기 조회 1,287 16 18" [ref=e1721] [cursor=pointer]':
+        - /url: /bbs_detail.php?tb=info_boardgame&bbs_num=7894&view=best
+        - generic [ref=e1722]:
+          - generic [ref=e1724]:
+            - generic [ref=e1728]: ☆Felix★
+            - generic [ref=e1729]: 2일 전
+          - generic [ref=e1730]: "엘더 스크롤: 두 번째 시대의 배신 한글판 개봉기"
+          - generic [ref=e1733]:
+            - generic [ref=e1734]:
+              - generic [ref=e1735]: 조회
+              - generic [ref=e1736]: 1,287
+            - generic [ref=e1739]: "16"
+            - generic [ref=e1742]: "18"
+      - link "neojulian 2일 전 씁쓸한 문의 결과. (부제:팔아 먹을때만 손님이네) 조회 4,194 13 20" [ref=e1743] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76706&view=best
+        - generic [ref=e1744]:
+          - generic [ref=e1746]:
+            - generic [ref=e1750]: neojulian
+            - generic [ref=e1751]: 2일 전
+          - generic [ref=e1752]: 씁쓸한 문의 결과. (부제:팔아 먹을때만 손님이네)
+          - generic [ref=e1755]:
+            - generic [ref=e1756]:
+              - generic [ref=e1757]: 조회
+              - generic [ref=e1758]: 4,194
+            - generic [ref=e1761]: "13"
+            - generic [ref=e1764]: "20"
+      - link "고사리 2일 전 오를로이를 만들었어요. 조회 1,105 43 47" [ref=e1765] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76699&view=best
+        - generic [ref=e1766]:
+          - generic [ref=e1768]:
+            - generic [ref=e1772]: 고사리
+            - generic [ref=e1773]: 2일 전
+          - generic [ref=e1774]: 오를로이를 만들었어요.
+          - generic [ref=e1777]:
+            - generic [ref=e1778]:
+              - generic [ref=e1779]: 조회
+              - generic [ref=e1780]: 1,105
+            - generic [ref=e1783]: "43"
+            - generic [ref=e1786]: "47"
+      - link "라쥐 3일 전 [엘더스크롤] 개봉기 (사진 많음 주의) 조회 1,291 14 20" [ref=e1787] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=info_boardgame&bbs_num=7893&view=best
+        - generic [ref=e1788]:
+          - generic [ref=e1790]:
+            - generic [ref=e1794]: 라쥐
+            - generic [ref=e1795]: 3일 전
+          - generic [ref=e1796]: "[엘더스크롤] 개봉기 (사진 많음 주의)"
+          - generic [ref=e1799]:
+            - generic [ref=e1800]:
+              - generic [ref=e1801]: 조회
+              - generic [ref=e1802]: 1,291
+            - generic [ref=e1805]: "14"
+            - generic [ref=e1808]: "20"
+      - link "메가마스터 3일 전 토이배틀 개봉기 조회 534 15 9" [ref=e1809] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=info_boardgame&bbs_num=7891&view=best
+        - generic [ref=e1810]:
+          - generic [ref=e1812]:
+            - generic [ref=e1816]: 메가마스터
+            - generic [ref=e1817]: 3일 전
+          - generic [ref=e1818]: 토이배틀 개봉기
+          - generic [ref=e1821]:
+            - generic [ref=e1822]:
+              - generic [ref=e1823]: 조회
+              - generic [ref=e1824]: "534"
+            - generic [ref=e1827]: "15"
+            - generic [ref=e1830]: "9"
+      - link "zetal 3일 전 26년 5월 세번째 부부보드게임 일지(텐드, 세자매 하베스트에디션, 징글... 조회 433 16 7" [ref=e1831] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37467&view=best
+        - generic [ref=e1832]:
+          - generic [ref=e1834]:
+            - generic [ref=e1838]: zetal
+            - generic [ref=e1839]: 3일 전
+          - generic [ref=e1840]: 26년 5월 세번째 부부보드게임 일지(텐드, 세자매 하베스트에디션, 징글...
+          - generic [ref=e1843]:
+            - generic [ref=e1844]:
+              - generic [ref=e1845]: 조회
+              - generic [ref=e1846]: "433"
+            - generic [ref=e1849]: "16"
+            - generic [ref=e1852]: "7"
+      - generic [ref=e1855]:
+        - link "AD" [ref=e1856] [cursor=pointer]:
+          - /url: /serviceAD.php?page=sponsor
+        - link [ref=e1857] [cursor=pointer]:
+          - /url: https://mkt.shopping.naver.com/link/6a16a01e1a6e247ec455c904
+      - link "초인 3일 전 아빠~! 친구들이 7명인데.. 집으로 데려 가도돼 ???? 조회 1,091 40 52" [ref=e1858] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37461&view=best
+        - generic [ref=e1859]:
+          - generic [ref=e1861]:
+            - generic [ref=e1865]: 초인
+            - generic [ref=e1866]: 3일 전
+          - generic [ref=e1867]: 아빠~! 친구들이 7명인데.. 집으로 데려 가도돼 ????
+          - generic [ref=e1870]:
+            - generic [ref=e1871]:
+              - generic [ref=e1872]: 조회
+              - generic [ref=e1873]: 1,091
+            - generic [ref=e1876]: "40"
+            - generic [ref=e1879]: "52"
+      - link "yunhaha 4일 전 짧게 적기 아쉬운 모임후기 조회 843 20 9" [ref=e1880] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37446&view=best
+        - generic [ref=e1881]:
+          - generic [ref=e1883]:
+            - generic [ref=e1887]: yunhaha
+            - generic [ref=e1888]: 4일 전
+          - generic [ref=e1889]: 짧게 적기 아쉬운 모임후기
+          - generic [ref=e1892]:
+            - generic [ref=e1893]:
+              - generic [ref=e1894]: 조회
+              - generic [ref=e1895]: "843"
+            - generic [ref=e1898]: "20"
+            - generic [ref=e1901]: "9"
+      - link "파랑다이스 5일 전 [반지전쟁] skeil님 부산 출강, nexusops님과 feat. 만듀주먹님 참관 조회 510 15 18" [ref=e1902] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37426&view=best
+        - generic [ref=e1903]:
+          - generic [ref=e1905]:
+            - generic [ref=e1909]: 파랑다이스
+            - generic [ref=e1910]: 5일 전
+          - generic [ref=e1911]: "[반지전쟁] skeil님 부산 출강, nexusops님과 feat. 만듀주먹님 참관"
+          - generic [ref=e1914]:
+            - generic [ref=e1915]:
+              - generic [ref=e1916]: 조회
+              - generic [ref=e1917]: "510"
+            - generic [ref=e1920]: "15"
+            - generic [ref=e1923]: "18"
+      - link "비형 스라블 6일 전 반지 전쟁 조회 767 19 16" [ref=e1924] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76505&view=best
+        - generic [ref=e1925]:
+          - generic [ref=e1927]:
+            - generic [ref=e1931]: 비형 스라블
+            - generic [ref=e1932]: 6일 전
+          - generic [ref=e1933]: 반지 전쟁
+          - generic [ref=e1936]:
+            - generic [ref=e1937]:
+              - generic [ref=e1938]: 조회
+              - generic [ref=e1939]: "767"
+            - generic [ref=e1942]: "19"
+            - generic [ref=e1945]: "16"
+      - link "만듀주먹 4일 전 260602-03) 부산 skeil 님 반지 전쟁 뉴비 강습회 조회 350 17 16" [ref=e1946] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37445&view=best
+        - generic [ref=e1947]:
+          - generic [ref=e1949]:
+            - generic [ref=e1953]: 만듀주먹
+            - generic [ref=e1954]: 4일 전
+          - generic [ref=e1955]: 260602-03) 부산 skeil 님 반지 전쟁 뉴비 강습회
+          - generic [ref=e1958]:
+            - generic [ref=e1959]:
+              - generic [ref=e1960]: 조회
+              - generic [ref=e1961]: "350"
+            - generic [ref=e1964]: "17"
+            - generic [ref=e1967]: "16"
+      - link "안양보드겜콜렉터 4일 전 [Zoom in] 스피크이지 2인플 후기 조회 662 18 17" [ref=e1968] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37435&view=best
+        - generic [ref=e1969]:
+          - generic [ref=e1971]:
+            - generic [ref=e1975]: 안양보드겜콜렉터
+            - generic [ref=e1976]: 4일 전
+          - generic [ref=e1977]: "[Zoom in] 스피크이지 2인플 후기"
+          - generic [ref=e1980]:
+            - generic [ref=e1981]:
+              - generic [ref=e1982]: 조회
+              - generic [ref=e1983]: "662"
+            - generic [ref=e1986]: "18"
+            - generic [ref=e1989]: "17"
+      - link "호아부지 4일 전 유치원생 + 초등학생 아빠의 보드게임 후기 <2026년 5월> 조회 931 18 33" [ref=e1990] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37434&view=best
+        - generic [ref=e1991]:
+          - generic [ref=e1993]:
+            - generic [ref=e1997]: 호아부지
+            - generic [ref=e1998]: 4일 전
+          - generic [ref=e1999]: 유치원생 + 초등학생 아빠의 보드게임 후기 <2026년 5월>
+          - generic [ref=e2002]:
+            - generic [ref=e2003]:
+              - generic [ref=e2004]: 조회
+              - generic [ref=e2005]: "931"
+            - generic [ref=e2008]: "18"
+            - generic [ref=e2011]: "33"
+      - link "체념 26.05.27 일본 도쿄 아키하바라 옐로 서브마린 방문기 조회 774 15 23" [ref=e2012] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76272&view=best
+        - generic [ref=e2013]:
+          - generic [ref=e2015]:
+            - generic [ref=e2019]: 체념
+            - generic [ref=e2020]: 26.05.27
+          - generic [ref=e2021]: 일본 도쿄 아키하바라 옐로 서브마린 방문기
+          - generic [ref=e2024]:
+            - generic [ref=e2025]:
+              - generic [ref=e2026]: 조회
+              - generic [ref=e2027]: "774"
+            - generic [ref=e2030]: "15"
+            - generic [ref=e2033]: "23"
+      - link "softplus 5일 전 코븐이를 처음 하는 분들을 위한 참견글!! ㅋㅋ 조회 639 6 11" [ref=e2034] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=community_post&bbs_num=37410&view=best
+        - generic [ref=e2035]:
+          - generic [ref=e2037]:
+            - generic [ref=e2041]: softplus
+            - generic [ref=e2042]: 5일 전
+          - generic [ref=e2043]: 코븐이를 처음 하는 분들을 위한 참견글!! ㅋㅋ
+          - generic [ref=e2046]:
+            - generic [ref=e2047]:
+              - generic [ref=e2048]: 조회
+              - generic [ref=e2049]: "639"
+            - generic [ref=e2052]: "6"
+            - generic [ref=e2055]: "11"
+      - link "부엉이 4일 전 아지트가 생기고 난 뒤 - 완결 조회 2,917 81 71" [ref=e2056] [cursor=pointer]:
+        - /url: /bbs_detail.php?tb=board_community&bbs_num=76603&view=best
+        - generic [ref=e2057]:
+          - generic [ref=e2059]:
+            - generic [ref=e2063]: 부엉이
+            - generic [ref=e2064]: 4일 전
+          - generic [ref=e2065]: 아지트가 생기고 난 뒤 - 완결
+          - generic [ref=e2068]:
+            - generic [ref=e2069]:
+              - generic [ref=e2070]: 조회
+              - generic [ref=e2071]: 2,917
+            - generic [ref=e2074]: "81"
+            - generic [ref=e2077]: "71"
+  - generic [ref=e1111]:
+    - link [ref=e1113] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e1116]:
+      - link "커뮤니티 규칙" [ref=e1117] [cursor=pointer]:
+        - /url: /policy.php
+      - link "서비스 약관/정책" [ref=e1118] [cursor=pointer]:
+        - /url: /policy.php?page=service
+      - link "개인정보취급방침" [ref=e1119] [cursor=pointer]:
+        - /url: /policy.php?page=privacy
+      - link "청소년보호정책" [ref=e1120] [cursor=pointer]:
+        - /url: /policy.php?page=youth
+      - link "공지사항" [ref=e1121] [cursor=pointer]:
+        - /url: /board/notice
+      - link "광고센터" [ref=e1122] [cursor=pointer]:
+        - /url: /serviceAD.php
+    - generic [ref=e1123]:
+      - generic [ref=e1124]: "회사명: 보드라이프"
+      - generic [ref=e1125]: 경기도 구리시 벌말로 147번길 34-6
+      - generic [ref=e1126]: "등록번호: 893-07-00060"
+      - generic [ref=e1127]: "대표자명: 곽재영"
+      - generic [ref=e1128]: "고객지원 : boardlifeTeam@gmail.com"
+    - generic [ref=e1129]: 위 내용에 대한 저작권 및 법적 책임은 자료제공사 또는 글쓴이에 있으며 보드라이프의 입장과 다를 수 있습니다.
+    - generic [ref=e1130]: Copyright ⓒ boardlife.co.kr All rights reserved.

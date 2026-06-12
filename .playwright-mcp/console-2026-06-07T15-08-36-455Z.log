@@ -1,0 +1,120 @@
+[    1368ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/01/20/1642679964183624_lg.jpg:0
+[    1374ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/01/10/1641796147314874_lg.png:0
+[    1374ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/01/31/1643561558733610_lg.jpg:0
+[    1374ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2023/07/08/1688808248233678_lg.png:0
+[    1374ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2023/07/08/1688808222265518_lg.png:0
+[    1374ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/01/17/1642351487376782_lg.jpg:0
+[    1405ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/data/photo/2024/05/22/1716317107-683325.png:0
+[    1407ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/02/02/1643746154248788_lg.png:0
+[    1407ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/10/03/1664753408678981_lg.jpg:0
+[    1408ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2023/03/21/1679330743015968_lg.jpg:0
+[    1409ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/02/24/1645642525686075_lg.jpg:0
+[    1410ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/data/photo/2024/04/21/1713678035-299279.jpg:0
+[    1410ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/01/14/1642089121363109_lg.jpg:0
+[    1845ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:25630
+[    2293ms] Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/games" tree={[...]} cacheNode={{lazyData:null, ...}} segmentPath={[...]}>
+            <SegmentViewNode type="page" pagePath="games/page...">
+              <SegmentTrieNode>
+              <GamesPage>
+                <Nav>
+                <div style={{...}}>
+                  <div>
+                  <GamePageClient games={[...]} owners={[...]} currentUserId={null} currentUsername={null}>
+                    <div>
+                    <div>
+                    <div style={{maxWidth:1040, ...}}>
+                      <div style={{display:"grid", ...}}>
+                        <div onClick={function onClick} style={{border:"1p...", ...}} ...>
+                          <div style={{position:"..."}}>
+                            <GameThumbnail src="https://up..." name="6님트!" nameEn="6 Nimmt!" bggId={null} h="130px">
++                             <div
++                               style={{width:"100%",height:"130px",background:"rgba(201,1...",display:"flex",alignItems:"center", ...}}
++                             >
+-                             <img
+-                               src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/6_nimmt%21.jpg/330px-6_..."
+-                               alt="6님트!"
+-                               style={{width:"100%",height:"130px",object-fit:"contain",background-image:"initial", ...}}
+-                             >
+                            ...
+                          ...
+                        ...
+                    ...
+                ...
+            ...
+          ...
+
+    at throwOnHydrationMismatch (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:4506:11)
+    at beginWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:11107:17)
+    at runWithFiberInDEV (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:872:30)
+    at performUnitOfWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15727:22)
+    at workLoopConcurrentByScheduler (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15721:9)
+    at renderRootConcurrent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15696:15)
+    at performWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:14990:13)
+    at performWorkOnRootViaSchedulerTask (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:16816:7)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:45:48)
+[    2770ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:9000/api/auth/me:0
+[    2804ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:9000/api/auth/me:0
+[    3152ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/01/31/1643561558733610_lg.jpg:0
+[    3155ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/01/10/1641796147314874_lg.png:0
+[    3156ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/01/20/1642679964183624_lg.jpg:0
+[    4726ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Agora%20(board%20game):0
+[    4914ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Pantheon%20(board%20game):0
+[    4973ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Durian%20(board%20game):0
+[    5076ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Detective%20Club%20(board%20game):0
+[    5748ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Durian%20(card%20game):0
+[    5749ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Pantheon%20(card%20game):0
+[    5928ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Agora%20(card%20game):0
+[    6047ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Detective%20Club%20(card%20game):0
+[    6296ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Last%20Will%20(board%20game):0
+[    6650ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Pantheon%20(game):0
+[    6855ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Durian%20(game):0
+[    7341ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Pantheon:0
+[    7969ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Detective%20Club%20(game):0
+[    8018ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Last%20Will%20(card%20game):0
+[    8038ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Agora%20(game):0
+[    8707ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2023/07/08/1688808222265518_lg.png:0
+[    8711ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/01/17/1642351487376782_lg.jpg:0
+[    9885ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/7%20Wonders%20Duel%3A%20Agora:0
+[    9926ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2023/07/08/1688808248233678_lg.png:0
+[    9928ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/data/photo/2024/05/22/1716317107-683325.png:0
+[    9970ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/02/02/1643746154248788_lg.png:0
+[    9972ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/10/03/1664753408678981_lg.jpg:0
+[   10270ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Last%20Will%20(game):0
+[   10767ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Dungeons%20%26%20Dragons%3A%20Rock%20Paper%20Wizard%20(board%20game):0
+[   10797ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2023/03/21/1679330743015968_lg.jpg:0
+[   10798ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/02/24/1645642525686075_lg.jpg:0
+[   11291ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Nine%20Tiles%20Panic%20(board%20game):0
+[   11328ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/data/photo/2024/04/21/1713678035-299279.jpg:0
+[   11329ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://boardlife.co.kr/wys2/swf_upload/2022/01/14/1642089121363109_lg.jpg:0
+[   11461ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Dark%20Horse%20(board%20game):0
+[   11635ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Decrypto%20(board%20game):0
+[   12012ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Nine%20Tiles%20Panic%20(card%20game):0
+[   12324ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Las%20Vegas%20Royale%20(board%20game):0
+[   12786ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Nine%20Tiles%20Panic%20(game):0
+[   13065ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Las%20Vegas%20Royale%20(card%20game):0
+[   13327ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Dark%20Horse%20(card%20game):0
+[   13339ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Decrypto%20(card%20game):0
+[   13419ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Dungeons%20%26%20Dragons%3A%20Rock%20Paper%20Wizard%20(card%20game):0
+[   13658ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Nine%20Tiles%20Panic:0
+[   13805ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Las%20Vegas%20Royale%20(game):0
+[   14129ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Dungeons%20%26%20Dragons%3A%20Rock%20Paper%20Wizard%20(game):0
+[   14193ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Dark%20Horse%20(game):0
+[   14354ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Decrypto%20(game):0
+[   15247ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Las%20Vegas%20Royale:0
+[   15397ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Dungeons%20%26%20Dragons%3A%20Rock%20Paper%20Wizard:0

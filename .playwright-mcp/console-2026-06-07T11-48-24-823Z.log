@@ -1,0 +1,15 @@
+[    1699ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:25630
+[    2543ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:9000/api/auth/me:0
+[    2588ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/01/10/1641796147314874_lg_w300.png:0
+[    2590ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/01/20/1642679964183624_lg_w300.jpg:0
+[    2590ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/01/17/1642351487376782_lg_w300.jpg:0
+[    2594ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/01/31/1643561558733610_lg_w300.jpg:0
+[    2594ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2023/07/08/1688808248233678_lg_w300.png:0
+[    2594ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2023/07/08/1688808222265518_lg_w300.png:0
+[    2624ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/data/photo/2024/05/22/1716317107-683325_w300.png:0
+[    2634ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/02/02/1643746154248788_lg_w300.png:0
+[    2641ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/10/03/1664753408678981_lg_w300.jpg:0
+[    2642ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2023/03/21/1679330743015968_lg_w300.jpg:0
+[    2645ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/02/24/1645642525686075_lg_w300.jpg:0
+[    2645ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/data/photo/2024/04/21/1713678035-299279_w300.jpg:0
+[    2645ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin @ https://img.boardlife.co.kr/wys2/swf_upload/2022/01/14/1642089121363109_lg_w300.jpg:0

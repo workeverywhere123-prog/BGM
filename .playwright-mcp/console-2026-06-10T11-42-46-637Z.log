@@ -1,0 +1,87 @@
+[    5242ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[    5846ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/favicon.ico:0
+[    6384ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/T27jwvDlDu4/maxresdefault.jpg:0
+[    7902ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/_EZnGbfMqsc/maxresdefault.jpg:0
+[  160335ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[  161019ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/T27jwvDlDu4/maxresdefault.jpg:0
+[  161817ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/_EZnGbfMqsc/maxresdefault.jpg:0
+[  173184ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[  173271ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:5173/src/main.js?t=1781091939682:459
+[  173272ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:5173/src/main.js?t=1781091939682:459
+[  179326ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[  179421ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:5173/src/main.js?t=1781091945825:460
+[  179423ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:5173/src/main.js?t=1781091945825:460
+[  197660ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[  198334ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/T27jwvDlDu4/maxresdefault.jpg:0
+[  200114ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/_EZnGbfMqsc/maxresdefault.jpg:0
+[  205794ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[  205890ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:5173/src/main.js?t=1781091972289:460
+[  205891ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:5173/src/main.js?t=1781091972289:460
+[  702913ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[  703157ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ http://localhost:5173/:0
+[  703157ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ http://localhost:5173/:0
+[  703157ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ http://localhost:5173/:0
+[  718400ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[  718625ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ http://localhost:5173/:0
+[  718625ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ http://localhost:5173/:0
+[  718625ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ http://localhost:5173/:0
+[ 1070726ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/T27jwvDlDu4/maxresdefault.jpg:0
+[ 1072475ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/_EZnGbfMqsc/maxresdefault.jpg:0
+[ 1150188ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[ 1151251ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/T27jwvDlDu4/maxresdefault.jpg:0
+[ 1152451ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/_EZnGbfMqsc/maxresdefault.jpg:0
+[ 1158439ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[ 1158521ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:5173/src/main.js?t=1781092924936:500
+[ 1158522ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:5173/src/main.js?t=1781092924936:500
+[ 1164275ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[ 1164368ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:5173/src/main.js?t=1781092930774:500
+[ 1164369ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:5173/src/main.js?t=1781092930774:500
+[ 1185933ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[ 1186254ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/T27jwvDlDu4/maxresdefault.jpg:0
+[ 1188050ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/_EZnGbfMqsc/maxresdefault.jpg:0
+[ 1246074ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/T27jwvDlDu4/maxresdefault.jpg:0
+[ 1246472ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/_EZnGbfMqsc/maxresdefault.jpg:0
+[ 1249935ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/bAGA6CRS7Cw/maxresdefault.jpg:0
+[ 1262648ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/_EZnGbfMqsc/maxresdefault.jpg:0
+[ 1264218ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/T27jwvDlDu4/maxresdefault.jpg:0
+[ 1279744ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/bAGA6CRS7Cw/maxresdefault.jpg:0
+[ 4387671ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[ 4388207ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://img.youtube.com/vi/bAGA6CRS7Cw/maxresdefault.jpg:0
+[ 4397755ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[26991118ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:559
+[26991572ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[76665937ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[76666143ms] ReferenceError: getAvatar is not defined
+    at renderUserBadge (http://localhost:5173/src/main.js?t=1781168432285:208:14)
+    at window.onload (http://localhost:5173/src/main.js?t=1781168432285:718:5)
+[76674266ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[76674461ms] ReferenceError: getAvatar is not defined
+    at renderUserBadge (http://localhost:5173/src/main.js?t=1781168440775:208:14)
+    at window.onload (http://localhost:5173/src/main.js?t=1781168440775:722:5)
+[76814397ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[76827130ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[77380805ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[79241798ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[79241994ms] ReferenceError: SKIN_COLORS is not defined
+    at makeAvatarSVG (http://localhost:5173/src/main.js?t=1781171008294:761:12)
+    at renderUserBadge (http://localhost:5173/src/main.js?t=1781171008294:213:11)
+    at window.onload (http://localhost:5173/src/main.js?t=1781171008294:1224:5)
+[79265249ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[79265437ms] ReferenceError: SKIN_COLORS is not defined
+    at makeAvatarSVG (http://localhost:5173/src/main.js?t=1781171031757:775:12)
+    at renderUserBadge (http://localhost:5173/src/main.js?t=1781171031757:213:11)
+    at window.onload (http://localhost:5173/src/main.js?t=1781171031757:1238:5)
+[79278413ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[79278606ms] ReferenceError: hc is not defined
+    at makeAvatarSVG (http://localhost:5173/src/main.js?t=1781171044900:791:61)
+    at renderUserBadge (http://localhost:5173/src/main.js?t=1781171044900:213:11)
+    at window.onload (http://localhost:5173/src/main.js?t=1781171044900:1238:5)
+[79454100ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[79454298ms] ReferenceError: SKIN_COLORS is not defined
+    at showAvatarCreator (http://localhost:5173/src/main.js?t=1781171220619:1124:13)
+    at window.onload (http://localhost:5173/src/main.js?t=1781171220619:1380:7)
+[79507524ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[79507632ms] ReferenceError: avSetSkin is not defined
+    at http://localhost:5173/src/main.js?t=1781171274026:1350:31
+[79513163ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63
+[79518991ms] [WARNING] cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation @ https://cdn.tailwindcss.com/:63

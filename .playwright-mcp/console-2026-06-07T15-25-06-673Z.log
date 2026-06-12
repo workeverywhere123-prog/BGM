@@ -1,0 +1,5 @@
+[    3972ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://boardlife.co.kr/boardgame:0
+[    4640ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://boardlife.co.kr/https://img.boardlife.co.kr/data/adv_sponsor/2026/06/05/1780635381-933779.png:0
+[ 1925686ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://boardlife.co.kr/data/photo/2024/04/21/1713678035-299279.jpg:0
+[ 1925718ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://boardlife.co.kr/wys2/swf_upload/2022/03/21/164785529423632_lg.jpg:0
+[ 1925753ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://boardlife.co.kr/data/boardgame_strategy/2021/02/18/1613639076-40431.jpg:0

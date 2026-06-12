@@ -1,0 +1,76 @@
+[    7053ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:25630
+[    7465ms] Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/games?v=2" tree={[...]} cacheNode={{lazyData:null, ...}} segmentPath={[...]}>
+            <SegmentViewNode type="page" pagePath="games/page...">
+              <SegmentTrieNode>
+              <GamesPage>
+                <Nav>
+                <div style={{...}}>
+                  <div>
+                  <GamePageClient games={[...]} owners={[...]} currentUserId={null} currentUsername={null}>
+                    <div>
+                    <div>
+                    <div style={{maxWidth:1040, ...}}>
+                      <div style={{display:"grid", ...}}>
+                        <div onClick={function onClick} style={{border:"1p...", ...}} ...>
+                          <div style={{position:"..."}}>
+                            <GameThumbnail src="https://up..." name="6님트!" nameEn="6 Nimmt!" bggId={null} h="130px">
++                             <div
++                               style={{width:"100%",height:"130px",background:"rgba(201,1...",display:"flex",alignItems:"center", ...}}
++                             >
+-                             <img
+-                               src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/6_nimmt%21.jpg/330px-6_..."
+-                               alt="6님트!"
+-                               style={{width:"100%",height:"130px",object-fit:"contain",background-image:"initial", ...}}
+-                             >
+                            ...
+                          ...
+                        ...
+                    ...
+                ...
+            ...
+          ...
+
+    at throwOnHydrationMismatch (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:4506:11)
+    at beginWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:11107:17)
+    at runWithFiberInDEV (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:872:30)
+    at performUnitOfWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15727:22)
+    at workLoopConcurrentByScheduler (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15721:9)
+    at renderRootConcurrent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15696:15)
+    at performWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:14990:13)
+    at performWorkOnRootViaSchedulerTask (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:16816:7)
+    at MessagePort.performWorkUntilDeadline (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:45:48)
+[    7408ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:9000/api/auth/me:0
+[    7448ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:9000/api/auth/me:0
+[    8785ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Detective%20Club%20(board%20game):0
+[    9082ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Durian%20(board%20game):0
+[    9268ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Last%20Will%20(board%20game):0
+[    9940ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Durian%20(card%20game):0
+[   10458ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Last%20Will%20(card%20game):0
+[   10892ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Detective%20Club%20(card%20game):0
+[   11729ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Last%20Will%20(game):0
+[   11999ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Durian%20(game):0
+[   13095ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://en.wikipedia.org/api/rest_v1/page/summary/Detective%20Club%20(game):0
+[  406255ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/dev/hot-reloader/app/hot-reloader-app.js:196
+[  406996ms] [LOG] [Fast Refresh] done in 742ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/dev/report-hmr-latency.js:13
+[  875282ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/dev/hot-reloader/app/hot-reloader-app.js:196
+[  876579ms] [LOG] [Fast Refresh] done in 1296ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/dev/report-hmr-latency.js:13
+[ 1215609ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/dev/hot-reloader/app/hot-reloader-app.js:196
+[ 1216661ms] [LOG] [Fast Refresh] done in 1052ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/dev/report-hmr-latency.js:13
+[ 1221127ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/dev/hot-reloader/app/hot-reloader-app.js:196
+[ 1221631ms] [LOG] [Fast Refresh] done in 503ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/dev/report-hmr-latency.js:13

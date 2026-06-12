@@ -1,0 +1,1119 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]: 저장이 완료되었습니다.
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e8] [cursor=pointer]: 플레이 리스트
+      - link "보드게임이 처음이세요?" [ref=e9] [cursor=pointer]:
+        - /url: /start.php
+      - link "광고센터" [ref=e10] [cursor=pointer]:
+        - /url: /serviceAD.php
+    - link "커뮤니티 규칙" [ref=e12] [cursor=pointer]:
+      - /url: /policy
+    - generic [ref=e16] [cursor=pointer]: 어두운화면
+  - generic [ref=e19]:
+    - link [ref=e26] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - link "보드게임" [ref=e32] [cursor=pointer]:
+          - /url: /explore
+        - link "게시글" [ref=e34] [cursor=pointer]:
+          - /url: /board
+        - link "내 게임" [ref=e36] [cursor=pointer]:
+          - /url: /collection
+        - link "로컬" [ref=e38] [cursor=pointer]:
+          - /url: /local
+        - link "쇼핑" [ref=e40] [cursor=pointer]:
+          - /url: /shop/link
+      - textbox "통합검색" [ref=e43]
+    - generic [ref=e45]:
+      - link "페이스북 계정이전" [ref=e46] [cursor=pointer]:
+        - /url: /facebook.php
+      - link "회원가입" [ref=e47] [cursor=pointer]:
+        - /url: /joinus.php
+      - generic [ref=e48] [cursor=pointer]: 로그인
+  - generic [ref=e52]:
+    - generic [ref=e53]:
+      - generic [ref=e54]: 보드게임
+      - list [ref=e56]:
+        - listitem [ref=e57] [cursor=pointer]:
+          - link "발견" [ref=e58]:
+            - /url: /
+          - generic [ref=e59]: 트랜디한 보드게임은?
+        - listitem [ref=e60] [cursor=pointer]:
+          - link "순위" [ref=e61]:
+            - /url: /rank
+          - generic [ref=e62]: 보드게임 순위를 확인하세요.
+        - listitem [ref=e63] [cursor=pointer]:
+          - link "평가" [ref=e64]:
+            - /url: /rate
+          - generic [ref=e65]: 게임평을 한눈에 볼수 있어요.
+        - listitem [ref=e66] [cursor=pointer]:
+          - link "PLAY" [ref=e67]:
+            - /url: /play
+          - generic [ref=e68]: 최근 많이 플레이된 보드게임은?
+        - listitem [ref=e69] [cursor=pointer]:
+          - link "정보" [ref=e70]:
+            - /url: /info
+          - generic [ref=e71]: 세부 정보로 게임 리스트를 찾아요.
+        - listitem [ref=e72] [cursor=pointer]:
+          - link "탐색" [ref=e73]:
+            - /url: /advanced
+          - generic [ref=e74]: 조건 설정으로 보드게임을 찾아요.
+        - listitem [ref=e75] [cursor=pointer]:
+          - link "데이터" [ref=e76]:
+            - /url: /record
+          - generic [ref=e77]: 게임 데이터를 추가/수정해요.
+    - generic [ref=e78]:
+      - generic [ref=e79]: 게시글
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - generic [ref=e83]:
+            - link "메인" [ref=e84] [cursor=pointer]:
+              - /url: /board
+            - list [ref=e85]:
+              - listitem [ref=e86] [cursor=pointer]:
+                - link "신규" [ref=e87]:
+                  - /url: /board
+                - generic [ref=e88]: 최근 등록된 게시글
+              - listitem [ref=e89] [cursor=pointer]:
+                - link "베스트" [ref=e90]:
+                  - /url: /board/best
+                - generic [ref=e91]: 베스트로 선정된 게시글
+              - listitem [ref=e92] [cursor=pointer]:
+                - link "팔로우" [ref=e93]:
+                  - /url: /board/follow
+                - generic [ref=e94]: 내 팔로우의 최근 게시글
+          - generic [ref=e95]:
+            - link "지역" [ref=e96] [cursor=pointer]:
+              - /url: /board/local
+            - generic [ref=e97]: 각 지역의 소식을 확인해 보세요.
+            - list [ref=e98]:
+              - listitem [ref=e99] [cursor=pointer]:
+                - link "서울" [ref=e100]:
+                  - /url: /board/local/서울/1
+              - listitem [ref=e101] [cursor=pointer]:
+                - link "경기" [ref=e102]:
+                  - /url: /board/local/경기/1
+              - listitem [ref=e103] [cursor=pointer]:
+                - link "부산" [ref=e104]:
+                  - /url: /board/local/부산/1
+              - listitem [ref=e105] [cursor=pointer]:
+                - link "인천" [ref=e106]:
+                  - /url: /board/local/인천/1
+              - listitem [ref=e107] [cursor=pointer]:
+                - link "대전" [ref=e108]:
+                  - /url: /board/local/대전/1
+              - listitem [ref=e109] [cursor=pointer]:
+                - link "대구" [ref=e110]:
+                  - /url: /board/local/대구/1
+              - listitem [ref=e111] [cursor=pointer]:
+                - link "울산" [ref=e112]:
+                  - /url: /board/local/울산/1
+              - listitem [ref=e113] [cursor=pointer]:
+                - link "광주" [ref=e114]:
+                  - /url: /board/local/광주/1
+              - listitem [ref=e115] [cursor=pointer]:
+                - link "강원" [ref=e116]:
+                  - /url: /board/local/강원/1
+              - listitem [ref=e117] [cursor=pointer]:
+                - link "충북" [ref=e118]:
+                  - /url: /board/local/충북/1
+              - listitem [ref=e119] [cursor=pointer]:
+                - link "충남" [ref=e120]:
+                  - /url: /board/local/충남/1
+              - listitem [ref=e121] [cursor=pointer]:
+                - link "전북" [ref=e122]:
+                  - /url: /board/local/전북/1
+              - listitem [ref=e123] [cursor=pointer]:
+                - link "전남" [ref=e124]:
+                  - /url: /board/local/전남/1
+              - listitem [ref=e125] [cursor=pointer]:
+                - link "경북" [ref=e126]:
+                  - /url: /board/local/경북/1
+              - listitem [ref=e127] [cursor=pointer]:
+                - link "경남" [ref=e128]:
+                  - /url: /board/local/경남/1
+              - listitem [ref=e129] [cursor=pointer]:
+                - link "제주" [ref=e130]:
+                  - /url: /board/local/제주/1
+              - listitem [ref=e131] [cursor=pointer]:
+                - link "해외" [ref=e132]:
+                  - /url: /board/local/community_meet_oversea/메인/1
+        - generic [ref=e134]:
+          - link "정보" [ref=e135] [cursor=pointer]:
+            - /url: /board/story
+          - list [ref=e136]:
+            - listitem [ref=e137] [cursor=pointer]:
+              - link "메인" [ref=e138]:
+                - /url: /board/story
+              - generic [ref=e139]: 정보 게시글 메인
+            - listitem [ref=e140] [cursor=pointer]:
+              - link "신작" [ref=e141]:
+                - /url: /board/story/board_release/1
+              - generic [ref=e142]: 새로 출시된 보드게임 소식
+            - listitem [ref=e143] [cursor=pointer]:
+              - link "게임" [ref=e144]:
+                - /url: /board/story/board_general/1
+              - generic [ref=e145]: 보드게임 관련 이야기
+            - listitem [ref=e146] [cursor=pointer]:
+              - link "후기" [ref=e147]:
+                - /url: /board/story/community_post/1
+              - generic [ref=e148]: 보드게임 플레이 후기
+            - listitem [ref=e149] [cursor=pointer]:
+              - link "자게" [ref=e150]:
+                - /url: /board/story/board_community/1
+              - generic [ref=e151]: 자유롭게 소통하는 게시판
+            - listitem [ref=e152] [cursor=pointer]:
+              - link "문의" [ref=e153]:
+                - /url: /board/story/community_qna/1
+              - generic [ref=e154]: 보드게임 관련 질문과 답변
+            - listitem [ref=e155] [cursor=pointer]:
+              - link "영상" [ref=e156]:
+                - /url: /board/story/info_movie/1
+              - generic [ref=e157]: 보드게임 관련 영상 콘텐츠
+            - listitem [ref=e158] [cursor=pointer]:
+              - link "자료" [ref=e159]:
+                - /url: /board/story/info_files/1
+              - generic [ref=e160]: 보드게임 관련 자료 모음
+            - listitem [ref=e161] [cursor=pointer]:
+              - link "구성" [ref=e162]:
+                - /url: /board/story/info_boardgame/1
+              - generic [ref=e163]: 보드게임 구성물 정보
+            - listitem [ref=e164] [cursor=pointer]:
+              - link "설문" [ref=e165]:
+                - /url: /board/story/board_discuss/1
+              - generic [ref=e166]: 보드게임 관련 투표 및 토론
+            - listitem [ref=e167] [cursor=pointer]:
+              - link "꿀팁" [ref=e168]:
+                - /url: /board/story/board_knowhow/1
+              - generic [ref=e169]: 보드게임 꿀팁과 노하우
+            - listitem [ref=e170] [cursor=pointer]:
+              - link "공방" [ref=e171]:
+                - /url: /board/story/info_gallery/1
+              - generic [ref=e172]: 보드게임 공방 및 DIY
+            - listitem [ref=e173] [cursor=pointer]:
+              - link "앱피" [ref=e174]:
+                - /url: /board/story/board_pc/1
+              - generic [ref=e175]: 디지털 보드게임 앱/PC
+            - listitem [ref=e176] [cursor=pointer]:
+              - link "창작" [ref=e177]:
+                - /url: /board/story/board_design/1
+              - generic [ref=e178]: 보드게임 창작 및 디자인
+            - listitem [ref=e179] [cursor=pointer]:
+              - link "팟캐" [ref=e180]:
+                - /url: /board/story/pod_cast/1
+              - generic [ref=e181]: 보드게임 팟캐스트
+        - generic [ref=e182]:
+          - generic [ref=e183]:
+            - link "공유" [ref=e184] [cursor=pointer]:
+              - /url: /board/share
+            - list [ref=e185]:
+              - listitem [ref=e186] [cursor=pointer]:
+                - link "소식" [ref=e187]:
+                  - /url: /board/share/board_news/1
+                - generic [ref=e188]: 국내 업체 및 보드게임 소식
+              - listitem [ref=e189] [cursor=pointer]:
+                - link "홍보" [ref=e190]:
+                  - /url: /board/share/ad_board/1
+                - generic [ref=e191]: 보드게임 홍보 정보
+          - generic [ref=e192]:
+            - link "중고" [ref=e193] [cursor=pointer]:
+              - /url: /board/used
+            - list [ref=e194]:
+              - listitem [ref=e195] [cursor=pointer]:
+                - link "게시판" [ref=e196]:
+                  - /url: /board/used/board_used/1
+                - generic [ref=e197]: 중고 보드게임 거래 게시판
+              - listitem [ref=e198] [cursor=pointer]:
+                - link "가격비교" [ref=e199]:
+                  - /url: /board/used/product/1
+                - generic [ref=e200]: 중고 보드게임 시세 비교
+              - listitem [ref=e201] [cursor=pointer]:
+                - link "직거래" [ref=e202]:
+                  - /url: /local?only=used
+                - generic [ref=e203]: 나와 가까운 중고 게시글
+              - listitem [ref=e204] [cursor=pointer]:
+                - link "장터보호" [ref=e205]:
+                  - /url: /board/used/board_used_safe/1
+                - generic [ref=e206]: 안전한 중고 거래 가이드
+    - generic [ref=e207]:
+      - generic [ref=e208]: 내 게임
+      - list [ref=e210]:
+        - listitem [ref=e211] [cursor=pointer]:
+          - link "전체" [ref=e212]:
+            - /url: /collection
+          - generic [ref=e213]: 내 보드게임 관리 페이지
+        - listitem [ref=e214] [cursor=pointer]:
+          - link "최근 본 게임" [ref=e215]:
+            - /url: /collection/history
+          - generic [ref=e216]: 최근 조회한 보드게임 목록
+        - listitem [ref=e217] [cursor=pointer]:
+          - link "플레이리스트" [ref=e218]:
+            - /url: /collection/playlist
+          - generic [ref=e219]: 관심 보드게임 임시 보관소
+        - listitem [ref=e220] [cursor=pointer]:
+          - link "플레이" [ref=e221]:
+            - /url: /collection/play
+          - generic [ref=e222]: 플레이 기록 관리
+        - listitem [ref=e223] [cursor=pointer]:
+          - link "내 평가" [ref=e224]:
+            - /url: /collection/rank
+          - generic [ref=e225]: 내가 평가한 보드게임
+        - listitem [ref=e226] [cursor=pointer]:
+          - link "내 구매" [ref=e227]:
+            - /url: /collection/buy
+          - generic [ref=e228]: 구매한 보드게임 관리
+        - listitem [ref=e229] [cursor=pointer]:
+          - link "컬렉션" [ref=e230]:
+            - /url: /collection/my
+          - generic [ref=e231]: 내 보드게임 목록 관리
+        - listitem [ref=e232] [cursor=pointer]:
+          - link "셀렉션" [ref=e233]:
+            - /url: /collection/selection
+          - generic [ref=e234]: 테마별 보드게임 관리
+    - generic [ref=e235]:
+      - generic [ref=e236]: 로컬
+      - list [ref=e238]:
+        - listitem [ref=e239] [cursor=pointer]:
+          - link "전체" [ref=e240]:
+            - /url: /local
+          - generic [ref=e241]: 전국 보드게임 로컬 정보
+        - listitem [ref=e242] [cursor=pointer]:
+          - link "카페" [ref=e243]:
+            - /url: /local/cafe
+          - generic [ref=e244]: 보드게임 카페
+        - listitem [ref=e245] [cursor=pointer]:
+          - link "모임" [ref=e246]:
+            - /url: /local/club
+          - generic [ref=e247]: 보드게임 모임
+        - listitem [ref=e248] [cursor=pointer]:
+          - link "매장" [ref=e249]:
+            - /url: /local/store
+          - generic [ref=e250]: 보드게임 매장
+        - listitem [ref=e251] [cursor=pointer]:
+          - link "이벤트" [ref=e252]:
+            - /url: /local/event
+          - generic [ref=e253]: 보드게임 행사 및 이벤트
+      - generic [ref=e254]: 쇼핑
+      - list [ref=e256]:
+        - listitem [ref=e257] [cursor=pointer]:
+          - link "신규" [ref=e258]:
+            - /url: /shop
+          - generic [ref=e259]: 신규 입고 보드게임
+        - listitem [ref=e260] [cursor=pointer]:
+          - link "인기" [ref=e261]:
+            - /url: /shop/best
+          - generic [ref=e262]: 베스트 인기 보드게임
+  - generic [ref=e265]:
+    - heading "로그인" [level=3] [ref=e266]
+    - button "✕" [ref=e267] [cursor=pointer]
+  - generic [ref=e269]:
+    - generic [ref=e271]:
+      - button "✕" [ref=e272] [cursor=pointer]
+      - heading "선택된 게임" [level=3] [ref=e273]
+      - generic [ref=e274]: "0"
+    - generic [ref=e276]:
+      - generic [ref=e277]:
+        - button "플레이리스트에 추가" [ref=e278] [cursor=pointer]:
+          - generic [ref=e281]: 플레이리스트에 추가
+        - button "삭제" [ref=e282] [cursor=pointer]:
+          - generic [ref=e285]: 삭제
+      - generic [ref=e286]:
+        - generic [ref=e287]: 글쓰기
+        - button "게시글 작성" [ref=e288] [cursor=pointer]:
+          - generic [ref=e291]: 게시글 작성
+        - button "중고 상품 등록" [ref=e292] [cursor=pointer]:
+          - generic [ref=e295]: 중고 상품 등록
+      - generic [ref=e296]:
+        - generic [ref=e297]: 컬렉션에 담기
+        - button "팬" [ref=e298] [cursor=pointer]:
+          - generic [ref=e301]: 팬
+        - button "구독" [ref=e302] [cursor=pointer]:
+          - generic [ref=e305]: 구독
+        - button "보유" [ref=e306] [cursor=pointer]:
+          - generic [ref=e309]: 보유
+        - button "위시리스트" [ref=e310] [cursor=pointer]:
+          - generic [ref=e313]: 위시리스트
+        - button "선주문" [ref=e314] [cursor=pointer]:
+          - generic [ref=e317]: 선주문
+        - button "펀딩" [ref=e318] [cursor=pointer]:
+          - generic [ref=e321]: 펀딩
+        - button "즐겨본 게임" [ref=e322] [cursor=pointer]:
+          - generic [ref=e325]: 즐겨본 게임
+        - button "방출예정" [ref=e326] [cursor=pointer]:
+          - generic [ref=e329]: 방출예정
+        - button "방출" [ref=e330] [cursor=pointer]:
+          - generic [ref=e333]: 방출
+  - generic [ref=e334]:
+    - generic [ref=e336]:
+      - heading "플레이 리스트" [level=3] [ref=e337]
+      - button "✕" [ref=e338] [cursor=pointer]
+    - generic [ref=e341]:
+      - heading [level=4]
+      - link "전체" [ref=e343] [cursor=pointer]:
+        - /url: /collection/playlist
+        - button "전체" [ref=e344]
+  - generic [ref=e345]:
+    - generic [ref=e347]:
+      - button "✕" [ref=e348] [cursor=pointer]
+      - heading "게임 선택" [level=3] [ref=e349]
+    - generic [ref=e350]:
+      - generic [ref=e351]:
+        - textbox "게임명 검색..." [ref=e352]
+        - button "✕" [ref=e353] [cursor=pointer]
+      - generic [ref=e354]:
+        - generic [ref=e358] [cursor=pointer]: 플레이리스트
+        - generic [ref=e364] [cursor=pointer]: 최근 본 게임
+        - generic [ref=e370] [cursor=pointer]: 실시간 베스트
+        - generic [ref=e377] [cursor=pointer]: 내 셀렉션
+        - generic [ref=e384] [cursor=pointer]: 컬렉션
+    - button "선택 완료" [ref=e388] [cursor=pointer]
+  - generic [ref=e390]:
+    - heading "선택된 게임" [level=4] [ref=e391]
+    - generic [ref=e392]: "0"
+  - generic [ref=e396]:
+    - generic:
+      - link "AD":
+        - /url: /serviceAD.php?page=sponsor
+    - link "2026 보드라이프 웹사이트 리뉴얼" [ref=e397] [cursor=pointer]:
+      - /url: https://boardlife.co.kr/notice.php?number=1
+      - img "2026 보드라이프 웹사이트 리뉴얼" [ref=e398]
+  - generic [ref=e401]:
+    - generic [ref=e402]:
+      - 'link "보드게임 디셉션: 홍콩 살인사건 Deception: Murder in Hong Kong" [ref=e404] [cursor=pointer]':
+        - /url: /game/5352
+        - 'img "보드게임 디셉션: 홍콩 살인사건 Deception: Murder in Hong Kong" [ref=e405]'
+      - banner:
+        - 'heading "디셉션: 홍콩 살인사건 보드게임" [level=1] [ref=e406]'
+      - main [ref=e407]:
+        - generic [ref=e408]:
+          - heading "게임 평점 정보" [level=2] [ref=e409]
+          - generic [ref=e410]:
+            - generic [ref=e411]:
+              - term [ref=e412]: 평점
+              - definition [ref=e413]:
+                - generic [ref=e415]: "7.6"
+            - generic [ref=e416]:
+              - term [ref=e417]: 난이도
+              - definition [ref=e418]:
+                - generic [ref=e420]: "1.58"
+            - link "순위 전체 198위" [ref=e422] [cursor=pointer]:
+              - /url: /rank/all/2?game_id=5352
+              - term [ref=e423]: 순위
+              - definition [ref=e424]:
+                - generic [ref=e425]: 전체 198위
+            - link "파티 순위 파티 7위" [ref=e426] [cursor=pointer]:
+              - /url: /rank/all/party/1?game_id=5352
+              - term [ref=e427]: 파티 순위
+              - definition [ref=e428]:
+                - generic [ref=e429]: 파티 7위
+            - generic [ref=e430]:
+              - term [ref=e431]: 언어의존도
+              - definition [ref=e432]:
+                - generic [ref=e434]: 적당
+          - link "편집" [ref=e437] [cursor=pointer]:
+            - /url: /game_edit.php?mode=edit&bbs_num=5352
+            - generic [ref=e438]: 편집
+        - generic [ref=e440]:
+          - 'heading "디셉션: 홍콩 살인사건 주요 정보" [level=2] [ref=e441]'
+          - 'link "디셉션: 홍콩 살인사건" [ref=e444] [cursor=pointer]':
+            - /url: /game/5352
+          - generic [ref=e445]:
+            - generic [ref=e446]:
+              - 'heading "Deception: Murder in Hong Kong" [level=2] [ref=e447]'
+              - generic [ref=e448]: 2014년
+            - generic [ref=e450]: 살인 사건을 해결하기 위해 법의학적 증거를 분석하세요!
+            - generic [ref=e453]:
+              - generic [ref=e454]:
+                - term [ref=e455]: 인원
+                - definition [ref=e456]:
+                  - text: 4-12명
+                  - generic [ref=e457]: (베스트:7인,추천:5인)
+              - generic [ref=e458]:
+                - term [ref=e459]: 플레이 시간
+                - definition [ref=e460]: 20분
+              - generic [ref=e461]:
+                - term [ref=e462]: 사용 연령
+                - definition [ref=e463]: 14세 이상
+        - generic [ref=e464]:
+          - 'heading "디셉션: 홍콩 살인사건 credit 정보" [level=2] [ref=e465]'
+          - generic [ref=e466]:
+            - generic [ref=e467]:
+              - term [ref=e468]: 디자이너
+              - definition [ref=e469]:
+                - link "Tobey Ho" [ref=e470] [cursor=pointer]:
+                  - /url: /info/designer/79464
+            - generic [ref=e471]:
+              - term [ref=e472]: 아트웍
+              - definition [ref=e473]:
+                - link "Marcin Adamski" [ref=e474] [cursor=pointer]:
+                  - /url: /info/artist/20072
+                - text: ","
+                - link "Ben Carre" [ref=e475] [cursor=pointer]:
+                  - /url: /info/artist/24111
+                - text: ","
+                - link "Tommy Ng" [ref=e476] [cursor=pointer]:
+                  - /url: /info/artist/31368
+                - text: ","
+                - link "Ari Wong" [ref=e477] [cursor=pointer]:
+                  - /url: /info/artist/36740
+            - generic [ref=e478]:
+              - term [ref=e479]: 출판사
+              - definition [ref=e480]:
+                - link "Gém Klub Kft." [ref=e481] [cursor=pointer]:
+                  - /url: /info/publishers/3268
+                - text: ","
+                - link "Jolly Thinkers" [ref=e482] [cursor=pointer]:
+                  - /url: /info/publishers/6045
+                - text: ","
+                - link "Grey Fox Games" [ref=e483] [cursor=pointer]:
+                  - /url: /info/publishers/7759
+                - text: ","
+                - link "Angry Lion Games" [ref=e484] [cursor=pointer]:
+                  - /url: /info/publishers/8357
+                - text: ","
+                - link "Lifestyle Boardgames Ltd" [ref=e485] [cursor=pointer]:
+                  - /url: /info/publishers/15950
+                - text: ","
+                - link "IELLO" [ref=e486] [cursor=pointer]:
+                  - /url: /info/publishers/16748
+                - text: ","
+                - link "Lucrum Games" [ref=e487] [cursor=pointer]:
+                  - /url: /info/publishers/16883
+                - text: ","
+                - link "sternenschimmermeer" [ref=e488] [cursor=pointer]:
+                  - /url: /info/publishers/18248
+                - text: ","
+                - link "Popcorn Games" [ref=e489] [cursor=pointer]:
+                  - /url: /info/publishers/18559
+                - text: ","
+                - link "Do it games" [ref=e490] [cursor=pointer]:
+                  - /url: /info/publishers/18700
+                - text: ","
+                - link "SuperHeated Neurons" [ref=e491] [cursor=pointer]:
+                  - /url: /info/publishers/18714
+                - text: ","
+                - link "Across the Board" [ref=e492] [cursor=pointer]:
+                  - /url: /info/publishers/18717
+                - text: ","
+                - link "Sunnygeeks" [ref=e493] [cursor=pointer]:
+                  - /url: /info/publishers/18718
+        - generic [ref=e494]:
+          - 'heading "디셉션: 홍콩 살인사건 링크 정보" [level=2] [ref=e495]'
+          - generic [ref=e496]:
+            - generic [ref=e497]:
+              - term [ref=e498]: credit
+              - definition [ref=e499]:
+                - link "전체 제작 정보 확인" [ref=e500] [cursor=pointer]:
+                  - /url: /game/5352/credits
+            - generic [ref=e501]:
+              - term [ref=e502]: BGG
+              - definition [ref=e503]:
+                - link "boardgameGeek" [ref=e504] [cursor=pointer]:
+                  - /url: https://boardgamegeek.com/boardgame/156129/deception-murder-hong-kong
+        - generic [ref=e505]:
+          - generic [ref=e508] [cursor=pointer]: 구매하기
+          - link "게시글" [ref=e509] [cursor=pointer]:
+            - /url: /game/5352/board
+            - text: 게시글
+          - generic [ref=e511] [cursor=pointer]: 팬등록
+          - generic [ref=e512] [cursor=pointer]: 플리 추가
+          - generic [ref=e513] [cursor=pointer]: 셀렉션
+          - generic [ref=e514] [cursor=pointer]: 사진
+          - generic [ref=e518] [cursor=pointer]: 글쓰기
+    - generic [ref=e520]:
+      - 'heading "디셉션: 홍콩 살인사건 사진" [level=2] [ref=e521]'
+      - generic [ref=e522]:
+        - link "전체 2" [ref=e523] [cursor=pointer]:
+          - /url: /game/5352/photo
+        - img [ref=e525] [cursor=pointer]
+        - img [ref=e527] [cursor=pointer]
+    - generic [ref=e552]:
+      - generic [ref=e553]:
+        - generic [ref=e554]:
+          - link "게임을 해볼 수 있는 곳 2" [ref=e556] [cursor=pointer]:
+            - /url: /local?game=5352
+            - text: 게임을 해볼 수 있는 곳
+            - generic [ref=e557]: "2"
+          - link "내 카페 등록" [ref=e559] [cursor=pointer]:
+            - /url: /serviceAD.php?page=place&sub=cafe
+        - generic [ref=e560]:
+          - generic [ref=e562]:
+            - link "전체 2" [ref=e563] [cursor=pointer]:
+              - /url: /moca?type=all&category=place&game=5352
+              - text: 전체
+              - generic [ref=e564]: "2"
+            - link "카페 등록" [ref=e565] [cursor=pointer]:
+              - /url: /serviceAD.php?page=place&sub=cafe
+          - generic [ref=e567]:
+            - link "AD" [ref=e568] [cursor=pointer]:
+              - /url: /serviceAD.php?page=sponsor
+            - link [ref=e569] [cursor=pointer]:
+              - /url: https://mkt.shopping.naver.com/link/6a16a01e1a6e247ec455c904
+      - generic [ref=e570]:
+        - generic [ref=e571]:
+          - generic [ref=e572]:
+            - generic [ref=e573]:
+              - generic [ref=e574]: 게임 설명
+              - generic [ref=e576] [cursor=pointer]: 설명글
+            - generic [ref=e578]:
+              - text: "디셉션: 홍콩 살인사건(Deception: Murder in Hong Kong)은 4~12명이 즐길 수 있는 추리와 속임수 게임으로, 플레이 시간은 약 20분입니다."
+              - text: 이 게임에서 플레이어는 살인 사건을 해결하려는 수사관 역할을 맡게 됩니다. 하지만 반전이 있습니다. 살인범이 바로 수사관 중 한 명인 것입니다! 각 플레이어의 역할과 팀은 게임 시작 시 무작위로 배정되며, 법의학자, 목격자, 수사관, 살인범, 공범 등 다양한 역할을 맡게 됩니다. 수사관들이 진실을 밝히려고 노력하는 동안, 살인범 팀은 속임수와 기만술을 동원해야 합니다. 이것은 두뇌 싸움입니다!
+              - text: 법의학자는 사건의 해답을 알고 있지만, 특수한 장면 타일을 통해서만 단서를 제시할 수 있습니다. 수사관들(그리고 살인범)은 제시된 증거를 해석해야 합니다. 성공하려면 수사관들은 법의학자가 제공하는 단서에서 진실을 추론해야 할 뿐만 아니라, 살인범과 공범이 심어놓은 속임수도 간파해야 합니다!
+              - text: 여러분 중 누가 속임수를 꿰뚫어 진실을 찾아낼 수 있는지, 누가 살인을 저지르고도 처벌받지 않을 수 있는지 알아보세요!
+              - text: 역할
+              - text: "- 법의학자 1명"
+              - text: 게임 진행자인 법의학자는 범죄 해결의 열쇠를 쥐고 있습니다. 법의학자는 수사관들이 "핵심 증거"와 "살인 수단"을 밝혀낼 수 있도록 도와야 합니다. 수사관이 이를 성공적으로 수행하면 범죄가 해결되고, 법의학자와 수사관들은 게임에서 승리합니다.
+              - text: 게임 도중, 법의학자는 말, 몸짓, 눈빛으로 해결책을 암시해서는 안 됩니다.
+              - text: "- 살인자 1명."
+              - text: 범죄가 발생하면 살인자는 단서 카드 1장과 범행 수단 카드 1장을 선택하여 범죄 해결에 활용합니다. 이 카드들은 각각 "핵심 증거"와 "살인 수단"이 됩니다.
+              - text: 살인자는 자신의 역할을 숨기고 희생양을 찾으려 한다. 설령 범인이 밝혀지더라도, '핵심 증거'와 '살인 수단'을 모두 정확하게 밝혀내는 사람이 없다면 살인자는 여전히 승리한다.
+              - text: "- 수사관 8명."
+              - text: 범죄를 해결하기 위해 수사관들은 법의학자가 제공하는 단서를 분석해야 합니다. 수사관 중 한 명이라도 "핵심 증거"와 "살인 수단"을 모두 정확하게 알아내면 살인범이 체포되고 수사관들은 (법의학자도 마찬가지로) 게임에서 승리합니다.
+              - text: 살인자(그리고 때로는 공범)가 수사관 중에 있을 수 있다는 점을 명심하십시오! 무고한 수사관들은 허위 고발로부터 자신을 변호하기 위해 강력한 노력을 기울여야 합니다.
+              - text: "- 공범 1명."
+              - text: 공범은 플레이어가 6명 이상인 게임에서 선택적으로 사용할 수 있는 역할입니다. 공범은 살인자가 누구인지, 그리고 범죄 해결 방법이 무엇인지 알고 있습니다. 살인자가 범죄를 저지르고도 처벌을 받지 않으면 공범과 살인자 모두 승리합니다.
+              - text: "- 목격자 1명."
+              - text: 목격자는 플레이어가 6명 이상일 때 선택적으로 참여할 수 있는 역할입니다.* 목격자는 범인들이 범죄 현장을 떠나는 것을 목격한 수사관입니다. 누가 살인자이고 누가 공범인지, 그리고 범행이 어떻게 저질러졌는지 알 수 없습니다.
+              - text: 살인범이 체포되었지만 목격자를 식별할 수 있다면, 목격자는 사망한 것으로 간주되어 살인범과 공범은 살인죄를 저지르고도 게임에서 승리할 수 있습니다.
+            - generic [ref=e580] [cursor=pointer]: + 더보기
+          - generic [ref=e581]:
+            - generic [ref=e582]:
+              - link "평가 7.6 (327)" [ref=e583] [cursor=pointer]:
+                - /url: /game/5352/rate
+                - text: 평가 7.6 (327)
+              - generic [ref=e585]:
+                - link "10 11" [ref=e586] [cursor=pointer]:
+                  - /url: /game/5352/rate?vote=10
+                  - generic [ref=e587]: "10"
+                  - generic [ref=e590]: "11"
+                - link "9 38" [ref=e591] [cursor=pointer]:
+                  - /url: /game/5352/rate?vote=9
+                  - generic [ref=e592]: "9"
+                  - generic [ref=e595]: "38"
+                - link "8 94" [ref=e596] [cursor=pointer]:
+                  - /url: /game/5352/rate?vote=8
+                  - generic [ref=e597]: "8"
+                  - generic [ref=e600]: "94"
+                - link "7 104" [ref=e601] [cursor=pointer]:
+                  - /url: /game/5352/rate?vote=7
+                  - generic [ref=e602]: "7"
+                  - generic [ref=e605]: "104"
+                - link "6 47" [ref=e606] [cursor=pointer]:
+                  - /url: /game/5352/rate?vote=6
+                  - generic [ref=e607]: "6"
+                  - generic [ref=e610]: "47"
+                - link "5 19" [ref=e611] [cursor=pointer]:
+                  - /url: /game/5352/rate?vote=5
+                  - generic [ref=e612]: "5"
+                  - generic [ref=e615]: "19"
+                - link "4 9" [ref=e616] [cursor=pointer]:
+                  - /url: /game/5352/rate?vote=4
+                  - generic [ref=e617]: "4"
+                  - generic [ref=e620]: "9"
+                - link "3 2" [ref=e621] [cursor=pointer]:
+                  - /url: /game/5352/rate?vote=3
+                  - generic [ref=e622]: "3"
+                  - generic [ref=e625]: "2"
+                - link "2 2" [ref=e626] [cursor=pointer]:
+                  - /url: /game/5352/rate?vote=2
+                  - generic [ref=e627]: "2"
+                  - generic [ref=e630]: "2"
+                - link "1 1" [ref=e631] [cursor=pointer]:
+                  - /url: /game/5352/rate?vote=1
+                  - generic [ref=e632]: "1"
+                  - generic [ref=e635]: "1"
+            - generic [ref=e636]:
+              - link "컬렉션" [ref=e637] [cursor=pointer]:
+                - /url: /game/5352/rate
+                - text: 컬렉션
+              - generic [ref=e640]:
+                - link "보유 713" [ref=e641] [cursor=pointer]:
+                  - /url: /game/5352/rate
+                  - generic [ref=e642]: 보유
+                  - generic [ref=e643]: "713"
+                - link "팬 37" [ref=e644] [cursor=pointer]:
+                  - /url: /game/5352/rate
+                  - generic [ref=e645]: 팬
+                  - generic [ref=e646]: "37"
+                - link "구독 19" [ref=e647] [cursor=pointer]:
+                  - /url: /game/5352/rate
+                  - generic [ref=e648]: 구독
+                  - generic [ref=e649]: "19"
+                - link "위시리스트 59" [ref=e650] [cursor=pointer]:
+                  - /url: /game/5352/rate
+                  - generic [ref=e651]: 위시리스트
+                  - generic [ref=e652]: "59"
+                - link "선주문 9" [ref=e653] [cursor=pointer]:
+                  - /url: /game/5352/rate
+                  - generic [ref=e654]: 선주문
+                  - generic [ref=e655]: "9"
+                - link "펀딩 12" [ref=e656] [cursor=pointer]:
+                  - /url: /game/5352/rate
+                  - generic [ref=e657]: 펀딩
+                  - generic [ref=e658]: "12"
+                - link "즐겨본게임 75" [ref=e659] [cursor=pointer]:
+                  - /url: /game/5352/rate
+                  - generic [ref=e660]: 즐겨본게임
+                  - generic [ref=e661]: "75"
+                - link "+ 더보기" [ref=e663] [cursor=pointer]:
+                  - /url: /game/5352/rate
+            - generic [ref=e664]:
+              - link "관련 게임" [ref=e665] [cursor=pointer]:
+                - /url: /game/5352/links
+                - text: 관련 게임
+              - generic [ref=e667]:
+                - link "확장 5" [ref=e668] [cursor=pointer]:
+                  - /url: /game/5352/links
+                  - generic [ref=e669]: 확장
+                  - generic [ref=e670]: "5"
+                - link "게임 안에 포함된 게임 0" [ref=e671] [cursor=pointer]:
+                  - /url: /game/5352/links
+                  - generic [ref=e672]: 게임 안에 포함된 게임
+                  - generic [ref=e673]: "0"
+                - link "이 게임이 들어있는 게임 0" [ref=e674] [cursor=pointer]:
+                  - /url: /game/5352/links
+                  - generic [ref=e675]: 이 게임이 들어있는 게임
+                  - generic [ref=e676]: "0"
+                - link "결합 가능한 게임 0" [ref=e677] [cursor=pointer]:
+                  - /url: /game/5352/links
+                  - generic [ref=e678]: 결합 가능한 게임
+                  - generic [ref=e679]: "0"
+                - link "원작 0" [ref=e680] [cursor=pointer]:
+                  - /url: /game/5352/links
+                  - generic [ref=e681]: 원작
+                  - generic [ref=e682]: "0"
+                - link "본판 0" [ref=e683] [cursor=pointer]:
+                  - /url: /game/5352/links
+                  - generic [ref=e684]: 본판
+                  - generic [ref=e685]: "0"
+                - link "재구현 0" [ref=e686] [cursor=pointer]:
+                  - /url: /game/5352/links
+                  - generic [ref=e687]: 재구현
+                  - generic [ref=e688]: "0"
+        - generic [ref=e689]:
+          - generic [ref=e690]:
+            - link "정보" [ref=e692] [cursor=pointer]:
+              - /url: /game/5352/credits
+              - text: 정보
+            - link "편집" [ref=e695] [cursor=pointer]:
+              - /url: /game_edit.php?mode=edit&bbs_num=5352
+              - generic [ref=e696]: 편집
+          - generic [ref=e698]:
+            - generic [ref=e699]:
+              - generic [ref=e701]: 카테고리
+              - link "파티게임" [ref=e704] [cursor=pointer]:
+                - /url: /info/type/6
+            - generic [ref=e705]:
+              - generic [ref=e706]: 테마
+              - link "블러핑" [ref=e708] [cursor=pointer]:
+                - /url: /info/category/6
+              - link "살인/미스터리" [ref=e710] [cursor=pointer]:
+                - /url: /info/category/24
+              - link "파티 게임" [ref=e712] [cursor=pointer]:
+                - /url: /info/category/28
+              - link "스파이/첩보원" [ref=e714] [cursor=pointer]:
+                - /url: /info/category/35
+              - link "추론" [ref=e716] [cursor=pointer]:
+                - /url: /info/category/52
+            - generic [ref=e717]:
+              - generic [ref=e718]: 진행방식
+              - link "스토리텔링" [ref=e720] [cursor=pointer]:
+                - /url: /info/mechanisms/46
+              - link "이벤트" [ref=e722] [cursor=pointer]:
+                - /url: /info/mechanisms/57
+              - link "변화하는 게임 세팅" [ref=e724] [cursor=pointer]:
+                - /url: /info/mechanisms/60
+              - link "의사소통 제한" [ref=e726] [cursor=pointer]:
+                - /url: /info/mechanisms/73
+              - link "비공개 역할" [ref=e728] [cursor=pointer]:
+                - /url: /info/mechanisms/78
+              - link "+4 더보기" [ref=e730] [cursor=pointer]:
+                - /url: /game/5352/credits
+            - generic [ref=e731]:
+              - generic [ref=e732]: 그룹
+              - generic [ref=e733]: 정보없음
+      - generic [ref=e734]:
+        - link "Tobey Ho의 다른 작품" [ref=e737] [cursor=pointer]:
+          - /url: /game/5352/designer
+          - text: Tobey Ho의 다른 작품
+        - generic [ref=e739]:
+          - 'link "디셉션: 언더커버 Deception: Undercover Allies" [ref=e740] [cursor=pointer]':
+            - /url: /game/8930
+            - generic [ref=e742]:
+              - generic [ref=e743]: "디셉션: 언더커버"
+              - generic [ref=e744]: "Deception: Undercover Allies"
+          - 'link "디셉션: 홍콩 살인사건 - 킥스타터 프로모 팩 Deception: Murder in Hong Kong – Kickstarter Promo Pack" [ref=e745] [cursor=pointer]':
+            - /url: /game/7904
+            - generic [ref=e747]:
+              - generic [ref=e748]: "디셉션: 홍콩 살인사건 - 킥스타터 프로모 팩"
+              - generic [ref=e749]: "Deception: Murder in Hong Kong – Kickstarter Promo Pack"
+          - 'link "디셉션: 홍콩 살인사건 - 한국 프로모 팩 1 CS-Files: Promo Cards" [ref=e750] [cursor=pointer]':
+            - /url: /game/20980
+            - generic [ref=e752]:
+              - generic [ref=e753]: "디셉션: 홍콩 살인사건 - 한국 프로모 팩 1"
+              - generic [ref=e754]: "CS-Files: Promo Cards"
+          - 'link "디셉션: 홍콩 살인사건 - 젠콘 2016 프로모 Deception: Murder in Hong Kong - Gen Con 2016 Promos" [ref=e755] [cursor=pointer]':
+            - /url: /game/7907
+            - generic [ref=e757]:
+              - generic [ref=e758]: "디셉션: 홍콩 살인사건 - 젠콘 2016 프로모"
+              - generic [ref=e759]: "Deception: Murder in Hong Kong - Gen Con 2016 Promos"
+          - 'link "디셉션: 홍콩 살인사건 - 게임보이긱 시즌 4 킥스타터 프로모 카드 Deception: Murder in Hong Kong – Game Boy Geek Season 4 Kickstarter Promo Cards" [ref=e760] [cursor=pointer]':
+            - /url: /game/7906
+            - generic [ref=e762]:
+              - generic [ref=e763]: "디셉션: 홍콩 살인사건 - 게임보이긱 시즌 4 킥스타터 프로모 카드"
+              - generic [ref=e764]: "Deception: Murder in Hong Kong – Game Boy Geek Season 4 Kickstarter Promo Cards"
+        - link "전체 5" [ref=e766] [cursor=pointer]:
+          - /url: /game/5352/designer
+          - text: 전체
+          - generic [ref=e767]: "5"
+      - generic [ref=e768]:
+        - link "카드 규격" [ref=e771] [cursor=pointer]:
+          - /url: /game/5352/sleeves
+          - text: 카드 규격
+        - generic [ref=e773]:
+          - generic [ref=e774]:
+            - generic [ref=e777]:
+              - link "43 X 67 290장" [ref=e778] [cursor=pointer]:
+                - /url: /info/sleeves/15248
+                - generic [ref=e779]:
+                  - generic [ref=e780]: 43 X 67
+                  - generic [ref=e781]: 290장
+              - link "57 X 91 12장" [ref=e782] [cursor=pointer]:
+                - /url: /info/sleeves/15249
+                - generic [ref=e783]:
+                  - generic [ref=e784]: 57 X 91
+                  - generic [ref=e785]: 12장
+            - link "전체 2" [ref=e787] [cursor=pointer]:
+              - /url: /game/5352/sleeves
+              - text: 전체
+              - generic [ref=e788]: "2"
+          - generic [ref=e790]:
+            - link "AD" [ref=e791] [cursor=pointer]:
+              - /url: /serviceAD.php?page=sponsor
+            - link [ref=e792] [cursor=pointer]:
+              - /url: https://mkt.shopping.naver.com/link/6a2144a71e63133d2865d628
+      - generic [ref=e793]:
+        - link "관련 영상" [ref=e796] [cursor=pointer]:
+          - /url: /game/5352/board/info_movie
+          - text: 관련 영상
+        - generic [ref=e798]:
+          - 'link "설명할렘 106. 디셉션 : 홍콩 살인사건 (by 잭윌슨) 잭윌슨 16.09.15" [ref=e799] [cursor=pointer]':
+            - /url: /bbs_detail.php?tb=info_movie&bbs_num=745&gameId=5352&autoplay=1&gamepg=
+            - generic [ref=e801]: "설명할렘 106. 디셉션 : 홍콩 살인사건 (by 잭윌슨)"
+            - generic [ref=e802]:
+              - generic [ref=e803]:
+                - img [ref=e805]
+                - generic [ref=e806]: 잭윌슨
+              - generic [ref=e807]: 16.09.15
+          - link "[3분게임요리] 디셉션 홍콩살인사건 하는 법 한마리곰미디어 18.03.29" [ref=e808] [cursor=pointer]:
+            - /url: /bbs_detail.php?tb=info_movie&bbs_num=1515&gameId=5352&autoplay=1&gamepg=
+            - generic [ref=e810]: "[3분게임요리] 디셉션 홍콩살인사건 하는 법"
+            - generic [ref=e811]:
+              - generic [ref=e812]:
+                - img [ref=e814]
+                - generic [ref=e815]: 한마리곰미디어
+              - generic [ref=e816]: 18.03.29
+          - link "한해를 빛낸 최고의 마피아 게임 TOP3 - 보드게임 GOTY 퍼식이 25.01.29" [ref=e817] [cursor=pointer]:
+            - /url: /bbs_detail.php?tb=info_movie&bbs_num=11069&gameId=5352&autoplay=1&gamepg=
+            - generic [ref=e819]: 한해를 빛낸 최고의 마피아 게임 TOP3 - 보드게임 GOTY
+            - generic [ref=e820]:
+              - generic [ref=e821]:
+                - img [ref=e823]
+                - generic [ref=e824]: 퍼식이
+              - generic [ref=e825]: 25.01.29
+        - generic [ref=e826]:
+          - link "전체 9" [ref=e827] [cursor=pointer]:
+            - /url: /game/5352/board/info_movie
+            - text: 전체
+            - generic [ref=e828]: "9"
+          - generic [ref=e829] [cursor=pointer]: 영상 등록
+      - generic [ref=e830]:
+        - link "게임 구매" [ref=e833] [cursor=pointer]:
+          - /url: /game/5352/shop
+          - text: 게임 구매
+        - generic [ref=e835]:
+          - generic [ref=e836]:
+            - generic [ref=e837]: 새상품
+            - generic [ref=e839]: 판매중인 새상품이 없어요.
+            - generic [ref=e840]:
+              - link "전체 0" [ref=e841] [cursor=pointer]:
+                - /url: /game/5352/shop
+                - text: 전체
+                - generic [ref=e842]: "0"
+              - link "상품 홍보" [ref=e843] [cursor=pointer]:
+                - /url: /serviceAD.php?page=shop
+          - generic [ref=e844]:
+            - generic [ref=e845]: 중고
+            - generic [ref=e846]:
+              - link "26.06.05 1~3회플 30,000원" [ref=e848] [cursor=pointer]:
+                - /url: /bbs_detail.php?tb=board_used&bbs_num=159640&product_num=238209
+                - generic [ref=e849]:
+                  - generic [ref=e850]: 26.06.05
+                  - generic [ref=e851]: 1~3회플
+                - generic [ref=e852]: 30,000원
+              - link "26.05.31 플레이용 29,000원" [ref=e854] [cursor=pointer]:
+                - /url: /bbs_detail.php?tb=board_used&bbs_num=141720&product_num=240333
+                - generic [ref=e855]:
+                  - generic [ref=e856]: 26.05.31
+                  - generic [ref=e857]: 플레이용
+                - generic [ref=e858]: 29,000원
+              - link "26.05.26 1~3회플 50,000원" [ref=e860] [cursor=pointer]:
+                - /url: /bbs_detail.php?tb=board_used&bbs_num=129387&product_num=143636
+                - generic [ref=e861]:
+                  - generic [ref=e862]: 26.05.26
+                  - generic [ref=e863]: 1~3회플
+                - generic [ref=e864]: 50,000원
+              - link "26.04.10 1~3회플 25,000원" [ref=e866] [cursor=pointer]:
+                - /url: /bbs_detail.php?tb=board_used&bbs_num=99917&product_num=227172
+                - generic [ref=e867]:
+                  - generic [ref=e868]: 26.04.10
+                  - generic [ref=e869]: 1~3회플
+                - generic [ref=e870]: 25,000원
+              - link "25.12.19 1~3회플 50,000원" [ref=e872] [cursor=pointer]:
+                - /url: /bbs_detail.php?tb=board_used&bbs_num=149731&product_num=194752
+                - generic [ref=e873]:
+                  - generic [ref=e874]: 25.12.19
+                  - generic [ref=e875]: 1~3회플
+                - generic [ref=e876]: 50,000원
+              - link "25.11.10 1~3회플 300,000원" [ref=e878] [cursor=pointer]:
+                - /url: /bbs_detail.php?tb=board_used&bbs_num=150500&product_num=181130
+                - generic [ref=e879]:
+                  - generic [ref=e880]: 25.11.10
+                  - generic [ref=e881]: 1~3회플
+                - generic [ref=e882]: 300,000원
+            - generic [ref=e883]:
+              - link "전체 10" [ref=e884] [cursor=pointer]:
+                - /url: /game/5352/shop
+                - text: 전체
+                - generic [ref=e885]: "10"
+              - generic [ref=e886] [cursor=pointer]: 상품 등록
+      - generic [ref=e888]:
+        - link "평가 및 리뷰" [ref=e891] [cursor=pointer]:
+          - /url: /game/5352/rate
+          - text: 평가 및 리뷰
+        - generic [ref=e893]:
+          - generic [ref=e894]:
+            - generic [ref=e895]: "10"
+            - generic [ref=e896]:
+              - generic [ref=e897]: 친구, 가족 등 누구와 플레이해도 재밌게 할 수 있었던 게임. 파티 게임으로도 제격이라고 생각합니다.
+              - generic [ref=e898]:
+                - generic [ref=e899]:
+                  - img [ref=e901]
+                  - generic [ref=e902]: tkmy
+                - generic [ref=e903]: 25.12.18
+          - generic [ref=e904]:
+            - generic [ref=e905]: "10"
+            - generic [ref=e906]:
+              - generic [ref=e907]: 누구나 좋아하는 게임..탁월한 리플레이성
+              - generic [ref=e908]:
+                - generic [ref=e909]:
+                  - img [ref=e911]
+                  - generic [ref=e912]: 휘
+                - generic [ref=e913]: 20.01.17
+          - generic [ref=e914]:
+            - generic [ref=e915]: "9.7"
+            - generic [ref=e916]:
+              - generic [ref=e917]: 살짝 변주를 준 것만으로 마피아 게임의 단점을 거의 다 극복하였다. 그 중에서도 사회자에 의한 리스크는 최소화시킨 반면, 오히려 사회자의 성향에 따라 색다른 재미를 느끼게 해주는 시스템은 기존의 마피아 게임과는 그 궤를 달리하는 차별적인 방향성이다. 블러핑을 즐기는 그룹이 있다면 필히 소장하자.
+              - generic [ref=e918]:
+                - generic [ref=e919]:
+                  - img [ref=e921]
+                  - generic [ref=e922]: 마음도둑
+                - generic [ref=e923]: 19.10.23
+        - generic [ref=e924]:
+          - link "전체 327" [ref=e925] [cursor=pointer]:
+            - /url: /game/5352/rate
+            - text: 전체
+            - generic [ref=e926]: "327"
+          - generic [ref=e927] [cursor=pointer]: 평가 등록
+      - generic [ref=e928]:
+        - link "후기" [ref=e931] [cursor=pointer]:
+          - /url: /game/5352/board/community_post
+          - text: 후기
+        - link "포커스 후기" [ref=e933] [cursor=pointer]:
+          - /url: /game/5352/board/community_post?category=포커스 후기
+          - text: 포커스 후기
+        - generic [ref=e935]:
+          - generic [ref=e937]:
+            - 'link "포커스 #235 - 디셉션 홍콩살인사건 리뷰 : \"수수께끼는 모두 풀렸어!\" [21]" [ref=e938] [cursor=pointer]':
+              - /url: /bbs_detail.php?tb=community_post&bbs_num=12254&gameId=5352&gamepg=
+              - generic [ref=e939]: 포커스
+              - generic [ref=e940]: "#235 - 디셉션 홍콩살인사건 리뷰 : \"수수께끼는 모두 풀렸어!\""
+              - generic [ref=e941]: "[21]"
+            - generic [ref=e942]:
+              - generic [ref=e943]:
+                - img [ref=e945]
+                - generic [ref=e946]: 너굴너굴
+              - generic [ref=e947]: 7,598
+              - generic [ref=e949]: "7"
+              - generic [ref=e951]: 19.01.04
+          - generic [ref=e953]:
+            - 'link "포커스 우리 중에 살인자가 있다 - 디셉션: 홍콩살인사건 보드게임 [24]" [ref=e954] [cursor=pointer]':
+              - /url: /bbs_detail.php?tb=community_post&bbs_num=8675&gameId=5352&gamepg=
+              - generic [ref=e955]: 포커스
+              - generic [ref=e956]: "우리 중에 살인자가 있다 - 디셉션: 홍콩살인사건 보드게임"
+              - generic [ref=e957]: "[24]"
+            - generic [ref=e958]:
+              - generic [ref=e959]:
+                - img [ref=e961]
+                - generic [ref=e962]: 부르심
+              - generic [ref=e963]: 8,614
+              - generic [ref=e965]: "4"
+              - generic [ref=e967]: 17.07.09
+          - generic [ref=e969]:
+            - link "포커스 [맛난파전]의 맛난 리뷰 4#-디셉션:홍콩살인사건 [20]" [ref=e970] [cursor=pointer]:
+              - /url: /bbs_detail.php?tb=community_post&bbs_num=7939&gameId=5352&gamepg=
+              - generic [ref=e971]: 포커스
+              - generic [ref=e972]: "[맛난파전]의 맛난 리뷰 4#-디셉션:홍콩살인사건"
+              - generic [ref=e973]: "[20]"
+            - generic [ref=e974]:
+              - generic [ref=e975]:
+                - img [ref=e977]
+                - generic [ref=e978]: 맛난파전
+              - generic [ref=e979]: 8,395
+              - generic [ref=e981]: "4"
+              - generic [ref=e983]: 17.04.05
+        - link "최근 후기" [ref=e984] [cursor=pointer]:
+          - /url: /game/5352/board/community_post
+          - text: 최근 후기
+        - generic [ref=e986]:
+          - generic [ref=e988]:
+            - link "리뷰 26. 4월 플레이 후기 (2) + 오를로이 오거 후기 [4]" [ref=e989] [cursor=pointer]:
+              - /url: /bbs_detail.php?tb=community_post&bbs_num=36504&gameId=5352&gamepg=
+              - generic [ref=e990]: 리뷰
+              - generic [ref=e991]: 26. 4월 플레이 후기 (2) + 오를로이 오거 후기
+              - generic [ref=e992]: "[4]"
+            - generic [ref=e993]:
+              - generic [ref=e994]:
+                - img [ref=e996]
+                - generic [ref=e997]: Landon
+              - generic [ref=e998]: "739"
+              - generic [ref=e1000]: "5"
+              - generic [ref=e1002]: 26.04.26
+          - generic [ref=e1004]:
+            - link "간단후기 2월에 즐긴 보드게임 간단 후기 [11]" [ref=e1005] [cursor=pointer]:
+              - /url: /bbs_detail.php?tb=community_post&bbs_num=36122&gameId=5352&gamepg=
+              - generic [ref=e1006]: 간단후기
+              - generic [ref=e1007]: 2월에 즐긴 보드게임 간단 후기
+              - generic [ref=e1008]: "[11]"
+            - generic [ref=e1009]:
+              - generic [ref=e1010]:
+                - img [ref=e1012]
+                - generic [ref=e1013]: 대오
+              - generic [ref=e1014]: 1,875
+              - generic [ref=e1016]: "12"
+              - generic [ref=e1018]: 26.04.11
+          - generic [ref=e1020]:
+            - link "간단후기 가장 좋았던 머더미스터리(웬디 / 라이노 교수) Feat. 디셉션 [4]" [ref=e1021] [cursor=pointer]:
+              - /url: /bbs_detail.php?tb=community_post&bbs_num=32996&gameId=5352&gamepg=
+              - generic [ref=e1022]: 간단후기
+              - generic [ref=e1023]: 가장 좋았던 머더미스터리(웬디 / 라이노 교수) Feat. 디셉션
+              - generic [ref=e1024]: "[4]"
+            - generic [ref=e1025]:
+              - generic [ref=e1026]:
+                - img [ref=e1028]
+                - generic [ref=e1029]: 채라임
+              - generic [ref=e1030]: 1,390
+              - generic [ref=e1032]: "3"
+              - generic [ref=e1034]: 25.11.20
+        - generic [ref=e1035]:
+          - link "전체 203" [ref=e1036] [cursor=pointer]:
+            - /url: /game/5352/board/community_post
+            - text: 전체
+            - generic [ref=e1037]: "203"
+          - generic [ref=e1038] [cursor=pointer]: 후기 등록
+      - generic [ref=e1039]:
+        - link "자료실" [ref=e1042] [cursor=pointer]:
+          - /url: /game/5352/board/info_files
+          - text: 자료실
+        - generic [ref=e1045]: 정보가 존재하지 않아요.
+        - generic [ref=e1046]:
+          - link "전체" [ref=e1047] [cursor=pointer]:
+            - /url: /game/5352/board/info_files
+            - text: 전체
+          - generic [ref=e1048] [cursor=pointer]: 자료 등록
+      - generic [ref=e1049]:
+        - link "구성 정보" [ref=e1052] [cursor=pointer]:
+          - /url: /game/5352/board/info_boardgame
+          - text: 구성 정보
+        - generic [ref=e1054]:
+          - generic [ref=e1056]:
+            - link "개봉기 디셉션, 언더커버 확장 개봉기 [10]" [ref=e1057] [cursor=pointer]:
+              - /url: /bbs_detail.php?tb=info_boardgame&bbs_num=5096&gameId=5352&gamepg=
+              - generic [ref=e1058]: 개봉기
+              - generic [ref=e1059]: 디셉션, 언더커버 확장 개봉기
+              - generic [ref=e1060]: "[10]"
+            - generic [ref=e1061]:
+              - generic [ref=e1062]:
+                - img [ref=e1064]
+                - generic [ref=e1065]: 포풍
+              - generic [ref=e1066]: 5,798
+              - generic [ref=e1068]: 21.08.17
+          - generic [ref=e1070]:
+            - 'link "확인기 【디셉션 : 홍콩 살인 사건】개봉기 및 슬리브 비교 [7]" [ref=e1071] [cursor=pointer]':
+              - /url: /bbs_detail.php?tb=info_boardgame&bbs_num=5056&gameId=5352&gamepg=
+              - generic [ref=e1072]: 확인기
+              - generic [ref=e1073]: "【디셉션 : 홍콩 살인 사건】개봉기 및 슬리브 비교"
+              - generic [ref=e1074]: "[7]"
+            - generic [ref=e1075]:
+              - generic [ref=e1076]:
+                - img [ref=e1078]
+                - generic [ref=e1079]: 맨손주먹
+              - generic [ref=e1080]: 8,963
+              - generic [ref=e1082]: "3"
+              - generic [ref=e1084]: 21.07.28
+          - generic [ref=e1086]:
+            - link "확인기 디셉션 부분 한글화 작업!! [14]" [ref=e1087] [cursor=pointer]:
+              - /url: /bbs_detail.php?tb=info_boardgame&bbs_num=2612&gameId=5352&gamepg=
+              - generic [ref=e1088]: 확인기
+              - generic [ref=e1089]: 디셉션 부분 한글화 작업!!
+              - generic [ref=e1090]: "[14]"
+            - generic [ref=e1091]:
+              - generic [ref=e1092]:
+                - img [ref=e1094]
+                - generic [ref=e1095]: tira
+              - generic [ref=e1096]: 4,048
+              - generic [ref=e1098]: 17.06.27
+          - generic [ref=e1100]:
+            - link "개봉기 [간단개봉기]디셉션" [ref=e1101] [cursor=pointer]:
+              - /url: /bbs_detail.php?tb=info_boardgame&bbs_num=1891&gameId=5352&gamepg=
+              - generic [ref=e1102]: 개봉기
+              - generic [ref=e1103]: "[간단개봉기]디셉션"
+            - generic [ref=e1104]:
+              - generic [ref=e1105]:
+                - img [ref=e1107]
+                - generic [ref=e1108]: 위치스브루
+              - generic [ref=e1109]: 2,877
+              - generic [ref=e1111]: "1"
+              - generic [ref=e1113]: 16.08.05
+        - generic [ref=e1114]:
+          - link "전체 4" [ref=e1115] [cursor=pointer]:
+            - /url: /game/5352/board/info_boardgame
+            - text: 전체
+            - generic [ref=e1116]: "4"
+          - generic [ref=e1117] [cursor=pointer]: 구성 정보 등록
+  - generic [ref=e1120]:
+    - link [ref=e1122] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e1125]:
+      - link "커뮤니티 규칙" [ref=e1126] [cursor=pointer]:
+        - /url: /policy.php
+      - link "서비스 약관/정책" [ref=e1127] [cursor=pointer]:
+        - /url: /policy.php?page=service
+      - link "개인정보취급방침" [ref=e1128] [cursor=pointer]:
+        - /url: /policy.php?page=privacy
+      - link "청소년보호정책" [ref=e1129] [cursor=pointer]:
+        - /url: /policy.php?page=youth
+      - link "공지사항" [ref=e1130] [cursor=pointer]:
+        - /url: /board/notice
+      - link "광고센터" [ref=e1131] [cursor=pointer]:
+        - /url: /serviceAD.php
+    - generic [ref=e1132]:
+      - generic [ref=e1133]: "회사명: 보드라이프"
+      - generic [ref=e1134]: 경기도 구리시 벌말로 147번길 34-6
+      - generic [ref=e1135]: "등록번호: 893-07-00060"
+      - generic [ref=e1136]: "대표자명: 곽재영"
+      - generic [ref=e1137]: "고객지원 : boardlifeTeam@gmail.com"
+    - generic [ref=e1138]: 위 내용에 대한 저작권 및 법적 책임은 자료제공사 또는 글쓴이에 있으며 보드라이프의 입장과 다를 수 있습니다.
+    - generic [ref=e1139]: Copyright ⓒ boardlife.co.kr All rights reserved.

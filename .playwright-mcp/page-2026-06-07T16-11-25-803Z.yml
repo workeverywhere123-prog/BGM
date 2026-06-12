@@ -1,0 +1,312 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e6] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e7]:
+      - img [ref=e8]
+    - generic [ref=e11]:
+      - button "Open issues overlay" [ref=e12]:
+        - generic [ref=e13]:
+          - generic [ref=e14]: "0"
+          - generic [ref=e15]: "1"
+        - generic [ref=e16]: Issue
+      - button "Collapse issues badge" [ref=e17]:
+        - img [ref=e18]
+  - navigation [ref=e20]:
+    - link "BGM" [ref=e21] [cursor=pointer]:
+      - /url: /
+    - list [ref=e22]:
+      - listitem [ref=e23]:
+        - link "리그 현황" [ref=e24] [cursor=pointer]:
+          - /url: /league
+      - listitem [ref=e25]:
+        - link "모임 일정" [ref=e26] [cursor=pointer]:
+          - /url: /meeting
+      - listitem [ref=e27]:
+        - link "보드게임방" [ref=e28] [cursor=pointer]:
+          - /url: /rooms
+      - listitem [ref=e29]:
+        - link "공지사항" [ref=e30] [cursor=pointer]:
+          - /url: /notice
+      - listitem [ref=e31]:
+        - link "보드게임 책장" [ref=e32] [cursor=pointer]:
+          - /url: /games
+      - listitem [ref=e33]:
+        - link "기록 전당" [ref=e34] [cursor=pointer]:
+          - /url: /records
+    - generic [ref=e35]:
+      - link "로그인" [ref=e36] [cursor=pointer]:
+        - /url: /login
+      - link "회원가입" [ref=e37] [cursor=pointer]:
+        - /url: /signup
+  - generic [ref=e38]:
+    - generic [ref=e39]:
+      - paragraph [ref=e40]: 게임 라이브러리
+      - heading "보드게임 책장" [level=1] [ref=e41]
+      - paragraph [ref=e43]: 멤버들이 보유한 보드게임
+    - generic [ref=e44]:
+      - textbox "게임 이름으로 검색..." [ref=e47]
+      - generic [ref=e48]:
+        - text: 소유자
+        - generic [ref=e49]:
+          - button "전체" [ref=e50] [cursor=pointer]
+          - button "janto" [ref=e51] [cursor=pointer]
+      - generic [ref=e52]:
+        - text: 장르
+        - generic [ref=e53]:
+          - button "전체" [ref=e54] [cursor=pointer]
+          - button "전략" [ref=e55] [cursor=pointer]
+          - button "파티" [ref=e56] [cursor=pointer]
+          - button "가족" [ref=e57] [cursor=pointer]
+          - button "추상" [ref=e58] [cursor=pointer]
+          - button "테마" [ref=e59] [cursor=pointer]
+          - button "전쟁" [ref=e60] [cursor=pointer]
+          - button "아동" [ref=e61] [cursor=pointer]
+          - button "커스터마이즈" [ref=e62] [cursor=pointer]
+    - paragraph [ref=e64]: 120종 표시 중 / 전체 120종 · 1/5 페이지
+    - generic [ref=e66]:
+      - generic [ref=e67] [cursor=pointer]:
+        - generic [ref=e68]:
+          - img "6님트!" [ref=e69]
+          - generic [ref=e70]: 가족
+        - generic [ref=e71]:
+          - paragraph [ref=e72]: 6님트!
+          - link "janto" [ref=e74]:
+            - /url: /profile/janto
+          - paragraph [ref=e75]: 상세 보기 →
+      - generic [ref=e76] [cursor=pointer]:
+        - generic [ref=e77]:
+          - img "7 원더스 대결" [ref=e78]
+          - generic [ref=e79]: 전략
+        - generic [ref=e80]:
+          - paragraph [ref=e81]: 7 원더스 대결
+          - link "janto" [ref=e83]:
+            - /url: /profile/janto
+          - paragraph [ref=e84]: 상세 보기 →
+      - generic [ref=e85] [cursor=pointer]:
+        - generic [ref=e86]:
+          - 'img "7 원더스 대결: 아고라" [ref=e87]'
+          - generic [ref=e88]: 전략
+        - generic [ref=e89]:
+          - paragraph [ref=e90]: "7 원더스 대결: 아고라"
+          - link "janto" [ref=e92]:
+            - /url: /profile/janto
+          - paragraph [ref=e93]: 상세 보기 →
+      - generic [ref=e94] [cursor=pointer]:
+        - generic [ref=e95]:
+          - 'img "7 원더스 대결: 판테온" [ref=e96]'
+          - generic [ref=e97]: 전략
+        - generic [ref=e98]:
+          - paragraph [ref=e99]: "7 원더스 대결: 판테온"
+          - link "janto" [ref=e101]:
+            - /url: /profile/janto
+          - paragraph [ref=e102]: 상세 보기 →
+      - generic [ref=e103] [cursor=pointer]:
+        - generic [ref=e104]:
+          - img "갱스터스 딜레마" [ref=e105]
+          - generic [ref=e106]: 가족
+        - generic [ref=e107]:
+          - paragraph [ref=e108]: 갱스터스 딜레마
+          - link "janto" [ref=e110]:
+            - /url: /profile/janto
+          - paragraph [ref=e111]: 상세 보기 →
+      - generic [ref=e112] [cursor=pointer]:
+        - generic [ref=e113]:
+          - img "구두룡 저택의 살인 (언박싱)" [ref=e114]
+          - generic [ref=e115]: 추리
+        - generic [ref=e116]:
+          - paragraph [ref=e117]: 구두룡 저택의 살인 (언박싱)
+          - link "janto" [ref=e119]:
+            - /url: /profile/janto
+          - paragraph [ref=e120]: 상세 보기 →
+      - generic [ref=e121] [cursor=pointer]:
+        - generic [ref=e122]:
+          - img "나인 타일 패닉" [ref=e123]
+          - generic [ref=e124]: 가족
+        - generic [ref=e125]:
+          - paragraph [ref=e126]: 나인 타일 패닉
+          - link "janto" [ref=e128]:
+            - /url: /profile/janto
+          - paragraph [ref=e129]: 상세 보기 →
+      - generic [ref=e130] [cursor=pointer]:
+        - generic [ref=e131]:
+          - img "노 땡스!" [ref=e132]
+          - generic [ref=e133]: 가족
+        - generic [ref=e134]:
+          - paragraph [ref=e135]: 노 땡스!
+          - link "janto" [ref=e137]:
+            - /url: /profile/janto
+          - paragraph [ref=e138]: 상세 보기 →
+      - generic [ref=e139] [cursor=pointer]:
+        - generic [ref=e140]:
+          - img "늑대인간 마을의 축제 (언박싱)" [ref=e141]
+          - generic [ref=e142]: 추리
+        - generic [ref=e143]:
+          - paragraph [ref=e144]: 늑대인간 마을의 축제 (언박싱)
+          - link "janto" [ref=e146]:
+            - /url: /profile/janto
+          - paragraph [ref=e147]: 상세 보기 →
+      - generic [ref=e148] [cursor=pointer]:
+        - generic [ref=e149]:
+          - img "다빈치 코드" [ref=e150]
+          - generic [ref=e151]: 추상
+        - generic [ref=e152]:
+          - paragraph [ref=e153]: 다빈치 코드
+          - link "janto" [ref=e155]:
+            - /url: /profile/janto
+          - paragraph [ref=e156]: 상세 보기 →
+      - generic [ref=e157] [cursor=pointer]:
+        - generic [ref=e158]:
+          - img "다크 호스 10주년 기념판" [ref=e159]
+          - generic [ref=e160]: 파티
+        - generic [ref=e161]:
+          - paragraph [ref=e162]: 다크 호스 10주년 기념판
+          - link "janto" [ref=e164]:
+            - /url: /profile/janto
+          - paragraph [ref=e165]: 상세 보기 →
+      - generic [ref=e166] [cursor=pointer]:
+        - generic [ref=e167]:
+          - img "더 그레이트 달무티" [ref=e168]
+          - generic [ref=e169]: 파티
+        - generic [ref=e170]:
+          - paragraph [ref=e171]: 더 그레이트 달무티
+          - link "janto" [ref=e173]:
+            - /url: /profile/janto
+          - paragraph [ref=e174]: 상세 보기 →
+      - generic [ref=e175] [cursor=pointer]:
+        - generic [ref=e176]:
+          - img "더 마인드" [ref=e177]
+          - generic [ref=e178]: 가족 · 파티
+        - generic [ref=e179]:
+          - paragraph [ref=e180]: 더 마인드
+          - link "janto" [ref=e182]:
+            - /url: /profile/janto
+          - paragraph [ref=e183]: 상세 보기 →
+      - generic [ref=e184] [cursor=pointer]:
+        - generic [ref=e185]:
+          - 'img "던전 앤 드래곤: 락 페이퍼 위저드" [ref=e186]'
+          - generic [ref=e187]: 파티
+        - generic [ref=e188]:
+          - paragraph [ref=e189]: "던전 앤 드래곤: 락 페이퍼 위저드"
+          - link "janto" [ref=e191]:
+            - /url: /profile/janto
+          - paragraph [ref=e192]: 상세 보기 →
+      - generic [ref=e193] [cursor=pointer]:
+        - generic [ref=e194]:
+          - img "도코종" [ref=e195]
+          - generic [ref=e196]: 가족 · 파티
+        - generic [ref=e197]:
+          - paragraph [ref=e198]: 도코종
+          - link "janto" [ref=e200]:
+            - /url: /profile/janto
+          - paragraph [ref=e201]: 상세 보기 →
+      - generic [ref=e202] [cursor=pointer]:
+        - generic [ref=e203]:
+          - img "동물 장기" [ref=e204]
+          - generic [ref=e205]: 추상
+        - generic [ref=e206]:
+          - paragraph [ref=e207]: 동물 장기
+          - link "janto" [ref=e209]:
+            - /url: /profile/janto
+          - paragraph [ref=e210]: 상세 보기 →
+      - generic [ref=e211] [cursor=pointer]:
+        - generic [ref=e212]:
+          - generic [ref=e214]: 🎲
+          - generic [ref=e215]: 파티
+        - generic [ref=e216]:
+          - paragraph [ref=e217]: 두리안
+          - link "janto" [ref=e219]:
+            - /url: /profile/janto
+          - paragraph [ref=e220]: 상세 보기 →
+      - generic [ref=e221] [cursor=pointer]:
+        - generic [ref=e222]:
+          - 'img "디셉션: 홍콩 살인사건" [ref=e223]'
+          - generic [ref=e224]: 파티
+        - generic [ref=e225]:
+          - paragraph [ref=e226]: "디셉션: 홍콩 살인사건"
+          - link "janto" [ref=e228]:
+            - /url: /profile/janto
+          - paragraph [ref=e229]: 상세 보기 →
+      - generic [ref=e230] [cursor=pointer]:
+        - generic [ref=e231]:
+          - img "디크립토" [ref=e232]
+          - generic [ref=e233]: 파티
+        - generic [ref=e234]:
+          - paragraph [ref=e235]: 디크립토
+          - link "janto" [ref=e237]:
+            - /url: /profile/janto
+          - paragraph [ref=e238]: 상세 보기 →
+      - generic [ref=e239] [cursor=pointer]:
+        - generic [ref=e240]:
+          - generic [ref=e242]: 🎲
+          - generic [ref=e243]: 파티
+        - generic [ref=e244]:
+          - paragraph [ref=e245]: 디텍티브 클럽
+          - link "janto" [ref=e247]:
+            - /url: /profile/janto
+          - paragraph [ref=e248]: 상세 보기 →
+      - generic [ref=e249] [cursor=pointer]:
+        - generic [ref=e250]:
+          - img "딕싯" [ref=e251]
+          - generic [ref=e252]: 파티
+        - generic [ref=e253]:
+          - paragraph [ref=e254]: 딕싯
+          - link "janto" [ref=e256]:
+            - /url: /profile/janto
+          - paragraph [ref=e257]: 상세 보기 →
+      - generic [ref=e258] [cursor=pointer]:
+        - generic [ref=e259]:
+          - 'img "라 파밀리아: 대규모 마피아 전쟁" [ref=e260]'
+          - generic [ref=e261]: 전략
+        - generic [ref=e262]:
+          - paragraph [ref=e263]: "라 파밀리아: 대규모 마피아 전쟁"
+          - link "janto" [ref=e265]:
+            - /url: /profile/janto
+          - paragraph [ref=e266]: 상세 보기 →
+      - generic [ref=e267] [cursor=pointer]:
+        - generic [ref=e268]:
+          - img "라스베가스 로얄" [ref=e269]
+          - generic [ref=e270]: 가족
+        - generic [ref=e271]:
+          - paragraph [ref=e272]: 라스베가스 로얄
+          - link "janto" [ref=e274]:
+            - /url: /profile/janto
+          - paragraph [ref=e275]: 상세 보기 →
+      - generic [ref=e276] [cursor=pointer]:
+        - generic [ref=e277]:
+          - generic [ref=e279]: 🎲
+          - generic [ref=e280]: 전략
+        - generic [ref=e281]:
+          - paragraph [ref=e282]: 라스트 윌
+          - link "janto" [ref=e284]:
+            - /url: /profile/janto
+          - paragraph [ref=e285]: 상세 보기 →
+    - generic [ref=e286]:
+      - button "«" [disabled] [ref=e287] [cursor=pointer]
+      - button "‹" [disabled] [ref=e288] [cursor=pointer]
+      - button "1" [ref=e289] [cursor=pointer]
+      - button "2" [ref=e290] [cursor=pointer]
+      - button "3" [ref=e291] [cursor=pointer]
+      - generic [ref=e292]: …
+      - button "5" [ref=e293] [cursor=pointer]
+      - button "›" [ref=e294] [cursor=pointer]
+      - button "»" [ref=e295] [cursor=pointer]
+  - contentinfo [ref=e296]:
+    - generic [ref=e297]: BGM
+    - generic [ref=e298]: © 2026 Boardgame in Melbourne — All Rights Reserved
+    - generic [ref=e299]:
+      - link "인스타그램" [ref=e300] [cursor=pointer]:
+        - /url: https://www.instagram.com/bgm_boardgame_in_melbourne?igsh=cXIzY283aWtjZDk2
+        - img [ref=e301]
+        - generic [ref=e305]: 인스타그램
+      - link "카카오톡" [ref=e306] [cursor=pointer]:
+        - /url: https://open.kakao.com/o/gLo4TXLb
+        - img [ref=e307]
+        - generic [ref=e310]: 카카오톡
+      - link "디스코드" [ref=e311] [cursor=pointer]:
+        - /url: https://discord.gg/dNDsSQJc
+        - img [ref=e312]
+        - generic [ref=e314]: 디스코드
+      - link "Board Game Arena 보드게임아레나" [ref=e315] [cursor=pointer]:
+        - /url: https://boardgamearena.com/
+        - img "Board Game Arena"
+        - generic [ref=e316]: 보드게임아레나
+  - alert [ref=e317]

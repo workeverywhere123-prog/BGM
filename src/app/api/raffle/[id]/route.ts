@@ -14,7 +14,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       const { tickets } = body as { tickets: number };
       if (!tickets || tickets < 1) return NextResponse.json({ error: '티켓 수는 1 이상이어야 합니다' }, { status: 400 });
 
-      const { data: raffle } = await supabase.from('raffles').select('status').eq('id', id).single();
+      const { data: raffle } = await supabase.from('raffles').select('id, name, status').eq('id', id).single();
       if (!raffle || raffle.status !== 'open') return NextResponse.json({ error: '참가할 수 없는 추첨입니다' }, { status: 400 });
 
       // Check existing entry
@@ -35,10 +35,10 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
       const { data: quarter } = await supabase.from('quarters').select('id').eq('is_active', true).maybeSingle();
       await supabase.from('chip_transactions').insert({
         player_id: user.id,
-        tx_type: 'raffle',
+        tx_type: 'draw_use',
         amount: -additionalTickets,
         quarter_id: quarter?.id ?? null,
-        note: `추첨 티켓 구매 (${additionalTickets}장)`,
+        note: `추첨 티켓 구매 — "${raffle.name}" (${additionalTickets}장)`,
         created_by: user.id,
       });
 

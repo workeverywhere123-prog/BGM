@@ -1,0 +1,3103 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]: 저장이 완료되었습니다.
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e8] [cursor=pointer]: 플레이 리스트
+      - link "보드게임이 처음이세요?" [ref=e9] [cursor=pointer]:
+        - /url: /start.php
+      - link "광고센터" [ref=e10] [cursor=pointer]:
+        - /url: /serviceAD.php
+    - link "커뮤니티 규칙" [ref=e12] [cursor=pointer]:
+      - /url: /policy
+    - generic [ref=e16] [cursor=pointer]: 어두운화면
+  - generic [ref=e19]:
+    - link [ref=e26] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e29]:
+      - generic [ref=e30]:
+        - link "보드게임" [ref=e32] [cursor=pointer]:
+          - /url: /explore
+        - link "게시글" [ref=e34] [cursor=pointer]:
+          - /url: /board
+        - link "내 게임" [ref=e36] [cursor=pointer]:
+          - /url: /collection
+        - link "로컬" [ref=e38] [cursor=pointer]:
+          - /url: /local
+        - link "쇼핑" [ref=e40] [cursor=pointer]:
+          - /url: /shop/link
+      - textbox "통합검색" [ref=e43]
+    - generic [ref=e45]:
+      - link "페이스북 계정이전" [ref=e46] [cursor=pointer]:
+        - /url: /facebook.php
+      - link "회원가입" [ref=e47] [cursor=pointer]:
+        - /url: /joinus.php
+      - generic [ref=e48] [cursor=pointer]: 로그인
+  - generic [ref=e52]:
+    - generic [ref=e53]:
+      - generic [ref=e54]: 보드게임
+      - list [ref=e56]:
+        - listitem [ref=e57] [cursor=pointer]:
+          - link "발견" [ref=e58]:
+            - /url: /
+          - generic [ref=e59]: 트랜디한 보드게임은?
+        - listitem [ref=e60] [cursor=pointer]:
+          - link "순위" [ref=e61]:
+            - /url: /rank
+          - generic [ref=e62]: 보드게임 순위를 확인하세요.
+        - listitem [ref=e63] [cursor=pointer]:
+          - link "평가" [ref=e64]:
+            - /url: /rate
+          - generic [ref=e65]: 게임평을 한눈에 볼수 있어요.
+        - listitem [ref=e66] [cursor=pointer]:
+          - link "PLAY" [ref=e67]:
+            - /url: /play
+          - generic [ref=e68]: 최근 많이 플레이된 보드게임은?
+        - listitem [ref=e69] [cursor=pointer]:
+          - link "정보" [ref=e70]:
+            - /url: /info
+          - generic [ref=e71]: 세부 정보로 게임 리스트를 찾아요.
+        - listitem [ref=e72] [cursor=pointer]:
+          - link "탐색" [ref=e73]:
+            - /url: /advanced
+          - generic [ref=e74]: 조건 설정으로 보드게임을 찾아요.
+        - listitem [ref=e75] [cursor=pointer]:
+          - link "데이터" [ref=e76]:
+            - /url: /record
+          - generic [ref=e77]: 게임 데이터를 추가/수정해요.
+    - generic [ref=e78]:
+      - generic [ref=e79]: 게시글
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - generic [ref=e83]:
+            - link "메인" [ref=e84] [cursor=pointer]:
+              - /url: /board
+            - list [ref=e85]:
+              - listitem [ref=e86] [cursor=pointer]:
+                - link "신규" [ref=e87]:
+                  - /url: /board
+                - generic [ref=e88]: 최근 등록된 게시글
+              - listitem [ref=e89] [cursor=pointer]:
+                - link "베스트" [ref=e90]:
+                  - /url: /board/best
+                - generic [ref=e91]: 베스트로 선정된 게시글
+              - listitem [ref=e92] [cursor=pointer]:
+                - link "팔로우" [ref=e93]:
+                  - /url: /board/follow
+                - generic [ref=e94]: 내 팔로우의 최근 게시글
+          - generic [ref=e95]:
+            - link "지역" [ref=e96] [cursor=pointer]:
+              - /url: /board/local
+            - generic [ref=e97]: 각 지역의 소식을 확인해 보세요.
+            - list [ref=e98]:
+              - listitem [ref=e99] [cursor=pointer]:
+                - link "서울" [ref=e100]:
+                  - /url: /board/local/서울/1
+              - listitem [ref=e101] [cursor=pointer]:
+                - link "경기" [ref=e102]:
+                  - /url: /board/local/경기/1
+              - listitem [ref=e103] [cursor=pointer]:
+                - link "부산" [ref=e104]:
+                  - /url: /board/local/부산/1
+              - listitem [ref=e105] [cursor=pointer]:
+                - link "인천" [ref=e106]:
+                  - /url: /board/local/인천/1
+              - listitem [ref=e107] [cursor=pointer]:
+                - link "대전" [ref=e108]:
+                  - /url: /board/local/대전/1
+              - listitem [ref=e109] [cursor=pointer]:
+                - link "대구" [ref=e110]:
+                  - /url: /board/local/대구/1
+              - listitem [ref=e111] [cursor=pointer]:
+                - link "울산" [ref=e112]:
+                  - /url: /board/local/울산/1
+              - listitem [ref=e113] [cursor=pointer]:
+                - link "광주" [ref=e114]:
+                  - /url: /board/local/광주/1
+              - listitem [ref=e115] [cursor=pointer]:
+                - link "강원" [ref=e116]:
+                  - /url: /board/local/강원/1
+              - listitem [ref=e117] [cursor=pointer]:
+                - link "충북" [ref=e118]:
+                  - /url: /board/local/충북/1
+              - listitem [ref=e119] [cursor=pointer]:
+                - link "충남" [ref=e120]:
+                  - /url: /board/local/충남/1
+              - listitem [ref=e121] [cursor=pointer]:
+                - link "전북" [ref=e122]:
+                  - /url: /board/local/전북/1
+              - listitem [ref=e123] [cursor=pointer]:
+                - link "전남" [ref=e124]:
+                  - /url: /board/local/전남/1
+              - listitem [ref=e125] [cursor=pointer]:
+                - link "경북" [ref=e126]:
+                  - /url: /board/local/경북/1
+              - listitem [ref=e127] [cursor=pointer]:
+                - link "경남" [ref=e128]:
+                  - /url: /board/local/경남/1
+              - listitem [ref=e129] [cursor=pointer]:
+                - link "제주" [ref=e130]:
+                  - /url: /board/local/제주/1
+              - listitem [ref=e131] [cursor=pointer]:
+                - link "해외" [ref=e132]:
+                  - /url: /board/local/community_meet_oversea/메인/1
+        - generic [ref=e134]:
+          - link "정보" [ref=e135] [cursor=pointer]:
+            - /url: /board/story
+          - list [ref=e136]:
+            - listitem [ref=e137] [cursor=pointer]:
+              - link "메인" [ref=e138]:
+                - /url: /board/story
+              - generic [ref=e139]: 정보 게시글 메인
+            - listitem [ref=e140] [cursor=pointer]:
+              - link "신작" [ref=e141]:
+                - /url: /board/story/board_release/1
+              - generic [ref=e142]: 새로 출시된 보드게임 소식
+            - listitem [ref=e143] [cursor=pointer]:
+              - link "게임" [ref=e144]:
+                - /url: /board/story/board_general/1
+              - generic [ref=e145]: 보드게임 관련 이야기
+            - listitem [ref=e146] [cursor=pointer]:
+              - link "후기" [ref=e147]:
+                - /url: /board/story/community_post/1
+              - generic [ref=e148]: 보드게임 플레이 후기
+            - listitem [ref=e149] [cursor=pointer]:
+              - link "자게" [ref=e150]:
+                - /url: /board/story/board_community/1
+              - generic [ref=e151]: 자유롭게 소통하는 게시판
+            - listitem [ref=e152] [cursor=pointer]:
+              - link "문의" [ref=e153]:
+                - /url: /board/story/community_qna/1
+              - generic [ref=e154]: 보드게임 관련 질문과 답변
+            - listitem [ref=e155] [cursor=pointer]:
+              - link "영상" [ref=e156]:
+                - /url: /board/story/info_movie/1
+              - generic [ref=e157]: 보드게임 관련 영상 콘텐츠
+            - listitem [ref=e158] [cursor=pointer]:
+              - link "자료" [ref=e159]:
+                - /url: /board/story/info_files/1
+              - generic [ref=e160]: 보드게임 관련 자료 모음
+            - listitem [ref=e161] [cursor=pointer]:
+              - link "구성" [ref=e162]:
+                - /url: /board/story/info_boardgame/1
+              - generic [ref=e163]: 보드게임 구성물 정보
+            - listitem [ref=e164] [cursor=pointer]:
+              - link "설문" [ref=e165]:
+                - /url: /board/story/board_discuss/1
+              - generic [ref=e166]: 보드게임 관련 투표 및 토론
+            - listitem [ref=e167] [cursor=pointer]:
+              - link "꿀팁" [ref=e168]:
+                - /url: /board/story/board_knowhow/1
+              - generic [ref=e169]: 보드게임 꿀팁과 노하우
+            - listitem [ref=e170] [cursor=pointer]:
+              - link "공방" [ref=e171]:
+                - /url: /board/story/info_gallery/1
+              - generic [ref=e172]: 보드게임 공방 및 DIY
+            - listitem [ref=e173] [cursor=pointer]:
+              - link "앱피" [ref=e174]:
+                - /url: /board/story/board_pc/1
+              - generic [ref=e175]: 디지털 보드게임 앱/PC
+            - listitem [ref=e176] [cursor=pointer]:
+              - link "창작" [ref=e177]:
+                - /url: /board/story/board_design/1
+              - generic [ref=e178]: 보드게임 창작 및 디자인
+            - listitem [ref=e179] [cursor=pointer]:
+              - link "팟캐" [ref=e180]:
+                - /url: /board/story/pod_cast/1
+              - generic [ref=e181]: 보드게임 팟캐스트
+        - generic [ref=e182]:
+          - generic [ref=e183]:
+            - link "공유" [ref=e184] [cursor=pointer]:
+              - /url: /board/share
+            - list [ref=e185]:
+              - listitem [ref=e186] [cursor=pointer]:
+                - link "소식" [ref=e187]:
+                  - /url: /board/share/board_news/1
+                - generic [ref=e188]: 국내 업체 및 보드게임 소식
+              - listitem [ref=e189] [cursor=pointer]:
+                - link "홍보" [ref=e190]:
+                  - /url: /board/share/ad_board/1
+                - generic [ref=e191]: 보드게임 홍보 정보
+          - generic [ref=e192]:
+            - link "중고" [ref=e193] [cursor=pointer]:
+              - /url: /board/used
+            - list [ref=e194]:
+              - listitem [ref=e195] [cursor=pointer]:
+                - link "게시판" [ref=e196]:
+                  - /url: /board/used/board_used/1
+                - generic [ref=e197]: 중고 보드게임 거래 게시판
+              - listitem [ref=e198] [cursor=pointer]:
+                - link "가격비교" [ref=e199]:
+                  - /url: /board/used/product/1
+                - generic [ref=e200]: 중고 보드게임 시세 비교
+              - listitem [ref=e201] [cursor=pointer]:
+                - link "직거래" [ref=e202]:
+                  - /url: /local?only=used
+                - generic [ref=e203]: 나와 가까운 중고 게시글
+              - listitem [ref=e204] [cursor=pointer]:
+                - link "장터보호" [ref=e205]:
+                  - /url: /board/used/board_used_safe/1
+                - generic [ref=e206]: 안전한 중고 거래 가이드
+    - generic [ref=e207]:
+      - generic [ref=e208]: 내 게임
+      - list [ref=e210]:
+        - listitem [ref=e211] [cursor=pointer]:
+          - link "전체" [ref=e212]:
+            - /url: /collection
+          - generic [ref=e213]: 내 보드게임 관리 페이지
+        - listitem [ref=e214] [cursor=pointer]:
+          - link "최근 본 게임" [ref=e215]:
+            - /url: /collection/history
+          - generic [ref=e216]: 최근 조회한 보드게임 목록
+        - listitem [ref=e217] [cursor=pointer]:
+          - link "플레이리스트" [ref=e218]:
+            - /url: /collection/playlist
+          - generic [ref=e219]: 관심 보드게임 임시 보관소
+        - listitem [ref=e220] [cursor=pointer]:
+          - link "플레이" [ref=e221]:
+            - /url: /collection/play
+          - generic [ref=e222]: 플레이 기록 관리
+        - listitem [ref=e223] [cursor=pointer]:
+          - link "내 평가" [ref=e224]:
+            - /url: /collection/rank
+          - generic [ref=e225]: 내가 평가한 보드게임
+        - listitem [ref=e226] [cursor=pointer]:
+          - link "내 구매" [ref=e227]:
+            - /url: /collection/buy
+          - generic [ref=e228]: 구매한 보드게임 관리
+        - listitem [ref=e229] [cursor=pointer]:
+          - link "컬렉션" [ref=e230]:
+            - /url: /collection/my
+          - generic [ref=e231]: 내 보드게임 목록 관리
+        - listitem [ref=e232] [cursor=pointer]:
+          - link "셀렉션" [ref=e233]:
+            - /url: /collection/selection
+          - generic [ref=e234]: 테마별 보드게임 관리
+    - generic [ref=e235]:
+      - generic [ref=e236]: 로컬
+      - list [ref=e238]:
+        - listitem [ref=e239] [cursor=pointer]:
+          - link "전체" [ref=e240]:
+            - /url: /local
+          - generic [ref=e241]: 전국 보드게임 로컬 정보
+        - listitem [ref=e242] [cursor=pointer]:
+          - link "카페" [ref=e243]:
+            - /url: /local/cafe
+          - generic [ref=e244]: 보드게임 카페
+        - listitem [ref=e245] [cursor=pointer]:
+          - link "모임" [ref=e246]:
+            - /url: /local/club
+          - generic [ref=e247]: 보드게임 모임
+        - listitem [ref=e248] [cursor=pointer]:
+          - link "매장" [ref=e249]:
+            - /url: /local/store
+          - generic [ref=e250]: 보드게임 매장
+        - listitem [ref=e251] [cursor=pointer]:
+          - link "이벤트" [ref=e252]:
+            - /url: /local/event
+          - generic [ref=e253]: 보드게임 행사 및 이벤트
+      - generic [ref=e254]: 쇼핑
+      - list [ref=e256]:
+        - listitem [ref=e257] [cursor=pointer]:
+          - link "신규" [ref=e258]:
+            - /url: /shop
+          - generic [ref=e259]: 신규 입고 보드게임
+        - listitem [ref=e260] [cursor=pointer]:
+          - link "인기" [ref=e261]:
+            - /url: /shop/best
+          - generic [ref=e262]: 베스트 인기 보드게임
+  - generic [ref=e265]:
+    - heading "로그인" [level=3] [ref=e266]
+    - button "✕" [ref=e267] [cursor=pointer]
+  - generic [ref=e269]:
+    - generic [ref=e271]:
+      - button "✕" [ref=e272] [cursor=pointer]
+      - heading "선택된 게임" [level=3] [ref=e273]
+      - generic [ref=e274]: "0"
+    - generic [ref=e276]:
+      - generic [ref=e277]:
+        - button "플레이리스트에 추가" [ref=e278] [cursor=pointer]:
+          - generic [ref=e281]: 플레이리스트에 추가
+        - button "삭제" [ref=e282] [cursor=pointer]:
+          - generic [ref=e285]: 삭제
+      - generic [ref=e286]:
+        - generic [ref=e287]: 글쓰기
+        - button "게시글 작성" [ref=e288] [cursor=pointer]:
+          - generic [ref=e291]: 게시글 작성
+        - button "중고 상품 등록" [ref=e292] [cursor=pointer]:
+          - generic [ref=e295]: 중고 상품 등록
+      - generic [ref=e296]:
+        - generic [ref=e297]: 컬렉션에 담기
+        - button "팬" [ref=e298] [cursor=pointer]:
+          - generic [ref=e301]: 팬
+        - button "구독" [ref=e302] [cursor=pointer]:
+          - generic [ref=e305]: 구독
+        - button "보유" [ref=e306] [cursor=pointer]:
+          - generic [ref=e309]: 보유
+        - button "위시리스트" [ref=e310] [cursor=pointer]:
+          - generic [ref=e313]: 위시리스트
+        - button "선주문" [ref=e314] [cursor=pointer]:
+          - generic [ref=e317]: 선주문
+        - button "펀딩" [ref=e318] [cursor=pointer]:
+          - generic [ref=e321]: 펀딩
+        - button "즐겨본 게임" [ref=e322] [cursor=pointer]:
+          - generic [ref=e325]: 즐겨본 게임
+        - button "방출예정" [ref=e326] [cursor=pointer]:
+          - generic [ref=e329]: 방출예정
+        - button "방출" [ref=e330] [cursor=pointer]:
+          - generic [ref=e333]: 방출
+  - generic [ref=e334]:
+    - generic [ref=e336]:
+      - heading "플레이 리스트" [level=3] [ref=e337]
+      - button "✕" [ref=e338] [cursor=pointer]
+    - generic [ref=e341]:
+      - heading [level=4]
+      - link "전체" [ref=e343] [cursor=pointer]:
+        - /url: /collection/playlist
+        - button "전체" [ref=e344]
+  - generic [ref=e345]:
+    - generic [ref=e347]:
+      - button "✕" [ref=e348] [cursor=pointer]
+      - heading "게임 선택" [level=3] [ref=e349]
+    - generic [ref=e350]:
+      - generic [ref=e351]:
+        - textbox "게임명 검색..." [ref=e352]
+        - button "✕" [ref=e353] [cursor=pointer]
+      - generic [ref=e354]:
+        - generic [ref=e358] [cursor=pointer]: 플레이리스트
+        - generic [ref=e364] [cursor=pointer]: 최근 본 게임
+        - generic [ref=e370] [cursor=pointer]: 실시간 베스트
+        - generic [ref=e377] [cursor=pointer]: 내 셀렉션
+        - generic [ref=e384] [cursor=pointer]: 컬렉션
+    - button "선택 완료" [ref=e388] [cursor=pointer]
+  - generic [ref=e390]:
+    - heading "선택된 게임" [level=4] [ref=e391]
+    - generic [ref=e392]: "0"
+  - generic [ref=e396]:
+    - generic [ref=e397]: AD
+    - link "릴스 110만뷰, 요즘 최고의 화제작 <태플> 6월 8일 10시 플레이만두 출시!" [ref=e398] [cursor=pointer]:
+      - /url: https://mkt.shopping.naver.com/link/6a2144a71e63133d2865d628
+      - img "릴스 110만뷰, 요즘 최고의 화제작 <태플> 6월 8일 10시 플레이만두 출시!" [ref=e399]
+  - generic [ref=e401]:
+    - generic [ref=e402]:
+      - heading "보드게임 순위" [level=1] [ref=e403]
+      - link "전체" [ref=e404] [cursor=pointer]:
+        - /url: /rank
+      - link "실시간" [ref=e405] [cursor=pointer]:
+        - /url: /rank/realtime
+      - link "수상작" [ref=e406] [cursor=pointer]:
+        - /url: /rank/awards
+      - link "내순위" [ref=e407] [cursor=pointer]:
+        - /url: /rank/me
+      - link "글쓰기" [ref=e409] [cursor=pointer]:
+        - /url: /write/text
+        - text: 글쓰기
+    - generic [ref=e411]:
+      - link "전체" [ref=e412] [cursor=pointer]:
+        - /url: /rank
+      - link "전략" [ref=e413] [cursor=pointer]:
+        - /url: /rank/all/strategy/1
+      - link "추상" [ref=e414] [cursor=pointer]:
+        - /url: /rank/all/abstract/1
+      - link "컬렉터블" [ref=e415] [cursor=pointer]:
+        - /url: /rank/all/customizable/1
+      - link "가족" [ref=e416] [cursor=pointer]:
+        - /url: /rank/all/family/1
+      - link "어린이" [ref=e417] [cursor=pointer]:
+        - /url: /rank/all/children/1
+      - link "파티" [ref=e418] [cursor=pointer]:
+        - /url: /rank/all/party/1
+      - link "테마" [ref=e419] [cursor=pointer]:
+        - /url: /rank/all/thematic/1
+      - link "워게임" [ref=e420] [cursor=pointer]:
+        - /url: /rank/all/war/1
+    - generic [ref=e422]:
+      - generic [ref=e423]:
+        - generic [ref=e424]: 순위
+        - generic [ref=e425]: 커버
+        - generic [ref=e427]: 게임 정보
+        - generic [ref=e428]: 내 점수
+        - generic [ref=e429]: 평점
+        - generic [ref=e430]: 컬렉션
+        - generic [ref=e431]: PLAY
+        - generic [ref=e432]: 공간
+        - generic [ref=e433]: 쇼핑
+      - generic [ref=e434]:
+        - generic [ref=e438]: "1"
+        - 'link "1위 - 브라스: 버밍엄 보드게임" [ref=e440] [cursor=pointer]':
+          - /url: /game/8569
+          - 'img "1위 - 브라스: 버밍엄 보드게임" [ref=e441]'
+        - generic [ref=e443]:
+          - 'link "브라스: 버밍엄" [ref=e445] [cursor=pointer]':
+            - /url: /game/8569
+          - generic [ref=e446]:
+            - generic [ref=e447]: "Brass: Birmingham"
+            - generic [ref=e448]: 2018년
+          - generic [ref=e449]: 전략적인 운하와 철도 건설로 네트워크를 확장해보세요!
+        - generic [ref=e450] [cursor=pointer]: "-"
+        - link "8.479" [ref=e451] [cursor=pointer]:
+          - /url: /game/8569/rate
+        - generic [ref=e453] [cursor=pointer]: "-"
+        - generic [ref=e455] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e456] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=8569
+          - generic [ref=e457]: 위치스브루
+          - generic [ref=e458]: 플레이보드
+        - link "250,000원 14,000원" [ref=e459] [cursor=pointer]:
+          - /url: /game/8569/shop
+          - generic [ref=e460]:
+            - generic [ref=e461]: 250,000원
+            - generic [ref=e462]: 14,000원
+      - generic [ref=e463]:
+        - generic [ref=e467]: "2"
+        - 'link "2위 - 세티: 외계의 지성체를 찾아서 보드게임" [ref=e469] [cursor=pointer]':
+          - /url: /game/19110
+          - 'img "2위 - 세티: 외계의 지성체를 찾아서 보드게임" [ref=e470]'
+        - generic [ref=e472]:
+          - 'link "세티: 외계의 지성체를 찾아서" [ref=e474] [cursor=pointer]':
+            - /url: /game/19110
+          - generic [ref=e475]:
+            - generic [ref=e476]: "SETI: Search for Extraterrestrial Intelligence"
+            - generic [ref=e477]: 2024년
+          - generic [ref=e478]: 우주를 향한 인류의 도전! 최첨단 기술을 활용해 외계 문명의 단서를 포착해보세요.
+        - generic [ref=e479] [cursor=pointer]: "-"
+        - link "8.452" [ref=e480] [cursor=pointer]:
+          - /url: /game/19110/rate
+        - generic [ref=e482] [cursor=pointer]: "-"
+        - generic [ref=e484] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e485] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=19110
+          - generic [ref=e486]: 위치스브루
+          - generic [ref=e487]: 플레이보드
+        - link "150,000원 1,000원" [ref=e488] [cursor=pointer]:
+          - /url: /game/19110/shop
+          - generic [ref=e489]:
+            - generic [ref=e490]: 150,000원
+            - generic [ref=e491]: 1,000원
+      - generic [ref=e492]:
+        - generic [ref=e496]: "3"
+        - 'link "3위 - 팬데믹 레거시: 시즌 1 보드게임" [ref=e498] [cursor=pointer]':
+          - /url: /game/5572
+          - 'img "3위 - 팬데믹 레거시: 시즌 1 보드게임" [ref=e499]'
+        - generic [ref=e501]:
+          - generic [ref=e502]:
+            - 'link "팬데믹 레거시: 시즌 1" [ref=e503] [cursor=pointer]':
+              - /url: /game/5572
+            - generic [ref=e506]: "1"
+          - generic [ref=e507]:
+            - generic [ref=e508]: "Pandemic Legacy: Season 1"
+            - generic [ref=e509]: 2015년
+          - generic [ref=e510]: 전 세계에 변이하는 질병이 확산되고 있습니다 - 당신의 팀은 인류를 구할 수 있을까요?
+        - generic [ref=e511] [cursor=pointer]: "-"
+        - link "8.358" [ref=e512] [cursor=pointer]:
+          - /url: /game/5572/rate
+        - generic [ref=e514] [cursor=pointer]: "-"
+        - generic [ref=e516] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e517] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=5572
+          - generic [ref=e518]: 위치스브루
+        - link "300,000원 20,000원" [ref=e519] [cursor=pointer]:
+          - /url: /game/5572/shop
+          - generic [ref=e520]:
+            - generic [ref=e521]: 300,000원
+            - generic [ref=e522]: 20,000원
+      - generic [ref=e523]:
+        - generic [ref=e527]: "4"
+        - link "4위 - 글룸헤이븐 보드게임" [ref=e529] [cursor=pointer]:
+          - /url: /game/5625
+          - img "4위 - 글룸헤이븐 보드게임" [ref=e530]
+        - generic [ref=e532]:
+          - generic [ref=e533]:
+            - link "글룸헤이븐" [ref=e534] [cursor=pointer]:
+              - /url: /game/5625
+            - generic [ref=e537]: "1"
+          - generic [ref=e538]:
+            - generic [ref=e539]: Gloomhaven
+            - generic [ref=e540]: 2017년
+          - generic [ref=e541]: 카드를 활용해 몬스터를 물리치고 퀘스트를 완료하며 멋진 이야기를 만들어보세요!
+        - generic [ref=e542] [cursor=pointer]: "-"
+        - link "8.342" [ref=e543] [cursor=pointer]:
+          - /url: /game/5625/rate
+        - generic [ref=e545] [cursor=pointer]: "-"
+        - generic [ref=e547] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e548] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=5625
+          - generic [ref=e549]: 위치스브루
+          - generic [ref=e550]: 플레이보드
+        - link "350,000원 33,000원" [ref=e551] [cursor=pointer]:
+          - /url: /game/5625/shop
+          - generic [ref=e552]:
+            - generic [ref=e553]: 350,000원
+            - generic [ref=e554]: 33,000원
+      - generic [ref=e555]:
+        - generic [ref=e559]: "5"
+        - 'link "5위 - 쓰루 디 에이지스: 문명에 관한 새로운 이야기 보드게임" [ref=e561] [cursor=pointer]':
+          - /url: /game/5660
+          - 'img "5위 - 쓰루 디 에이지스: 문명에 관한 새로운 이야기 보드게임" [ref=e562]'
+        - generic [ref=e564]:
+          - 'link "쓰루 디 에이지스: 문명에 관한 새로운 이야기" [ref=e566] [cursor=pointer]':
+            - /url: /game/5660
+          - generic [ref=e567]:
+            - generic [ref=e568]: "Through the Ages: A New Story of Civilization"
+            - generic [ref=e569]: 2015년
+          - generic [ref=e570]: 역사를 통해 자기만의 길을 개척하며 시대를 초월하는 문명을 설계하세요.
+        - generic [ref=e571] [cursor=pointer]: "-"
+        - link "8.314" [ref=e572] [cursor=pointer]:
+          - /url: /game/5660/rate
+        - generic [ref=e574] [cursor=pointer]: "-"
+        - generic [ref=e576] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e577] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=5660
+          - generic [ref=e578]: 위치스브루
+        - link "200,000원 30,000원" [ref=e579] [cursor=pointer]:
+          - /url: /game/5660/shop
+          - generic [ref=e580]:
+            - generic [ref=e581]: 200,000원
+            - generic [ref=e582]: 30,000원
+      - generic [ref=e583]:
+        - generic [ref=e587]: "6"
+        - link "6위 - 칸반 EV 보드게임" [ref=e589] [cursor=pointer]:
+          - /url: /game/12189
+          - img "6위 - 칸반 EV 보드게임" [ref=e590]
+        - generic [ref=e592]:
+          - generic [ref=e593]:
+            - link "칸반 EV" [ref=e594] [cursor=pointer]:
+              - /url: /game/12189
+            - generic [ref=e597]: "1"
+          - generic [ref=e598]:
+            - generic [ref=e599]: Kanban EV
+            - generic [ref=e600]: 2020년
+          - generic [ref=e601]: 전기차 생산 라인을 운영하며 효율과 성과를 극대화해보세요!
+        - generic [ref=e602] [cursor=pointer]: "-"
+        - link "8.288" [ref=e603] [cursor=pointer]:
+          - /url: /game/12189/rate
+        - generic [ref=e605] [cursor=pointer]: "-"
+        - generic [ref=e607] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e608] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=12189
+          - generic [ref=e609]: 위치스브루
+        - link "500,000원 180,000원" [ref=e610] [cursor=pointer]:
+          - /url: /game/12189/shop
+          - generic [ref=e611]:
+            - generic [ref=e612]: 500,000원
+            - generic [ref=e613]: 180,000원
+      - generic [ref=e614]:
+        - generic [ref=e618]: "7"
+        - link "7위 - 가이아 프로젝트 보드게임" [ref=e620] [cursor=pointer]:
+          - /url: /game/9210
+          - img "7위 - 가이아 프로젝트 보드게임" [ref=e621]
+        - generic [ref=e623]:
+          - generic [ref=e624]:
+            - link "가이아 프로젝트" [ref=e625] [cursor=pointer]:
+              - /url: /game/9210
+            - generic [ref=e628]: "1"
+          - generic [ref=e629]:
+            - generic [ref=e630]: Gaia Project
+            - generic [ref=e631]: 2017년
+          - generic [ref=e632]: 전략적인 행성 개척과 자원 관리로 나만의 우주 제국을 확장해보세요!
+        - generic [ref=e633] [cursor=pointer]: "-"
+        - link "8.282" [ref=e634] [cursor=pointer]:
+          - /url: /game/9210/rate
+        - generic [ref=e636] [cursor=pointer]: "-"
+        - generic [ref=e638] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e639] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=9210
+          - generic [ref=e640]: 위치스브루
+          - generic [ref=e641]: 플레이보드
+        - link "999,999원 50,000원" [ref=e642] [cursor=pointer]:
+          - /url: /game/9210/shop
+          - generic [ref=e643]:
+            - generic [ref=e644]: 999,999원
+            - generic [ref=e645]: 50,000원
+      - generic [ref=e646]:
+        - generic [ref=e650]: "8"
+        - link "8위 - 버건디의 성 보드게임" [ref=e652] [cursor=pointer]:
+          - /url: /game/421
+          - img "8위 - 버건디의 성 보드게임" [ref=e653]
+        - generic [ref=e655]:
+          - link "버건디의 성" [ref=e657] [cursor=pointer]:
+            - /url: /game/421
+          - generic [ref=e658]:
+            - generic [ref=e659]: The Castles of Burgundy
+            - generic [ref=e660]: 2011년
+          - generic [ref=e661]: 다양한 타일을 조합해 효율적인 콤보를 완성하세요!
+        - generic [ref=e662] [cursor=pointer]: "-"
+        - link "8.277" [ref=e663] [cursor=pointer]:
+          - /url: /game/421/rate
+        - generic [ref=e665] [cursor=pointer]: "-"
+        - generic [ref=e667] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e668] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=421
+          - generic [ref=e669]: 위치스브루
+          - generic [ref=e670]: 플레이보드
+        - link "20,000원 20,000원" [ref=e671] [cursor=pointer]:
+          - /url: /game/421/shop
+          - generic [ref=e672]:
+            - generic [ref=e673]: 20,000원
+            - generic [ref=e674]: 20,000원
+      - generic [ref=e675]:
+        - generic [ref=e679]: "9"
+        - link [ref=e681] [cursor=pointer]:
+          - /url: /game/13341
+        - generic [ref=e683]:
+          - link "아르낙의 잊혀진 유적" [ref=e685] [cursor=pointer]:
+            - /url: /game/13341
+          - generic [ref=e686]:
+            - generic [ref=e687]: Lost Ruins of Arnak
+            - generic [ref=e688]: 2020년
+          - generic [ref=e689]: 섬을 탐험하며 자원을 찾고, 아르낙의 잊혀진 유적을 발견하세요!
+        - generic [ref=e690] [cursor=pointer]: "-"
+        - link "8.243" [ref=e691] [cursor=pointer]:
+          - /url: /game/13341/rate
+        - generic [ref=e693] [cursor=pointer]: "-"
+        - generic [ref=e695] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e696] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=13341
+          - generic [ref=e697]: 위치스브루
+          - generic [ref=e698]: 플레이보드
+        - link "510,000원 1,001원" [ref=e699] [cursor=pointer]:
+          - /url: /game/13341/shop
+          - generic [ref=e700]:
+            - generic [ref=e701]: 510,000원
+            - generic [ref=e702]: 1,001원
+      - generic [ref=e703]:
+        - generic [ref=e707]: "10"
+        - generic [ref=e708]:
+          - link "10위 - 버라지 보드게임":
+            - /url: /game/9804
+            - img "10위 - 버라지 보드게임"
+        - generic [ref=e710]:
+          - generic [ref=e711]:
+            - link "버라지" [ref=e712] [cursor=pointer]:
+              - /url: /game/9804
+            - generic [ref=e715]: "1"
+          - generic [ref=e716]:
+            - generic [ref=e717]: Barrage
+            - generic [ref=e718]: 2019년
+          - generic [ref=e719]: 물을 통제하고 발전소를 운영해 전력을 생산하며 산업 경쟁에서 우위를 점해보세요!
+        - generic [ref=e720] [cursor=pointer]: "-"
+        - link "8.235" [ref=e721] [cursor=pointer]:
+          - /url: /game/9804/rate
+        - generic [ref=e723] [cursor=pointer]: "-"
+        - generic [ref=e725] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e726] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=9804
+          - generic [ref=e727]: 위치스브루
+          - generic [ref=e728]: 플레이보드
+        - link "320,000원 17,000원" [ref=e729] [cursor=pointer]:
+          - /url: /game/9804/shop
+          - generic [ref=e730]:
+            - generic [ref=e731]: 320,000원
+            - generic [ref=e732]: 17,000원
+      - generic [ref=e733]:
+        - generic [ref=e737]: "11"
+        - generic [ref=e738]:
+          - link "11위 - 황혼의 투쟁 보드게임":
+            - /url: /game/348
+            - img "11위 - 황혼의 투쟁 보드게임"
+        - generic [ref=e740]:
+          - generic [ref=e741]:
+            - link "황혼의 투쟁" [ref=e742] [cursor=pointer]:
+              - /url: /game/348
+            - generic [ref=e745]: "1"
+          - generic [ref=e746]:
+            - generic [ref=e747]: Twilight Struggle
+            - generic [ref=e748]: 2005년
+          - generic [ref=e749]: 역사적 사건을 활용해 전략적으로 영향력을 확장하며 냉전 시대 초강대국의 패권을 쟁취하세요!
+        - generic [ref=e750] [cursor=pointer]: "-"
+        - link "8.234" [ref=e751] [cursor=pointer]:
+          - /url: /game/348/rate
+        - generic [ref=e753] [cursor=pointer]: "-"
+        - generic [ref=e755] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e756] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=348
+          - generic [ref=e757]: 위치스브루
+          - generic [ref=e758]: 플레이보드
+        - link "130,000원 30,000원" [ref=e759] [cursor=pointer]:
+          - /url: /game/348/shop
+          - generic [ref=e760]:
+            - generic [ref=e761]: 130,000원
+            - generic [ref=e762]: 30,000원
+      - generic [ref=e763]:
+        - generic [ref=e767]: "12"
+        - link [ref=e769] [cursor=pointer]:
+          - /url: /game/90
+        - generic [ref=e771]:
+          - link "푸에르토리코" [ref=e773] [cursor=pointer]:
+            - /url: /game/90
+          - generic [ref=e774]:
+            - generic [ref=e775]: Puerto Rico
+            - generic [ref=e776]: 2002년
+          - generic [ref=e777]: 역할 선택으로 생산과 무역의 흐름을 주도하세요!
+        - generic [ref=e778] [cursor=pointer]: "-"
+        - link "8.219" [ref=e779] [cursor=pointer]:
+          - /url: /game/90/rate
+        - generic [ref=e781] [cursor=pointer]: "-"
+        - generic [ref=e783] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e784] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=90
+          - generic [ref=e785]: 위치스브루
+          - generic [ref=e786]: 플레이보드
+        - link "35,000원 3,000원" [ref=e787] [cursor=pointer]:
+          - /url: /game/90/shop
+          - generic [ref=e788]:
+            - generic [ref=e789]: 35,000원
+            - generic [ref=e790]: 3,000원
+      - generic [ref=e791]:
+        - generic [ref=e795]: "13"
+        - link [ref=e797] [cursor=pointer]:
+          - /url: /game/5222
+        - generic [ref=e799]:
+          - link "7 원더스 대결" [ref=e801] [cursor=pointer]:
+            - /url: /game/5222
+          - generic [ref=e802]:
+            - generic [ref=e803]: 7 Wonders Duel
+            - generic [ref=e804]: 2015년
+          - generic [ref=e805]: 카드를 선택하고 문명을 발전시켜 상대보다 앞서 승리를 쟁취해보세요!
+        - generic [ref=e806] [cursor=pointer]: "-"
+        - link "8.205" [ref=e807] [cursor=pointer]:
+          - /url: /game/5222/rate
+        - generic [ref=e809] [cursor=pointer]: "-"
+        - generic [ref=e811] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e812] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=5222
+          - generic [ref=e813]: 위치스브루
+          - generic [ref=e814]: 플레이보드
+        - link "170,000원 7,000원" [ref=e815] [cursor=pointer]:
+          - /url: /game/5222/shop
+          - generic [ref=e816]:
+            - generic [ref=e817]: 170,000원
+            - generic [ref=e818]: 7,000원
+      - generic [ref=e819]:
+        - generic [ref=e823]: "14"
+        - link [ref=e825] [cursor=pointer]:
+          - /url: /game/8567
+        - generic [ref=e827]:
+          - 'link "브라스: 랭커셔" [ref=e829] [cursor=pointer]':
+            - /url: /game/8567
+          - generic [ref=e830]:
+            - generic [ref=e831]: "Brass: Lancashire"
+            - generic [ref=e832]: 2017년
+          - generic [ref=e833]: 산업혁명 시대, 자원과 네트워크를 활용해 경제적 영향력을 확장해보세요!
+        - generic [ref=e834] [cursor=pointer]: "-"
+        - link "8.196" [ref=e835] [cursor=pointer]:
+          - /url: /game/8567/rate
+        - generic [ref=e837] [cursor=pointer]: "-"
+        - generic [ref=e839] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e840] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=8567
+          - generic [ref=e841]: 위치스브루
+          - generic [ref=e842]: 플레이보드
+        - link "300,000원 30,000원" [ref=e843] [cursor=pointer]:
+          - /url: /game/8567/shop
+          - generic [ref=e844]:
+            - generic [ref=e845]: 300,000원
+            - generic [ref=e846]: 30,000원
+      - generic [ref=e847]:
+        - generic [ref=e851]: "15"
+        - link [ref=e853] [cursor=pointer]:
+          - /url: /game/14832
+        - generic [ref=e855]:
+          - generic [ref=e856]:
+            - link "아크 노바" [ref=e857] [cursor=pointer]:
+              - /url: /game/14832
+            - generic [ref=e860]: "1"
+          - generic [ref=e861]:
+            - generic [ref=e862]: Ark Nova
+            - generic [ref=e863]: 2021년
+          - generic [ref=e864]: 보존 프로젝트를 지원하는 현대적이고 과학적인 동물원을 설계하고 건설하세요.
+        - generic [ref=e865] [cursor=pointer]: "-"
+        - link "8.195" [ref=e866] [cursor=pointer]:
+          - /url: /game/14832/rate
+        - generic [ref=e868] [cursor=pointer]: "-"
+        - generic [ref=e870] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e871] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=14832
+          - generic [ref=e872]: 위치스브루
+          - generic [ref=e873]: 플레이보드
+        - link "400,000원 3,000원" [ref=e874] [cursor=pointer]:
+          - /url: /game/14832/shop
+          - generic [ref=e875]:
+            - generic [ref=e876]: 400,000원
+            - generic [ref=e877]: 3,000원
+      - generic [ref=e880]:
+        - generic [ref=e881]: AD
+        - link [ref=e882] [cursor=pointer]:
+          - /url: https://boardlife.co.kr/notice.php?number=1
+      - generic [ref=e883]:
+        - generic [ref=e887]: "16"
+        - link [ref=e889] [cursor=pointer]:
+          - /url: /game/519
+        - generic [ref=e891]:
+          - generic [ref=e892]:
+            - link "메이지 나이트" [ref=e893] [cursor=pointer]:
+              - /url: /game/519
+            - generic [ref=e896]: "1"
+          - generic [ref=e897]:
+            - generic [ref=e898]: Mage Knight Board Game
+            - generic [ref=e899]: 2011년
+          - generic [ref=e900]: 영웅이 되어 탐험과 전투, 성장의 선택 속에서 자신만의 전설을 만들어보세요!
+        - generic [ref=e901] [cursor=pointer]: "-"
+        - link "8.191" [ref=e902] [cursor=pointer]:
+          - /url: /game/519/rate
+        - generic [ref=e904] [cursor=pointer]: "-"
+        - generic [ref=e906] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e907] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=519
+          - generic [ref=e908]: 위치스브루
+          - generic [ref=e909]: 플레이보드
+        - link "250,000원 40,000원" [ref=e910] [cursor=pointer]:
+          - /url: /game/519/shop
+          - generic [ref=e911]:
+            - generic [ref=e912]: 250,000원
+            - generic [ref=e913]: 40,000원
+      - generic [ref=e914]:
+        - generic [ref=e918]: "17"
+        - link [ref=e920] [cursor=pointer]:
+          - /url: /game/7501
+        - generic [ref=e922]:
+          - generic [ref=e923]:
+            - 'link "아컴 호러: 카드 게임" [ref=e924] [cursor=pointer]':
+              - /url: /game/7501
+            - generic [ref=e927]: "1"
+          - generic [ref=e928]:
+            - generic [ref=e929]: "Arkham Horror: The Card Game"
+            - generic [ref=e930]: 2016년
+          - generic [ref=e931]: 미스터리한 사건을 조사하며 공포에 맞서 생존과 진실을 밝혀내세요!
+        - generic [ref=e932] [cursor=pointer]: "-"
+        - link "8.187" [ref=e933] [cursor=pointer]:
+          - /url: /game/7501/rate
+        - generic [ref=e935] [cursor=pointer]: "-"
+        - generic [ref=e937] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e938] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=7501
+          - generic [ref=e939]: 위치스브루
+          - generic [ref=e940]: 플레이보드
+        - link "3,400,000원 7,000원" [ref=e941] [cursor=pointer]:
+          - /url: /game/7501/shop
+          - generic [ref=e942]:
+            - generic [ref=e943]: 3,400,000원
+            - generic [ref=e944]: 7,000원
+      - generic [ref=e945]:
+        - generic [ref=e949]: "18"
+        - link [ref=e951] [cursor=pointer]:
+          - /url: /game/9071
+        - generic [ref=e953]:
+          - generic [ref=e954]:
+            - link "정령섬" [ref=e955] [cursor=pointer]:
+              - /url: /game/9071
+            - generic [ref=e958]: "1"
+          - generic [ref=e959]:
+            - generic [ref=e960]: Spirit Island
+            - generic [ref=e961]: 2017년
+          - generic [ref=e962]: 정령이 되어 능력을 강화하고, 자연과 거주민을 위협하는 침략자들로부터 섬을 수호하세요.
+        - generic [ref=e963] [cursor=pointer]: "-"
+        - link "8.158" [ref=e964] [cursor=pointer]:
+          - /url: /game/9071/rate
+        - generic [ref=e966] [cursor=pointer]: "-"
+        - generic [ref=e968] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e969] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=9071
+          - generic [ref=e970]: 위치스브루
+          - generic [ref=e971]: 플레이보드
+        - link "540,000원 30,000원" [ref=e972] [cursor=pointer]:
+          - /url: /game/9071/shop
+          - generic [ref=e973]:
+            - generic [ref=e974]: 540,000원
+            - generic [ref=e975]: 30,000원
+      - generic [ref=e976]:
+        - generic [ref=e980]: "19"
+        - link [ref=e982] [cursor=pointer]:
+          - /url: /game/16070
+        - generic [ref=e984]:
+          - generic [ref=e985]:
+            - 'link "머더 미스터리 미니: 웬디, 어른이 되렴" [ref=e986] [cursor=pointer]':
+              - /url: /game/16070
+            - generic [ref=e989]: "1"
+          - generic [ref=e990]:
+            - generic [ref=e991]: "Murder Mystery Mini : Wendy, Grow Up"
+            - generic [ref=e992]: 2021년
+          - generic [ref=e993]: 숨겨진 진실을 추리하며 사건의 전말을 밝혀보세요!
+        - generic [ref=e994] [cursor=pointer]: "-"
+        - link "8.150" [ref=e995] [cursor=pointer]:
+          - /url: /game/16070/rate
+        - generic [ref=e997] [cursor=pointer]: "-"
+        - generic [ref=e999] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1000] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=16070
+          - generic [ref=e1001]: 위치스브루
+          - generic [ref=e1002]: 플레이보드
+        - link "170,000원 17,000원" [ref=e1003] [cursor=pointer]:
+          - /url: /game/16070/shop
+          - generic [ref=e1004]:
+            - generic [ref=e1005]: 170,000원
+            - generic [ref=e1006]: 17,000원
+      - generic [ref=e1007]:
+        - generic [ref=e1011]: "20"
+        - link [ref=e1013] [cursor=pointer]:
+          - /url: /game/6501
+        - generic [ref=e1015]:
+          - generic [ref=e1016]:
+            - link "테라포밍 마스" [ref=e1017] [cursor=pointer]:
+              - /url: /game/6501
+            - generic [ref=e1020]: "1"
+          - generic [ref=e1021]:
+            - generic [ref=e1022]: Terraforming Mars
+            - generic [ref=e1023]: 2016년
+          - generic [ref=e1024]: 기업을 운영하며 자원을 모아 화성을 지구화하는 프로젝트를 진행하세요!
+        - generic [ref=e1025] [cursor=pointer]: "-"
+        - link "8.145" [ref=e1026] [cursor=pointer]:
+          - /url: /game/6501/rate
+        - generic [ref=e1028] [cursor=pointer]: "-"
+        - generic [ref=e1030] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1031] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=6501
+          - generic [ref=e1032]: 위치스브루
+          - generic [ref=e1033]: 플레이보드
+        - link "350,000원 20,000원" [ref=e1034] [cursor=pointer]:
+          - /url: /game/6501/shop
+          - generic [ref=e1035]:
+            - generic [ref=e1036]: 350,000원
+            - generic [ref=e1037]: 20,000원
+      - generic [ref=e1038]:
+        - generic [ref=e1042]: "21"
+        - link [ref=e1044] [cursor=pointer]:
+          - /url: /game/17208
+        - generic [ref=e1046]:
+          - generic [ref=e1047]:
+            - link "갤럭틱 크루즈" [ref=e1048] [cursor=pointer]:
+              - /url: /game/17208
+            - generic [ref=e1051]: "4"
+          - generic [ref=e1052]:
+            - generic [ref=e1053]: Galactic Cruise
+            - generic [ref=e1054]: 2024년
+          - generic [ref=e1055]: 우주 관광 시대, 승객을 유치하고 최고의 우주 여행 회사를 운영해보세요!
+        - generic [ref=e1056] [cursor=pointer]: "-"
+        - link "8.143" [ref=e1057] [cursor=pointer]:
+          - /url: /game/17208/rate
+        - generic [ref=e1059] [cursor=pointer]: "-"
+        - generic [ref=e1061] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1062] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=17208
+          - generic [ref=e1063]: 위치스브루
+          - generic [ref=e1064]: 플레이보드
+        - link "300,000원" [ref=e1065] [cursor=pointer]:
+          - /url: /game/17208/shop
+          - generic [ref=e1067]: 300,000원
+      - generic [ref=e1068]:
+        - generic [ref=e1072]: "22"
+        - link [ref=e1074] [cursor=pointer]:
+          - /url: /game/14443
+        - generic [ref=e1076]:
+          - 'link "헤게모니: 당신의 사회 계층을 승리로 이끄세요" [ref=e1078] [cursor=pointer]':
+            - /url: /game/14443
+          - generic [ref=e1079]:
+            - generic [ref=e1080]: "Hegemony: Lead Your Class to Victory"
+            - generic [ref=e1081]: 2023년
+          - generic [ref=e1082]: 사회 계층간 갈등과 협력을 통해 승리를 쟁취해보세요!
+        - generic [ref=e1083] [cursor=pointer]: "-"
+        - link "8.130" [ref=e1084] [cursor=pointer]:
+          - /url: /game/14443/rate
+        - generic [ref=e1086] [cursor=pointer]: "-"
+        - generic [ref=e1088] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1089] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=14443
+          - generic [ref=e1090]: 위치스브루
+          - generic [ref=e1091]: 플레이보드
+        - link "220,000원 100,000원" [ref=e1092] [cursor=pointer]:
+          - /url: /game/14443/shop
+          - generic [ref=e1093]:
+            - generic [ref=e1094]: 220,000원
+            - generic [ref=e1095]: 100,000원
+      - generic [ref=e1096]:
+        - generic [ref=e1100]: "23"
+        - link [ref=e1102] [cursor=pointer]:
+          - /url: /game/5603
+        - generic [ref=e1104]:
+          - link "그랜드 오스트리아 호텔" [ref=e1106] [cursor=pointer]:
+            - /url: /game/5603
+          - generic [ref=e1107]:
+            - generic [ref=e1108]: Grand Austria Hotel
+            - generic [ref=e1109]: 2015년
+          - generic [ref=e1110]: 직원을 고용하고 귀빈을 초대하며 최고의 호텔을 만들어보세요!
+        - generic [ref=e1111] [cursor=pointer]: "-"
+        - link "8.096" [ref=e1112] [cursor=pointer]:
+          - /url: /game/5603/rate
+        - generic [ref=e1114] [cursor=pointer]: "-"
+        - generic [ref=e1116] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1117] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=5603
+          - generic [ref=e1118]: 위치스브루
+          - generic [ref=e1119]: 플레이보드
+        - link "550,000원 60,000원" [ref=e1120] [cursor=pointer]:
+          - /url: /game/5603/shop
+          - generic [ref=e1121]:
+            - generic [ref=e1122]: 550,000원
+            - generic [ref=e1123]: 60,000원
+      - generic [ref=e1124]:
+        - generic [ref=e1128]: "24"
+        - link [ref=e1130] [cursor=pointer]:
+          - /url: /game/5986
+        - generic [ref=e1132]:
+          - generic [ref=e1133]:
+            - 'link "스타워즈: 리벨리온" [ref=e1134] [cursor=pointer]':
+              - /url: /game/5986
+            - generic [ref=e1137]: "1"
+          - generic [ref=e1138]:
+            - generic [ref=e1139]: "Star Wars: Rebellion"
+            - generic [ref=e1140]: 2016년
+          - generic [ref=e1141]: 은하 제국과 반란군의 대결 속에서 전략과 전술로 운명을 결정지어보세요!
+        - generic [ref=e1142] [cursor=pointer]: "-"
+        - link "8.095" [ref=e1143] [cursor=pointer]:
+          - /url: /game/5986/rate
+        - generic [ref=e1145] [cursor=pointer]: "-"
+        - generic [ref=e1147] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e1148] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=5986
+          - generic [ref=e1149]: 위치스브루
+        - link "185,000원 50,000원" [ref=e1150] [cursor=pointer]:
+          - /url: /game/5986/shop
+          - generic [ref=e1151]:
+            - generic [ref=e1152]: 185,000원
+            - generic [ref=e1153]: 50,000원
+      - generic [ref=e1154]:
+        - generic [ref=e1158]: "25"
+        - link [ref=e1160] [cursor=pointer]:
+          - /url: /game/561
+        - generic [ref=e1162]:
+          - generic [ref=e1163]:
+            - link "아그리콜라" [ref=e1164] [cursor=pointer]:
+              - /url: /game/561
+            - generic [ref=e1167]: "1"
+          - generic [ref=e1168]:
+            - generic [ref=e1169]: Agricola
+            - generic [ref=e1170]: 2007년
+          - generic [ref=e1171]: 가족을 부양하며 농장을 일구고 자원을 관리해 안정적인 삶을 구축해보세요!
+        - generic [ref=e1172] [cursor=pointer]: "-"
+        - link "8.071" [ref=e1173] [cursor=pointer]:
+          - /url: /game/561/rate
+        - generic [ref=e1175] [cursor=pointer]: "-"
+        - generic [ref=e1177] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1178] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=561
+          - generic [ref=e1179]: 위치스브루
+          - generic [ref=e1180]: 플레이보드
+        - link "73,000원 30,000원" [ref=e1181] [cursor=pointer]:
+          - /url: /game/561/shop
+          - generic [ref=e1182]:
+            - generic [ref=e1183]: 73,000원
+            - generic [ref=e1184]: 30,000원
+      - generic [ref=e1185]:
+        - generic [ref=e1189]: "26"
+        - link [ref=e1191] [cursor=pointer]:
+          - /url: /game/5963
+        - generic [ref=e1193]:
+          - generic [ref=e1194]:
+            - link "리스보아" [ref=e1195] [cursor=pointer]:
+              - /url: /game/5963
+            - generic [ref=e1198]: "1"
+          - generic [ref=e1199]:
+            - generic [ref=e1200]: Lisboa
+            - generic [ref=e1201]: 2017년
+          - generic [ref=e1202]: 무너진 도시를 다시 일으켜 정치·경제·건축을 한 손에 틀어쥐는 재건의 거장에 도전하세요!
+        - generic [ref=e1203] [cursor=pointer]: "-"
+        - link "8.070" [ref=e1204] [cursor=pointer]:
+          - /url: /game/5963/rate
+        - generic [ref=e1206] [cursor=pointer]: "-"
+        - generic [ref=e1208] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1209] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=5963
+          - generic [ref=e1210]: 위치스브루
+          - generic [ref=e1211]: 플레이보드
+        - link "320,000원 190,000원" [ref=e1212] [cursor=pointer]:
+          - /url: /game/5963/shop
+          - generic [ref=e1213]:
+            - generic [ref=e1214]: 320,000원
+            - generic [ref=e1215]: 190,000원
+      - generic [ref=e1216]:
+        - generic [ref=e1220]: "27"
+        - link [ref=e1222] [cursor=pointer]:
+          - /url: /game/395
+        - generic [ref=e1224]:
+          - generic [ref=e1225]:
+            - link "르아브르" [ref=e1226] [cursor=pointer]:
+              - /url: /game/395
+            - generic [ref=e1229]: "1"
+          - generic [ref=e1230]:
+            - generic [ref=e1231]: Le Havre
+            - generic [ref=e1232]: 2008년
+          - generic [ref=e1233]: 항구 도시에서 자원을 가공하고 건물을 활용해 부를 축적해보세요!
+        - generic [ref=e1234] [cursor=pointer]: "-"
+        - link "8.061" [ref=e1235] [cursor=pointer]:
+          - /url: /game/395/rate
+        - generic [ref=e1237] [cursor=pointer]: "-"
+        - generic [ref=e1239] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1240] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=395
+          - generic [ref=e1241]: 위치스브루
+          - generic [ref=e1242]: 플레이보드
+        - link "400,000원 20,000원" [ref=e1243] [cursor=pointer]:
+          - /url: /game/395/shop
+          - generic [ref=e1244]:
+            - generic [ref=e1245]: 400,000원
+            - generic [ref=e1246]: 20,000원
+      - generic [ref=e1247]:
+        - generic [ref=e1251]: "28"
+        - link [ref=e1253] [cursor=pointer]:
+          - /url: /game/13512
+        - generic [ref=e1255]:
+          - generic [ref=e1256]:
+            - link "카네기" [ref=e1257] [cursor=pointer]:
+              - /url: /game/13512
+            - generic [ref=e1260]: "2"
+          - generic [ref=e1261]:
+            - generic [ref=e1262]: Carnegie
+            - generic [ref=e1263]: 2020년
+          - generic [ref=e1264]: 미국 산업혁명의 한복판에서 자본과 이상을 저울질하며 진정한 기업가 정신을 증명하세요!
+        - generic [ref=e1265] [cursor=pointer]: "-"
+        - link "8.053" [ref=e1266] [cursor=pointer]:
+          - /url: /game/13512/rate
+        - generic [ref=e1268] [cursor=pointer]: "-"
+        - generic [ref=e1270] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1271] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=13512
+          - generic [ref=e1272]: 위치스브루
+          - generic [ref=e1273]: 플레이보드
+        - link "160,000원 90,000원" [ref=e1274] [cursor=pointer]:
+          - /url: /game/13512/shop
+          - generic [ref=e1275]:
+            - generic [ref=e1276]: 160,000원
+            - generic [ref=e1277]: 90,000원
+      - generic [ref=e1278]:
+        - generic [ref=e1282]: "29"
+        - link [ref=e1284] [cursor=pointer]:
+          - /url: /game/6550
+        - generic [ref=e1286]:
+          - generic [ref=e1287]:
+            - link "오딘을 위하여" [ref=e1288] [cursor=pointer]:
+              - /url: /game/6550
+            - generic [ref=e1291]: "3"
+          - generic [ref=e1292]:
+            - generic [ref=e1293]: A Feast for Odin
+            - generic [ref=e1294]: 2016년
+          - generic [ref=e1295]: 북구의 바람 속에서 자원을 모아 영광을 넓혀가는 깊이 있는 확장 전략을 경험해보세요!
+        - generic [ref=e1296] [cursor=pointer]: "-"
+        - link "8.051" [ref=e1297] [cursor=pointer]:
+          - /url: /game/6550/rate
+        - generic [ref=e1299] [cursor=pointer]: "-"
+        - generic [ref=e1301] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1302] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=6550
+          - generic [ref=e1303]: 위치스브루
+          - generic [ref=e1304]: 플레이보드
+        - link "999,999원 80,000원" [ref=e1305] [cursor=pointer]:
+          - /url: /game/6550/shop
+          - generic [ref=e1306]:
+            - generic [ref=e1307]: 999,999원
+            - generic [ref=e1308]: 80,000원
+      - generic [ref=e1309]:
+        - generic [ref=e1313]: "30"
+        - link [ref=e1315] [cursor=pointer]:
+          - /url: /game/8735
+        - generic [ref=e1317]:
+          - generic [ref=e1318]:
+            - link "클랜 오브 칼레도니아" [ref=e1319] [cursor=pointer]:
+              - /url: /game/8735
+            - generic [ref=e1322]: "1"
+          - generic [ref=e1323]:
+            - generic [ref=e1324]: Clans of Caledonia
+            - generic [ref=e1325]: 2017년
+          - generic [ref=e1326]: 19세기 스코틀랜드를 배경으로 자원과 생산을 관리해 경제 제국을 구축해보세요!
+        - generic [ref=e1327] [cursor=pointer]: "-"
+        - link "8.042" [ref=e1328] [cursor=pointer]:
+          - /url: /game/8735/rate
+        - generic [ref=e1330] [cursor=pointer]: "-"
+        - generic [ref=e1332] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1333] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=8735
+          - generic [ref=e1334]: 위치스브루
+          - generic [ref=e1335]: 플레이보드
+        - link "200,000원 59,000원" [ref=e1336] [cursor=pointer]:
+          - /url: /game/8735/shop
+          - generic [ref=e1337]:
+            - generic [ref=e1338]: 200,000원
+            - generic [ref=e1339]: 59,000원
+      - generic [ref=e1342]:
+        - generic [ref=e1343]: AD
+        - link [ref=e1344] [cursor=pointer]:
+          - /url: https://mkt.shopping.naver.com/link/6a16a01e1a6e247ec455c904
+      - generic [ref=e1345]:
+        - generic [ref=e1349]: "31"
+        - link [ref=e1351] [cursor=pointer]:
+          - /url: /game/17007
+        - generic [ref=e1353]:
+          - generic [ref=e1354]:
+            - 'link "엔데버: 심해" [ref=e1355] [cursor=pointer]':
+              - /url: /game/17007
+            - generic [ref=e1358]: "2"
+          - generic [ref=e1359]:
+            - generic [ref=e1360]: "Endeavor: Deep Sea"
+            - generic [ref=e1361]: 2024년
+          - generic [ref=e1362]: 바닷속 깊은 곳을 조사해 과학적 업적을 남겨보세요!
+        - generic [ref=e1363] [cursor=pointer]: "-"
+        - link "8.040" [ref=e1364] [cursor=pointer]:
+          - /url: /game/17007/rate
+        - generic [ref=e1366] [cursor=pointer]: "-"
+        - generic [ref=e1368] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1369] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=17007
+          - generic [ref=e1370]: 위치스브루
+          - generic [ref=e1371]: 플레이보드
+        - link "100,000원 70,000원" [ref=e1372] [cursor=pointer]:
+          - /url: /game/17007/shop
+          - generic [ref=e1373]:
+            - generic [ref=e1374]: 100,000원
+            - generic [ref=e1375]: 70,000원
+      - generic [ref=e1376]:
+        - generic [ref=e1380]: "32"
+        - link [ref=e1382] [cursor=pointer]:
+          - /url: /game/18671
+        - generic [ref=e1384]:
+          - generic [ref=e1385]:
+            - link "스피크이지" [ref=e1386] [cursor=pointer]:
+              - /url: /game/18671
+            - generic [ref=e1389]: "8"
+          - generic [ref=e1390]:
+            - generic [ref=e1391]: Speakeasy
+            - generic [ref=e1392]: 2025년
+          - generic [ref=e1393]: 금주법 시대의 비밀 바를 운영하며, 거래와 접선으로 세력을 확장해보세요!
+        - generic [ref=e1394] [cursor=pointer]: "-"
+        - link "8.027" [ref=e1395] [cursor=pointer]:
+          - /url: /game/18671/rate
+        - generic [ref=e1397] [cursor=pointer]: "-"
+        - generic [ref=e1399] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e1400] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=18671
+          - generic [ref=e1401]: 위치스브루
+        - link "340,000원 80,000원" [ref=e1402] [cursor=pointer]:
+          - /url: /game/18671/shop
+          - generic [ref=e1403]:
+            - generic [ref=e1404]: 340,000원
+            - generic [ref=e1405]: 80,000원
+      - generic [ref=e1406]:
+        - generic [ref=e1410]: "33"
+        - link [ref=e1412] [cursor=pointer]:
+          - /url: /game/9150
+        - generic [ref=e1414]:
+          - 'link "팬데믹 레거시: 시즌 2" [ref=e1416] [cursor=pointer]':
+            - /url: /game/9150
+          - generic [ref=e1417]:
+            - generic [ref=e1418]: "Pandemic Legacy: Season 2"
+            - generic [ref=e1419]: 2017년
+          - generic [ref=e1420]: 붕괴된 세계에서 희망의 불씨를 되살리기 위해 생존과 선택의 무게를 직면하세요!
+        - generic [ref=e1421] [cursor=pointer]: "-"
+        - link "8.019" [ref=e1422] [cursor=pointer]:
+          - /url: /game/9150/rate
+        - generic [ref=e1424] [cursor=pointer]: "-"
+        - generic [ref=e1426] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e1427] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=9150
+          - generic [ref=e1428]: 위치스브루
+        - link "70,000원" [ref=e1429] [cursor=pointer]:
+          - /url: /game/9150/shop
+          - generic [ref=e1431]: 70,000원
+      - generic [ref=e1432]:
+        - generic [ref=e1436]: "34"
+        - link [ref=e1438] [cursor=pointer]:
+          - /url: /game/7362
+        - generic [ref=e1440]:
+          - generic [ref=e1441]:
+            - link "위대한 로렌초" [ref=e1442] [cursor=pointer]:
+              - /url: /game/7362
+            - generic [ref=e1445]: "1"
+          - generic [ref=e1446]:
+            - generic [ref=e1447]: Lorenzo il Magnifico
+            - generic [ref=e1448]: 2016년
+          - generic [ref=e1449]: 르네상스 시대 명가를 발전시키며 권력과 신앙을 조율해 가문을 최고로 이끄세요!
+        - generic [ref=e1450] [cursor=pointer]: "-"
+        - link "8.019" [ref=e1451] [cursor=pointer]:
+          - /url: /game/7362/rate
+        - generic [ref=e1453] [cursor=pointer]: "-"
+        - generic [ref=e1455] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1456] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=7362
+          - generic [ref=e1457]: 위치스브루
+          - generic [ref=e1458]: 플레이보드
+        - link "120,000원 80,000원" [ref=e1459] [cursor=pointer]:
+          - /url: /game/7362/shop
+          - generic [ref=e1460]:
+            - generic [ref=e1461]: 120,000원
+            - generic [ref=e1462]: 80,000원
+      - generic [ref=e1463]:
+        - generic [ref=e1467]: "35"
+        - link [ref=e1469] [cursor=pointer]:
+          - /url: /game/77
+        - generic [ref=e1471]:
+          - generic [ref=e1472]:
+            - 'link "촐킨: 마야의 달력" [ref=e1473] [cursor=pointer]':
+              - /url: /game/77
+            - generic [ref=e1476]: "3"
+          - generic [ref=e1477]:
+            - generic [ref=e1478]: "Tzolk'in: The Mayan Calendar"
+            - generic [ref=e1479]: 2012년
+          - generic [ref=e1480]: 거대한 톱니가 시간을 굴리는 마야 문명 속에서 한 수 앞을 보는 지혜로 승리를 쟁취하세요!
+        - generic [ref=e1481] [cursor=pointer]: "-"
+        - link "8.009" [ref=e1482] [cursor=pointer]:
+          - /url: /game/77/rate
+        - generic [ref=e1484] [cursor=pointer]: "-"
+        - generic [ref=e1486] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1487] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=77
+          - generic [ref=e1488]: 위치스브루
+          - generic [ref=e1489]: 플레이보드
+        - link "100,000원 48,000원" [ref=e1490] [cursor=pointer]:
+          - /url: /game/77/shop
+          - generic [ref=e1491]:
+            - generic [ref=e1492]: 100,000원
+            - generic [ref=e1493]: 48,000원
+      - generic [ref=e1494]:
+        - generic [ref=e1498]: "36"
+        - link [ref=e1500] [cursor=pointer]:
+          - /url: /game/4658
+        - generic [ref=e1502]:
+          - link "갤러리스트" [ref=e1504] [cursor=pointer]:
+            - /url: /game/4658
+          - generic [ref=e1505]:
+            - generic [ref=e1506]: The Gallerist
+            - generic [ref=e1507]: 2015년
+          - generic [ref=e1508]: 예술 시장의 흐름을 읽고 작가를 키워내며, 명성과 부를 쥐는 최고의 아트 딜러가 되세요!
+        - generic [ref=e1509] [cursor=pointer]: "-"
+        - link "8.005" [ref=e1510] [cursor=pointer]:
+          - /url: /game/4658/rate
+        - generic [ref=e1512] [cursor=pointer]: "-"
+        - generic [ref=e1514] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1515] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=4658
+          - generic [ref=e1516]: 위치스브루
+          - generic [ref=e1517]: 플레이보드
+        - link "180,000원 85,000원" [ref=e1518] [cursor=pointer]:
+          - /url: /game/4658/shop
+          - generic [ref=e1519]:
+            - generic [ref=e1520]: 180,000원
+            - generic [ref=e1521]: 85,000원
+      - generic [ref=e1522]:
+        - generic [ref=e1526]: "37"
+        - link [ref=e1528] [cursor=pointer]:
+          - /url: /game/2256
+        - generic [ref=e1530]:
+          - generic [ref=e1531]:
+            - 'link "카베르나: 동굴 속 농부들" [ref=e1532] [cursor=pointer]':
+              - /url: /game/2256
+            - generic [ref=e1535]: "2"
+          - generic [ref=e1536]:
+            - generic [ref=e1537]: "Caverna: The Cave Farmers"
+            - generic [ref=e1538]: 2013년
+          - generic [ref=e1539]: 동굴을 넓히고 밭을 일구며, 드워프 가족의 삶의 터전을 직접 구축해보세요!
+        - generic [ref=e1540] [cursor=pointer]: "-"
+        - link "8.005" [ref=e1541] [cursor=pointer]:
+          - /url: /game/2256/rate
+        - generic [ref=e1543] [cursor=pointer]: "-"
+        - generic [ref=e1545] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1546] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=2256
+          - generic [ref=e1547]: 위치스브루
+          - generic [ref=e1548]: 플레이보드
+        - link "140,000원 50,000원" [ref=e1549] [cursor=pointer]:
+          - /url: /game/2256/shop
+          - generic [ref=e1550]:
+            - generic [ref=e1551]: 140,000원
+            - generic [ref=e1552]: 50,000원
+      - generic [ref=e1553]:
+        - generic [ref=e1557]: "38"
+        - link [ref=e1559] [cursor=pointer]:
+          - /url: /game/17524
+        - generic [ref=e1561]:
+          - generic [ref=e1562]:
+            - 'link "듄: 임페리움 - 봉기" [ref=e1563] [cursor=pointer]':
+              - /url: /game/17524
+            - generic [ref=e1566]: "6"
+          - generic [ref=e1567]:
+            - generic [ref=e1568]: "Dune: Imperium – Uprising"
+            - generic [ref=e1569]: 2023년
+          - generic [ref=e1570]: 덱 빌딩과 일꾼 놓기를 결합해 아라키스에서 권력과 자원을 장악해보세요!
+        - generic [ref=e1571] [cursor=pointer]: "-"
+        - link "8.005" [ref=e1572] [cursor=pointer]:
+          - /url: /game/17524/rate
+        - generic [ref=e1574] [cursor=pointer]: "-"
+        - generic [ref=e1576] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1577] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=17524
+          - generic [ref=e1578]: 위치스브루
+          - generic [ref=e1579]: 플레이보드
+        - link "170,000원 9,000원" [ref=e1580] [cursor=pointer]:
+          - /url: /game/17524/shop
+          - generic [ref=e1581]:
+            - generic [ref=e1582]: 170,000원
+            - generic [ref=e1583]: 9,000원
+      - generic [ref=e1584]:
+        - generic [ref=e1588]: "39"
+        - link [ref=e1590] [cursor=pointer]:
+          - /url: /game/9147
+        - generic [ref=e1592]:
+          - generic [ref=e1593]:
+            - link "여명의 제국 (4판)" [ref=e1594] [cursor=pointer]:
+              - /url: /game/9147
+            - generic [ref=e1597]: "4"
+          - generic [ref=e1598]:
+            - generic [ref=e1599]: "Twilight Imperium: Fourth Edition"
+            - generic [ref=e1600]: 2017년
+          - generic [ref=e1601]: 거대한 우주 제국을 이끌며 외교, 전쟁, 정치로 은하의 패권을 쟁취해보세요!
+        - generic [ref=e1602] [cursor=pointer]: "-"
+        - link "8.000" [ref=e1603] [cursor=pointer]:
+          - /url: /game/9147/rate
+        - generic [ref=e1605] [cursor=pointer]: "-"
+        - generic [ref=e1607] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e1608] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=9147
+          - generic [ref=e1609]: 위치스브루
+        - link "110,000원 40,000원" [ref=e1610] [cursor=pointer]:
+          - /url: /game/9147/shop
+          - generic [ref=e1611]:
+            - generic [ref=e1612]: 110,000원
+            - generic [ref=e1613]: 40,000원
+      - generic [ref=e1614]:
+        - generic [ref=e1618]: "40"
+        - link [ref=e1620] [cursor=pointer]:
+          - /url: /game/16927
+        - generic [ref=e1622]:
+          - generic [ref=e1623]:
+            - link "혁신의 시대" [ref=e1624] [cursor=pointer]:
+              - /url: /game/16927
+            - generic [ref=e1627]: "2"
+          - generic [ref=e1628]:
+            - generic [ref=e1629]: Age of Innovation
+            - generic [ref=e1630]: 2023년
+          - generic [ref=e1631]: 기술과 개념을 발전시키며 문명의 흐름을 주도하고 새로운 질서를 만들어보세요!
+        - generic [ref=e1632] [cursor=pointer]: "-"
+        - link "8.000" [ref=e1633] [cursor=pointer]:
+          - /url: /game/16927/rate
+        - generic [ref=e1635] [cursor=pointer]: "-"
+        - generic [ref=e1637] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1638] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=16927
+          - generic [ref=e1639]: 위치스브루
+          - generic [ref=e1640]: 플레이보드
+        - link "110,000원 50,000원" [ref=e1641] [cursor=pointer]:
+          - /url: /game/16927/shop
+          - generic [ref=e1642]:
+            - generic [ref=e1643]: 110,000원
+            - generic [ref=e1644]: 50,000원
+      - generic [ref=e1645]:
+        - generic [ref=e1649]: "41"
+        - link [ref=e1651] [cursor=pointer]:
+          - /url: /game/13426
+        - generic [ref=e1653]:
+          - generic [ref=e1654]:
+            - link "스페이스 크루" [ref=e1655] [cursor=pointer]:
+              - /url: /game/13426
+            - generic [ref=e1658]: "4"
+          - generic [ref=e1659]:
+            - generic [ref=e1660]: "The Crew: The Quest for Planet Nine"
+            - generic [ref=e1661]: 2019년
+          - generic [ref=e1662]: 우주의 승무원이 되어 팀과 함께 미션을 해결하며, 한 치 오차 없는 협력을 완성하세요!
+        - generic [ref=e1663] [cursor=pointer]: "-"
+        - link "7.998" [ref=e1664] [cursor=pointer]:
+          - /url: /game/13426/rate
+        - generic [ref=e1666] [cursor=pointer]: "-"
+        - generic [ref=e1668] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1669] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=13426
+          - generic [ref=e1670]: 위치스브루
+          - generic [ref=e1671]: 플레이보드
+        - link "50,000원 12,000원" [ref=e1672] [cursor=pointer]:
+          - /url: /game/13426/shop
+          - generic [ref=e1673]:
+            - generic [ref=e1674]: 50,000원
+            - generic [ref=e1675]: 12,000원
+      - generic [ref=e1676]:
+        - generic [ref=e1680]: "42"
+        - link [ref=e1682] [cursor=pointer]:
+          - /url: /game/29
+        - generic [ref=e1684]:
+          - generic [ref=e1685]:
+            - link "트라야누스" [ref=e1686] [cursor=pointer]:
+              - /url: /game/29
+            - generic [ref=e1689]: "1"
+          - generic [ref=e1690]:
+            - generic [ref=e1691]: Trajan
+            - generic [ref=e1692]: 2011년
+          - generic [ref=e1693]: 정치·군사·상업을 조율해 로마 제국을 번영으로 이끄는 전략을 펼쳐보세요!
+        - generic [ref=e1694] [cursor=pointer]: "-"
+        - link "7.995" [ref=e1695] [cursor=pointer]:
+          - /url: /game/29/rate
+        - generic [ref=e1697] [cursor=pointer]: "-"
+        - generic [ref=e1699] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e1700] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=29
+          - generic [ref=e1701]: 위치스브루
+        - link "58,000원 10,000원" [ref=e1702] [cursor=pointer]:
+          - /url: /game/29/shop
+          - generic [ref=e1703]:
+            - generic [ref=e1704]: 58,000원
+            - generic [ref=e1705]: 10,000원
+      - generic [ref=e1706]:
+        - generic [ref=e1710]: "43"
+        - link [ref=e1712] [cursor=pointer]:
+          - /url: /game/4255
+        - generic [ref=e1714]:
+          - generic [ref=e1715]:
+            - link "스컬킹" [ref=e1716] [cursor=pointer]:
+              - /url: /game/4255
+            - generic [ref=e1719]: "3"
+          - generic [ref=e1720]:
+            - generic [ref=e1721]: Skull King
+            - generic [ref=e1722]: 2013년
+          - generic [ref=e1723]: 트릭을 모아라! 해골 왕이 지켜보는 바다 위의 승부.
+        - generic [ref=e1724] [cursor=pointer]: "-"
+        - link "7.993" [ref=e1725] [cursor=pointer]:
+          - /url: /game/4255/rate
+        - generic [ref=e1727] [cursor=pointer]: "-"
+        - generic [ref=e1729] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1730] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=4255
+          - generic [ref=e1731]: 위치스브루
+          - generic [ref=e1732]: 플레이보드
+        - link "40,000원 5,000원" [ref=e1733] [cursor=pointer]:
+          - /url: /game/4255/shop
+          - generic [ref=e1734]:
+            - generic [ref=e1735]: 40,000원
+            - generic [ref=e1736]: 5,000원
+      - generic [ref=e1737]:
+        - generic [ref=e1741]: "44"
+        - link [ref=e1743] [cursor=pointer]:
+          - /url: /game/5890
+        - generic [ref=e1745]:
+          - generic [ref=e1746]:
+            - link "사이드" [ref=e1747] [cursor=pointer]:
+              - /url: /game/5890
+            - generic [ref=e1750]: "1"
+          - generic [ref=e1751]:
+            - generic [ref=e1752]: Scythe
+            - generic [ref=e1753]: 2016년
+          - generic [ref=e1754]: 전쟁 직후의 대륙에서 자원과 메카를 움직여 자신만의 팩션을 승리로 이끄세요!
+        - generic [ref=e1755] [cursor=pointer]: "-"
+        - link "7.969" [ref=e1756] [cursor=pointer]:
+          - /url: /game/5890/rate
+        - generic [ref=e1758] [cursor=pointer]: "-"
+        - generic [ref=e1760] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1761] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=5890
+          - generic [ref=e1762]: 위치스브루
+          - generic [ref=e1763]: 플레이보드
+        - link "800,000원 1,000원" [ref=e1764] [cursor=pointer]:
+          - /url: /game/5890/shop
+          - generic [ref=e1765]:
+            - generic [ref=e1766]: 800,000원
+            - generic [ref=e1767]: 1,000원
+      - generic [ref=e1768]:
+        - generic [ref=e1772]: "45"
+        - link [ref=e1774] [cursor=pointer]:
+          - /url: /game/4701
+        - generic [ref=e1776]:
+          - generic [ref=e1777]:
+            - 'link "트릭케리언: 레전드 오브 일루전" [ref=e1778] [cursor=pointer]':
+              - /url: /game/4701
+            - generic [ref=e1781]: "4"
+          - generic [ref=e1782]:
+            - generic [ref=e1783]: "Trickerion: Legends of Illusion"
+            - generic [ref=e1784]: 2014년
+          - generic [ref=e1785]: 마술사가 되어 공연과 준비를 병행하며 최고의 환상을 선보여보세요!
+        - generic [ref=e1786] [cursor=pointer]: "-"
+        - link "7.963" [ref=e1787] [cursor=pointer]:
+          - /url: /game/4701/rate
+        - generic [ref=e1789] [cursor=pointer]: "-"
+        - generic [ref=e1791] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e1792] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=4701
+          - generic [ref=e1793]: 위치스브루
+        - link "50,000원 40,000원" [ref=e1794] [cursor=pointer]:
+          - /url: /game/4701/shop
+          - generic [ref=e1795]:
+            - generic [ref=e1796]: 50,000원
+            - generic [ref=e1797]: 40,000원
+      - generic [ref=e1798]:
+        - generic [ref=e1802]: "46"
+        - link [ref=e1804] [cursor=pointer]:
+          - /url: /game/534
+        - generic [ref=e1806]:
+          - generic [ref=e1807]:
+            - link "반지 전쟁 (2판)" [ref=e1808] [cursor=pointer]:
+              - /url: /game/534
+            - generic [ref=e1811]: "12"
+          - generic [ref=e1812]:
+            - generic [ref=e1813]: "War of the Ring: Second Edition"
+            - generic [ref=e1814]: 2011년
+          - generic [ref=e1815]: 가운데땅을 흔드는 자유민 연합과 암흑 군단 사이, 그 한가운데의 운명을 손으로 잡아보세요!
+        - generic [ref=e1816] [cursor=pointer]: "-"
+        - link "7.963" [ref=e1817] [cursor=pointer]:
+          - /url: /game/534/rate
+        - generic [ref=e1819] [cursor=pointer]: "-"
+        - generic [ref=e1821] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1822] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=534
+          - generic [ref=e1823]: 위치스브루
+          - generic [ref=e1824]: 플레이보드
+        - link "1,900,000원 40,000원" [ref=e1825] [cursor=pointer]:
+          - /url: /game/534/shop
+          - generic [ref=e1826]:
+            - generic [ref=e1827]: 1,900,000원
+            - generic [ref=e1828]: 40,000원
+      - generic [ref=e1829]:
+        - generic [ref=e1833]: "47"
+        - link [ref=e1835] [cursor=pointer]:
+          - /url: /game/4365
+        - generic [ref=e1837]:
+          - generic [ref=e1838]:
+            - link "오를레앙" [ref=e1839] [cursor=pointer]:
+              - /url: /game/4365
+            - generic [ref=e1842]: "1"
+          - generic [ref=e1843]:
+            - generic [ref=e1844]: Orleans
+            - generic [ref=e1845]: 2014년
+          - generic [ref=e1846]: 인물 타일을 활용해 영향력을 넓히고 중세 도시에서 성장 전략을 펼쳐보세요!
+        - generic [ref=e1847] [cursor=pointer]: "-"
+        - link "7.962" [ref=e1848] [cursor=pointer]:
+          - /url: /game/4365/rate
+        - generic [ref=e1850] [cursor=pointer]: "-"
+        - generic [ref=e1852] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e1853] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=4365
+          - generic [ref=e1854]: 위치스브루
+        - link "200,000원 40,000원" [ref=e1855] [cursor=pointer]:
+          - /url: /game/4365/shop
+          - generic [ref=e1856]:
+            - generic [ref=e1857]: 200,000원
+            - generic [ref=e1858]: 40,000원
+      - generic [ref=e1859]:
+        - generic [ref=e1863]: "48"
+        - link [ref=e1865] [cursor=pointer]:
+          - /url: /game/15664
+        - generic [ref=e1867]:
+          - generic [ref=e1868]:
+            - link "시계탑에 흐른 피" [ref=e1869] [cursor=pointer]:
+              - /url: /game/15664
+            - generic [ref=e1872]: "2"
+          - generic [ref=e1873]:
+            - generic [ref=e1874]: Blood on the Clocktower
+            - generic [ref=e1875]: 2022년
+          - generic [ref=e1876]: 비밀 역할과 능력으로 혼돈과 전략을 맛보세요!
+        - generic [ref=e1877] [cursor=pointer]: "-"
+        - link "7.959" [ref=e1878] [cursor=pointer]:
+          - /url: /game/15664/rate
+        - generic [ref=e1880] [cursor=pointer]: "-"
+        - generic [ref=e1882] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1883] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=15664
+          - generic [ref=e1884]: 위치스브루
+          - generic [ref=e1885]: 플레이보드
+        - link "250,000원 215,000원" [ref=e1886] [cursor=pointer]:
+          - /url: /game/15664/shop
+          - generic [ref=e1887]:
+            - generic [ref=e1888]: 250,000원
+            - generic [ref=e1889]: 215,000원
+      - generic [ref=e1890]:
+        - generic [ref=e1894]: "49"
+        - link [ref=e1896] [cursor=pointer]:
+          - /url: /game/17276
+        - generic [ref=e1898]:
+          - generic [ref=e1899]:
+            - link "백로성" [ref=e1900] [cursor=pointer]:
+              - /url: /game/17276
+            - generic [ref=e1903]: "3"
+          - generic [ref=e1904]:
+            - generic [ref=e1905]: The White Castle
+            - generic [ref=e1906]: 2023년
+          - generic [ref=e1907]: 일본 히메지 성에서 가장 영향력 있는 가문이 되세요
+        - generic [ref=e1908] [cursor=pointer]: "-"
+        - link "7.955" [ref=e1909] [cursor=pointer]:
+          - /url: /game/17276/rate
+        - generic [ref=e1911] [cursor=pointer]: "-"
+        - generic [ref=e1913] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1914] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=17276
+          - generic [ref=e1915]: 위치스브루
+          - generic [ref=e1916]: 플레이보드
+        - link "300,000원 10,000원" [ref=e1917] [cursor=pointer]:
+          - /url: /game/17276/shop
+          - generic [ref=e1918]:
+            - generic [ref=e1919]: 300,000원
+            - generic [ref=e1920]: 10,000원
+      - generic [ref=e1921]:
+        - generic [ref=e1925]: "50"
+        - link [ref=e1927] [cursor=pointer]:
+          - /url: /game/11169
+        - generic [ref=e1929]:
+          - generic [ref=e1930]:
+            - link "에이지 오브 스팀" [ref=e1931] [cursor=pointer]:
+              - /url: /game/11169
+            - generic [ref=e1934]: "5"
+          - generic [ref=e1935]:
+            - generic [ref=e1936]: Age of Steam
+            - generic [ref=e1937]: 2002년
+          - generic [ref=e1938]: 철도망을 구축하고 물류를 운영해 산업 경쟁에서 우위를 확보해보세요!
+        - generic [ref=e1939] [cursor=pointer]: "-"
+        - link "7.951" [ref=e1940] [cursor=pointer]:
+          - /url: /game/11169/rate
+        - generic [ref=e1942] [cursor=pointer]: "-"
+        - generic [ref=e1944] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e1945] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=11169
+          - generic [ref=e1946]: 위치스브루
+          - generic [ref=e1947]: 플레이보드
+        - link "750,000원 20,000원" [ref=e1948] [cursor=pointer]:
+          - /url: /game/11169/shop
+          - generic [ref=e1949]:
+            - generic [ref=e1950]: 750,000원
+            - generic [ref=e1951]: 20,000원
+      - generic [ref=e1952]:
+        - generic [ref=e1956]: "51"
+        - link [ref=e1958] [cursor=pointer]:
+          - /url: /game/3120
+        - generic [ref=e1960]:
+          - generic [ref=e1961]:
+            - link "마작" [ref=e1962] [cursor=pointer]:
+              - /url: /game/3120
+            - generic [ref=e1965]: "2"
+          - generic [ref=e1966]:
+            - generic [ref=e1967]: Mahjong
+            - generic [ref=e1968]: 1850년
+          - generic [ref=e1969]: 패를 조합하고 전략적으로 버리며 완성된 패를 만들어 승리를 노려보세요!
+        - generic [ref=e1970] [cursor=pointer]: "-"
+        - link "7.947" [ref=e1971] [cursor=pointer]:
+          - /url: /game/3120/rate
+        - generic [ref=e1973] [cursor=pointer]: "-"
+        - generic [ref=e1975] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e1976] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=3120
+          - generic [ref=e1977]: 위치스브루
+        - link "70,000원 35,000원" [ref=e1978] [cursor=pointer]:
+          - /url: /game/3120/shop
+          - generic [ref=e1979]:
+            - generic [ref=e1980]: 70,000원
+            - generic [ref=e1981]: 35,000원
+      - generic [ref=e1982]:
+        - generic [ref=e1986]: "52"
+        - link [ref=e1988] [cursor=pointer]:
+          - /url: /game/6121
+        - generic [ref=e1990]:
+          - generic [ref=e1991]:
+            - link "비뉴스 디럭스 에디션" [ref=e1992] [cursor=pointer]:
+              - /url: /game/6121
+            - generic [ref=e1995]: "1"
+          - generic [ref=e1996]:
+            - generic [ref=e1997]: Vinhos Deluxe Edition
+            - generic [ref=e1998]: 2016년
+          - generic [ref=e1999]: 와이너리를 운영하며 생산과 수출을 통해 최고의 와인을 만들어보세요!
+        - generic [ref=e2000] [cursor=pointer]: "-"
+        - link "7.944" [ref=e2001] [cursor=pointer]:
+          - /url: /game/6121/rate
+        - generic [ref=e2003] [cursor=pointer]: "-"
+        - generic [ref=e2005] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2006] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=6121
+          - generic [ref=e2007]: 위치스브루
+          - generic [ref=e2008]: 플레이보드
+        - link "180,000원 85,000원" [ref=e2009] [cursor=pointer]:
+          - /url: /game/6121/shop
+          - generic [ref=e2010]:
+            - generic [ref=e2011]: 180,000원
+            - generic [ref=e2012]: 85,000원
+      - generic [ref=e2013]:
+        - generic [ref=e2017]: "53"
+        - link [ref=e2019] [cursor=pointer]:
+          - /url: /game/6954
+        - generic [ref=e2021]:
+          - generic [ref=e2022]:
+            - link "벚꽃 내리는 시대에 결투를" [ref=e2023] [cursor=pointer]:
+              - /url: /game/6954
+            - generic [ref=e2026]: "1"
+          - generic [ref=e2027]:
+            - generic [ref=e2028]: "A Duel for Falling Cherry Blossoms: New Act – Basic Set"
+            - generic [ref=e2029]: 2018년
+          - generic [ref=e2030]: 독특한 카드와 거리 개념을 활용해 치열한 결투를 펼쳐보세요!
+        - generic [ref=e2031] [cursor=pointer]: "-"
+        - link "7.937" [ref=e2032] [cursor=pointer]:
+          - /url: /game/6954/rate
+        - generic [ref=e2034] [cursor=pointer]: "-"
+        - generic [ref=e2036] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2037] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=6954
+          - generic [ref=e2038]: 위치스브루
+          - generic [ref=e2039]: 플레이보드
+        - link "320,000원 18,000원" [ref=e2040] [cursor=pointer]:
+          - /url: /game/6954/shop
+          - generic [ref=e2041]:
+            - generic [ref=e2042]: 320,000원
+            - generic [ref=e2043]: 18,000원
+      - generic [ref=e2044]:
+        - generic [ref=e2048]: "54"
+        - link [ref=e2050] [cursor=pointer]:
+          - /url: /game/450
+        - generic [ref=e2052]:
+          - generic [ref=e2053]:
+            - link "파워 그리드" [ref=e2054] [cursor=pointer]:
+              - /url: /game/450
+            - generic [ref=e2057]: "2"
+          - generic [ref=e2058]:
+            - generic [ref=e2059]: Power Grid
+            - generic [ref=e2060]: 2004년
+          - generic [ref=e2061]: 발전소를 운영하고 전력망을 확장해 에너지 시장을 지배해보세요!
+        - generic [ref=e2062] [cursor=pointer]: "-"
+        - link "7.936" [ref=e2063] [cursor=pointer]:
+          - /url: /game/450/rate
+        - generic [ref=e2065] [cursor=pointer]: "-"
+        - generic [ref=e2067] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2068] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=450
+          - generic [ref=e2069]: 위치스브루
+          - generic [ref=e2070]: 플레이보드
+        - link "90,000원 25,000원" [ref=e2071] [cursor=pointer]:
+          - /url: /game/450/shop
+          - generic [ref=e2072]:
+            - generic [ref=e2073]: 90,000원
+            - generic [ref=e2074]: 25,000원
+      - generic [ref=e2075]:
+        - generic [ref=e2079]: "55"
+        - link [ref=e2081] [cursor=pointer]:
+          - /url: /game/15960
+        - generic [ref=e2083]:
+          - generic [ref=e2084]:
+            - 'link "인벤션: 아이디어의 진화" [ref=e2085] [cursor=pointer]':
+              - /url: /game/15960
+            - generic [ref=e2088]: "8"
+          - generic [ref=e2089]:
+            - generic [ref=e2090]: "Inventions: Evolution of Ideas"
+            - generic [ref=e2091]: 2024년
+          - generic [ref=e2092]: 아이디어를 발전시키고 문명의 흐름 속에서 혁신을 주도해보세요!
+        - generic [ref=e2093] [cursor=pointer]: "-"
+        - link "7.929" [ref=e2094] [cursor=pointer]:
+          - /url: /game/15960/rate
+        - generic [ref=e2096] [cursor=pointer]: "-"
+        - generic [ref=e2098] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e2099] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=15960
+          - generic [ref=e2100]: 위치스브루
+        - link "200,000원" [ref=e2101] [cursor=pointer]:
+          - /url: /game/15960/shop
+          - generic [ref=e2103]: 200,000원
+      - generic [ref=e2104]:
+        - generic [ref=e2108]: "56"
+        - link [ref=e2110] [cursor=pointer]:
+          - /url: /game/78
+        - generic [ref=e2112]:
+          - generic [ref=e2113]:
+            - link "테라 미스티카" [ref=e2114] [cursor=pointer]:
+              - /url: /game/78
+            - generic [ref=e2117]: "1"
+          - generic [ref=e2118]:
+            - generic [ref=e2119]: Terra Mystica
+            - generic [ref=e2120]: 2012년
+          - generic [ref=e2121]: 종족의 특성을 활용해 지형을 개척하고 세력을 확장해보세요!
+        - generic [ref=e2122] [cursor=pointer]: "-"
+        - link "7.917" [ref=e2123] [cursor=pointer]:
+          - /url: /game/78/rate
+        - generic [ref=e2125] [cursor=pointer]: "-"
+        - generic [ref=e2127] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e2128] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=78
+          - generic [ref=e2129]: 위치스브루
+        - link "60,000원 25,000원" [ref=e2130] [cursor=pointer]:
+          - /url: /game/78/shop
+          - generic [ref=e2131]:
+            - generic [ref=e2132]: 60,000원
+            - generic [ref=e2133]: 25,000원
+      - generic [ref=e2134]:
+        - generic [ref=e2138]: "57"
+        - link [ref=e2140] [cursor=pointer]:
+          - /url: /game/17447
+        - generic [ref=e2142]:
+          - generic [ref=e2143]:
+            - link "뉴클리엄" [ref=e2144] [cursor=pointer]:
+              - /url: /game/17447
+            - generic [ref=e2147]: "3"
+          - generic [ref=e2148]:
+            - generic [ref=e2149]: Nucleum
+            - generic [ref=e2150]: 2023년
+          - generic [ref=e2151]: 대체 역사 속에서 산업 혁명을 이끌며 경제 발전을 선도하는 지도자가 되어 보세요.
+        - generic [ref=e2152] [cursor=pointer]: "-"
+        - link "7.914" [ref=e2153] [cursor=pointer]:
+          - /url: /game/17447/rate
+        - generic [ref=e2155] [cursor=pointer]: "-"
+        - generic [ref=e2157] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2158] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=17447
+          - generic [ref=e2159]: 위치스브루
+          - generic [ref=e2160]: 플레이보드
+        - link "280,000원 18,000원" [ref=e2161] [cursor=pointer]:
+          - /url: /game/17447/shop
+          - generic [ref=e2162]:
+            - generic [ref=e2163]: 280,000원
+            - generic [ref=e2164]: 18,000원
+      - generic [ref=e2165]:
+        - generic [ref=e2169]: "58"
+        - link [ref=e2171] [cursor=pointer]:
+          - /url: /game/4357
+        - generic [ref=e2173]:
+          - generic [ref=e2174]:
+            - link "알케미스트" [ref=e2175] [cursor=pointer]:
+              - /url: /game/4357
+            - generic [ref=e2178]: "1"
+          - generic [ref=e2179]:
+            - generic [ref=e2180]: Alchemists
+            - generic [ref=e2181]: 2014년
+          - generic [ref=e2182]: 실험과 추리를 통해 연금술의 비밀을 밝혀내고 명성을 쌓아보세요!
+        - generic [ref=e2183] [cursor=pointer]: "-"
+        - link "7.912" [ref=e2184] [cursor=pointer]:
+          - /url: /game/4357/rate
+        - generic [ref=e2186] [cursor=pointer]: "-"
+        - generic [ref=e2188] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2189] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=4357
+          - generic [ref=e2190]: 위치스브루
+          - generic [ref=e2191]: 플레이보드
+        - link "120,000원 30,000원" [ref=e2192] [cursor=pointer]:
+          - /url: /game/4357/shop
+          - generic [ref=e2193]:
+            - generic [ref=e2194]: 120,000원
+            - generic [ref=e2195]: 30,000원
+      - generic [ref=e2196]:
+        - generic [ref=e2200]: "59"
+        - link [ref=e2202] [cursor=pointer]:
+          - /url: /game/19592
+        - generic [ref=e2204]:
+          - generic [ref=e2205]:
+            - 'link "반지의 제왕: 가운데땅에서의 대결" [ref=e2206] [cursor=pointer]':
+              - /url: /game/19592
+            - generic [ref=e2209]: "7"
+          - generic [ref=e2210]:
+            - generic [ref=e2211]: "The Lord of the Rings: Duel for Middle-earth"
+            - generic [ref=e2212]: 2024년
+          - generic [ref=e2213]: 가운데땅에서 세력과 전략을 겨루며 운명을 건 대결을 펼쳐보세요!
+        - generic [ref=e2214] [cursor=pointer]: "-"
+        - link "7.912" [ref=e2215] [cursor=pointer]:
+          - /url: /game/19592/rate
+        - generic [ref=e2217] [cursor=pointer]: "-"
+        - generic [ref=e2219] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2220] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=19592
+          - generic [ref=e2221]: 위치스브루
+          - generic [ref=e2222]: 플레이보드
+        - link "123,455원 30,000원" [ref=e2223] [cursor=pointer]:
+          - /url: /game/19592/shop
+          - generic [ref=e2224]:
+            - generic [ref=e2225]: 123,455원
+            - generic [ref=e2226]: 30,000원
+      - generic [ref=e2227]:
+        - generic [ref=e2231]: "60"
+        - link [ref=e2233] [cursor=pointer]:
+          - /url: /game/7035
+        - generic [ref=e2235]:
+          - generic [ref=e2236]:
+            - link "언더다크의 폭군들" [ref=e2237] [cursor=pointer]:
+              - /url: /game/7035
+            - generic [ref=e2240]: "3"
+          - generic [ref=e2241]:
+            - generic [ref=e2242]: Tyrants of the Underdark
+            - generic [ref=e2243]: 2016년
+          - generic [ref=e2244]: 덱빌딩과 지역 장악을 결합해 언더다크에서 권력을 쟁취해보세요!
+        - generic [ref=e2245] [cursor=pointer]: "-"
+        - link "7.910" [ref=e2246] [cursor=pointer]:
+          - /url: /game/7035/rate
+        - generic [ref=e2248] [cursor=pointer]: "-"
+        - generic [ref=e2250] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e2251] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=7035
+          - generic [ref=e2252]: 위치스브루
+        - link "100,000원" [ref=e2253] [cursor=pointer]:
+          - /url: /game/7035/shop
+          - generic [ref=e2255]: 100,000원
+      - generic [ref=e2256]:
+        - generic [ref=e2260]: "61"
+        - link [ref=e2262] [cursor=pointer]:
+          - /url: /game/10
+        - generic [ref=e2264]:
+          - generic [ref=e2265]:
+            - 'link "안드로이드: 넷러너" [ref=e2266] [cursor=pointer]':
+              - /url: /game/10
+            - generic [ref=e2269]: "3"
+          - generic [ref=e2270]:
+            - generic [ref=e2271]: "Android: Netrunner"
+            - generic [ref=e2272]: 2012년
+          - generic [ref=e2273]: 해커와 기업으로 나뉘어 치열한 사이버 전쟁 속에서 정보와 자원을 장악해보세요!
+        - generic [ref=e2274] [cursor=pointer]: "-"
+        - link "7.908" [ref=e2275] [cursor=pointer]:
+          - /url: /game/10/rate
+        - generic [ref=e2277] [cursor=pointer]: "-"
+        - generic [ref=e2279] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2280] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=10
+          - generic [ref=e2281]: 위치스브루
+          - generic [ref=e2282]: 플레이보드
+        - link "300,000원 15,000원" [ref=e2283] [cursor=pointer]:
+          - /url: /game/10/shop
+          - generic [ref=e2284]:
+            - generic [ref=e2285]: 300,000원
+            - generic [ref=e2286]: 15,000원
+      - generic [ref=e2287]:
+        - generic [ref=e2291]: "62"
+        - link [ref=e2293] [cursor=pointer]:
+          - /url: /game/20867
+        - generic [ref=e2295]:
+          - generic [ref=e2296]:
+            - 'link "니폰: 자이바츠" [ref=e2297] [cursor=pointer]':
+              - /url: /game/20867
+            - generic [ref=e2300]: "35"
+          - generic [ref=e2301]:
+            - generic [ref=e2302]: "Nippon: Zaibatsu"
+            - generic [ref=e2303]: 2025년
+          - generic [ref=e2304]: 거대 기업 집단을 조절해 일본 경제를 주도하세요!
+        - generic [ref=e2305] [cursor=pointer]: "-"
+        - link "7.908" [ref=e2306] [cursor=pointer]:
+          - /url: /game/20867/rate
+        - generic [ref=e2308] [cursor=pointer]: "-"
+        - generic [ref=e2310] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e2311] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=20867
+          - generic [ref=e2312]: 위치스브루
+        - link "196,000원" [ref=e2313] [cursor=pointer]:
+          - /url: /game/20867/shop
+          - generic [ref=e2315]: 196,000원
+      - generic [ref=e2316]:
+        - generic [ref=e2320]: "63"
+        - link [ref=e2322] [cursor=pointer]:
+          - /url: /game/7241
+        - generic [ref=e2324]:
+          - generic [ref=e2325]:
+            - link "그레이트 웨스턴 트레일" [ref=e2326] [cursor=pointer]:
+              - /url: /game/7241
+            - generic [ref=e2329]: "2"
+          - generic [ref=e2330]:
+            - generic [ref=e2331]: Great Western Trail
+            - generic [ref=e2332]: 2016년
+          - generic [ref=e2333]: 소를 몰고 이동하며 건설과 덱 관리를 통해 최고의 목장주가 되어보세요!
+        - generic [ref=e2334] [cursor=pointer]: "-"
+        - link "7.904" [ref=e2335] [cursor=pointer]:
+          - /url: /game/7241/rate
+        - generic [ref=e2337] [cursor=pointer]: "-"
+        - generic [ref=e2339] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2340] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=7241
+          - generic [ref=e2341]: 위치스브루
+          - generic [ref=e2342]: 플레이보드
+        - link "70,000원 8,000원" [ref=e2343] [cursor=pointer]:
+          - /url: /game/7241/shop
+          - generic [ref=e2344]:
+            - generic [ref=e2345]: 70,000원
+            - generic [ref=e2346]: 8,000원
+      - generic [ref=e2347]:
+        - generic [ref=e2351]: "64"
+        - link [ref=e2353] [cursor=pointer]:
+          - /url: /game/10647
+        - generic [ref=e2355]:
+          - generic [ref=e2356]:
+            - link "에이언즈 엔드" [ref=e2357] [cursor=pointer]:
+              - /url: /game/10647
+            - generic [ref=e2360]: "4"
+          - generic [ref=e2361]:
+            - generic [ref=e2362]: Aeon"s End
+            - generic [ref=e2363]: 2019년
+          - generic [ref=e2364]: 덱을 섞지 않는 독특한 시스템으로 협력하여 적을 물리치고 세계를 지켜보세요!
+        - generic [ref=e2365] [cursor=pointer]: "-"
+        - link "7.903" [ref=e2366] [cursor=pointer]:
+          - /url: /game/10647/rate
+        - generic [ref=e2368] [cursor=pointer]: "-"
+        - generic [ref=e2370] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2371] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=10647
+          - generic [ref=e2372]: 위치스브루
+          - generic [ref=e2373]: 플레이보드
+        - link "150,000원 27,000원" [ref=e2374] [cursor=pointer]:
+          - /url: /game/10647/shop
+          - generic [ref=e2375]:
+            - generic [ref=e2376]: 150,000원
+            - generic [ref=e2377]: 27,000원
+      - generic [ref=e2378]:
+        - generic [ref=e2382]: "65"
+        - link [ref=e2384] [cursor=pointer]:
+          - /url: /game/16914
+        - generic [ref=e2386]:
+          - generic [ref=e2387]:
+            - 'link "그레이트 웨스턴 트레일: 뉴질랜드" [ref=e2388] [cursor=pointer]':
+              - /url: /game/16914
+            - generic [ref=e2391]: "3"
+          - generic [ref=e2392]:
+            - generic [ref=e2393]: "Great Western Trail: New Zealand"
+            - generic [ref=e2394]: 2023년
+          - generic [ref=e2395]: 새로운 환경에서 자원과 전략을 활용해 최적의 목축 경로를 설계해보세요!
+        - generic [ref=e2396] [cursor=pointer]: "-"
+        - link "7.900" [ref=e2397] [cursor=pointer]:
+          - /url: /game/16914/rate
+        - generic [ref=e2399] [cursor=pointer]: "-"
+        - generic [ref=e2401] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2402] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=16914
+          - generic [ref=e2403]: 위치스브루
+          - generic [ref=e2404]: 플레이보드
+        - link [ref=e2405] [cursor=pointer]:
+          - /url: /game/16914/shop
+      - generic [ref=e2406]:
+        - generic [ref=e2410]: "66"
+        - link [ref=e2412] [cursor=pointer]:
+          - /url: /game/591
+        - generic [ref=e2414]:
+          - generic [ref=e2415]:
+            - link "도미니언" [ref=e2416] [cursor=pointer]:
+              - /url: /game/591
+            - generic [ref=e2419]: "5"
+          - generic [ref=e2420]:
+            - generic [ref=e2421]: Dominion
+            - generic [ref=e2422]: 2008년
+          - generic [ref=e2423]: 카드를 수집하고 덱을 성장시켜 최적의 전략으로 승리를 쟁취해보세요!
+        - generic [ref=e2424] [cursor=pointer]: "-"
+        - link "7.898" [ref=e2425] [cursor=pointer]:
+          - /url: /game/591/rate
+        - generic [ref=e2427] [cursor=pointer]: "-"
+        - generic [ref=e2429] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2430] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=591
+          - generic [ref=e2431]: 위치스브루
+          - generic [ref=e2432]: 플레이보드
+        - link "500,000원 18,000원" [ref=e2433] [cursor=pointer]:
+          - /url: /game/591/shop
+          - generic [ref=e2434]:
+            - generic [ref=e2435]: 500,000원
+            - generic [ref=e2436]: 18,000원
+      - generic [ref=e2437]:
+        - generic [ref=e2441]: "67"
+        - link [ref=e2443] [cursor=pointer]:
+          - /url: /game/969
+        - generic [ref=e2445]:
+          - link "텔레스트레이션" [ref=e2447] [cursor=pointer]:
+            - /url: /game/969
+          - generic [ref=e2448]:
+            - generic [ref=e2449]: Telestrations
+            - generic [ref=e2450]: 2009년
+          - generic [ref=e2451]: 그림과 추리를 오가며 웃음 가득한 소통의 혼돈을 즐겨보세요!
+        - generic [ref=e2452] [cursor=pointer]: "-"
+        - link "7.894" [ref=e2453] [cursor=pointer]:
+          - /url: /game/969/rate
+        - generic [ref=e2455] [cursor=pointer]: "-"
+        - generic [ref=e2457] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2458] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=969
+          - generic [ref=e2459]: 위치스브루
+          - generic [ref=e2460]: 플레이보드
+        - link "24,000원 4,000원" [ref=e2461] [cursor=pointer]:
+          - /url: /game/969/shop
+          - generic [ref=e2462]:
+            - generic [ref=e2463]: 24,000원
+            - generic [ref=e2464]: 4,000원
+      - generic [ref=e2465]:
+        - generic [ref=e2469]: "68"
+        - link [ref=e2471] [cursor=pointer]:
+          - /url: /game/2014
+        - generic [ref=e2473]:
+          - 'link "도미니언: 장막뒤의 사람들" [ref=e2475] [cursor=pointer]':
+            - /url: /game/2014
+          - generic [ref=e2476]:
+            - generic [ref=e2477]: "Dominion: Intrigue"
+            - generic [ref=e2478]: 2009년
+          - generic [ref=e2479]: 확장된 카드 효과를 활용해 덱을 강화하고 더욱 다양한 전략을 구축해보세요!
+        - generic [ref=e2480] [cursor=pointer]: "-"
+        - link "7.891" [ref=e2481] [cursor=pointer]:
+          - /url: /game/2014/rate
+        - generic [ref=e2483] [cursor=pointer]: "-"
+        - generic [ref=e2485] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2486] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=2014
+          - generic [ref=e2487]: 위치스브루
+          - generic [ref=e2488]: 플레이보드
+        - link "170,000원 18,000원" [ref=e2489] [cursor=pointer]:
+          - /url: /game/2014/shop
+          - generic [ref=e2490]:
+            - generic [ref=e2491]: 170,000원
+            - generic [ref=e2492]: 18,000원
+      - generic [ref=e2493]:
+        - generic [ref=e2497]: "69"
+        - link [ref=e2499] [cursor=pointer]:
+          - /url: /game/9450
+        - generic [ref=e2501]:
+          - generic [ref=e2502]:
+            - link "루트" [ref=e2503] [cursor=pointer]:
+              - /url: /game/9450
+            - generic [ref=e2506]: "3"
+          - generic [ref=e2507]:
+            - generic [ref=e2508]: Root
+            - generic [ref=e2509]: 2018년
+          - generic [ref=e2510]: 다양한 동물들 중 하나가 되어 공터를 점령하고 승점을 획득해 우드랜드의 패권을 거머쥐세요.
+        - generic [ref=e2511] [cursor=pointer]: "-"
+        - link "7.874" [ref=e2512] [cursor=pointer]:
+          - /url: /game/9450/rate
+        - generic [ref=e2514] [cursor=pointer]: "-"
+        - generic [ref=e2516] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e2517] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=9450
+          - generic [ref=e2518]: 위치스브루
+        - link "500,000원 45,000원" [ref=e2519] [cursor=pointer]:
+          - /url: /game/9450/shop
+          - generic [ref=e2520]:
+            - generic [ref=e2521]: 500,000원
+            - generic [ref=e2522]: 45,000원
+      - generic [ref=e2523]:
+        - generic [ref=e2527]: "70"
+        - link [ref=e2529] [cursor=pointer]:
+          - /url: /game/682
+        - generic [ref=e2531]:
+          - generic [ref=e2532]:
+            - link "라스베가스" [ref=e2533] [cursor=pointer]:
+              - /url: /game/682
+            - generic [ref=e2536]: "1"
+          - generic [ref=e2537]:
+            - generic [ref=e2538]: Las Vegas
+            - generic [ref=e2539]: 2012년
+          - generic [ref=e2540]: 주사위를 활용해 카지노를 공략하며 운과 선택으로 돈을 쓸어 담아보세요!
+        - generic [ref=e2541] [cursor=pointer]: "-"
+        - link "7.873" [ref=e2542] [cursor=pointer]:
+          - /url: /game/682/rate
+        - generic [ref=e2544] [cursor=pointer]: "-"
+        - generic [ref=e2546] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2547] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=682
+          - generic [ref=e2548]: 위치스브루
+          - generic [ref=e2549]: 플레이보드
+        - link "60,000원 13,000원" [ref=e2550] [cursor=pointer]:
+          - /url: /game/682/shop
+          - generic [ref=e2551]:
+            - generic [ref=e2552]: 60,000원
+            - generic [ref=e2553]: 13,000원
+      - generic [ref=e2554]:
+        - generic [ref=e2558]: "71"
+        - link [ref=e2560] [cursor=pointer]:
+          - /url: /game/4681
+        - generic [ref=e2562]:
+          - generic [ref=e2563]:
+            - link "마르코 폴로" [ref=e2564] [cursor=pointer]:
+              - /url: /game/4681
+            - generic [ref=e2567]: "7"
+          - generic [ref=e2568]:
+            - generic [ref=e2569]: The Voyages of Marco Polo
+            - generic [ref=e2570]: 2015년
+          - generic [ref=e2571]: 각기 다른 능력을 활용해 무역과 이동을 최적화하며 동방으로 향하는 여정을 개척해보세요!
+        - generic [ref=e2572] [cursor=pointer]: "-"
+        - link "7.871" [ref=e2573] [cursor=pointer]:
+          - /url: /game/4681/rate
+        - generic [ref=e2575] [cursor=pointer]: "-"
+        - generic [ref=e2577] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e2578] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=4681
+          - generic [ref=e2579]: 위치스브루
+        - link "220,000원 55,000원" [ref=e2580] [cursor=pointer]:
+          - /url: /game/4681/shop
+          - generic [ref=e2581]:
+            - generic [ref=e2582]: 220,000원
+            - generic [ref=e2583]: 55,000원
+      - generic [ref=e2584]:
+        - generic [ref=e2588]: "72"
+        - link [ref=e2590] [cursor=pointer]:
+          - /url: /game/17089
+        - generic [ref=e2592]:
+          - generic [ref=e2593]:
+            - link "스카이 팀" [ref=e2594] [cursor=pointer]:
+              - /url: /game/17089
+            - generic [ref=e2597]: "3"
+          - generic [ref=e2598]:
+            - generic [ref=e2599]: Sky Team
+            - generic [ref=e2600]: 2023년
+          - generic [ref=e2601]: 점점 가혹해지는 상황에서도 소리 없이 협력하며 비행기를 안전하게 착륙시키세요.
+        - generic [ref=e2602] [cursor=pointer]: "-"
+        - link "7.866" [ref=e2603] [cursor=pointer]:
+          - /url: /game/17089/rate
+        - generic [ref=e2605] [cursor=pointer]: "-"
+        - generic [ref=e2607] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2608] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=17089
+          - generic [ref=e2609]: 위치스브루
+          - generic [ref=e2610]: 플레이보드
+        - link "55,000원 17,000원" [ref=e2611] [cursor=pointer]:
+          - /url: /game/17089/shop
+          - generic [ref=e2612]:
+            - generic [ref=e2613]: 55,000원
+            - generic [ref=e2614]: 17,000원
+      - generic [ref=e2615]:
+        - generic [ref=e2619]: "73"
+        - link [ref=e2621] [cursor=pointer]:
+          - /url: /game/13486
+        - generic [ref=e2623]:
+          - generic [ref=e2624]:
+            - 'link "듄: 임페리움" [ref=e2625] [cursor=pointer]':
+              - /url: /game/13486
+            - generic [ref=e2628]: "3"
+          - generic [ref=e2629]:
+            - generic [ref=e2630]: "Dune: Imperium"
+            - generic [ref=e2631]: 2020년
+          - generic [ref=e2632]: 덱 빌딩과 일꾼 놓기를 결합해 자원과 권력을 장악하고 아라키스를 지배해보세요!
+        - generic [ref=e2633] [cursor=pointer]: "-"
+        - link "7.864" [ref=e2634] [cursor=pointer]:
+          - /url: /game/13486/rate
+        - generic [ref=e2636] [cursor=pointer]: "-"
+        - generic [ref=e2638] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2639] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=13486
+          - generic [ref=e2640]: 위치스브루
+          - generic [ref=e2641]: 플레이보드
+        - link "600,000원 40,000원" [ref=e2642] [cursor=pointer]:
+          - /url: /game/13486/shop
+          - generic [ref=e2643]:
+            - generic [ref=e2644]: 600,000원
+            - generic [ref=e2645]: 40,000원
+      - generic [ref=e2646]:
+        - generic [ref=e2650]: "74"
+        - link [ref=e2652] [cursor=pointer]:
+          - /url: /game/9757
+        - generic [ref=e2654]:
+          - 'link "테오티우아칸: 신들의 도시" [ref=e2656] [cursor=pointer]':
+            - /url: /game/9757
+          - generic [ref=e2657]:
+            - generic [ref=e2658]: "Teotihuacan: City of Gods"
+            - generic [ref=e2659]: 2018년
+          - generic [ref=e2660]: 일꾼 주사위를 성장시키며 신들의 도시에서 영향력을 확장해보세요!
+        - generic [ref=e2661] [cursor=pointer]: "-"
+        - link "7.863" [ref=e2662] [cursor=pointer]:
+          - /url: /game/9757/rate
+        - generic [ref=e2664] [cursor=pointer]: "-"
+        - generic [ref=e2666] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2667] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=9757
+          - generic [ref=e2668]: 위치스브루
+          - generic [ref=e2669]: 플레이보드
+        - link "150,000원 35,000원" [ref=e2670] [cursor=pointer]:
+          - /url: /game/9757/shop
+          - generic [ref=e2671]:
+            - generic [ref=e2672]: 150,000원
+            - generic [ref=e2673]: 35,000원
+      - generic [ref=e2674]:
+        - generic [ref=e2678]: "75"
+        - link [ref=e2680] [cursor=pointer]:
+          - /url: /game/14977
+        - generic [ref=e2682]:
+          - generic [ref=e2683]:
+            - link "그레이트 웨스턴 트레일 (2판)" [ref=e2684] [cursor=pointer]:
+              - /url: /game/14977
+            - generic [ref=e2687]: "2"
+          - generic [ref=e2688]:
+            - generic [ref=e2689]: Great Western Trail (Second Edition)
+            - generic [ref=e2690]: 2021년
+          - generic [ref=e2691]: 개선된 시스템 속에서 소몰이와 엔진 구축으로 최적의 경로를 완성해보세요!
+        - generic [ref=e2692] [cursor=pointer]: "-"
+        - link "7.851" [ref=e2693] [cursor=pointer]:
+          - /url: /game/14977/rate
+        - generic [ref=e2695] [cursor=pointer]: "-"
+        - generic [ref=e2697] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e2698] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=14977
+          - generic [ref=e2699]: 위치스브루
+        - link "60,000원 45,000원" [ref=e2700] [cursor=pointer]:
+          - /url: /game/14977/shop
+          - generic [ref=e2701]:
+            - generic [ref=e2702]: 60,000원
+            - generic [ref=e2703]: 45,000원
+      - generic [ref=e2704]:
+        - generic [ref=e2708]: "76"
+        - link [ref=e2710] [cursor=pointer]:
+          - /url: /game/238
+        - generic [ref=e2712]:
+          - link "케일러스" [ref=e2714] [cursor=pointer]:
+            - /url: /game/238
+          - generic [ref=e2715]:
+            - generic [ref=e2716]: Caylus
+            - generic [ref=e2717]: 2005년
+          - generic [ref=e2718]: 일꾼 배치를 통해 건설과 자원 관리를 최적화하며 성을 완성해보세요!
+        - generic [ref=e2719] [cursor=pointer]: "-"
+        - link "7.849" [ref=e2720] [cursor=pointer]:
+          - /url: /game/238/rate
+        - generic [ref=e2722] [cursor=pointer]: "-"
+        - generic [ref=e2724] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e2725] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=238
+          - generic [ref=e2726]: 위치스브루
+        - link [ref=e2727] [cursor=pointer]:
+          - /url: /game/238/shop
+      - generic [ref=e2728]:
+        - generic [ref=e2732]: "77"
+        - link [ref=e2734] [cursor=pointer]:
+          - /url: /game/10793
+        - generic [ref=e2736]:
+          - 'link "반지의 제왕: 가운데땅 여정" [ref=e2738] [cursor=pointer]':
+            - /url: /game/10793
+          - generic [ref=e2739]:
+            - generic [ref=e2740]: "The Lord of the Rings: Journeys in Middle-Earth"
+            - generic [ref=e2741]: 2019년
+          - generic [ref=e2742]: 함께 협력 모험을 진행하며 중간계의 이야기를 체험해보세요!
+        - generic [ref=e2743] [cursor=pointer]: "-"
+        - link "7.846" [ref=e2744] [cursor=pointer]:
+          - /url: /game/10793/rate
+        - generic [ref=e2746] [cursor=pointer]: "-"
+        - generic [ref=e2748] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e2749] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=10793
+          - generic [ref=e2750]: 위치스브루
+        - link "180,000원 65,000원" [ref=e2751] [cursor=pointer]:
+          - /url: /game/10793/shop
+          - generic [ref=e2752]:
+            - generic [ref=e2753]: 180,000원
+            - generic [ref=e2754]: 65,000원
+      - generic [ref=e2755]:
+        - generic [ref=e2759]: "78"
+        - link [ref=e2761] [cursor=pointer]:
+          - /url: /game/13332
+        - generic [ref=e2763]:
+          - generic [ref=e2764]:
+            - link "행성 X를 찾아서" [ref=e2765] [cursor=pointer]:
+              - /url: /game/13332
+            - generic [ref=e2768]: "5"
+          - generic [ref=e2769]:
+            - generic [ref=e2770]: The Search for Planet X
+            - generic [ref=e2771]: 2020년
+          - generic [ref=e2772]: 논리와 단서를 추적해 숨겨진 행성 X의 위치를 밝혀내보세요!
+        - generic [ref=e2773] [cursor=pointer]: "-"
+        - link "7.845" [ref=e2774] [cursor=pointer]:
+          - /url: /game/13332/rate
+        - generic [ref=e2776] [cursor=pointer]: "-"
+        - generic [ref=e2778] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2779] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=13332
+          - generic [ref=e2780]: 위치스브루
+          - generic [ref=e2781]: 플레이보드
+        - link "100,000원 18,000원" [ref=e2782] [cursor=pointer]:
+          - /url: /game/13332/shop
+          - generic [ref=e2783]:
+            - generic [ref=e2784]: 100,000원
+            - generic [ref=e2785]: 18,000원
+      - generic [ref=e2786]:
+        - generic [ref=e2790]: "79"
+        - link [ref=e2792] [cursor=pointer]:
+          - /url: /game/6941
+        - generic [ref=e2794]:
+          - link "요코하마" [ref=e2796] [cursor=pointer]:
+            - /url: /game/6941
+          - generic [ref=e2797]:
+            - generic [ref=e2798]: Yokohama
+            - generic [ref=e2799]: 2016년
+          - generic [ref=e2800]: 전략적으로 상인을 배치해 요코하마의 번영을 이끄세요!
+        - generic [ref=e2801] [cursor=pointer]: "-"
+        - link "7.843" [ref=e2802] [cursor=pointer]:
+          - /url: /game/6941/rate
+        - generic [ref=e2804] [cursor=pointer]: "-"
+        - generic [ref=e2806] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2807] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=6941
+          - generic [ref=e2808]: 위치스브루
+          - generic [ref=e2809]: 플레이보드
+        - link "300,000원 20,000원" [ref=e2810] [cursor=pointer]:
+          - /url: /game/6941/shop
+          - generic [ref=e2811]:
+            - generic [ref=e2812]: 300,000원
+            - generic [ref=e2813]: 20,000원
+      - generic [ref=e2814]:
+        - generic [ref=e2818]: "80"
+        - link [ref=e2820] [cursor=pointer]:
+          - /url: /game/12900
+        - generic [ref=e2822]:
+          - generic [ref=e2823]:
+            - 'link "글룸헤이븐: 사자의 턱" [ref=e2824] [cursor=pointer]':
+              - /url: /game/12900
+            - generic [ref=e2827]: "6"
+          - generic [ref=e2828]:
+            - generic [ref=e2829]: "Gloomhaven: Jaws of the Lion"
+            - generic [ref=e2830]: 2020년
+          - generic [ref=e2831]: 시나리오 기반 전투와 성장 요소를 통해 협력 모험을 완성해보세요!
+        - generic [ref=e2832] [cursor=pointer]: "-"
+        - link "7.837" [ref=e2833] [cursor=pointer]:
+          - /url: /game/12900/rate
+        - generic [ref=e2835] [cursor=pointer]: "-"
+        - generic [ref=e2837] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e2838] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=12900
+          - generic [ref=e2839]: 위치스브루
+        - link "130,000원 35,000원" [ref=e2840] [cursor=pointer]:
+          - /url: /game/12900/shop
+          - generic [ref=e2841]:
+            - generic [ref=e2842]: 130,000원
+            - generic [ref=e2843]: 35,000원
+      - generic [ref=e2844]:
+        - generic [ref=e2848]: "81"
+        - link [ref=e2850] [cursor=pointer]:
+          - /url: /game/478
+        - generic [ref=e2852]:
+          - generic [ref=e2853]:
+            - link "티츄" [ref=e2854] [cursor=pointer]:
+              - /url: /game/478
+            - generic [ref=e2857]: "1"
+          - generic [ref=e2858]:
+            - generic [ref=e2859]: Tichu
+            - generic [ref=e2860]: 1991년
+          - generic [ref=e2861]: 팀원과 호흡을 맞춰 패를 소진하며 타이밍과 심리전으로 승부해보세요!
+        - generic [ref=e2862] [cursor=pointer]: "-"
+        - link "7.836" [ref=e2863] [cursor=pointer]:
+          - /url: /game/478/rate
+        - generic [ref=e2865] [cursor=pointer]: "-"
+        - generic [ref=e2867] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e2868] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=478
+          - generic [ref=e2869]: 위치스브루
+        - link "80,000원 5,000원" [ref=e2870] [cursor=pointer]:
+          - /url: /game/478/shop
+          - generic [ref=e2871]:
+            - generic [ref=e2872]: 80,000원
+            - generic [ref=e2873]: 5,000원
+      - generic [ref=e2874]:
+        - generic [ref=e2878]: "82"
+        - link [ref=e2880] [cursor=pointer]:
+          - /url: /game/20025
+        - generic [ref=e2882]:
+          - generic [ref=e2883]:
+            - link "섀클턴 베이스" [ref=e2884] [cursor=pointer]:
+              - /url: /game/20025
+            - generic [ref=e2887]: "1"
+          - generic [ref=e2888]:
+            - generic [ref=e2889]: "Shackleton Base: A Journey to the Moon"
+            - generic [ref=e2890]: 2024년
+          - generic [ref=e2891]: 프로젝트 후원과 전략적 구조물 건설로 섀클턴 기지의 리더로 활약해보세요.
+        - generic [ref=e2892] [cursor=pointer]: "-"
+        - link "7.836" [ref=e2893] [cursor=pointer]:
+          - /url: /game/20025/rate
+        - generic [ref=e2895] [cursor=pointer]: "-"
+        - generic [ref=e2897] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2898] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=20025
+          - generic [ref=e2899]: 위치스브루
+          - generic [ref=e2900]: 플레이보드
+        - link "120,000원 60,000원" [ref=e2901] [cursor=pointer]:
+          - /url: /game/20025/shop
+          - generic [ref=e2902]:
+            - generic [ref=e2903]: 120,000원
+            - generic [ref=e2904]: 60,000원
+      - generic [ref=e2905]:
+        - generic [ref=e2909]: "83"
+        - link [ref=e2911] [cursor=pointer]:
+          - /url: /game/5712
+        - generic [ref=e2913]:
+          - generic [ref=e2914]:
+            - link "푸드 체인 거물" [ref=e2915] [cursor=pointer]:
+              - /url: /game/5712
+            - generic [ref=e2918]: "2"
+          - generic [ref=e2919]:
+            - generic [ref=e2920]: Food Chain Magnate
+            - generic [ref=e2921]: 2015년
+          - generic [ref=e2922]: 기업을 운영하며 마케팅과 공급 전략으로 외식 시장을 지배해보세요!
+        - generic [ref=e2923] [cursor=pointer]: "-"
+        - link "7.833" [ref=e2924] [cursor=pointer]:
+          - /url: /game/5712/rate
+        - generic [ref=e2926] [cursor=pointer]: "-"
+        - generic [ref=e2928] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2929] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=5712
+          - generic [ref=e2930]: 위치스브루
+          - generic [ref=e2931]: 플레이보드
+        - link "999,999원 100,000원" [ref=e2932] [cursor=pointer]:
+          - /url: /game/5712/shop
+          - generic [ref=e2933]:
+            - generic [ref=e2934]: 999,999원
+            - generic [ref=e2935]: 100,000원
+      - generic [ref=e2936]:
+        - generic [ref=e2940]: "84"
+        - link [ref=e2942] [cursor=pointer]:
+          - /url: /game/13425
+        - generic [ref=e2944]:
+          - generic [ref=e2945]:
+            - 'link "팬데믹 레거시: 시즌 0" [ref=e2946] [cursor=pointer]':
+              - /url: /game/13425
+            - generic [ref=e2949]: "6"
+          - generic [ref=e2950]:
+            - generic [ref=e2951]: "Pandemic Legacy: Season 0"
+            - generic [ref=e2952]: 2020년
+          - generic [ref=e2953]: 냉전 시대를 배경으로 협력과 선택을 통해 변화하는 이야기를 만들어보세요!
+        - generic [ref=e2954] [cursor=pointer]: "-"
+        - link "7.833" [ref=e2955] [cursor=pointer]:
+          - /url: /game/13425/rate
+        - generic [ref=e2957] [cursor=pointer]: "-"
+        - generic [ref=e2959] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e2960] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=13425
+          - generic [ref=e2961]: 위치스브루
+        - link "70,000원 50,000원" [ref=e2962] [cursor=pointer]:
+          - /url: /game/13425/shop
+          - generic [ref=e2963]:
+            - generic [ref=e2964]: 70,000원
+            - generic [ref=e2965]: 50,000원
+      - generic [ref=e2966]:
+        - generic [ref=e2970]: "85"
+        - link [ref=e2972] [cursor=pointer]:
+          - /url: /game/523
+        - generic [ref=e2974]:
+          - generic [ref=e2975]:
+            - 'link "레지스탕스: 아발론" [ref=e2976] [cursor=pointer]':
+              - /url: /game/523
+            - generic [ref=e2979]: "1"
+          - generic [ref=e2980]:
+            - generic [ref=e2981]: "The Resistance: Avalon"
+            - generic [ref=e2982]: 2012년
+          - generic [ref=e2983]: 정체를 숨기고 추리와 설득으로 진영의 승리를 이끌어보세요!
+        - generic [ref=e2984] [cursor=pointer]: "-"
+        - link "7.826" [ref=e2985] [cursor=pointer]:
+          - /url: /game/523/rate
+        - generic [ref=e2987] [cursor=pointer]: "-"
+        - generic [ref=e2989] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e2990] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=523
+          - generic [ref=e2991]: 위치스브루
+          - generic [ref=e2992]: 플레이보드
+        - link "12,000원 3,000원" [ref=e2993] [cursor=pointer]:
+          - /url: /game/523/shop
+          - generic [ref=e2994]:
+            - generic [ref=e2995]: 12,000원
+            - generic [ref=e2996]: 3,000원
+      - generic [ref=e2997]:
+        - generic [ref=e3001]: "86"
+        - link [ref=e3003] [cursor=pointer]:
+          - /url: /game/14167
+        - generic [ref=e3005]:
+          - generic [ref=e3006]:
+            - link "딥 씨 크루" [ref=e3007] [cursor=pointer]:
+              - /url: /game/14167
+            - generic [ref=e3010]: "1"
+          - generic [ref=e3011]:
+            - generic [ref=e3012]: "The Crew: Mission Deep Sea"
+            - generic [ref=e3013]: 2021년
+          - generic [ref=e3014]: 제한된 소통 속에서 협력 트릭테이킹으로 임무를 완수해보세요!
+        - generic [ref=e3015] [cursor=pointer]: "-"
+        - link "7.815" [ref=e3016] [cursor=pointer]:
+          - /url: /game/14167/rate
+        - generic [ref=e3018] [cursor=pointer]: "-"
+        - generic [ref=e3020] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e3021] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=14167
+          - generic [ref=e3022]: 위치스브루
+          - generic [ref=e3023]: 플레이보드
+        - link "80,000원 10,000원" [ref=e3024] [cursor=pointer]:
+          - /url: /game/14167/shop
+          - generic [ref=e3025]:
+            - generic [ref=e3026]: 80,000원
+            - generic [ref=e3027]: 10,000원
+      - generic [ref=e3028]:
+        - generic [ref=e3032]: "87"
+        - link [ref=e3034] [cursor=pointer]:
+          - /url: /game/174
+        - generic [ref=e3036]:
+          - generic [ref=e3037]:
+            - link "도미넌트 스피시즈" [ref=e3038] [cursor=pointer]:
+              - /url: /game/174
+            - generic [ref=e3041]: "1"
+          - generic [ref=e3042]:
+            - generic [ref=e3043]: Dominant Species
+            - generic [ref=e3044]: 2010년
+          - generic [ref=e3045]: 종 간 경쟁 속에서 진화와 적응을 통해 생태계의 지배자가 되어보세요!
+        - generic [ref=e3046] [cursor=pointer]: "-"
+        - link "7.814" [ref=e3047] [cursor=pointer]:
+          - /url: /game/174/rate
+        - generic [ref=e3049] [cursor=pointer]: "-"
+        - generic [ref=e3051] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e3052] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=174
+          - generic [ref=e3053]: 위치스브루
+        - link "80,000원 40,000원" [ref=e3054] [cursor=pointer]:
+          - /url: /game/174/shop
+          - generic [ref=e3055]:
+            - generic [ref=e3056]: 80,000원
+            - generic [ref=e3057]: 40,000원
+      - generic [ref=e3058]:
+        - generic [ref=e3062]: "88"
+        - link [ref=e3064] [cursor=pointer]:
+          - /url: /game/9814
+        - generic [ref=e3066]:
+          - generic [ref=e3067]:
+            - link "온 마스" [ref=e3068] [cursor=pointer]:
+              - /url: /game/9814
+            - generic [ref=e3071]: "1"
+          - generic [ref=e3072]:
+            - generic [ref=e3073]: On Mars
+            - generic [ref=e3074]: 2020년
+          - generic [ref=e3075]: 최초의 화성 콜로니 건설에 참여하여 최고의 기여자가 되십시오.
+        - generic [ref=e3076] [cursor=pointer]: "-"
+        - link "7.807" [ref=e3077] [cursor=pointer]:
+          - /url: /game/9814/rate
+        - generic [ref=e3079] [cursor=pointer]: "-"
+        - generic [ref=e3081] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e3082] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=9814
+          - generic [ref=e3083]: 위치스브루
+          - generic [ref=e3084]: 플레이보드
+        - link "500,000원 12,345원" [ref=e3085] [cursor=pointer]:
+          - /url: /game/9814/shop
+          - generic [ref=e3086]:
+            - generic [ref=e3087]: 500,000원
+            - generic [ref=e3088]: 12,345원
+      - generic [ref=e3089]:
+        - generic [ref=e3093]: "89"
+        - link [ref=e3095] [cursor=pointer]:
+          - /url: /game/19507
+        - generic [ref=e3097]:
+          - generic [ref=e3098]:
+            - link "서부 탐험대" [ref=e3099] [cursor=pointer]:
+              - /url: /game/19507
+            - generic [ref=e3102]: "14"
+          - generic [ref=e3103]:
+            - generic [ref=e3104]: "Corps of Discovery: A Game Set in the World of Manifest Destiny"
+            - generic [ref=e3105]: 2025년
+          - generic [ref=e3106]: 탐험과 개척을 통해 새로운 땅에서 영향력을 확장해보세요!
+        - generic [ref=e3107] [cursor=pointer]: "-"
+        - link "7.802" [ref=e3108] [cursor=pointer]:
+          - /url: /game/19507/rate
+        - generic [ref=e3110] [cursor=pointer]: "-"
+        - generic [ref=e3112] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e3113] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=19507
+          - generic [ref=e3114]: 위치스브루
+        - link "195,000원 130,000원" [ref=e3115] [cursor=pointer]:
+          - /url: /game/19507/shop
+          - generic [ref=e3116]:
+            - generic [ref=e3117]: 195,000원
+            - generic [ref=e3118]: 130,000원
+      - generic [ref=e3119]:
+        - generic [ref=e3123]: "90"
+        - link [ref=e3125] [cursor=pointer]:
+          - /url: /game/9909
+        - generic [ref=e3127]:
+          - link "네메시스" [ref=e3129] [cursor=pointer]:
+            - /url: /game/9909
+          - generic [ref=e3130]:
+            - generic [ref=e3131]: Nemesis
+            - generic [ref=e3132]: 2018년
+          - generic [ref=e3133]: 배신과 협력이 뒤섞인 우주선에서 생존을 위한 선택을 이어가보세요!
+        - generic [ref=e3134] [cursor=pointer]: "-"
+        - link "7.792" [ref=e3135] [cursor=pointer]:
+          - /url: /game/9909/rate
+        - generic [ref=e3137] [cursor=pointer]: "-"
+        - generic [ref=e3139] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e3140] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=9909
+          - generic [ref=e3141]: 위치스브루
+          - generic [ref=e3142]: 플레이보드
+        - link "1,200,000원 10,000원" [ref=e3143] [cursor=pointer]:
+          - /url: /game/9909/shop
+          - generic [ref=e3144]:
+            - generic [ref=e3145]: 1,200,000원
+            - generic [ref=e3146]: 10,000원
+      - generic [ref=e3147]:
+        - generic [ref=e3151]: "91"
+        - link [ref=e3153] [cursor=pointer]:
+          - /url: /game/2502
+        - generic [ref=e3155]:
+          - generic [ref=e3156]:
+            - link "러시안 레일로드" [ref=e3157] [cursor=pointer]:
+              - /url: /game/2502
+            - generic [ref=e3160]: "2"
+          - generic [ref=e3161]:
+            - generic [ref=e3162]: Russian Railroads
+            - generic [ref=e3163]: 2013년
+          - generic [ref=e3164]: 철도망을 효율적으로 확장하며 점수 엔진을 극대화해보세요!
+        - generic [ref=e3165] [cursor=pointer]: "-"
+        - link "7.792" [ref=e3166] [cursor=pointer]:
+          - /url: /game/2502/rate
+        - generic [ref=e3168] [cursor=pointer]: "-"
+        - generic [ref=e3170] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e3171] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=2502
+          - generic [ref=e3172]: 위치스브루
+        - link "50,000원 30,000원" [ref=e3173] [cursor=pointer]:
+          - /url: /game/2502/shop
+          - generic [ref=e3174]:
+            - generic [ref=e3175]: 50,000원
+            - generic [ref=e3176]: 30,000원
+      - generic [ref=e3177]:
+        - generic [ref=e3181]: "92"
+        - link [ref=e3183] [cursor=pointer]:
+          - /url: /game/14064
+        - generic [ref=e3185]:
+          - generic [ref=e3186]:
+            - link "다윈의 여정" [ref=e3187] [cursor=pointer]:
+              - /url: /game/14064
+            - generic [ref=e3190]: "10"
+          - generic [ref=e3191]:
+            - generic [ref=e3192]: Darwin's Journey
+            - generic [ref=e3193]: 2023년
+          - generic [ref=e3194]: 탐험과 연구를 통해 진화의 비밀을 밝혀내고 업적을 쌓아보세요!
+        - generic [ref=e3195] [cursor=pointer]: "-"
+        - link "7.788" [ref=e3196] [cursor=pointer]:
+          - /url: /game/14064/rate
+        - generic [ref=e3198] [cursor=pointer]: "-"
+        - generic [ref=e3200] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e3201] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=14064
+          - generic [ref=e3202]: 위치스브루
+          - generic [ref=e3203]: 플레이보드
+        - link "80,000원 10,000원" [ref=e3204] [cursor=pointer]:
+          - /url: /game/14064/shop
+          - generic [ref=e3205]:
+            - generic [ref=e3206]: 80,000원
+            - generic [ref=e3207]: 10,000원
+      - generic [ref=e3208]:
+        - generic [ref=e3212]: "93"
+        - link [ref=e3214] [cursor=pointer]:
+          - /url: /game/11763
+        - generic [ref=e3216]:
+          - generic [ref=e3217]:
+            - 'link "마블 챔피언스: 카드 게임" [ref=e3218] [cursor=pointer]':
+              - /url: /game/11763
+            - generic [ref=e3221]: "18"
+          - generic [ref=e3222]:
+            - generic [ref=e3223]: "Marvel Champions: The Card Game"
+            - generic [ref=e3224]: 2019년
+          - generic [ref=e3225]: 마블 유니버스 영웅들이 되어 악명 높은 악당들과 맞서 싸우세요!
+        - generic [ref=e3226] [cursor=pointer]: "-"
+        - link "7.784" [ref=e3227] [cursor=pointer]:
+          - /url: /game/11763/rate
+        - generic [ref=e3229] [cursor=pointer]: "-"
+        - generic [ref=e3231] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e3232] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=11763
+          - generic [ref=e3233]: 위치스브루
+        - link "400,000원 27,000원" [ref=e3234] [cursor=pointer]:
+          - /url: /game/11763/shop
+          - generic [ref=e3235]:
+            - generic [ref=e3236]: 400,000원
+            - generic [ref=e3237]: 27,000원
+      - generic [ref=e3238]:
+        - generic [ref=e3242]: "94"
+        - link [ref=e3244] [cursor=pointer]:
+          - /url: /game/16753
+        - generic [ref=e3246]:
+          - generic [ref=e3247]:
+            - link "남티그리스의 학자" [ref=e3248] [cursor=pointer]:
+              - /url: /game/16753
+            - generic [ref=e3251]: "4"
+          - generic [ref=e3252]:
+            - generic [ref=e3253]: Scholars of the South Tigris
+            - generic [ref=e3254]: 2023년
+          - generic [ref=e3255]: 두루마리를 모아서 지혜의 집으로 가져가 번역하게 하십시오.
+        - generic [ref=e3256] [cursor=pointer]: "-"
+        - link "7.779" [ref=e3257] [cursor=pointer]:
+          - /url: /game/16753/rate
+        - generic [ref=e3259] [cursor=pointer]: "-"
+        - generic [ref=e3261] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e3262] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=16753
+          - generic [ref=e3263]: 위치스브루
+        - link "209,000원 44,000원" [ref=e3264] [cursor=pointer]:
+          - /url: /game/16753/shop
+          - generic [ref=e3265]:
+            - generic [ref=e3266]: 209,000원
+            - generic [ref=e3267]: 44,000원
+      - generic [ref=e3268]:
+        - generic [ref=e3272]: "95"
+        - link [ref=e3274] [cursor=pointer]:
+          - /url: /game/2501
+        - generic [ref=e3276]:
+          - generic [ref=e3277]:
+            - link "콩코르디아" [ref=e3278] [cursor=pointer]:
+              - /url: /game/2501
+            - generic [ref=e3281]: "4"
+          - generic [ref=e3282]:
+            - generic [ref=e3283]: Concordia
+            - generic [ref=e3284]: 2013년
+          - generic [ref=e3285]: 로마 제국의 상인이 되어 제국 전역에서 건설과 무역 활동을 벌이고 신들을 기쁘게 하세요!
+        - generic [ref=e3286] [cursor=pointer]: "-"
+        - link "7.778" [ref=e3287] [cursor=pointer]:
+          - /url: /game/2501/rate
+        - generic [ref=e3289] [cursor=pointer]: "-"
+        - generic [ref=e3291] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e3292] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=2501
+          - generic [ref=e3293]: 위치스브루
+          - generic [ref=e3294]: 플레이보드
+        - link "140,000원 39,000원" [ref=e3295] [cursor=pointer]:
+          - /url: /game/2501/shop
+          - generic [ref=e3296]:
+            - generic [ref=e3297]: 140,000원
+            - generic [ref=e3298]: 39,000원
+      - generic [ref=e3299]:
+        - generic [ref=e3303]: "96"
+        - link [ref=e3305] [cursor=pointer]:
+          - /url: /game/9830
+        - generic [ref=e3307]:
+          - link "언더워터 시티즈" [ref=e3309] [cursor=pointer]:
+            - /url: /game/9830
+          - generic [ref=e3310]:
+            - generic [ref=e3311]: Underwater Cities
+            - generic [ref=e3312]: 2018년
+          - generic [ref=e3313]: 정치, 생산, 과학을 통해 해저에 미래 도시를 건설하세요.
+        - generic [ref=e3314] [cursor=pointer]: "-"
+        - link "7.778" [ref=e3315] [cursor=pointer]:
+          - /url: /game/9830/rate
+        - generic [ref=e3317] [cursor=pointer]: "-"
+        - generic [ref=e3319] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e3320] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=9830
+          - generic [ref=e3321]: 위치스브루
+        - link "200,000원 11,111원" [ref=e3322] [cursor=pointer]:
+          - /url: /game/9830/shop
+          - generic [ref=e3323]:
+            - generic [ref=e3324]: 200,000원
+            - generic [ref=e3325]: 11,111원
+      - generic [ref=e3326]:
+        - generic [ref=e3330]: "97"
+        - link [ref=e3332] [cursor=pointer]:
+          - /url: /game/2528
+        - generic [ref=e3334]:
+          - generic [ref=e3335]:
+            - link "엘드리치 호러" [ref=e3336] [cursor=pointer]:
+              - /url: /game/2528
+            - generic [ref=e3339]: "5"
+          - generic [ref=e3340]:
+            - generic [ref=e3341]: Eldritch Horror
+            - generic [ref=e3342]: 2013년
+          - generic [ref=e3343]: 조사관으로 전세계를 누비며, 고대의 존재들로부터 세상의 파멸을 막으세요!
+        - generic [ref=e3344] [cursor=pointer]: "-"
+        - link "7.778" [ref=e3345] [cursor=pointer]:
+          - /url: /game/2528/rate
+        - generic [ref=e3347] [cursor=pointer]: "-"
+        - generic [ref=e3349] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e3350] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=2528
+          - generic [ref=e3351]: 위치스브루
+          - generic [ref=e3352]: 플레이보드
+        - link "130,000원 32,000원" [ref=e3353] [cursor=pointer]:
+          - /url: /game/2528/shop
+          - generic [ref=e3354]:
+            - generic [ref=e3355]: 130,000원
+            - generic [ref=e3356]: 32,000원
+      - generic [ref=e3357]:
+        - generic [ref=e3361]: "98"
+        - link [ref=e3363] [cursor=pointer]:
+          - /url: /game/19722
+        - generic [ref=e3365]:
+          - generic [ref=e3366]:
+            - link "봄버스터즈" [ref=e3367] [cursor=pointer]:
+              - /url: /game/19722
+            - generic [ref=e3370]: "3"
+          - generic [ref=e3371]:
+            - generic [ref=e3372]: Bomb Busters
+            - generic [ref=e3373]: 2024년
+          - generic [ref=e3374]: 타일을 조합해 폭탄을 해제하며 전략을 겨루세요!
+        - generic [ref=e3375] [cursor=pointer]: "-"
+        - link "7.777" [ref=e3376] [cursor=pointer]:
+          - /url: /game/19722/rate
+        - generic [ref=e3378] [cursor=pointer]: "-"
+        - generic [ref=e3380] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e3381] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=19722
+          - generic [ref=e3382]: 위치스브루
+          - generic [ref=e3383]: 플레이보드
+        - link "50,000원 15,000원" [ref=e3384] [cursor=pointer]:
+          - /url: /game/19722/shop
+          - generic [ref=e3385]:
+            - generic [ref=e3386]: 50,000원
+            - generic [ref=e3387]: 15,000원
+      - generic [ref=e3388]:
+        - generic [ref=e3392]: "99"
+        - link [ref=e3394] [cursor=pointer]:
+          - /url: /game/13424
+        - generic [ref=e3396]:
+          - generic [ref=e3397]:
+            - 'link "이클립스: 두 번째 여명" [ref=e3398] [cursor=pointer]':
+              - /url: /game/13424
+            - generic [ref=e3401]: "5"
+          - generic [ref=e3402]:
+            - generic [ref=e3403]: "Eclipse : Second Dawn for the Galaxy"
+            - generic [ref=e3404]: 2020년
+          - generic [ref=e3405]: 탐험과 전투, 기술 발전을 통해 우주 제국의 패권을 장악해보세요!
+        - generic [ref=e3406] [cursor=pointer]: "-"
+        - link "7.774" [ref=e3407] [cursor=pointer]:
+          - /url: /game/13424/rate
+        - generic [ref=e3409] [cursor=pointer]: "-"
+        - generic [ref=e3411] [cursor=pointer]: "-"
+        - link "위치스브루" [ref=e3412] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=13424
+          - generic [ref=e3413]: 위치스브루
+        - link "160,000원 30,000원" [ref=e3414] [cursor=pointer]:
+          - /url: /game/13424/shop
+          - generic [ref=e3415]:
+            - generic [ref=e3416]: 160,000원
+            - generic [ref=e3417]: 30,000원
+      - generic [ref=e3418]:
+        - generic [ref=e3422]: "100"
+        - link [ref=e3424] [cursor=pointer]:
+          - /url: /game/18328
+        - generic [ref=e3426]:
+          - generic [ref=e3427]:
+            - link "전지적 추리 시점" [ref=e3428] [cursor=pointer]:
+              - /url: /game/18328
+            - generic [ref=e3431]: "3"
+          - generic [ref=e3432]:
+            - generic [ref=e3433]: Perspectives
+            - generic [ref=e3434]: 2023년
+        - generic [ref=e3435] [cursor=pointer]: "-"
+        - link "7.768" [ref=e3436] [cursor=pointer]:
+          - /url: /game/18328/rate
+        - generic [ref=e3438] [cursor=pointer]: "-"
+        - generic [ref=e3440] [cursor=pointer]: "-"
+        - link "위치스브루 플레이보드" [ref=e3441] [cursor=pointer]:
+          - /url: /moca?type=all&category=place&game=18328
+          - generic [ref=e3442]: 위치스브루
+          - generic [ref=e3443]: 플레이보드
+        - link "69,000원 23,000원" [ref=e3444] [cursor=pointer]:
+          - /url: /game/18328/shop
+          - generic [ref=e3445]:
+            - generic [ref=e3446]: 69,000원
+            - generic [ref=e3447]: 23,000원
+    - generic [ref=e3449]:
+      - link "1" [ref=e3450]:
+        - /url: javascript:void(0)
+      - link "2" [ref=e3451] [cursor=pointer]:
+        - /url: /rank/all/2
+      - link "3" [ref=e3452] [cursor=pointer]:
+        - /url: /rank/all/3
+      - link "4" [ref=e3453] [cursor=pointer]:
+        - /url: /rank/all/4
+      - link "5" [ref=e3454] [cursor=pointer]:
+        - /url: /rank/all/5
+      - link "6" [ref=e3455] [cursor=pointer]:
+        - /url: /rank/all/6
+      - link "7" [ref=e3456] [cursor=pointer]:
+        - /url: /rank/all/7
+      - link "8" [ref=e3457] [cursor=pointer]:
+        - /url: /rank/all/8
+      - link "9" [ref=e3458] [cursor=pointer]:
+        - /url: /rank/all/9
+      - link "10" [ref=e3459] [cursor=pointer]:
+        - /url: /rank/all/10
+      - link "다음" [ref=e3460] [cursor=pointer]:
+        - /url: /rank/all/11
+  - generic [ref=e3463]:
+    - link [ref=e3465] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e3468]:
+      - link "커뮤니티 규칙" [ref=e3469] [cursor=pointer]:
+        - /url: /policy.php
+      - link "서비스 약관/정책" [ref=e3470] [cursor=pointer]:
+        - /url: /policy.php?page=service
+      - link "개인정보취급방침" [ref=e3471] [cursor=pointer]:
+        - /url: /policy.php?page=privacy
+      - link "청소년보호정책" [ref=e3472] [cursor=pointer]:
+        - /url: /policy.php?page=youth
+      - link "공지사항" [ref=e3473] [cursor=pointer]:
+        - /url: /board/notice
+      - link "광고센터" [ref=e3474] [cursor=pointer]:
+        - /url: /serviceAD.php
+    - generic [ref=e3475]:
+      - generic [ref=e3476]: "회사명: 보드라이프"
+      - generic [ref=e3477]: 경기도 구리시 벌말로 147번길 34-6
+      - generic [ref=e3478]: "등록번호: 893-07-00060"
+      - generic [ref=e3479]: "대표자명: 곽재영"
+      - generic [ref=e3480]: "고객지원 : boardlifeTeam@gmail.com"
+    - generic [ref=e3481]: 위 내용에 대한 저작권 및 법적 책임은 자료제공사 또는 글쓴이에 있으며 보드라이프의 입장과 다를 수 있습니다.
+    - generic [ref=e3482]: Copyright ⓒ boardlife.co.kr All rights reserved.

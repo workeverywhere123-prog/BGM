@@ -1,0 +1,1162 @@
+{
+  "timestamp": "2026-06-07T15:08:43.449Z",
+  "reason": "compaction",
+  "status": {
+    "version": "2.0",
+    "lastUpdated": "2026-06-07T15:08:11.599Z",
+    "activeFeatures": [
+      "boardgame-league",
+      "records",
+      "domain",
+      "(auth)",
+      "invites",
+      "admin",
+      "rooms",
+      "[id]",
+      "notice",
+      "games",
+      "[username]",
+      "meeting",
+      "player-games",
+      "image",
+      "tmp",
+      "search"
+    ],
+    "primaryFeature": "boardgame-league",
+    "features": {
+      "boardgame-league": {
+        "phase": "do",
+        "level": "Dynamic",
+        "startedAt": "2026-04-20T09:15:42.634Z",
+        "lastPhaseAt": "2026-04-21T00:00:00.000Z",
+        "documents": {
+          "plan": "docs/01-plan/features/boardgame-league.plan.md",
+          "glossary": "docs/01-plan/glossary.md",
+          "schema": "docs/01-plan/schema.md",
+          "design": "docs/02-design/features/boardgame-league.design.md"
+        },
+        "stack": {
+          "frontend": "Next.js 15 + React 19 + TS + Tailwind",
+          "backend": "Supabase (Postgres + GoTrue + RLS)",
+          "testing": "Vitest (domain layer)",
+          "pivotedFrom": "bkend.ai",
+          "pivotedAt": "2026-04-20"
+        },
+        "matchRate": null,
+        "iterationCount": 0,
+        "milestones": {
+          "M1": {
+            "name": "Auth + Infrastructure",
+            "status": "implemented",
+            "scope": "Steps 1-6 of 7 (Google OAuth pending dashboard config)",
+            "completedAt": "2026-04-21T00:00:00.000Z"
+          }
+        },
+        "phaseNumber": 3,
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/components/GamePopup.tsx",
+        "timestamps": {
+          "lastUpdated": "2026-06-07T15:05:47.857Z"
+        }
+      },
+      "records": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-05-15T10:48:04.560Z",
+          "lastUpdated": "2026-05-15T10:51:57.675Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/records/StatsContent.tsx"
+      },
+      "domain": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-05-19T12:45:02.910Z",
+          "lastUpdated": "2026-05-19T19:11:01.010Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/domain/invite-code.ts"
+      },
+      "(auth)": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-05-19T19:11:46.189Z",
+          "lastUpdated": "2026-05-20T09:04:24.954Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/(auth)/actions.ts"
+      },
+      "invites": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-05-19T19:13:22.008Z",
+          "lastUpdated": "2026-05-19T19:14:20.005Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/admin/invites/page.tsx"
+      },
+      "admin": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-05-19T19:15:01.636Z",
+          "lastUpdated": "2026-06-07T06:27:32.158Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/admin/layout.tsx"
+      },
+      "rooms": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-05-21T09:18:34.545Z",
+          "lastUpdated": "2026-05-22T20:28:46.212Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/rooms/RoomsClient.tsx"
+      },
+      "[id]": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-05-21T19:21:59.363Z",
+          "lastUpdated": "2026-06-07T06:26:11.908Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/admin/meeting/[id]/MeetingDetailClient.tsx"
+      },
+      "notice": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-05-22T14:18:25.458Z",
+          "lastUpdated": "2026-05-22T14:18:25.458Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/notice/RulesContent.tsx"
+      },
+      "games": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-06-07T06:08:26.094Z",
+          "lastUpdated": "2026-06-07T15:05:02.599Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/games/GamePageClient.tsx"
+      },
+      "[username]": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-06-07T06:09:10.541Z",
+          "lastUpdated": "2026-06-07T08:10:38.870Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/profile/[username]/GameManager.tsx"
+      },
+      "meeting": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-06-07T06:23:10.890Z",
+          "lastUpdated": "2026-06-07T06:23:10.890Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/api/admin/meeting/route.ts"
+      },
+      "player-games": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-06-07T06:26:28.858Z",
+          "lastUpdated": "2026-06-07T08:32:12.681Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/api/admin/player-games/route.ts"
+      },
+      "image": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-06-07T08:38:03.142Z",
+          "lastUpdated": "2026-06-07T15:04:39.069Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/api/boardlife/image/route.ts"
+      },
+      "tmp": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-06-07T11:04:03.537Z",
+          "lastUpdated": "2026-06-07T15:04:01.394Z"
+        },
+        "lastFile": "/tmp/update_boardlife_ogsrc.py"
+      },
+      "search": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-06-07T15:08:11.599Z",
+          "lastUpdated": "2026-06-07T15:08:11.599Z"
+        },
+        "lastFile": "/Users/anjongtae/Desktop/boardgame-league/src/app/api/boardlife/search/route.ts"
+      }
+    },
+    "pipeline": {
+      "currentPhase": 4,
+      "level": "Dynamic",
+      "phaseHistory": [
+        {
+          "phase": 1,
+          "name": "Schema",
+          "completedAt": "2026-04-20T09:45:00.000Z",
+          "outputs": [
+            "docs/01-plan/glossary.md",
+            "docs/01-plan/schema.md"
+          ]
+        },
+        {
+          "phase": 2,
+          "name": "Convention",
+          "completedAt": "2026-04-20T21:30:00.000Z",
+          "outputs": [
+            "docs/02-design/features/boardgame-league.design.md#11-2"
+          ]
+        },
+        {
+          "phase": 4,
+          "name": "API (Server Actions + Supabase)",
+          "completedAt": "2026-04-21T00:00:00.000Z",
+          "outputs": [
+            "src/app/(auth)/actions.ts",
+            "src/lib/supabase/server.ts",
+            "src/lib/supabase/client.ts",
+            "src/lib/supabase/service.ts",
+            "src/lib/supabase/middleware.ts",
+            "src/middleware.ts",
+            "src/lib/session.ts",
+            "supabase/schema.sql",
+            "supabase/SETUP.md"
+          ]
+        }
+      ]
+    },
+    "session": {
+      "startedAt": "2026-04-20T09:15:42.634Z",
+      "onboardingCompleted": true,
+      "lastActivity": "2026-06-07T15:08:11.599Z"
+    },
+    "history": [
+      {
+        "feature": "boardgame-league",
+        "phase": "plan",
+        "action": "document_created",
+        "timestamp": "2026-04-20T09:25:00.000Z",
+        "path": "docs/01-plan/features/boardgame-league.plan.md"
+      },
+      {
+        "feature": "boardgame-league",
+        "phase": "plan",
+        "action": "phase-1-schema_completed",
+        "timestamp": "2026-04-20T09:45:00.000Z",
+        "paths": [
+          "docs/01-plan/glossary.md",
+          "docs/01-plan/schema.md"
+        ]
+      },
+      {
+        "feature": "boardgame-league",
+        "phase": "design",
+        "action": "document_created",
+        "timestamp": "2026-04-20T21:48:00.000Z",
+        "path": "docs/02-design/features/boardgame-league.design.md"
+      },
+      {
+        "feature": "boardgame-league",
+        "phase": "design",
+        "action": "stack_pivot",
+        "timestamp": "2026-04-20T23:00:00.000Z",
+        "note": "bkend.ai -> Supabase (Postgres + GoTrue + RLS); Domain layer unchanged.",
+        "updatedPaths": [
+          "docs/01-plan/features/boardgame-league.plan.md",
+          "docs/01-plan/schema.md",
+          "docs/02-design/features/boardgame-league.design.md"
+        ]
+      },
+      {
+        "feature": "boardgame-league",
+        "phase": "do",
+        "action": "domain_layer_implemented",
+        "timestamp": "2026-04-20T23:30:00.000Z",
+        "paths": [
+          "src/domain/rating.ts",
+          "src/domain/elo.ts",
+          "src/domain/elo.test.ts",
+          "src/domain/auth-rules.ts",
+          "src/domain/auth-rules.test.ts",
+          "src/types/domain.ts",
+          "vitest.config.ts"
+        ]
+      },
+      {
+        "feature": "boardgame-league",
+        "phase": "do",
+        "action": "supabase_infrastructure_implemented",
+        "timestamp": "2026-04-21T00:00:00.000Z",
+        "paths": [
+          "src/lib/env.ts",
+          "src/lib/supabase/client.ts",
+          "src/lib/supabase/server.ts",
+          "src/lib/supabase/service.ts",
+          "src/lib/supabase/middleware.ts",
+          "src/middleware.ts",
+          "src/lib/session.ts",
+          "supabase/schema.sql",
+          "supabase/SETUP.md",
+          ".env.example"
+        ]
+      },
+      {
+        "feature": "boardgame-league",
+        "phase": "do",
+        "action": "auth_ui_implemented",
+        "timestamp": "2026-04-21T00:00:00.000Z",
+        "paths": [
+          "src/app/(auth)/actions.ts",
+          "src/app/(auth)/AuthCard.tsx",
+          "src/app/(auth)/login/page.tsx",
+          "src/app/(auth)/signup/page.tsx",
+          "src/app/page.tsx"
+        ]
+      },
+      {
+        "feature": "boardgame-league",
+        "phase": "do",
+        "action": "milestone_M1_implemented",
+        "timestamp": "2026-04-21T00:00:00.000Z",
+        "note": "Auth + Infrastructure (Steps 1-6 of 7). Step 7 (Google OAuth) requires dashboard config.",
+        "pendingUserAction": "npm install, configure supabase/.env.local, run supabase/schema.sql"
+      },
+      {
+        "timestamp": "2026-05-15T10:48:04.560Z",
+        "feature": "records",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-15T10:51:57.675Z",
+        "feature": "records",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-19T12:45:02.910Z",
+        "feature": "domain",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-19T19:11:01.010Z",
+        "feature": "domain",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-19T19:11:46.189Z",
+        "feature": "(auth)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-19T19:12:11.453Z",
+        "feature": "(auth)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-19T19:12:26.882Z",
+        "feature": "(auth)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-19T19:13:22.008Z",
+        "feature": "invites",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-19T19:14:09.716Z",
+        "feature": "invites",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-19T19:14:20.005Z",
+        "feature": "invites",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-19T19:15:01.636Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-20T09:03:52.036Z",
+        "feature": "(auth)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-20T09:04:04.391Z",
+        "feature": "(auth)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-20T09:04:12.356Z",
+        "feature": "(auth)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-20T09:04:24.954Z",
+        "feature": "(auth)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-21T09:18:34.545Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-21T09:19:26.794Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-21T09:19:34.977Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-21T09:19:43.191Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-21T09:20:18.899Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-21T09:20:44.049Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-21T09:20:56.425Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-21T09:21:04.341Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-21T09:21:30.892Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-21T19:21:59.363Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T14:18:25.458Z",
+        "feature": "notice",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T14:18:42.370Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:23:39.968Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:23:47.273Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:24:18.185Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:24:27.212Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:24:36.935Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:24:48.513Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:24:58.709Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:25:05.829Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:25:12.796Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:25:21.475Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:25:38.383Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:25:45.960Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:26:43.203Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:26:52.664Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:27:02.064Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:27:09.199Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:27:28.558Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:28:08.535Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:28:15.255Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:28:23.272Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:28:38.844Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-22T20:28:46.212Z",
+        "feature": "rooms",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:49:19.384Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:49:36.777Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:49:45.229Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:49:56.077Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:50:02.576Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:50:13.134Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:50:20.863Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:50:32.073Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:51:02.309Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:51:19.020Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:51:27.773Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-05-24T00:51:40.391Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-06T11:10:12.541Z",
+        "feature": "boardgame-league",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T06:08:26.094Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T06:08:43.138Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T06:09:10.541Z",
+        "feature": "[username]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T06:23:10.890Z",
+        "feature": "meeting",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T06:23:21.284Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T06:26:11.908Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T06:26:28.859Z",
+        "feature": "player-games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T06:27:22.124Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T06:27:26.773Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T06:27:32.158Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:05:30.168Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:06:32.969Z",
+        "feature": "[username]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:06:45.032Z",
+        "feature": "[username]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:06:55.280Z",
+        "feature": "[username]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:07:03.190Z",
+        "feature": "[username]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:10:15.898Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:10:38.870Z",
+        "feature": "[username]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:23:39.783Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:25:14.142Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:29:04.339Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:29:13.846Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:29:33.110Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:29:59.525Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:30:06.033Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:30:12.335Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:32:12.681Z",
+        "feature": "player-games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:32:43.272Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:32:52.575Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:33:21.950Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:38:03.142Z",
+        "feature": "image",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:38:20.045Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:38:32.441Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:43:54.300Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:44:06.491Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:54:52.607Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T08:55:06.298Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T09:01:15.104Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T09:01:30.344Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T09:01:53.593Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T11:04:03.537Z",
+        "feature": "tmp",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T12:34:01.862Z",
+        "feature": "tmp",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T12:39:26.279Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T12:39:49.273Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T12:40:28.013Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T13:37:09.808Z",
+        "feature": "tmp",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T13:48:26.741Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T13:48:50.757Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T13:49:05.429Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T13:49:22.012Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T13:57:37.622Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T14:39:11.454Z",
+        "feature": "image",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T14:39:27.232Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T14:39:34.158Z",
+        "feature": "boardgame-league",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T14:39:41.235Z",
+        "feature": "boardgame-league",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T14:39:47.172Z",
+        "feature": "boardgame-league",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T14:40:17.181Z",
+        "feature": "tmp",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T14:40:33.833Z",
+        "feature": "tmp",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T14:41:56.620Z",
+        "feature": "tmp",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T14:52:27.298Z",
+        "feature": "tmp",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T15:04:01.394Z",
+        "feature": "tmp",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T15:04:39.069Z",
+        "feature": "image",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T15:05:02.599Z",
+        "feature": "games",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T15:05:32.547Z",
+        "feature": "boardgame-league",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T15:05:39.835Z",
+        "feature": "boardgame-league",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T15:05:47.857Z",
+        "feature": "boardgame-league",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-06-07T15:08:11.599Z",
+        "feature": "search",
+        "phase": "do",
+        "action": "updated"
+      }
+    ]
+  }
+}

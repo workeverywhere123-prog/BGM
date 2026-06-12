@@ -25,6 +25,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
               { href: '/admin/meeting', label: '모임 관리', icon: '📋' },
               { href: '/admin/record', label: '경기 기록', icon: '🎲' },
               { href: '/admin/lapis', label: 'LAPIS 관리', icon: '💎' },
+              { href: '/admin/raffle', label: '추첨 관리', icon: '🎲' },
               { href: '/admin/games', label: '게임 책장', icon: '📚' },
               { href: '/admin/invites', label: '초대코드', icon: '🎫' },
               { href: '/admin/notice', label: '공지사항', icon: '📢' },
