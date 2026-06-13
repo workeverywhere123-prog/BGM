@@ -602,6 +602,13 @@ body {
 }
 
 @media (max-width: 768px) {
+  /* OLED 모바일 보정 — 배경을 약간 밝게 올려 데스크탑 LCD와 비슷한 체감 밝기 유지 */
+  :root {
+    --background:   #0f2b1e;   /* #0b2218 → 살짝 밝게 */
+    --green-mid:    #1a3d2a;   /* #163524 → 살짝 밝게 */
+    --green-light:  #234f38;   /* #1e4a34 → 살짝 밝게 */
+  }
+
   /* Nav */
   .bgm-nav { padding: 0.75rem 1.2rem; min-height: 52px; }
   .bgm-nav-links { display: none; }
