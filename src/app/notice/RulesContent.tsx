@@ -37,23 +37,23 @@ function RuleRow({ children, plus, minus, special }: { children: React.ReactNode
 
 function RankTable({ rows }: { rows: { label: string; cols: string[] }[] }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', overflowX: 'auto' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
       {rows.map(r => (
-        <div key={r.label} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'nowrap', minWidth: 'max-content' }}>
-          <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.58rem', letterSpacing: '0.1em', color: 'var(--gold-dim)', minWidth: 24, flexShrink: 0 }}>{r.label}</span>
-          <div style={{ display: 'flex', gap: '0.25rem', flexWrap: 'nowrap' }}>
+        <div key={r.label} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.4rem', flexWrap: 'wrap' }}>
+          <span style={{ fontFamily: "'Cinzel', serif", fontSize: '0.55rem', letterSpacing: '0.05em', color: 'var(--gold-dim)', minWidth: 22, flexShrink: 0, paddingTop: '0.15rem' }}>{r.label}</span>
+          <div style={{ display: 'flex', gap: '0.2rem', flexWrap: 'wrap', flex: 1 }}>
             {r.cols.map((c, i) => {
               const isPlus = c.includes('+');
               const isMinus = c.includes('−') || c.includes('-');
               return (
                 <span key={i} style={{
-                  fontFamily: "'Cinzel', serif", fontSize: '0.6rem',
+                  fontFamily: "'Cinzel', serif", fontSize: '0.55rem',
                   color: isPlus ? 'var(--gold)' : isMinus ? '#ff8888' : 'var(--white-dim)',
-                  padding: '0.1rem 0.25rem',
+                  padding: '0.1rem 0.2rem',
                   border: `1px solid ${isPlus ? 'rgba(201,168,76,0.2)' : isMinus ? 'rgba(255,100,100,0.2)' : 'rgba(244,239,230,0.1)'}`,
-                  display: 'inline-flex', alignItems: 'center', gap: '0.15rem', whiteSpace: 'nowrap',
+                  display: 'inline-flex', alignItems: 'center', gap: '0.1rem',
                 }}>
-                  {c} <LapisIcon size={9} />
+                  {c} <LapisIcon size={8} />
                 </span>
               );
             })}
@@ -249,7 +249,7 @@ export default function RulesContent({
 
       <Divider label={<>✦ <LapisIcon size={13} /> LAPIS 활용법 — 추첨 ✦</>} color="var(--gold)" />
 
-      <div style={{ border: '1px solid rgba(201,168,76,0.25)', background: 'rgba(201,168,76,0.04)', padding: '2.5rem', marginBottom: '2rem', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ border: '1px solid rgba(201,168,76,0.25)', background: 'rgba(201,168,76,0.04)', padding: 'clamp(1rem, 4vw, 2.5rem)', marginBottom: '2rem', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-1rem', right: '-1rem', fontSize: '6rem', opacity: 0.04, lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>🎲</div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.5rem' }}>
           <span style={{ fontSize: '1.4rem' }}>🎲</span>

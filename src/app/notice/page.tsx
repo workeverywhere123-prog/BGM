@@ -43,31 +43,22 @@ function TabBar({ activeTab, openRaffleCount, noticeCount }: {
   ];
 
   return (
-    <div style={{ maxWidth: 840, margin: '0 auto', padding: '0 2rem' }}>
-      <div style={{ display: 'flex', borderBottom: '1px solid rgba(201,168,76,0.15)', marginBottom: '2.5rem', overflowX: 'auto' }}>
+    <div className="notice-tabbar-wrap">
+      <div className="notice-tabbar">
         {tabs.map(tab => {
           const isActive = activeTab === tab.id;
           return (
-            <Link key={tab.id} href={`/notice?tab=${tab.id}`} style={{
-              fontFamily: "'Cinzel', serif", fontSize: '0.62rem', letterSpacing: '0.2em',
-              padding: '0.9rem 2rem', textDecoration: 'none', whiteSpace: 'nowrap',
-              color: isActive ? 'var(--gold)' : 'rgba(244,239,230,0.4)',
-              borderBottom: `2px solid ${isActive ? 'var(--gold)' : 'transparent'}`,
-              marginBottom: '-1px', transition: 'color 0.2s',
-              display: 'flex', alignItems: 'center', gap: '0.5rem',
-            }}>
+            <Link key={tab.id} href={`/notice?tab=${tab.id}`} className={`notice-tabbar-link${isActive ? ' active' : ''}`}>
               {tab.label}
               {tab.badge && (
                 <span style={{
-                  fontFamily: "'Cinzel', serif", fontSize: '0.45rem',
-                  padding: '0.1rem 0.4rem',
+                  fontSize: '0.45rem', padding: '0.1rem 0.35rem', flexShrink: 0,
                   background: tab.liveColor ? `${tab.liveColor}22` : 'rgba(201,168,76,0.12)',
                   color: tab.liveColor ?? 'var(--gold-dim)',
                   border: `1px solid ${tab.liveColor ? `${tab.liveColor}44` : 'rgba(201,168,76,0.2)'}`,
-                  letterSpacing: '0.05em',
-                  display: 'inline-flex', alignItems: 'center', gap: '0.25rem',
+                  display: 'inline-flex', alignItems: 'center', gap: '0.2rem',
                 }}>
-                  {tab.liveColor && <span style={{ width: 5, height: 5, borderRadius: '50%', background: tab.liveColor, display: 'inline-block', flexShrink: 0 }} />}
+                  {tab.liveColor && <span style={{ width: 4, height: 4, borderRadius: '50%', background: tab.liveColor, display: 'inline-block' }} />}
                   {tab.badge}
                 </span>
               )}
@@ -166,7 +157,7 @@ export default async function NoticeHubPage({ searchParams }: { searchParams: Se
   return (
     <>
       <Nav />
-      <div style={{ paddingTop: '6rem', minHeight: '100vh', position: 'relative', zIndex: 1 }}>
+      <div style={{ paddingTop: '6rem', minHeight: '100vh', position: 'relative', zIndex: 1, overflowX: 'hidden', maxWidth: '100vw' }}>
 
         {/* 헤더 */}
         <div style={{ textAlign: 'center', padding: '3rem 2rem 1.5rem' }}>
